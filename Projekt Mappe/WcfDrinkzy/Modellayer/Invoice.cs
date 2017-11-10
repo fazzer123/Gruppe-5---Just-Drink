@@ -9,5 +9,6 @@ namespace Modellayer
     public class Invoice
     {
         public int ID { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
