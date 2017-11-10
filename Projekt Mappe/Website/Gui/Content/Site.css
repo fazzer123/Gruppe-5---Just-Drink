@@ -166,3 +166,63 @@ h3 {
         background-color: #ff4c19;
     }
 }
+
+#login-dp {
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow: hidden;
+    background-color: #ff3900;
+}
+
+    #login-dp .help-block {
+        font-size: 12px
+    }
+
+    #login-dp .bottom {
+        background-color: #ff3900;
+        border-top: 1px solid #ddd;
+        clear: both;
+        padding: 14px;
+    }
+
+    #login-dp .social-buttons {
+        margin: 12px 0
+    }
+
+        #login-dp .social-buttons a {
+            width: 49%;
+        }
+
+    #login-dp .form-group {
+        margin-bottom: 10px;
+    }
+
+.btn-fb {
+    color: grey;
+    background-color: grey;
+}
+
+    .btn-fb:hover {
+        color: grey;
+        background-color: grey
+    }
+
+.btn-tw {
+    color: grey;
+    background-color: grey;
+}
+
+    .btn-tw:hover {
+        color: grey;
+        background-color: grey;
+    }
+.btn-primary {
+    color: #ffffff;
+    background-color: Grey;
+    border-color: Grey;
+}
+    .btn-primary:hover {
+        color: #ffffff;
+        background-color: grey;
+        border-color: grey;
+    }
