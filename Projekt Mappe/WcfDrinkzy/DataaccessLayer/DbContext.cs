@@ -23,6 +23,6 @@ namespace DataaccessLayer
         public DbSet<Storage> Storages { get; set; }
         public DbSet<Announcement> Annoucements { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Ingredients> Ingredientses { get; set; }
     }
-
 }
