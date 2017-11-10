@@ -49,6 +49,12 @@ h3 {
     float: right;
 }
 
+.drinksmenu{
+    width: 200px;
+    height 200px;
+    background-color: white;
+}
+
 .navbar-inverse {
     background-color: #ff3900;
     border-color: #ff4c19;

@@ -13,5 +13,18 @@ namespace Gui.Controllers
         {
             return View();
         }
+
+        public ActionResult Drinks()
+        {
+            return View();
+        }
+        public ActionResult Shots()
+        {
+            return View();
+        }
+        public ActionResult Snacks()
+        {
+            return View();
+        }
     }
 }
