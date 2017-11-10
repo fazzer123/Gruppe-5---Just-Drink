@@ -1,15 +1,17 @@
 ﻿@{
     ViewBag.Title = "FindBar";
 }
+<h2>Find en Bar</h2>
+
 <div class="body">
     <font color="#bababa">Søg efter en Bar: </font><input id="searchBar" type="text" /><input id="btnSearch" type="button" value="Søg" />
 
     <div class="movestuff">
         <textarea id="TextArea1" rows="2" cols="20"></textarea>
     </div>
-    <li>@Html.ActionLink("Contact", "shoppage", "Home")</li>
+    <li>@Html.ActionLink("Shop Page", "shoppage", "Shop")</li>
 
-    <div id="my-carousel" class="carousel slide" data-ride="carousel" style="width: 600px; height: 300px; float: right;">
+    <div id="my-carousel" class="carousel slide" data-ride="carousel" style="width: 600px; height: 300px;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#my-carousel" data-slide-to="0" class="active"></li>

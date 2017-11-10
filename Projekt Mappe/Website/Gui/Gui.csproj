@@ -188,7 +188,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\FindBar.cshtml" />
-    <Content Include="Views\Home\shoppage.cshtml" />
+    <Content Include="Views\Shop\shoppage.cshtml" />
     <Content Include="Views\Shop\Drinks.cshtml" />
     <Content Include="Views\Shop\Shots.cshtml" />
     <Content Include="Views\Shop\Snacks.cshtml" />
