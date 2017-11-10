@@ -11,5 +11,6 @@ namespace Modellayer
         public int ID { get; set; }
         public string Name { get; set; }
         public double Procent { get; set; }
+        public virtual List<Drink> Drinks { get; set; }
     }
 }

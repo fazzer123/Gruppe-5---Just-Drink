@@ -15,6 +15,7 @@ namespace DataaccessLayer.Repositories
         public void Add(Ingredients entity)
         {
             db.Ingredientses.Add(entity);
+            db.SaveChanges();
         }
 
         public IEnumerable<Ingredients> Find(string queryString)
