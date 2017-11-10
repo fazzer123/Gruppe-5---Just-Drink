@@ -9,6 +9,6 @@ namespace Modellayer
     public class Menucard
     {
         public int ID { get; set; }
-        public virtual Drink Drink { get; set; }
+        public virtual List<Drink> Drinks { get; set; }
     }
 }

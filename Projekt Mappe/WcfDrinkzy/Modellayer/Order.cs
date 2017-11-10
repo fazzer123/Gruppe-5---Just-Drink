@@ -13,8 +13,8 @@ namespace Modellayer
         public double Discount { get; set; }
         public DateTime Date { get; set; }
         public string Status { get; set; }
-        public virtual OrderLine OrderLine { get; set; }
-        public virtual Drink Drink { get; set; }
         public virtual Invoice Invoice { get; set; }
+        public virtual User User { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

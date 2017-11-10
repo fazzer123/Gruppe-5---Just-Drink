@@ -19,7 +19,7 @@ namespace Modellayer
         public string Phone { get; set; }
         public virtual Wallet Wallet { get; set; }
         public virtual Favourite Favourite { get; set; }
-        public virtual Order Order { get; set; }
-        public virtual Invoice Invoice { get; set; }
+        public virtual List<Order> Orders { get; set; }
+        public virtual List<Invoice> Invoices { get; set; }
     }
 }

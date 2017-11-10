@@ -9,6 +9,6 @@ namespace Modellayer
     public class Favourite
     {
         public int ID { get; set; }
-        public virtual Drink Drink { get; set; }
+        public virtual List<Drink> Drinks { get; set; }
     }
 }

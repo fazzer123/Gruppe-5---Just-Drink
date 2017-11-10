@@ -16,6 +16,8 @@ namespace Modellayer
         public string Phone { get; set; }
         public string Email { get; set; }
         public virtual Menucard Menucard { get; set; }
-        public virtual Announcement Announcement { get; set; }
+        public virtual List<Announcement> Announcements { get; set; }
+        public virtual List<Storage> Storages { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }

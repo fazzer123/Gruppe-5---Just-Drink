@@ -13,6 +13,6 @@ namespace Modellayer
         public string Description { get; set; }
         public double Price { get; set; }
         public string Img { get; set; }
-        public virtual Ingredients Ingredients { get; set; }
+        public virtual List<Ingredients> Ingredientses { get; set; }
     }
 }

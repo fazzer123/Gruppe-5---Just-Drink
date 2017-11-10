@@ -12,5 +12,6 @@ namespace Modellayer
         public int Amount { get; set; }
         public double TotalPrice { get; set; }
         public virtual Drink Drink { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
