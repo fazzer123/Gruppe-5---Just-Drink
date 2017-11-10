@@ -24,5 +24,6 @@ namespace DataaccessLayer
         public DbSet<Announcement> Annoucements { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Ingredients> Ingredientses { get; set; }
+        public DbSet<Drink> Drinks { get; set; }
     }
 }
