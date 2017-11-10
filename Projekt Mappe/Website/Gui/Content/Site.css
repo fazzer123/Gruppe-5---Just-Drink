@@ -1,12 +1,16 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #191919;
 }
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.movestuff{
+    margin-top: 10px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +25,271 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.movebanner {
+    margin-top: 7px;
+}
+.loginplace{
+    float:right;
+    margin-top: -40px;
+}
+p {
+    color: #bababa
+}
+
+h2 {
+    color: #bababa
+}
+
+h3 {
+    color: #bababa
+}
+
+.floatright{
+    float: right;
+}
+
+.navbar-inverse {
+    background-color: #ff3900;
+    border-color: #ff4c19;
+}
+
+    .navbar-inverse .navbar-brand {
+        color: #000000;
+    }
+
+        .navbar-inverse .navbar-brand:hover,
+        .navbar-inverse .navbar-brand:focus {
+            color: #000000;
+        }
+
+    .navbar-inverse .navbar-text {
+        color: #000000;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #000000;
+    }
+
+        .navbar-inverse .navbar-nav > li > a:hover,
+        .navbar-inverse .navbar-nav > li > a:focus {
+            color: #000000;
+        }
+
+    .navbar-inverse .navbar-nav > li > .dropdown-menu {
+        background-color: #ff3900;
+    }
+
+        .navbar-inverse .navbar-nav > li > .dropdown-menu > li > a {
+            color: #000000;
+        }
+
+            .navbar-inverse .navbar-nav > li > .dropdown-menu > li > a:hover,
+            .navbar-inverse .navbar-nav > li > .dropdown-menu > li > a:focus {
+                color: #000000;
+                background-color: #ff4c19;
+            }
+
+        .navbar-inverse .navbar-nav > li > .dropdown-menu > li.divider {
+            background-color: #ff4c19;
+        }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #000000;
+        background-color: #ff4c19;
+    }
+
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > .active > a:focus {
+        color: #000000;
+        background-color: #ff4c19;
+    }
+
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+        color: #000000;
+        background-color: #ff4c19;
+    }
+
+    .navbar-inverse .navbar-toggle {
+        border-color: #ff4c19;
+    }
+
+        .navbar-inverse .navbar-toggle:hover,
+        .navbar-inverse .navbar-toggle:focus {
+            background-color: #ff4c19;
+        }
+
+        .navbar-inverse .navbar-toggle .icon-bar {
+            background-color: #000000;
+        }
+
+    .navbar-inverse .navbar-collapse,
+    .navbar-inverse .navbar-form {
+        border-color: #000000;
+    }
+
+    .navbar-inverse .navbar-link {
+        color: #000000;
+    }
+
+        .navbar-inverse .navbar-link:hover {
+            color: #000000;
+        }
+
+
+
+@media (max-width: 383px) {
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: #000000;
+    }
+
+        .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #000000;
+        }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #000000;
+        background-color: #ff4c19;
+    }
+}
+
+div.shop-tab-container {
+    width: 200px;
+    z-index: 10;
+    background-color: ##5b4676;
+    padding: 0 !important;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    border: 1px solid #ddd;
+    margin-top: 0px;
+    margin-left: 0px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    background-clip: padding-box;
+    opacity: 0.97;
+    filter: alpha(opacity=97);
+}
+
+div.shop-tab-menu {
+    width: 200px;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+    div.shop-tab-menu div.list-group {
+        margin-bottom: 0;
+    }
+
+        div.shop-tab-menu div.list-group > a {
+            margin-bottom: 0;
+        }
+
+            div.shop-tab-menu div.list-group > a .glyphicon,
+            div.shop-tab-menu div.list-group > a .fa {
+                color: #bee5eb;
+            }
+
+            div.shop-tab-menu div.list-group > a:first-child {
+                border-top-right-radius: 0;
+                -moz-border-top-right-radius: 0;
+            }
+
+            div.shop-tab-menu div.list-group > a:last-child {
+                border-bottom-right-radius: 0;
+                -moz-border-bottom-right-radius: 0;
+            }
+
+            div.shop-tab-menu div.list-group > a.active,
+            div.shop-tab-menu div.list-group > a.active .glyphicon,
+            div.shop-tab-menu div.list-group > a.active .fa {
+                background-color: #5b4676;
+                background-image: #5A55A3;
+                color: #5A55A3;
+            }
+
+div.shop-tab-content {
+    width: 200px;
+    background-color: #5b4676;
+    /* border: 1px solid #eeeeee; */
+    padding-left: 5px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    vertical-align: text-middle;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.120);
+}
+
+.btn-group {
+    padding-top: 20px;
+}
+
+    .btn-group > .btn {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        border-radius: 0rem;
+    }
+
+.cat {
+    text-align: left;
+}
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    display: relative;
+    width: 200px;
+    height: 180px;
+}
+
+.carousel-inner {
+    border-radius: 0px;
+}
+
+.carousel-caption {
+    background-color: #5b4676;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 0 0 10px 25px;
+    color: #fff;
+    text-align: left;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 200px;
+    z-index: 15;
+    margin: 0;
+    padding: 0 25px 25px 0;
+    text-align: right;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none;
 }
