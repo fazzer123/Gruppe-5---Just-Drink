@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnnouncementController.cs" />
     <Compile Include="CustomerController.cs" />
+    <Compile Include="DrinkController.cs" />
     <Compile Include="IngredientsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserController.cs" />

@@ -8,38 +8,38 @@ using Modellayer;
 
 namespace DataaccessLayer.Repositories
 {
-    public class UserRepository : ICRUD<User>
+    public class DrinkRepository : ICRUD<Drink>
     {
         DbContext db = new DbContext();
 
-        public void Add(User entity)
+        public void Add(Drink entity)
         {
-            db.Users.Add(entity);
+            db.Drinks.Add(entity);
             db.SaveChanges();
         }
 
-        public IEnumerable<User> Find(string queryString)
+        public IEnumerable<Drink> Find(string queryString)
         {
-            return db.Users.Where(x => x.LastName.ToLower().Contains(queryString.ToLower()));
+             return db.Drinks.Where(x => x.Name.ToLower().Contains(queryString.ToLower()));
         }
 
-        public User Get(int id, bool includeRelations)
+        public Drink Get(int id, bool includeRelations)
         {
-            return db.Users.Find(id);
+            return db.Drinks.Find(id);
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<Drink> GetAll()
         {
-            return db.Users;
+            return db.Drinks;
         }
 
-        public void Remove(User entity)
+        public void Remove(Drink entity)
         {
-            db.Users.Remove(entity);
+            db.Drinks.Remove(entity);
             db.SaveChanges();
         }
 
-        public void Update(User entity)
+        public void Update(Drink entity)
         {
             db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();

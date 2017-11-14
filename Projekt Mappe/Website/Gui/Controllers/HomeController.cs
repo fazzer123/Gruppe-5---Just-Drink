@@ -26,18 +26,5 @@ namespace Gui.Controllers
 
             return View();
         }
-        public ActionResult FindBar()
-        {
-            ViewBag.Message = "Your Find Bar Page";
-
-            return View();
-        }
-
-        public ActionResult shoppage()
-        {
-            ViewBag.Message = "Shop page";
-
-            return View();
-        }
     }
 }

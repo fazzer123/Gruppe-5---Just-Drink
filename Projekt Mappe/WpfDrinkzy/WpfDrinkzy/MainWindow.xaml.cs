@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfDrinkzy.ServiceIngredients;
 
 namespace WpfDrinkzy
 {
@@ -20,9 +21,20 @@ namespace WpfDrinkzy
     /// </summary>
     public partial class MainWindow : Window
     {
+        ServiceIngredientsClient client = new ServiceIngredientsClient();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Ingredients i = new Ingredients
+            {
+                Name = txtName.Text,
+                Procent = Convert.ToDouble(txtProcent.Text)
+            };
+            client.CreateIngredients(i);
         }
     }
 }

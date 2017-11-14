@@ -36,6 +36,7 @@ namespace DataaccessLayer.Repositories
         public void Remove(Ingredients entity)
         {
             db.Ingredientses.Remove(entity);
+            db.SaveChanges();
         }
 
         public void Update(Ingredients entity)
