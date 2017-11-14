@@ -12,15 +12,15 @@ namespace WcfDrinkzy
     interface IServiceAnnouncement
     {
         [OperationContract]
-        IEnumerable<ServiceAnnouncement> GetAnnouncement(string name);
+        IEnumerable<Announcement> GetAnnouncement(string Title);
 
         [OperationContract]
-        IEnumerable<ServiceAnnouncement> GetAnnouncementList();
+        IEnumerable<Announcement> GetAnnouncementList();
 
         [OperationContract]
-        void CreateAnnoucement(ServiceAnnouncement Annoucement);
+        void CreateAnnouncement(Announcement Announcement);
 
         [OperationContract]
-        void DeleteAnnoucement(ServiceAnnouncement Annoucement);
+        void DeleteAnnouncement(Announcement announcement);
     }
 }

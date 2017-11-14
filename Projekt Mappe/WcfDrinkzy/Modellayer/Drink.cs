@@ -14,5 +14,7 @@ namespace Modellayer
         public double Price { get; set; }
         public string Img { get; set; }
         public virtual List<Ingredients> Ingredientses { get; set; }
+        public virtual List<Menucard> Menucards { get; set; }
+        public virtual List<Favourite> Favourites { get; set; }
     }
 }

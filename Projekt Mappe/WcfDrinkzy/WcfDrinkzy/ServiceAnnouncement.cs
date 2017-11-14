@@ -3,30 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Modellayer;
+using BusinessLayer;
 
 namespace WcfDrinkzy
 {
-    class ServiceAnnouncement : IServiceAnnouncement;
-    
+    class ServiceAnnouncement : IServiceAnnouncement
+
     {
-        public void CreateAnnoucement(ServiceAnnouncement Annoucement)
+        AnnouncementController aCtr = new AnnouncementController();
+
+        public void CreateAnnouncement(Announcement Announcement)
         {
-            throw new NotImplementedException();
+            aCtr.Add(Announcement);
         }
 
-        public void DeleteAnnoucement(ServiceAnnouncement Annoucement)
+        public void DeleteAnnouncement(Announcement announcement)
         {
-            throw new NotImplementedException();
+            aCtr.Remove(announcement);
         }
 
-        public IEnumerable<ServiceAnnouncement> GetAnnouncement(string name)
+        public IEnumerable<Announcement> GetAnnouncement(string Title)
         {
-            throw new NotImplementedException();
+            return aCtr.Find(Title);
         }
 
-        public IEnumerable<ServiceAnnouncement> GetAnnouncementList()
+        public IEnumerable<Announcement> GetAnnouncementList()
         {
-            throw new NotImplementedException();
+            return aCtr.GetAll();
         }
+
+
     }
 }
+
