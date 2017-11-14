@@ -52,6 +52,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServiceAnnouncement.cs" />
+    <Compile Include="IServiceAnnouncement.cs" />
     <Compile Include="IServiceCustomer.cs" />
     <Compile Include="IServiceDrink.cs" />
     <Compile Include="IServiceIngredients.cs" />

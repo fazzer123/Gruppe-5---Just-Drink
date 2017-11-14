@@ -21,7 +21,7 @@ namespace DataaccessLayer
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<Storage> Storages { get; set; }
-        public DbSet<Announcement> Annoucements { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Ingredients> Ingredientses { get; set; }
         public DbSet<Drink> Drinks { get; set; }
