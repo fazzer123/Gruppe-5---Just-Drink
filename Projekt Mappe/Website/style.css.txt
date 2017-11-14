@@ -1,0 +1,8 @@
+h1 {color:red;}
+p {color:yellow;}
+
+div.blueground {
+background:blue;
+height: 500px;
+max-width: 500px;
+}
