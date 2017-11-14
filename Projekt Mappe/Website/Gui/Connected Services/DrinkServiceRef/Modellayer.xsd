@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Modellayer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Modellayer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfDrink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Drink" nillable="true" type="tns:Drink" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDrink" nillable="true" type="tns:ArrayOfDrink" />
+  <xs:complexType name="Drink">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Favourites" nillable="true" type="tns:ArrayOfFavourite" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Img" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ingredientses" nillable="true" type="tns:ArrayOfIngredients" />
+      <xs:element minOccurs="0" name="Menucards" nillable="true" type="tns:ArrayOfMenucard" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Drink" nillable="true" type="tns:Drink" />
+  <xs:complexType name="ArrayOfFavourite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Favourite" nillable="true" type="tns:Favourite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFavourite" nillable="true" type="tns:ArrayOfFavourite" />
+  <xs:complexType name="Favourite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Drinks" nillable="true" type="tns:ArrayOfDrink" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Favourite" nillable="true" type="tns:Favourite" />
+  <xs:complexType name="ArrayOfIngredients">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ingredients" nillable="true" type="tns:Ingredients" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIngredients" nillable="true" type="tns:ArrayOfIngredients" />
+  <xs:complexType name="Ingredients">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Drinks" nillable="true" type="tns:ArrayOfDrink" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Procent" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ingredients" nillable="true" type="tns:Ingredients" />
+  <xs:complexType name="ArrayOfMenucard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Menucard" nillable="true" type="tns:Menucard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMenucard" nillable="true" type="tns:ArrayOfMenucard" />
+  <xs:complexType name="Menucard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Drinks" nillable="true" type="tns:ArrayOfDrink" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Menucard" nillable="true" type="tns:Menucard" />
+</xs:schema>
