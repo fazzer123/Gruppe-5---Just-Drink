@@ -8,7 +8,7 @@ using BusinessLayer;
 
 namespace WCF
 {
-    public class AnnouncementService
+    public class AnnouncementService : IAnnouncementService
     {
         AnnouncementController aCtr;
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WCF
 {
-    public class UserService
+    public class UserService : IUserService
     {
         UserController UserCtr;
 
