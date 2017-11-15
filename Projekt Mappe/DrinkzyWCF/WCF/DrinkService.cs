@@ -27,5 +27,9 @@ namespace WCF
         {
             return DrinkCtr.GetDrink(name);
         }
+        public IEnumerable<Drink> getAllDrinks()
+        {
+            return DrinkCtr.getAllDrinks();
+        }
     }
 }

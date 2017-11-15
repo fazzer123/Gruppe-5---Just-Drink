@@ -26,5 +26,10 @@ namespace BusinessLayer
         {
             return dDb.GetDrink(name);
         }
+
+        public IEnumerable<Drink> getAllDrinks()
+        {
+            return dDb.getAllDrinks();
+        }
     }
 }
