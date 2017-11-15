@@ -57,5 +57,34 @@ namespace DBLayer
             }
             return drink;
         }
+        public IEnumerable<Drink> getAllDrinks()
+        {
+            List<Drink> drinkList = new List<Drink>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Drink";
+                    var Reader = cmd.ExecuteReader();
+
+                    while (Reader.Read())
+                    {
+                        Drink d = new Drink
+                        {
+                            Name = (string)Reader["driName"],
+                            Description = (string)Reader["driDescription"],
+                            Price = (decimal)Reader["driPrice"],
+                            Img = (string)Reader["driImg"]
+
+                        };
+                        drinkList.Add(d);
+                    }
+                }
+
+            }
+            return drinkList;
+        }
     }
 }

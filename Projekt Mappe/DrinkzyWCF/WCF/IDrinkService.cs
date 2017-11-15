@@ -17,5 +17,8 @@ namespace WCF
 
         [OperationContract]
         Drink GetDrink(string name);
+
+        [OperationContract]
+        IEnumerable<Drink> getAllDrinks();
     }
 }
