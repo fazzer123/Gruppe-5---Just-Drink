@@ -66,6 +66,41 @@ namespace DBLayer
             }
             return user;
         }
+        public IEnumerable<User> getAllUsers()
+        {
+            List<User> UserList = new List<User>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM User";
+                    var Reader = cmd.ExecuteReader();
+
+                    while (Reader.Read())
+                    {
+                        User u = new User
+                        {
+                            UserName = (string)Reader["UserName"],
+                            FirstName = (string)Reader["FirstName"],
+                            LastName = (string)Reader["LastName"],
+                            Gender = (string)Reader["Gender"],
+                            Birthday = (DateTime)Reader["Birthday"],
+                            Password = (string)Reader["Password"],
+                            Email = (string)Reader["Email"],
+                            Phone = (string)Reader["Phone"]
+
+                        };
+                        UserList.Add(u);
+                    }
+                }
+
+            }
+            return UserList;
+        }
     }
 }
+    
+
 

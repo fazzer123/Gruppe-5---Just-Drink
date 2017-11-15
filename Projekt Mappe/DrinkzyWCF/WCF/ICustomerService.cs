@@ -14,6 +14,10 @@ namespace WCF
         [OperationContract]
         void CreateCustomer(Customer customer);
         [OperationContract]
-        Customer getCustomer(string CusName);
+        Customer GetCustomer(string CusName);
+
+        [OperationContract]
+
+        IEnumerable<Customer> GetAllCustomers();
     }
 }

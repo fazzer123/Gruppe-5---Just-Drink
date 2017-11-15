@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WCF
 {
-   public class UserService
+    public class UserService
     {
         UserController UserCtr;
 
@@ -24,6 +24,11 @@ namespace WCF
         public User GetUser(string UserName)
         {
             return UserCtr.GetUser(UserName);
+        }
+
+        public IEnumerable<User> getAllUsers()
+        {
+            return UserCtr.getAllUsers();
         }
     }
 }

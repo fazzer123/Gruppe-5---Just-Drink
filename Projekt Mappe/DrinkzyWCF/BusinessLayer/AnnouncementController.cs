@@ -26,5 +26,10 @@ namespace BusinessLayer
         {
             return aDb.GetAnnouncement(Title);
         }
+        public IEnumerable<Announcement> GetAllAnnouncements()
+        {
+            return aDb.GetAllAnnouncements();
+        }
+
     }
 }

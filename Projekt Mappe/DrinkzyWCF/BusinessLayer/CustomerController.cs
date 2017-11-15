@@ -17,7 +17,7 @@ namespace BusinessLayer
             cDb = new CustomerDB();
         }
 
-        public void CreateCustomerk(Customer customer)
+        public void CreateCustomer(Customer customer)
         {
             cDb.CreateCustomer(customer);
         }
@@ -26,6 +26,11 @@ namespace BusinessLayer
         {
             return cDb.GetCustomer(CusName);
         }
+        public IEnumerable<Customer> GetAllCustomers()
+        {
+            return cDb.GetAllCustomers();
+        }
+            
     }
 }
-}
+

@@ -26,6 +26,10 @@ namespace BusinessLayer
         {
             return uDb.GetUser(UserName);
         }
+        public IEnumerable<User> getAllUsers()
+        {
+            return uDb.getAllUsers();
+        }
     }
 }
     

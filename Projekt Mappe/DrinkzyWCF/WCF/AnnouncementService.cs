@@ -10,13 +10,13 @@ namespace WCF
 {
     public class AnnouncementService
     {
-        Announcement aCtr;
+        AnnouncementController aCtr;
 
         public AnnouncementService()
         {
             aCtr = new AnnouncementController();
         }
-        public void CreateAnnouncement(AnnouncementService announcement)
+        public void CreateAnnouncement(Announcement announcement)
         {
             aCtr.CreateAnnouncement(announcement);
         }
@@ -25,5 +25,10 @@ namespace WCF
         {
             return aCtr.GetAnnouncement(Title);
         }
+        public IEnumerable<Announcement> GetAllAnnouncements()
+        {
+            return aCtr.GetAllAnnouncements();
+        }
+            
     }
 }

@@ -17,7 +17,10 @@ namespace WCF
 
             [OperationContract]
             Announcement GetAnnouncement(string Title);
-        }
+            [OperationContract]
+
+        IEnumerable<Announcement> GetAllAnnouncements();
+    }
 }
 
 

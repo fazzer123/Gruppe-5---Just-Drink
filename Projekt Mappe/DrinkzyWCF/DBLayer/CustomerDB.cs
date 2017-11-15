@@ -34,34 +34,66 @@ namespace DBLayer
                 }
             }
 
-            public Customer GetCustomer(string CusName)
+        public Customer GetCustomer(string CusName)
+        {
+            Customer customer = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                Customer customer = null;
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Select * From Customer Where CusName = @CusName";
+                    cmd.Parameters.AddWithValue("CusName", CusName);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        customer = new Customer
+                        {
+                            //Id = (int)Reader["id"],
+                            CusName = (string)Reader["CusName"],
+                            Img = (string)Reader["CusImg"],
+                            Region = (string)Reader["CusRegion"],
+                            Address = (string)Reader["CusAddress"],
+                            Phone = (string)Reader["CusPhones"],
+                            Email = (string)Reader["CusEmail"]
+                        };
+                    }
+                }
+            }
+            return customer;
+        }
+
+    public IEnumerable<Customer> GetAllCustomers()
+            {
+                List<Customer> CustomerList = new List<Customer>();
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
+
                     using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        cmd.CommandText = "Select * From Customer Where CusName = @CusName";
-                        cmd.Parameters.AddWithValue("CusName", CusName);
+                        cmd.CommandText = "SELECT * FROM Customer";
                         var Reader = cmd.ExecuteReader();
+
                         while (Reader.Read())
                         {
-                            customer = new Customer
+                            Customer c = new Customer
                             {
-                                //Id = (int)Reader["id"],
                                 CusName = (string)Reader["CusName"],
                                 Img = (string)Reader["CusImg"],
                                 Region = (string)Reader["CusRegion"],
                                 Address = (string)Reader["CusAddress"],
                                 Phone = (string)Reader["CusPhones"],
                                 Email = (string)Reader["CusEmail"]
+
                             };
+                            CustomerList.Add(c);
                         }
                     }
+
                 }
-                return customer;
+                return CustomerList;
             }
         }
     }
-}
+

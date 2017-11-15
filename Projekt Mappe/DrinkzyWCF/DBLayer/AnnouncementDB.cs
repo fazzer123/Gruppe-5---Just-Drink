@@ -59,6 +59,35 @@ namespace DBLayer
             }
             return announcement;
         }
+        public IEnumerable<Announcement> GetAllAnnouncements()
+        {
+            List<Announcement> AnnouncementList = new List<Announcement>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Announcement";
+                    var Reader = cmd.ExecuteReader();
+
+                    while (Reader.Read())
+                    {
+                        Announcement a = new Announcement
+                        {
+                            Title = (string)Reader["Title"],
+                            Text = (string)Reader["Text"],
+                            Date = (DateTime)Reader["Date"],
+                            Img = (string)Reader["Img"]
+
+                        };
+                        AnnouncementList.Add(a);
+                    }
+                }
+
+            }
+            return AnnouncementList;
+        }
     }
 }
 
