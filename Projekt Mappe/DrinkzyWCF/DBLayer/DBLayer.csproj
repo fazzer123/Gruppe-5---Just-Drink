@@ -45,6 +45,7 @@
     <Compile Include="CustomerDB.cs" />
     <Compile Include="DrinkDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StorageDB.cs" />
     <Compile Include="UserDB.cs" />
   </ItemGroup>
   <ItemGroup>
