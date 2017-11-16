@@ -75,7 +75,7 @@ namespace DBLayer
 
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM User";
+                    cmd.CommandText = "SELECT * FROM DrinkzyUser";
                     var Reader = cmd.ExecuteReader();
 
                     while (Reader.Read())
@@ -87,7 +87,7 @@ namespace DBLayer
                             LastName = (string)Reader["LastName"],
                             Gender = (string)Reader["Gender"],
                             Birthday = (DateTime)Reader["Birthday"],
-                            Password = (string)Reader["Password"],
+                            Password = (string)Reader["userPassword"],
                             Email = (string)Reader["Email"],
                             Phone = (string)Reader["Phone"]
 
