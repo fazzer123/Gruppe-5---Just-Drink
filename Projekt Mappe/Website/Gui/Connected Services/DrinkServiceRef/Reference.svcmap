@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7640d6c1-d3cf-4419-9135-257d98d3ddfe" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a7f2ddd7-e986-4239-a3c3-ea552b921f8e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WcfDrinkzy/ServiceDrink/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WCF/DrinkService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="e6ec17d4-6c72-4b52-a04e-b868490c08f9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfDrinkzy/ServiceDrink/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="94eb2a90-0316-48ef-9f18-586280fd07f1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfDrinkzy/ServiceDrink/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6369d109-e570-4df6-8998-4a6d7e8147df" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfDrinkzy/ServiceDrink/mex" />
-    <MetadataFile FileName="Modellayer.xsd" MetadataType="Schema" ID="93a7738e-26fc-4b85-a533-4c73c83893b6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WcfDrinkzy/ServiceDrink/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c6ed21c3-4288-48cf-a82c-ec7bc43b3692" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF/DrinkService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="90d83cf5-d37b-4fe0-91ba-a42552977fde" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF/DrinkService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="2aed4aad-b8a9-4380-8fde-236f65a671ef" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF/DrinkService/mex" />
+    <MetadataFile FileName="ModelLayer.xsd" MetadataType="Schema" ID="3797c01a-11fa-4bf8-9b58-f0646d361614" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF/DrinkService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
