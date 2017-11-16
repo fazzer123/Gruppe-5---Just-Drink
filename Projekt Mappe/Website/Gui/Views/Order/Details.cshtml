@@ -1,0 +1,81 @@
+﻿@model dynamic
+@using Gui.OrderServiceRef;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div style="color: white;">
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Total Price
+        </dt>
+
+        <dd>
+            @Model.Order.TotalPrice
+        </dd>
+
+        <dt>
+            Discount
+        </dt>
+
+        <dd>
+            @Model.Order.Discount
+        </dd>
+
+        <dt>
+            Status
+        </dt>
+
+        <dd>
+            @Model.Order.Status
+        </dd>
+
+        <dt>
+            Date
+        </dt>
+
+        <dd>
+            @Model.Order.Date
+        </dd>
+    </dl>
+
+    <hr/>
+    <table class="table" style="color: white;">
+        <h4>Items in cart</h4>
+        <tr>
+            <th>
+               Amount
+            </th>
+            <th>
+                Total Price
+            </th>
+            <th>
+                Drink
+            </th>
+        </tr>
+
+        @foreach (var item in @Model.OrderLines)
+        {
+            <tr>
+                <td>
+                    @item.Amount
+                </td>
+                <td>
+                    @item.TotalPrice
+                </td>
+                <td>
+                    @item.Drink.Name
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

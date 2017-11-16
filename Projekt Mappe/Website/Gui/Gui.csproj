@@ -166,6 +166,7 @@
     </Compile>
     <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -288,10 +289,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\FindBar.cshtml" />
     <Content Include="Views\Shop\shoppage.cshtml" />
-    <Content Include="Views\Shop\Drinks.cshtml" />
     <Content Include="Views\Shop\Shots.cshtml" />
     <Content Include="Views\Shop\Snacks.cshtml" />
     <Content Include="Views\Drink\Index.cshtml" />
+    <Content Include="Views\Drink\Details.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Drink\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

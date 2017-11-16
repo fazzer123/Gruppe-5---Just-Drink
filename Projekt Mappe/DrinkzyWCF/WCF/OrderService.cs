@@ -18,7 +18,7 @@ namespace WCF
 
         public IEnumerable<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            return oCtr.getAllOrders();
         }
 
         public Order GetOrder(int ID)

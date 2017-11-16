@@ -3,42 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Gui.DrinkServiceRef;
+using Gui.OrderServiceRef;
 using Gui.OrderLineServiceRef;
+using System.Dynamic;
 
 namespace Gui.Controllers
 {
-    public class DrinkController : Controller
+    public class OrderController : Controller
     {
-        private DrinkServiceClient client = new DrinkServiceClient();
-        private OrderLineServiceClient lc = new OrderLineServiceClient();
+        OrderServiceClient client = new OrderServiceClient();
 
-        // GET: Drink
+
+        // GET: Order
         public ActionResult Index()
         {
-            return View(client.getAllDrinks());
+            return View(client.GetAllOrders());
         }
 
-        // GET: Drink/Details/5
+        // GET: Order/Details/5
         public ActionResult Details(int id)
         {
-            return View(client.GetDrink(id));
+            dynamic BCVM = new ExpandoObject();
+            BCVM.Order = client.GetOrder(id);
+            BCVM.OrderLines = client.GetOrder(id).OrderLines;
+            return View(BCVM);
         }
 
-        // GET: Drink/Create
+        // GET: Order/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Drink/Create
+        // POST: Order/Create
         [HttpPost]
-        public ActionResult Create(OrderLine orderline)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-                lc.CreateOrderLine(orderline, 1);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -47,13 +51,13 @@ namespace Gui.Controllers
             }
         }
 
-        // GET: Drink/Edit/5
+        // GET: Order/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Drink/Edit/5
+        // POST: Order/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -69,13 +73,13 @@ namespace Gui.Controllers
             }
         }
 
-        // GET: Drink/Delete/5
+        // GET: Order/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Drink/Delete/5
+        // POST: Order/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
