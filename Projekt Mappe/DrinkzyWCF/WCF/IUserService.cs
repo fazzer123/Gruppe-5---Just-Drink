@@ -15,7 +15,7 @@ namespace WCF
         void CreateUser(User user);
 
         [OperationContract]
-        User GetUser(string UserName);
+        User GetUser(int id);
 
         [OperationContract]
         IEnumerable<User> getAllUsers();

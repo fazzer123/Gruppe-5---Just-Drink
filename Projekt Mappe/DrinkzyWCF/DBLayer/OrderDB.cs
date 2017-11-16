@@ -11,6 +11,8 @@ namespace DBLayer
 {
     public class OrderDB
     {
+        UserDB uDB = new UserDB();
+        OrderLineDB olDB = new OrderLineDB();
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         public void CreateOrder(Order Order)
@@ -20,12 +22,13 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.Order(id, totalprice, discount, orderDate, status) values(@id, @totalprice, @discount, @orderDate,status)";
+                    cmd.CommandText = "Insert Into dbo.DrinkzyOrder(id, totalprice, discount, orderDate, status, userID) values(@id, @totalprice, @discount, @orderDate, @status, @userID)";
                     cmd.Parameters.AddWithValue("id", Order.ID);
                     cmd.Parameters.AddWithValue("totalprice", Order.TotalPrice);
                     cmd.Parameters.AddWithValue("discount", Order.Discount);
                     cmd.Parameters.AddWithValue("orderDate", Order.Date);
                     cmd.Parameters.AddWithValue("status", Order.Status);
+                    cmd.Parameters.AddWithValue("userID", Order.User.ID);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -39,25 +42,27 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Select * From Order Where id = @id";
+                    cmd.CommandText = "Select * From DrinkzyOrder Where id = @id";
                     cmd.Parameters.AddWithValue("id", ID);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
                         Order = new Order
                         {
-
                             ID = (int)Reader["id"],
-                            TotalPrice = (int)Reader["totalprice"],
-                            Discount = (int)Reader["discount"],
+                            TotalPrice = (decimal)Reader["totalPrice"],
+                            Discount = (decimal)Reader["discount"],
                             Date = (DateTime)Reader["orderDate"],
-                            Status = (string)Reader["status"]
+                            Status = (string)Reader["orderStatus"],
+                            User = uDB.GetUser((int)Reader["userID"]),
+                            OrderLines = olDB.GetAllOrderLinesByOrderID(ID)
                         };
                     }
                 }
             }
             return Order;
         }
+
         public IEnumerable<Order> GetAllOrders()
         {
             List<Order> OrderList = new List<Order>();
@@ -67,7 +72,7 @@ namespace DBLayer
 
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Order";
+                    cmd.CommandText = "SELECT * FROM DrinkzyOrder";
                     var Reader = cmd.ExecuteReader();
 
                     while (Reader.Read())
@@ -78,8 +83,8 @@ namespace DBLayer
                             TotalPrice = (int)Reader["totalprice"],
                             Discount = (int)Reader["discount"],
                             Date = (DateTime)Reader["orderDate"],
-                            Status = (string)Reader["status"]
-
+                            Status = (string)Reader["status"],
+                            OrderLines = olDB.GetAllOrderLinesByOrderID((int)Reader["id"])
                         };
                         OrderList.Add(o);
                     }

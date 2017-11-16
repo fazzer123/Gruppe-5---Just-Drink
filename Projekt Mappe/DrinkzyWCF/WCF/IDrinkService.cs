@@ -16,7 +16,7 @@ namespace WCF
         void CreateDrink(Drink drink);
 
         [OperationContract]
-        Drink GetDrink(string name);
+        Drink GetDrink(int id);
 
         [OperationContract]
         IEnumerable<Drink> getAllDrinks();

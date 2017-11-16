@@ -22,9 +22,9 @@ namespace BusinessLayer
             dDb.CreateDrink(drink);
         }
 
-        public Drink GetDrink(string name)
+        public Drink GetDrink(int id)
         {
-            return dDb.GetDrink(name);
+            return dDb.GetDrink(id);
         }
 
         public IEnumerable<Drink> getAllDrinks()

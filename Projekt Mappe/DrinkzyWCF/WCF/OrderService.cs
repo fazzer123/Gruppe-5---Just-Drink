@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer;
+using BusinessLayer;
 
 namespace WCF
 {
     public class OrderService : IOrderService
     {
+        OrderController oCtr = new OrderController();
         public void CreateOrder(Order order)
         {
             throw new NotImplementedException();
@@ -21,7 +23,7 @@ namespace WCF
 
         public Order GetOrder(int ID)
         {
-            throw new NotImplementedException();
+            return oCtr.GetOrder(ID);
         }
     }
 }

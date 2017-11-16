@@ -17,9 +17,9 @@ namespace WCF
         {
             olCtr = new OrderLineController();
         }
-        public void CreateOrderLine(OrderLine orderline)
+        public void CreateOrderLine(OrderLine orderline, int orderID)
         {
-            olCtr.CreateOrderLine(orderline);
+            olCtr.CreateOrderLine(orderline, orderID);
         }
 
         public IEnumerable<OrderLine> GetAllOrderlines()

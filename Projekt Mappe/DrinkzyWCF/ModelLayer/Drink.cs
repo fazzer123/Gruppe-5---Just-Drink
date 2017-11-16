@@ -10,8 +10,8 @@ namespace ModelLayer
     [DataContract]
     public class Drink
     {
-       // [DataMember]
-       //public int ID { get; set; }
+        [DataMember]
+        public int ID { get; set; }
         [DataMember]
         public string Name { get; set; }
         [DataMember]
@@ -21,8 +21,9 @@ namespace ModelLayer
         [DataMember]
         public string Img { get; set; }
 
-        public Drink(string Name, string Description, decimal Price, string Img)
+        public Drink(int ID, string Name, string Description, decimal Price, string Img)
         {
+            this.ID = ID;
             this.Name = Name;
             this.Description = Description;
             this.Price = Price;

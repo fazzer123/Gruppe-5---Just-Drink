@@ -11,19 +11,22 @@ namespace DBLayer
 {
     public class OrderLineDB
     {
+        DrinkDB ddb = new DrinkDB();
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-        public void CreateOrderLine(OrderLine OrderLine)
+        public void CreateOrderLine(OrderLine OrderLine, int orderID)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.OrderLine(id, amount, totalPrice) values(@id, @amount, @totalPrice)";
+                    cmd.CommandText = "Insert Into dbo.OrderLine(id, amount, totalPrice, drinkID, orderID) values(@id, @amount, @totalPrice, @drinkID, @orderID)";
                     cmd.Parameters.AddWithValue("id", OrderLine.ID);
                     cmd.Parameters.AddWithValue("amount", OrderLine.Amount);
                     cmd.Parameters.AddWithValue("totalPrice", OrderLine.TotalPrice);
+                    cmd.Parameters.AddWithValue("drinkID", OrderLine.Drink.ID);
+                    cmd.Parameters.AddWithValue("orderID", orderID);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -47,8 +50,8 @@ namespace DBLayer
 
                             ID = (int)Reader["id"],
                             Amount = (int)Reader["amount"],
-                            TotalPrice = (Double)Reader["totalPrice"],
-                            
+                            TotalPrice = (decimal)Reader["totalPrice"],
+                            Drink = ddb.GetDrink((int)Reader["drinkID"])
                         };
                     }
                 }
@@ -73,13 +76,41 @@ namespace DBLayer
                         {
                             ID = (int)Reader["id"],
                             Amount = (int)Reader["amount"],
-                            TotalPrice = (Double)Reader["TotalPrice"],
+                            TotalPrice = (decimal)Reader["TotalPrice"],
+                            Drink = ddb.GetDrink((int)Reader["drinkID"])
 
                         };
                         OrderLineList.Add(ol);
                     }
                 }
+            }
+            return OrderLineList;
+        }
 
+        public IEnumerable<OrderLine> GetAllOrderLinesByOrderID(int orderID)
+        {
+            List<OrderLine> OrderLineList = new List<OrderLine>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM OrderLine WHERE orderID = @orderID";
+                    cmd.Parameters.AddWithValue("orderID", orderID);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        OrderLine ol = new OrderLine
+                        {
+                            ID = (int)Reader["id"],
+                            Amount = (int)Reader["amount"],
+                            TotalPrice = (decimal)Reader["TotalPrice"],
+                            Drink = ddb.GetDrink((int)Reader["drinkID"])
+                        };
+                        OrderLineList.Add(ol);
+                    }
+                }
             }
             return OrderLineList;
         }

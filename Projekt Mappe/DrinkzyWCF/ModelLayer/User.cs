@@ -11,6 +11,8 @@ namespace ModelLayer
     public class User
     {
         [DataMember]
+        public int ID { get; set; }
+        [DataMember]
         public string UserName { get; set; }
         [DataMember]
         public string FirstName { get; set; }
@@ -27,8 +29,9 @@ namespace ModelLayer
         [DataMember]
         public string Phone { get; set; }
 
-        public User(string UserName, string FirstName, string LastName, string Gender, DateTime Birthday, string Password, string Email, string Phone)
+        public User(int ID, string UserName, string FirstName, string LastName, string Gender, DateTime Birthday, string Password, string Email, string Phone)
         {
+            this.ID = ID;
             this.UserName = UserName;
             this.FirstName = FirstName;
             this.LastName = LastName;

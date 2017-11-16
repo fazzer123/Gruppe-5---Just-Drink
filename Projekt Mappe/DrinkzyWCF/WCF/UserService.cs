@@ -21,9 +21,9 @@ namespace WCF
             UserCtr.CreateUser(user);
         }
 
-        public User GetUser(string UserName)
+        public User GetUser(int id)
         {
-            return UserCtr.GetUser(UserName);
+            return UserCtr.GetUser(id);
         }
 
         public IEnumerable<User> getAllUsers()

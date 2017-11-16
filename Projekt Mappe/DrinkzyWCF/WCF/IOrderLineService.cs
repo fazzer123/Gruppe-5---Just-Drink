@@ -12,7 +12,7 @@ namespace WCF
     public interface IOrderLineService
     {
         [OperationContract]
-        void CreateOrderLine(OrderLine orderline);
+        void CreateOrderLine(OrderLine orderline, int orderID);
 
         [OperationContract]
         OrderLine GetOrderLine(int ID);

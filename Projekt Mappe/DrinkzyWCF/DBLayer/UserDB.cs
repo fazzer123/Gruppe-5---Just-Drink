@@ -20,7 +20,7 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.User(UserName, FirstName, LastName, Gender, Birthday, Password, Email, Phone ) values(@UserName, @FirstName, @LastName, @Gender, @Birthday, @Password, @Email, @Phone)";
+                    cmd.CommandText = "Insert Into dbo.DrinkzyUser(UserName, FirstName, LastName, Gender, Birthday, Password, Email, Phone ) values(@UserName, @FirstName, @LastName, @Gender, @Birthday, @Password, @Email, @Phone)";
                     //cmd.Parameters.AddWithValue("id", entity.Id);
                     cmd.Parameters.AddWithValue("UserName", user.UserName);
                     cmd.Parameters.AddWithValue("FirstName", user.FirstName);
@@ -35,7 +35,7 @@ namespace DBLayer
             }
         }
 
-        public User GetUser(string UserName)
+        public User GetUser(int id)
         {
             User user = null;
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -43,22 +43,22 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Select * From User Where UserName = @UserName";
-                    cmd.Parameters.AddWithValue("UserName", UserName);
+                    cmd.CommandText = "Select * From DrinkzyUser Where id = @id";
+                    cmd.Parameters.AddWithValue("id", id);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
                         user = new User
                         {
-                            //Id = (int)Reader["id"],
-                            UserName = (string)Reader["UserName"],
-                            FirstName = (string)Reader["FirstName"],
-                            LastName = (string)Reader["LastName"],
-                            Gender = (string)Reader["Gender"],
-                            Birthday = (DateTime)Reader["Birthday"],
-                            Password = (string)Reader["Password"],
-                            Email = (string)Reader["Email"],
-                            Phone = (string)Reader["Phone"]
+                            ID = (int)Reader["id"],
+                            UserName = (string)Reader["userName"],
+                            FirstName = (string)Reader["firstName"],
+                            LastName = (string)Reader["lastName"],
+                            Gender = (string)Reader["gender"],
+                            Birthday = (DateTime)Reader["birthday"],
+                            Password = (string)Reader["userPassword"],
+                            Email = (string)Reader["email"],
+                            Phone = (string)Reader["phone"]
 
                         };
                     }

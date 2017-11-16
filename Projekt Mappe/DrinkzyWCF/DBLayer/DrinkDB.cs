@@ -31,7 +31,7 @@ namespace DBLayer
             }
         }
 
-        public Drink GetDrink(string name)
+        public Drink GetDrink(int id)
         {
             Drink drink = null;
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -39,14 +39,14 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Select * From Drink Where driName = @driName";
-                    cmd.Parameters.AddWithValue("driName", name);
+                    cmd.CommandText = "Select * From Drink Where id = @id";
+                    cmd.Parameters.AddWithValue("id", id);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
                         drink = new Drink
                         {
-                            //Id = (int)Reader["id"],
+                            ID = (int)Reader["id"],
                             Name = (string)Reader["driName"],
                             Description = (string)Reader["driDescription"],
                             Price = (decimal)Reader["driPrice"],

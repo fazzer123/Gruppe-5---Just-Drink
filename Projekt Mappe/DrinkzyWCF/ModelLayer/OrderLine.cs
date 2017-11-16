@@ -15,14 +15,17 @@ namespace ModelLayer
         [DataMember]
         public int Amount { get; set; }
         [DataMember]
-        public double TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
+        [DataMember]
+        public Drink Drink { get; set; }
 
 
-        public OrderLine(int ID, int Amount, double TotalPrice)
+        public OrderLine(int ID, int Amount, decimal TotalPrice, Drink Drink)
         {
             this.ID = ID;
             this.Amount = Amount;
             this.TotalPrice = TotalPrice;
+            this.Drink = Drink;
         }
         public OrderLine()
         {

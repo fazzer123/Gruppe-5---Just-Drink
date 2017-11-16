@@ -23,9 +23,9 @@ namespace WCF
             DrinkCtr.CreateDrink(drink);
         }
 
-        public Drink GetDrink(string name)
+        public Drink GetDrink(int id)
         {
-            return DrinkCtr.GetDrink(name);
+            return DrinkCtr.GetDrink(id);
         }
         public IEnumerable<Drink> getAllDrinks()
         {

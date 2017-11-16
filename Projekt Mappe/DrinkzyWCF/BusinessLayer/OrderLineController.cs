@@ -17,9 +17,9 @@ namespace BusinessLayer
             olDb = new OrderLineDB();
         }
 
-        public void CreateOrderLine(OrderLine OrderLine)
+        public void CreateOrderLine(OrderLine OrderLine, int orderID)
         {
-            olDb.CreateOrderLine(OrderLine);
+            olDb.CreateOrderLine(OrderLine, orderID);
         }
 
         public OrderLine GetOrderLine(int ID)
