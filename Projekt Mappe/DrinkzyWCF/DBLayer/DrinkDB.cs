@@ -78,7 +78,6 @@ namespace DBLayer
                             Description = (string)Reader["driDescription"],
                             Price = (decimal)Reader["driPrice"],
                             Img = (string)Reader["driImg"]
-
                         };
                         drinkList.Add(d);
                     }

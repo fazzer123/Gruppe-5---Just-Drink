@@ -22,9 +22,9 @@ namespace BusinessLayer
             cDb.CreateCustomer(customer);
         }
 
-        public Customer GetCustomer(string CusName)
+        public Customer GetCustomer(int id)
         {
-            return cDb.GetCustomer(CusName);
+            return cDb.GetCustomer(id);
         }
         public IEnumerable<Customer> GetAllCustomers()
         {

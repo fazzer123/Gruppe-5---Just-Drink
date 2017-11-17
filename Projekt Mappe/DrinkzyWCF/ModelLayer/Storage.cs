@@ -18,5 +18,23 @@ namespace ModelLayer
         public int MaxAmount { get; set; }
         [DataMember]
         public int MinAmount { get; set; }
+        [DataMember]
+        public Drink Drink { get; set; }
+        [DataMember]
+        public Customer Customer { get; set; }
+
+        public Storage() { }
+
+        public Storage(int ID, int Amount, int MaxAmount, int MinAmount, Drink Drink, Customer Customer)
+        {
+            this.ID = ID;
+            this.Amount = Amount;
+            this.MaxAmount = MaxAmount;
+            this.MinAmount = MinAmount;
+            this.Drink = Drink;
+            this.Customer = Customer;
+        }
     }
+
+    
 }

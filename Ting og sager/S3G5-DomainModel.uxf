@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>10</x>
       <y>10</y>
       <w>130</w>
       <h>200</h>
@@ -25,7 +25,7 @@ Y-Cord: double</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>10</x>
       <y>240</y>
       <w>130</w>
       <h>210</h>
@@ -48,7 +48,7 @@ Phone: string
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
+      <x>200</x>
       <y>250</y>
       <w>120</w>
       <h>160</h>
@@ -65,7 +65,7 @@ status: string</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
+      <x>370</x>
       <y>240</y>
       <w>120</w>
       <h>70</h>
@@ -79,7 +79,7 @@ TotalPrice: double</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>610</x>
+      <x>540</x>
       <y>250</y>
       <w>120</w>
       <h>130</h>
@@ -96,7 +96,7 @@ Img: string</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>380</x>
       <y>30</y>
       <w>110</w>
       <h>110</h>
@@ -112,7 +112,7 @@ MinAmount: int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>10</x>
       <y>520</y>
       <w>140</w>
       <h>120</h>
@@ -123,13 +123,13 @@ Id: int
 Balance: double
 MaxBalance: double
 MinBalance: double
-LcckTime: datetime</panel_attributes>
+LockTime: datetime</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
+      <x>670</x>
       <y>30</y>
       <w>120</w>
       <h>120</h>
@@ -146,7 +146,7 @@ Img: string</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
+      <x>230</x>
       <y>460</y>
       <w>100</w>
       <h>70</h>
@@ -159,7 +159,7 @@ Id: int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
+      <x>230</x>
       <y>80</y>
       <w>100</w>
       <h>80</h>
@@ -172,7 +172,7 @@ Id: int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
+      <x>320</x>
       <y>370</y>
       <w>290</w>
       <h>160</h>
@@ -185,7 +185,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
+      <x>50</x>
       <y>440</y>
       <w>30</w>
       <h>100</h>
@@ -198,7 +198,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>130</x>
       <y>430</y>
       <w>120</w>
       <h>100</h>
@@ -211,7 +211,7 @@ m2=0..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>350</x>
+      <x>280</x>
       <y>150</y>
       <w>320</w>
       <h>120</h>
@@ -224,7 +224,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>830</x>
+      <x>760</x>
       <y>300</y>
       <w>110</w>
       <h>90</h>
@@ -239,7 +239,7 @@ Procent: double</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
+      <x>650</x>
       <y>340</y>
       <w>130</w>
       <h>40</h>
@@ -252,7 +252,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>130</x>
       <y>100</y>
       <w>120</w>
       <h>40</h>
@@ -265,7 +265,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>130</x>
       <y>50</y>
       <w>270</w>
       <h>40</h>
@@ -278,7 +278,7 @@ m2=1..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>130</x>
       <y>180</y>
       <w>130</w>
       <h>90</h>
@@ -291,7 +291,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>130</x>
       <y>270</y>
       <w>90</w>
       <h>100</h>
@@ -304,7 +304,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
+      <x>480</x>
       <y>270</y>
       <w>80</w>
       <h>70</h>
@@ -317,7 +317,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
+      <x>310</x>
       <y>270</y>
       <w>80</w>
       <h>70</h>
@@ -330,7 +330,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
+      <x>480</x>
       <y>100</y>
       <w>170</w>
       <h>170</h>
@@ -343,7 +343,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>130</x>
       <y>10</y>
       <w>560</w>
       <h>80</h>
@@ -356,8 +356,8 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>470</x>
-      <y>370</y>
+      <x>400</x>
+      <y>360</y>
       <w>100</w>
       <h>70</h>
     </coordinates>
@@ -369,20 +369,7 @@ Id: int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>410</y>
-      <w>290</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=0..*</panel_attributes>
-    <additional_attributes>270.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>380</x>
+      <x>310</x>
       <y>370</y>
       <w>110</w>
       <h>40</h>

@@ -20,9 +20,9 @@ namespace WCF
             cusCtr.CreateCustomer(customer);
         }
 
-        public Customer GetCustomer(string CusName)
+        public Customer GetCustomer(int id)
         {
-            return cusCtr.GetCustomer(CusName);
+            return cusCtr.GetCustomer(id);
         }
        
         public IEnumerable<Customer> GetAllCustomers()
