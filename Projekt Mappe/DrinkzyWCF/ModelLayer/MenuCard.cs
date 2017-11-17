@@ -25,5 +25,10 @@ namespace ModelLayer
             this.Customer = Customer;
             Drinks = new List<Drink>();
         }
+
+        public void addDrink(Drink d)
+        {
+            Drinks.Add(d);
+        }
     }
 }

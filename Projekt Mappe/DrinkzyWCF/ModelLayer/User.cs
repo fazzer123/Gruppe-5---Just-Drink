@@ -29,6 +29,8 @@ namespace ModelLayer
         [DataMember]
         public string Phone { get; set; }
 
+        public List<Drink> FavoritesDrinks { get; set; }
+
         public User(int ID, string UserName, string FirstName, string LastName, string Gender, DateTime Birthday, string Password, string Email, string Phone)
         {
             this.ID = ID;
@@ -44,6 +46,11 @@ namespace ModelLayer
         public User()
         {
 
+        }
+
+        public void addDrinkToFavorites(Drink d)
+        {
+            FavoritesDrinks.Add(d);
         }
     }
 }

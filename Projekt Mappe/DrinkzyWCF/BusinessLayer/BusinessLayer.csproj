@@ -43,6 +43,9 @@
     <Compile Include="AnnouncementController.cs" />
     <Compile Include="CustomerController.cs" />
     <Compile Include="DrinkController.cs" />
+    <Compile Include="FavoritesController.cs" />
+    <Compile Include="IngredientController.cs" />
+    <Compile Include="MenuCardController.cs" />
     <Compile Include="OrderController.cs" />
     <Compile Include="OrderLineController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

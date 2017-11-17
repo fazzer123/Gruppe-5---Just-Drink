@@ -12,6 +12,8 @@ namespace DBLayer
     public class StorageDB
     {
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private DrinkDB drinkDB = new DrinkDB();
+        private CustomerDB cusDB = new CustomerDB();
 
         public void CreateStorage(Storage Storage)
         {
@@ -20,11 +22,13 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.Storage(id, stoAmount, stoMaxAmount, stoMinAmount) values(@id, @stoAmount, @stoMaxAmount, @stoMinAmount)";
+                    cmd.CommandText = "Insert Into dbo.Storage(id, Amount, MaxAmount, MinAmount, drinkID, customerID) values(@id, @stoAmount, @stoMaxAmount, @stoMinAmount, @drinkID, @customerID)";
                     cmd.Parameters.AddWithValue("id", Storage.ID);
-                    cmd.Parameters.AddWithValue("stoAmount", Storage.Amount);
-                    cmd.Parameters.AddWithValue("stoMaxAmount", Storage.MaxAmount);
-                    cmd.Parameters.AddWithValue("stoMinAmount", Storage.MinAmount);
+                    cmd.Parameters.AddWithValue("Amount", Storage.Amount);
+                    cmd.Parameters.AddWithValue("MaxAmount", Storage.MaxAmount);
+                    cmd.Parameters.AddWithValue("MinAmount", Storage.MinAmount);
+                    cmd.Parameters.AddWithValue("drinkID", Storage.Drink.ID);
+                    cmd.Parameters.AddWithValue("customerID", Storage.Customer.ID);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -45,11 +49,12 @@ namespace DBLayer
                     {
                         Storage = new Storage
                         {
-                            
                             ID = (int)Reader["id"],
-                            Amount = (int)Reader["stoAmount"],
-                            MaxAmount = (int)Reader["stoMaxAmount"],
-                            MinAmount = (int)Reader["stoMinAmount"]
+                            Amount = (int)Reader["Amount"],
+                            MaxAmount = (int)Reader["MaxAmount"],
+                            MinAmount = (int)Reader["MinAmount"],
+                            Drink = drinkDB.GetDrink((int)Reader["drinkID"]),
+                            Customer = cusDB.GetCustomer((int)Reader["customerID"])
                         };
                     }
                 }
@@ -73,10 +78,11 @@ namespace DBLayer
                         Storage s = new Storage
                         {
                             ID = (int)Reader["id"],
-                            Amount = (int)Reader["stoAmount"],
-                            MaxAmount = (int)Reader["stoMaxAmount"],
-                            MinAmount = (int)Reader["stoMinAmount"]
-
+                            Amount = (int)Reader["Amount"],
+                            MaxAmount = (int)Reader["MaxAmount"],
+                            MinAmount = (int)Reader["MinAmount"],
+                            Drink = drinkDB.GetDrink((int)Reader["drinkID"]),
+                            Customer = cusDB.GetCustomer((int)Reader["customerID"])
                         };
                         StorageList.Add(s);
                     }

@@ -19,9 +19,8 @@ namespace ModelLayer
 
         public Favorites() { }
 
-        public Favorites(int ID, User User)
+        public Favorites(User User, Drink Drink)
         {
-            this.ID = ID;
             this.User = User;
             Drinks = new List<Drink>();
         }
