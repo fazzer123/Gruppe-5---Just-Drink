@@ -11,10 +11,16 @@ namespace BusinessLayer
     public class OrderLineController
     {
         OrderLineDB olDb;
+        DrinkController dCtr = new DrinkController();
 
         public OrderLineController()
         {
             olDb = new OrderLineDB();
+        }
+
+        public Drink getDrink(int id)
+        {
+            return dCtr.GetDrink(id);
         }
 
         public void CreateOrderLine(OrderLine OrderLine, int orderID)

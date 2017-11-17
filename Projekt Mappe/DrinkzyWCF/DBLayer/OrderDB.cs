@@ -72,21 +72,22 @@ namespace DBLayer
 
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM DrinkzyOrder";
+                    Order Order = null;
+                    cmd.CommandText = "Select * From DrinkzyOrder";
                     var Reader = cmd.ExecuteReader();
-
                     while (Reader.Read())
                     {
-                        Order o = new Order
+                        Order = new Order
                         {
                             ID = (int)Reader["id"],
-                            TotalPrice = (int)Reader["totalprice"],
-                            Discount = (int)Reader["discount"],
+                            TotalPrice = (decimal)Reader["totalPrice"],
+                            Discount = (decimal)Reader["discount"],
                             Date = (DateTime)Reader["orderDate"],
-                            Status = (string)Reader["status"],
+                            Status = (string)Reader["orderStatus"],
+                            User = uDB.GetUser((int)Reader["userID"]),
                             OrderLines = olDB.GetAllOrderLinesByOrderID((int)Reader["id"])
                         };
-                        OrderList.Add(o);
+                        OrderList.Add(Order);
                     }
                 }
 

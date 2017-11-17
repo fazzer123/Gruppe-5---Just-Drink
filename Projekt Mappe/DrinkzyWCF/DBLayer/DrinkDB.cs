@@ -73,6 +73,7 @@ namespace DBLayer
                     {
                         Drink d = new Drink
                         {
+                            ID = (int)Reader["id"],
                             Name = (string)Reader["driName"],
                             Description = (string)Reader["driDescription"],
                             Price = (decimal)Reader["driPrice"],

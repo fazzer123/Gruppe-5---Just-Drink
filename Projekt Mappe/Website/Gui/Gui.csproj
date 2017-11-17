@@ -149,7 +149,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\OrderLineServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\OrderServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,6 +183,36 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\OrderLineServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\OrderLineServiceRef\configuration.svcinfo" />
+    <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.OrderLine.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.Drink.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\OrderLineServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\OrderServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\OrderServiceRef\configuration.svcinfo" />
+    <Content Include="Connected Services\OrderServiceRef\Gui.OrderServiceRef.Order.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\OrderServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\UserServiceRef\configuration.svcinfo" />
+    <Content Include="Connected Services\UserServiceRef\Gui.UserServiceRef.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\UserServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -178,7 +225,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Connected Services\DrinkServiceRef\Modellayer.xsd">
+    <None Include="Connected Services\DrinkServiceRef\ModelLayer.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\DrinkServiceRef\service.wsdl" />
@@ -186,6 +233,36 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\DrinkServiceRef\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderLineServiceRef\ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderLineServiceRef\service.wsdl" />
+    <None Include="Connected Services\OrderLineServiceRef\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderLineServiceRef\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderServiceRef\ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderServiceRef\service.wsdl" />
+    <None Include="Connected Services\OrderServiceRef\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderServiceRef\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserServiceRef\ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserServiceRef\service.wsdl" />
+    <None Include="Connected Services\UserServiceRef\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserServiceRef\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -215,9 +292,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\FindBar.cshtml" />
     <Content Include="Views\Shop\shoppage.cshtml" />
-    <Content Include="Views\Shop\Drinks.cshtml" />
     <Content Include="Views\Shop\Shots.cshtml" />
     <Content Include="Views\Shop\Snacks.cshtml" />
+    <Content Include="Views\Drink\Index.cshtml" />
+    <Content Include="Views\Drink\Details.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Drink\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -241,6 +322,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\DrinkServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\OrderLineServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\OrderServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\UserServiceRef\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
