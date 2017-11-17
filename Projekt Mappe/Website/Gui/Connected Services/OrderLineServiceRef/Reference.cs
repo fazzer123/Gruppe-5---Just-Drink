@@ -236,6 +236,12 @@ namespace Gui.OrderLineServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetAllOrderlines", ReplyAction="http://tempuri.org/IOrderLineService/GetAllOrderlinesResponse")]
         System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine[]> GetAllOrderlinesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetDrink", ReplyAction="http://tempuri.org/IOrderLineService/GetDrinkResponse")]
+        Gui.OrderLineServiceRef.Drink GetDrink(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetDrink", ReplyAction="http://tempuri.org/IOrderLineService/GetDrinkResponse")]
+        System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -287,6 +293,14 @@ namespace Gui.OrderLineServiceRef {
         
         public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine[]> GetAllOrderlinesAsync() {
             return base.Channel.GetAllOrderlinesAsync();
+        }
+        
+        public Gui.OrderLineServiceRef.Drink GetDrink(int id) {
+            return base.Channel.GetDrink(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id) {
+            return base.Channel.GetDrinkAsync(id);
         }
     }
 }

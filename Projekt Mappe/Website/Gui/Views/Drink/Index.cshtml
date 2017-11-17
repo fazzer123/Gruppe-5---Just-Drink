@@ -37,7 +37,8 @@
             @Html.DisplayFor(modelItem => item.Img)
         </td>
         <td>
-            @Html.ActionLink("Add to Cart", "Create", new { id=item.ID }) |
+            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = item.ID })'" />
+            @Html.ActionLink("Add to Cart", "Create", new { drinkId = item.ID}) |
             @Html.ActionLink("Details", "Details", new { id = item.ID }) |
         </td>
     </tr>

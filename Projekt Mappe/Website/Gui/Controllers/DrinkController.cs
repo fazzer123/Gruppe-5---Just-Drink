@@ -22,7 +22,7 @@ namespace Gui.Controllers
         // GET: Drink/Details/5
         public ActionResult Details(int id)
         {
-            return View(client.GetDrink(id));
+            return View(id);
         }
 
         // GET: Drink/Create
@@ -33,11 +33,12 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult Create(OrderLine orderline)
+        public ActionResult Create(OrderLine orderline, int drinkId)
         {
             try
             {
-                // TODO: Add insert logic here
+                orderline.Drink = lc.GetDrink(drinkId);
+                orderline.TotalPrice = orderline.Drink.Price * orderline.Amount; 
                 lc.CreateOrderLine(orderline, 1);
                 return RedirectToAction("Index");
             }

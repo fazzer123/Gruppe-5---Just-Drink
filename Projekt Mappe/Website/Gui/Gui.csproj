@@ -188,6 +188,9 @@
     <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.OrderLine.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.Drink.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\OrderLineServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

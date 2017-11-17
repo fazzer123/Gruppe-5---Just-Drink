@@ -27,6 +27,11 @@ namespace WCF
            return olCtr.GetAllOrderLines();
         }
 
+        public Drink GetDrink(int id)
+        {
+            return olCtr.getDrink(id);
+        }
+
         public OrderLine GetOrderLine(int ID)
         {
            return olCtr.GetOrderLine(ID);

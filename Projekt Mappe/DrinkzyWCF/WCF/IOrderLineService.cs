@@ -19,5 +19,8 @@ namespace WCF
 
         [OperationContract]
         IEnumerable<OrderLine> GetAllOrderlines();
+
+        [OperationContract]
+        Drink GetDrink(int id);
     }
 }

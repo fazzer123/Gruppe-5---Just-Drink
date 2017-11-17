@@ -21,8 +21,8 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.OrderLine(id, amount, totalPrice, drinkID, orderID) values(@id, @amount, @totalPrice, @drinkID, @orderID)";
-                    cmd.Parameters.AddWithValue("id", OrderLine.ID);
+                    cmd.CommandText = "Insert Into dbo.OrderLine(amount, totalPrice, drinkID, orderID) values(@amount, @totalPrice, @drinkID, @orderID)";
+                    //cmd.Parameters.AddWithValue("id", OrderLine.ID);
                     cmd.Parameters.AddWithValue("amount", OrderLine.Amount);
                     cmd.Parameters.AddWithValue("totalPrice", OrderLine.TotalPrice);
                     cmd.Parameters.AddWithValue("drinkID", OrderLine.Drink.ID);
