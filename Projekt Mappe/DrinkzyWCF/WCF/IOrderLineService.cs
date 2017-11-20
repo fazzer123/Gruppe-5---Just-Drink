@@ -25,5 +25,8 @@ namespace WCF
 
         [OperationContract]
         void DeleteOrderLineByID(int OrderLineID);
+
+        [OperationContract]
+        void EditOrderLine(OrderLine orderLine);
     }
 }

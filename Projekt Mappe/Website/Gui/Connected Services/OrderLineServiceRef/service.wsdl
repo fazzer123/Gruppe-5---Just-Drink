@@ -37,6 +37,12 @@
   <wsdl:message name="IOrderLineService_DeleteOrderLineByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteOrderLineByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderLineService_EditOrderLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditOrderLine" />
+  </wsdl:message>
+  <wsdl:message name="IOrderLineService_EditOrderLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditOrderLineResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderLineService">
     <wsdl:operation name="CreateOrderLine">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/CreateOrderLine" message="tns:IOrderLineService_CreateOrderLine_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="DeleteOrderLineByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByID" message="tns:IOrderLineService_DeleteOrderLineByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByIDResponse" message="tns:IOrderLineService_DeleteOrderLineByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditOrderLine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/EditOrderLine" message="tns:IOrderLineService_EditOrderLine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/EditOrderLineResponse" message="tns:IOrderLineService_EditOrderLine_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderLineService" type="tns:IOrderLineService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteOrderLineByID">
       <soap:operation soapAction="http://tempuri.org/IOrderLineService/DeleteOrderLineByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditOrderLine">
+      <soap:operation soapAction="http://tempuri.org/IOrderLineService/EditOrderLine" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

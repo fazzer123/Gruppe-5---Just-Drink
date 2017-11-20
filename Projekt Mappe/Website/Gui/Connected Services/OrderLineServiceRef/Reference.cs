@@ -341,6 +341,12 @@ namespace Gui.OrderLineServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByID", ReplyAction="http://tempuri.org/IOrderLineService/DeleteOrderLineByIDResponse")]
         System.Threading.Tasks.Task DeleteOrderLineByIDAsync(int OrderLineID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLineResponse")]
+        void EditOrderLine(Gui.OrderLineServiceRef.OrderLine orderLine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLineResponse")]
+        System.Threading.Tasks.Task EditOrderLineAsync(Gui.OrderLineServiceRef.OrderLine orderLine);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -408,6 +414,14 @@ namespace Gui.OrderLineServiceRef {
         
         public System.Threading.Tasks.Task DeleteOrderLineByIDAsync(int OrderLineID) {
             return base.Channel.DeleteOrderLineByIDAsync(OrderLineID);
+        }
+        
+        public void EditOrderLine(Gui.OrderLineServiceRef.OrderLine orderLine) {
+            base.Channel.EditOrderLine(orderLine);
+        }
+        
+        public System.Threading.Tasks.Task EditOrderLineAsync(Gui.OrderLineServiceRef.OrderLine orderLine) {
+            return base.Channel.EditOrderLineAsync(orderLine);
         }
     }
 }

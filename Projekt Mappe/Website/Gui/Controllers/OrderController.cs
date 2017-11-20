@@ -24,10 +24,7 @@ namespace Gui.Controllers
         // GET: Order/Details/5
         public ActionResult Details(int id)
         {
-            dynamic BCVM = new ExpandoObject();
-            BCVM.Order = client.GetOrder(id);
-            BCVM.OrderLines = client.GetOrder(id).OrderLines;
-            return View(BCVM);
+            return View(doBCVM(id));
         }
 
         // GET: Order/Create
@@ -55,16 +52,21 @@ namespace Gui.Controllers
         // GET: Order/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(olClient.GetOrderLine(id));
         }
 
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, OrderLineServiceRef.OrderLine orderline)
         {
             try
             {
-                // TODO: Add update logic here
+                int amount = orderline.Amount;
+                orderline = olClient.GetOrderLine(id);
+                orderline.TotalPrice = amount * orderline.Drink.Price;
+                orderline.Amount = amount;
+                olClient.EditOrderLine(orderline);
+
 
                 return RedirectToAction("Index");
             }
@@ -77,11 +79,8 @@ namespace Gui.Controllers
         // GET: Order/Delete/5
         public ActionResult Delete(int OrderLineId, int id)
         {
-                olClient.DeleteOrderLineByID(OrderLineId);
-            dynamic BCVM = new ExpandoObject();
-            BCVM.Order = client.GetOrder(id);
-            BCVM.OrderLines = client.GetOrder(id).OrderLines;
-            return View("Details", BCVM);
+            olClient.DeleteOrderLineByID(OrderLineId);
+            return View("Details", doBCVM(id));
         }
 
         // POST: Order/Delete/5
@@ -98,6 +97,14 @@ namespace Gui.Controllers
             {
                 return View();
             }
+        }
+
+        public dynamic doBCVM(int id)
+        {
+            dynamic BCVM = new ExpandoObject();
+            BCVM.Order = client.GetOrder(id);
+            BCVM.OrderLines = client.GetOrder(id).OrderLines;
+            return BCVM;
         }
     }
 }

@@ -41,5 +41,10 @@ namespace WCF
         {
             olCtr.DeleteOrderLineByID(OrderLineID);
         }
+
+        public void EditOrderLine(OrderLine orderLine)
+        {
+            olCtr.EditOrderLine(orderLine);
+        }
     }
 }

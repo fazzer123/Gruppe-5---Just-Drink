@@ -45,6 +45,7 @@
     </dl>
 
     <hr/>
+
     <table class="table" style="color: white;">
         <h4>Items in cart</h4>
         <tr>
@@ -72,6 +73,7 @@
                     @item.Drink.Name
                 </td>
                 <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID}) |
                     @Html.ActionLink("Delete", "Delete", new { OrderLineId = item.ID, id = Model.Order.ID }) |
                 </td>
             </tr>
