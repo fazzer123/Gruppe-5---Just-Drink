@@ -22,9 +22,9 @@ namespace BusinessLayer
             aDb.CreateAnnouncement(announcement);
         }
 
-        public Announcement GetAnnouncement(string Title)
+        public Announcement GetAnnouncement(int id)
         {
-            return aDb.GetAnnouncement(Title);
+            return aDb.GetAnnouncement(id);
         }
         public IEnumerable<Announcement> GetAllAnnouncements()
         {

@@ -21,7 +21,7 @@ namespace DBLayer
                     connection.Open();
                     using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        cmd.CommandText = "Insert Into dbo.Drink(CusName, CusImg, CusRegion, CusAddress, CusPhone, CusEmail) values(@CusName, @CusImg, @CusRegion, @CusAdress, @CusPhone, @CusEmail)";
+                        cmd.CommandText = "Insert Into dbo.DrinkzyCustomer(CusName, CusImg, CusRegion, CusAddress, CusPhone, CusEmail) values(@CusName, @CusImg, @CusRegion, @CusAdress, @CusPhone, @CusEmail)";
                         //cmd.Parameters.AddWithValue("id", entity.Id);
                         cmd.Parameters.AddWithValue("CusName", customer.CusName);
                         cmd.Parameters.AddWithValue("CusImg", customer.Img);
@@ -34,7 +34,7 @@ namespace DBLayer
                 }
             }
 
-        public Customer GetCustomer(string CusName)
+        public Customer GetCustomer(int id)
         {
             Customer customer = null;
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -42,19 +42,19 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Select * From Customer Where CusName = @CusName";
-                    cmd.Parameters.AddWithValue("CusName", CusName);
+                    cmd.CommandText = "Select * From DrinkzyCustomer Where id = @id";
+                    cmd.Parameters.AddWithValue("id", id);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
                         customer = new Customer
                         {
-                            //Id = (int)Reader["id"],
+                            ID = (int)Reader["id"],
                             CusName = (string)Reader["CusName"],
                             Img = (string)Reader["CusImg"],
                             Region = (string)Reader["CusRegion"],
                             Address = (string)Reader["CusAddress"],
-                            Phone = (string)Reader["CusPhones"],
+                            Phone = (string)Reader["CusPhone"],
                             Email = (string)Reader["CusEmail"]
                         };
                     }
@@ -72,7 +72,7 @@ namespace DBLayer
 
                     using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT * FROM Customer";
+                        cmd.CommandText = "SELECT * FROM DrinkzyCustomer";
                         var Reader = cmd.ExecuteReader();
 
                         while (Reader.Read())
@@ -83,7 +83,7 @@ namespace DBLayer
                                 Img = (string)Reader["CusImg"],
                                 Region = (string)Reader["CusRegion"],
                                 Address = (string)Reader["CusAddress"],
-                                Phone = (string)Reader["CusPhones"],
+                                Phone = (string)Reader["CusPhone"],
                                 Email = (string)Reader["CusEmail"]
 
                             };

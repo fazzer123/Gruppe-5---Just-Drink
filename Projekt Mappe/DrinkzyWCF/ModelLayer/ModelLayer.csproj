@@ -44,11 +44,15 @@
     <Compile Include="Announcement.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Drink.cs" />
+    <Compile Include="Favorites.cs" />
+    <Compile Include="Ingredient.cs" />
+    <Compile Include="MenuCard.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Wallet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using System.ServiceModel;
 using ModelLayer;
 
 namespace WCF
 {
     [ServiceContract]
-    public interface ICustomerService
+    interface IFavoritesService
     {
         [OperationContract]
-        void CreateCustomer(Customer customer);
-        [OperationContract]
-        Customer GetCustomer(int id);
+        void createFavorites(Favorites fav);
 
         [OperationContract]
+        Favorites GetFavoritesByUserID(int id);
 
-        IEnumerable<Customer> GetAllCustomers();
+        [OperationContract]
+        List<Drink> GetAllDrinksByUser(int id);
+
+        [OperationContract]
+        void addDrink(User user, Drink drink);
     }
 }

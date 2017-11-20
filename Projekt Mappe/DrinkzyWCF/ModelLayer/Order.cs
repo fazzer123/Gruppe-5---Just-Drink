@@ -24,9 +24,11 @@ namespace ModelLayer
         public User User { get; set; }
         [DataMember]
         public IEnumerable<OrderLine> OrderLines { get; set; }
+        [DataMember]
+        public Customer Customer { get; set; }
 
 
-        public Order(int ID, decimal TotalPrice, decimal Discount, DateTime Date, string Status, User User)
+        public Order(int ID, decimal TotalPrice, decimal Discount, DateTime Date, string Status, User User, Customer Customer)
         {
             this.ID = ID;
             this.TotalPrice = TotalPrice;
@@ -34,16 +36,12 @@ namespace ModelLayer
             this.Date = Date;
             this.Status = Status;
             this.User = User;
+            this.Customer = Customer;
             OrderLines = new List<OrderLine>();
         }
         public Order()
         {
 
         }
-
-        //public void AddOrderLine(OrderLine ol)
-        //{
-        //    OrderLines.Add(ol);
-        //}
     }
 }

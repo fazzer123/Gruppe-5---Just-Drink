@@ -20,6 +20,8 @@ namespace ModelLayer
         public decimal Price { get; set; }
         [DataMember]
         public string Img { get; set; }
+        [DataMember]
+        public List<Ingredient> Ingredients  { get; set; }
 
         public Drink(int ID, string Name, string Description, decimal Price, string Img)
         {
@@ -28,6 +30,7 @@ namespace ModelLayer
             this.Description = Description;
             this.Price = Price;
             this.Img = Img;
+            Ingredients = new List<Ingredient>();
         }
 
         public Drink()

@@ -21,9 +21,9 @@ namespace WCF
             aCtr.CreateAnnouncement(announcement);
         }
 
-        public Announcement GetAnnouncement(string Title)
+        public Announcement GetAnnouncement(int id)
         {
-            return aCtr.GetAnnouncement(Title);
+            return aCtr.GetAnnouncement(id);
         }
         public IEnumerable<Announcement> GetAllAnnouncements()
         {

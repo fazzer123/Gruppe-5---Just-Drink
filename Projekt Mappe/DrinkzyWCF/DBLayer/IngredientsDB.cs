@@ -1,90 +1,84 @@
-﻿using ModelLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModelLayer;
+using System.Data.SqlClient;
 
 namespace DBLayer
 {
-    public class DrinkDB
+    public class IngredientsDB
     {
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-        public void CreateDrink(Drink drink)
+        public void CreateIngredient(Ingredient ingredient)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.Drink(driName, driDescription, driPrice, driImg) values(@driName, @driDescription, @driPrice, @driImg)";
+                    cmd.CommandText = "Insert Into dbo.Ingredient(ingName, Procent) values(@ingName, @Procent)";
                     //cmd.Parameters.AddWithValue("id", entity.Id);
-                    cmd.Parameters.AddWithValue("driName", drink.Name);
-                    cmd.Parameters.AddWithValue("driDescription", drink.Description);
-                    cmd.Parameters.AddWithValue("driPrice", drink.Price);
-                    cmd.Parameters.AddWithValue("driImg", drink.Img);
+                    cmd.Parameters.AddWithValue("ingName", ingredient.Name);
+                    cmd.Parameters.AddWithValue("Procent", ingredient.Procent);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public Drink GetDrink(int id)
+        public Ingredient GetIngredient(int id)
         {
-            Drink drink = null;
+            Ingredient ingredient = null;
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Select * From Drink Where id = @id";
+                    cmd.CommandText = "Select * From Ingredient Where id = @id";
                     cmd.Parameters.AddWithValue("id", id);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
-                        drink = new Drink
+                        ingredient = new Ingredient
                         {
                             ID = (int)Reader["id"],
-                            Name = (string)Reader["driName"],
-                            Description = (string)Reader["driDescription"],
-                            Price = (decimal)Reader["driPrice"],
-                            Img = (string)Reader["driImg"]
+                            Name = (string)Reader["ingName"],
+                            Procent = (decimal)Reader["Procent"]
                         };
                     }
                 }
             }
-            return drink;
+            return ingredient;
         }
-        public IEnumerable<Drink> getAllDrinks()
+        public IEnumerable<Ingredient> GetAllIngredients()
         {
-            List<Drink> drinkList = new List<Drink>();
+            List<Ingredient> IngredientList = new List<Ingredient>();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Open();
 
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Drink";
+                    cmd.CommandText = "SELECT * FROM Ingredient";
                     var Reader = cmd.ExecuteReader();
 
                     while (Reader.Read())
                     {
-                        Drink d = new Drink
+                        Ingredient a = new Ingredient
                         {
                             ID = (int)Reader["id"],
-                            Name = (string)Reader["driName"],
-                            Description = (string)Reader["driDescription"],
-                            Price = (decimal)Reader["driPrice"],
-                            Img = (string)Reader["driImg"]
+                            Name = (string)Reader["ingName"],
+                            Procent = (decimal)Reader["Procent"]
                         };
-                        drinkList.Add(d);
+                        IngredientList.Add(a);
                     }
                 }
 
             }
-            return drinkList;
+            return IngredientList;
         }
     }
 }

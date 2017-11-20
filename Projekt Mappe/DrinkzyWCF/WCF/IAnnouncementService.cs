@@ -16,10 +16,10 @@ namespace WCF
             void CreateAnnouncement(Announcement announcement);
 
             [OperationContract]
-            Announcement GetAnnouncement(string Title);
-            [OperationContract]
+            Announcement GetAnnouncement(int id);
 
-        IEnumerable<Announcement> GetAllAnnouncements();
+        [OperationContract]
+            IEnumerable<Announcement> GetAllAnnouncements();
     }
 }
 

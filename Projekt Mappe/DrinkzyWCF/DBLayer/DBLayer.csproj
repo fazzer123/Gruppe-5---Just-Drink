@@ -44,11 +44,15 @@
     <Compile Include="AnnouncementDB.cs" />
     <Compile Include="CustomerDB.cs" />
     <Compile Include="DrinkDB.cs" />
+    <Compile Include="FavoritesDB.cs" />
+    <Compile Include="IngredientsDB.cs" />
+    <Compile Include="MenuCardDB.cs" />
     <Compile Include="OrderDB.cs" />
     <Compile Include="OrderLineDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageDB.cs" />
     <Compile Include="UserDB.cs" />
+    <Compile Include="WalletDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">

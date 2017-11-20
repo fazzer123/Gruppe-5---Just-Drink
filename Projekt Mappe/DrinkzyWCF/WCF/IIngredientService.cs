@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using System.ServiceModel;
 using ModelLayer;
 
 namespace WCF
 {
     [ServiceContract]
-    public interface ICustomerService
+    interface IIngredientService
     {
         [OperationContract]
-        void CreateCustomer(Customer customer);
+        void createIngredient(Ingredient i);
         [OperationContract]
-        Customer GetCustomer(int id);
-
+        Ingredient GetIngredient(int id);
         [OperationContract]
-
-        IEnumerable<Customer> GetAllCustomers();
+        IEnumerable<Ingredient> getAllIngredients();
     }
 }
