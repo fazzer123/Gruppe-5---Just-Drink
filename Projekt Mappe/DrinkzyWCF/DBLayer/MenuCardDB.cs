@@ -64,7 +64,7 @@ namespace DBLayer
                         {
                             ID = (int)Reader["id"],
                             Customer = cusDB.GetCustomer((int)Reader["customerID"]),
-                            Drinks = GetAllDrinksByCustomer((int)Reader["customerID"])
+                            Drinks = GetAllDrinksByCustomer((int)Reader["id"])
                         };
                     }
                 }
@@ -81,8 +81,8 @@ namespace DBLayer
 
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM MenucardDrinks WHERE customerID = @customerID";
-                    cmd.Parameters.AddWithValue("customerID", cusId);
+                    cmd.CommandText = "SELECT * FROM MenucardDrinks WHERE menuID = @menuID";
+                    cmd.Parameters.AddWithValue("menuID", cusId);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {

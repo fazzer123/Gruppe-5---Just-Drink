@@ -12,6 +12,7 @@ namespace DBLayer
     public class OrderDB
     {
         UserDB uDB = new UserDB();
+        CustomerDB cDB = new CustomerDB();
         OrderLineDB olDB = new OrderLineDB();
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
@@ -22,13 +23,15 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.DrinkzyOrder(id, totalprice, discount, orderDate, status, userID) values(@id, @totalprice, @discount, @orderDate, @status, @userID)";
+                    cmd.CommandText = "Insert Into dbo.DrinkzyOrder(id, totalprice, discount, orderDate, status, userID, customerID) values(@id, @totalprice, @discount, @orderDate, @status, @userID, @customerID)";
                     cmd.Parameters.AddWithValue("id", Order.ID);
                     cmd.Parameters.AddWithValue("totalprice", Order.TotalPrice);
                     cmd.Parameters.AddWithValue("discount", Order.Discount);
                     cmd.Parameters.AddWithValue("orderDate", Order.Date);
                     cmd.Parameters.AddWithValue("status", Order.Status);
                     cmd.Parameters.AddWithValue("userID", Order.User.ID);
+                    cmd.Parameters.AddWithValue("customerID", Order.Customer.ID);
+
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -55,6 +58,7 @@ namespace DBLayer
                             Date = (DateTime)Reader["orderDate"],
                             Status = (string)Reader["orderStatus"],
                             User = uDB.GetUser((int)Reader["userID"]),
+                            Customer = cDB.GetCustomer((int)Reader["customerID"]),
                             OrderLines = olDB.GetAllOrderLinesByOrderID(ID)
                         };
                     }
@@ -85,6 +89,7 @@ namespace DBLayer
                             Date = (DateTime)Reader["orderDate"],
                             Status = (string)Reader["orderStatus"],
                             User = uDB.GetUser((int)Reader["userID"]),
+                            Customer = cDB.GetCustomer((int)Reader["customerID"]),
                             OrderLines = olDB.GetAllOrderLinesByOrderID((int)Reader["id"])
                         };
                         OrderList.Add(Order);

@@ -63,7 +63,7 @@ namespace DBLayer
                         {
                             ID = (int)Reader["id"],
                             User = userDB.GetUser((int)Reader["userID"]),
-                            Drinks = GetAllDrinksByUser((int)Reader["userID"])
+                            Drinks = GetAllDrinksByUser((int)Reader["id"])
                         };
                     }
                 }
@@ -71,7 +71,7 @@ namespace DBLayer
             return favorites;
         }
 
-        public List<Drink> GetAllDrinksByUser(int userId)
+        public List<Drink> GetAllDrinksByUser(int favoritesId)
         {
             List<Drink> DrinksList = new List<Drink>();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -80,8 +80,8 @@ namespace DBLayer
 
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM FavoritesDrinks WHERE FavoritesID = @FavoritesID";
-                    cmd.Parameters.AddWithValue("FavoritesID", userId);
+                    cmd.CommandText = "SELECT * FROM FavoritesDrinks WHERE favoritesID = @favoritesID";
+                    cmd.Parameters.AddWithValue("favoritesID", favoritesId);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
