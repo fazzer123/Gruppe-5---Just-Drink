@@ -37,6 +37,11 @@ namespace BusinessLayer
             return olDb.GetAllOrderLines();
         }
 
+        public void DeleteOrderLineByID(int OrderLineID)
+        {
+            olDb.DeleteOrderLineByID(OrderLineID);
+        }
+
     }
 }
 

@@ -12,6 +12,7 @@ namespace Gui.Controllers
     public class OrderController : Controller
     {
         OrderServiceClient client = new OrderServiceClient();
+        OrderLineServiceClient olClient = new OrderLineServiceClient();
 
 
         // GET: Order
@@ -74,14 +75,18 @@ namespace Gui.Controllers
         }
 
         // GET: Order/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int OrderLineId, int id)
         {
-            return View();
+                olClient.DeleteOrderLineByID(OrderLineId);
+            dynamic BCVM = new ExpandoObject();
+            BCVM.Order = client.GetOrder(id);
+            BCVM.OrderLines = client.GetOrder(id).OrderLines;
+            return View("Details", BCVM);
         }
 
         // POST: Order/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int OrderLineId, FormCollection collection)
         {
             try
             {

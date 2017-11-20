@@ -72,7 +72,7 @@
                     @item.Drink.Name
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { OrderLineId = item.ID, id = Model.Order.ID }) |
                 </td>
             </tr>
         }

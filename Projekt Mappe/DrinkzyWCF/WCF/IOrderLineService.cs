@@ -22,5 +22,8 @@ namespace WCF
 
         [OperationContract]
         Drink GetDrink(int id);
+
+        [OperationContract]
+        void DeleteOrderLineByID(int OrderLineID);
     }
 }

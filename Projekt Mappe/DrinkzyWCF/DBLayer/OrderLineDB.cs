@@ -114,5 +114,19 @@ namespace DBLayer
             }
             return OrderLineList;
         }
+
+        public void DeleteOrderLineByID(int OrderLineId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.OrderLine Where id = @id";
+                    cmd.Parameters.AddWithValue("id", OrderLineId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

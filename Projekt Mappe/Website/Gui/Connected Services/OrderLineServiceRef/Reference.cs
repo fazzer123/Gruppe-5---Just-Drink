@@ -125,6 +125,9 @@ namespace Gui.OrderLineServiceRef {
         private string ImgField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.OrderLineServiceRef.Ingredient[] IngredientsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -180,6 +183,19 @@ namespace Gui.OrderLineServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.OrderLineServiceRef.Ingredient[] Ingredients {
+            get {
+                return this.IngredientsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
+                    this.IngredientsField = value;
+                    this.RaisePropertyChanged("Ingredients");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Name {
             get {
                 return this.NameField;
@@ -201,6 +217,83 @@ namespace Gui.OrderLineServiceRef {
                 if ((this.PriceField.Equals(value) != true)) {
                     this.PriceField = value;
                     this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Ingredient", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Ingredient : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
                 }
             }
         }
@@ -242,6 +335,12 @@ namespace Gui.OrderLineServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetDrink", ReplyAction="http://tempuri.org/IOrderLineService/GetDrinkResponse")]
         System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByID", ReplyAction="http://tempuri.org/IOrderLineService/DeleteOrderLineByIDResponse")]
+        void DeleteOrderLineByID(int OrderLineID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByID", ReplyAction="http://tempuri.org/IOrderLineService/DeleteOrderLineByIDResponse")]
+        System.Threading.Tasks.Task DeleteOrderLineByIDAsync(int OrderLineID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -301,6 +400,14 @@ namespace Gui.OrderLineServiceRef {
         
         public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id) {
             return base.Channel.GetDrinkAsync(id);
+        }
+        
+        public void DeleteOrderLineByID(int OrderLineID) {
+            base.Channel.DeleteOrderLineByID(OrderLineID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteOrderLineByIDAsync(int OrderLineID) {
+            return base.Channel.DeleteOrderLineByIDAsync(OrderLineID);
         }
     }
 }
