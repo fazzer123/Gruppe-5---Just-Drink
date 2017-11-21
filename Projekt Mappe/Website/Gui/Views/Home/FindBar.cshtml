@@ -4,12 +4,9 @@
 <h2>Find en Bar</h2>
 
 <div class="body">
-    <font color="#bababa">Søg efter en Bar: </font><input id="searchBar" type="text" /><input id="btnSearch" type="button" value="Søg" />
+    <font color="#bababa">Søg efter en Bar: </font><input id="searchBar" type="text" /><input id="btnSearch" type="button" value="Søg" /> <br />
 
-    <div class="movestuff">
-        <textarea id="TextArea1" rows="2" cols="20"></textarea>
-    </div>
-    <li>@Html.ActionLink("Shop Page", "shoppage", "Shop")</li>
+    <input type="submit" class="btn btn-primary btn-block" value="Bestil Drinks" onclick="location.href='@Url.Action("shoppage", "Shop")'" /> <br />
 
     <div id="my-carousel" class="carousel slide" data-ride="carousel" style="width: 600px; height: 300px;">
         <!-- Indicators -->
@@ -22,24 +19,24 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active" style="width: 600px; height: 300px;">
-                <img alt="First slide" src="http://www.smartcig.dk/wp-content/uploads/2016/02/rom-n-coke.jpg">
+                <img alt="First slide" src="http://www.vestiageinc.com/wp-content/uploads/2017/05/Modern-Home-Bar-Design-Ideas-Picture.jpg">
                 <div class="carousel-caption">
-                    <h3>Caption heading 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3>Modern Bar</h3>
+                    <p>Dette er en meget moderne bar</p>
                 </div>
             </div>
             <div class="item" style="width: 600px; height: 300px;">
-                <img alt="Second slide" src="http://cf.ltkcdn.net/cocktails/images/std/202877-547x450-orangecocktail.jpg">
+                <img alt="Second slide" src="https://ritzcarlton-h.assetsadobe.com/is/image/content/dam/the-ritz-carlton/hotels/asia-pacific/china/hong-kong/assetmigration/RCHKKOW_00052_conversion.png?$XlargeViewport100pct$">
                 <div class="carousel-caption">
-                    <h3>Caption heading 2</h3>
-                    <p>Morbi eget libero quis metus consectetur semper.</p>
+                    <h3>Super Bar</h3>
+                    <p>Ligner noget der er løgn</p>
                 </div>
             </div>
             <div class="item" style="width: 600px; height: 300px;">
-                <img alt="Third slide" src="https://lh4.ggpht.com/UBZgv_8CBX9HtwG-3ENjIz71FMJ7aVKiZGCofS9uSGlp4FZvYN_Sl33gcl44BkbTo1sa5ite_pB_20sYvb0n=s400">
+                <img alt="Third slide" src="https://www.nycgo.com/images/venues/597/bodeganegra_tanyablum_06__x_large.jpg">
                 <div class="carousel-caption">
-                    <h3>Caption heading 3</h3>
-                    <p>Suspendisse ullamcorper massa eget eleifend iaculis.</p>
+                    <h3>Bodegaen</h3>
+                    <p>God gammel Bodega</p>
                 </div>
             </div>
         </div>
