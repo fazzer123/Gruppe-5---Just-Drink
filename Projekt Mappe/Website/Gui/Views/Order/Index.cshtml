@@ -40,8 +40,8 @@
             @Html.DisplayFor(modelItem => item.TotalPrice)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.ID })
-            @Html.ActionLink("DeleteOrder", "DeleteOrder", new { ID = item.ID })
+            <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Order", new { id = item.ID })'" />
+            <input id="btnDelete" type="button" value="Delete" onclick="location.href='@Url.Action("DeleteOrder", "Order", new { ID = item.ID })'" />
         </td>
     </tr>
 }

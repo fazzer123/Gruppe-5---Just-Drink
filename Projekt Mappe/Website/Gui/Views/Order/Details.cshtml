@@ -73,8 +73,8 @@
                     @item.Drink.Name
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID}) |
-                    @Html.ActionLink("Delete", "Delete", new { OrderLineId = item.ID, id = Model.Order.ID }) |
+                    <input id="btnEdit" type="button" value="Ændre" onclick="location.href='@Url.Action("Edit", "Order", new { id = item.ID })'" />
+                    <input id="btnDelete" type="button" value="Delete" onclick="location.href='@Url.Action("Delete", "Order", new {OrderLineId = item.ID, id = Model.Order.ID })'" />
                 </td>
             </tr>
         }

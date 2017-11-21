@@ -38,7 +38,7 @@
         </td>
         <td>
             <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = item.ID })'" />
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = item.ID })'" />
         </td>
     </tr>
 }

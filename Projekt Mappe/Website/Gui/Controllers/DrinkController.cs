@@ -24,10 +24,10 @@ namespace Gui.Controllers
         }
 
         // GET: Drink/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int drinkId)
         {
 
-            return View(doBCVM(id));
+            return View(client.GetDrink(drinkId));
         }
 
         // GET: Drink/Create
