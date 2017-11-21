@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Gui.OrderServiceRef;
 using Gui.OrderLineServiceRef;
+using Gui.UserServiceRef;
+using Gui.CustomerServiceRef;
 using System.Dynamic;
 
 namespace Gui.Controllers
@@ -13,7 +15,6 @@ namespace Gui.Controllers
     {
         OrderServiceClient client = new OrderServiceClient();
         OrderLineServiceClient olClient = new OrderLineServiceClient();
-
 
         // GET: Order
         public ActionResult Index()
@@ -105,6 +106,32 @@ namespace Gui.Controllers
             BCVM.Order = client.GetOrder(id);
             BCVM.OrderLines = client.GetOrder(id).OrderLines;
             return BCVM;
+        }
+
+        public ActionResult CompleteOrder(int id)
+        {
+            Order order = client.GetOrder(id);
+            order.Status = "Complete";
+            client.CompleteOrder(order);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CreateOrder()
+        {
+            DateTime date = DateTime.Now;
+
+            Order order = new Order {
+                TotalPrice = 0,
+                Discount = 0,
+                Date = date,
+                Status = "Incomplete",
+                User = client.GetUser(1),
+                Customer = client.GetCustomer(1)
+            };
+
+            client.CreateOrder(order);
+            return RedirectToAction("Index");
         }
     }
 }

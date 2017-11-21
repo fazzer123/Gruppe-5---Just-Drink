@@ -800,6 +800,30 @@ namespace Gui.OrderServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetAllOrders", ReplyAction="http://tempuri.org/IOrderService/GetAllOrdersResponse")]
         System.Threading.Tasks.Task<Gui.OrderServiceRef.Order[]> GetAllOrdersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/CompleteOrder", ReplyAction="http://tempuri.org/IOrderService/CompleteOrderResponse")]
+        void CompleteOrder(Gui.OrderServiceRef.Order order);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/CompleteOrder", ReplyAction="http://tempuri.org/IOrderService/CompleteOrderResponse")]
+        System.Threading.Tasks.Task CompleteOrderAsync(Gui.OrderServiceRef.Order order);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderByStatus", ReplyAction="http://tempuri.org/IOrderService/GetOrderByStatusResponse")]
+        Gui.OrderServiceRef.Order GetOrderByStatus(string status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderByStatus", ReplyAction="http://tempuri.org/IOrderService/GetOrderByStatusResponse")]
+        System.Threading.Tasks.Task<Gui.OrderServiceRef.Order> GetOrderByStatusAsync(string status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetUser", ReplyAction="http://tempuri.org/IOrderService/GetUserResponse")]
+        Gui.OrderServiceRef.User GetUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetUser", ReplyAction="http://tempuri.org/IOrderService/GetUserResponse")]
+        System.Threading.Tasks.Task<Gui.OrderServiceRef.User> GetUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomer", ReplyAction="http://tempuri.org/IOrderService/GetCustomerResponse")]
+        Gui.OrderServiceRef.Customer GetCustomer(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomer", ReplyAction="http://tempuri.org/IOrderService/GetCustomerResponse")]
+        System.Threading.Tasks.Task<Gui.OrderServiceRef.Customer> GetCustomerAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -851,6 +875,38 @@ namespace Gui.OrderServiceRef {
         
         public System.Threading.Tasks.Task<Gui.OrderServiceRef.Order[]> GetAllOrdersAsync() {
             return base.Channel.GetAllOrdersAsync();
+        }
+        
+        public void CompleteOrder(Gui.OrderServiceRef.Order order) {
+            base.Channel.CompleteOrder(order);
+        }
+        
+        public System.Threading.Tasks.Task CompleteOrderAsync(Gui.OrderServiceRef.Order order) {
+            return base.Channel.CompleteOrderAsync(order);
+        }
+        
+        public Gui.OrderServiceRef.Order GetOrderByStatus(string status) {
+            return base.Channel.GetOrderByStatus(status);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderServiceRef.Order> GetOrderByStatusAsync(string status) {
+            return base.Channel.GetOrderByStatusAsync(status);
+        }
+        
+        public Gui.OrderServiceRef.User GetUser(int id) {
+            return base.Channel.GetUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderServiceRef.User> GetUserAsync(int id) {
+            return base.Channel.GetUserAsync(id);
+        }
+        
+        public Gui.OrderServiceRef.Customer GetCustomer(int id) {
+            return base.Channel.GetCustomer(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderServiceRef.Customer> GetCustomerAsync(int id) {
+            return base.Channel.GetCustomerAsync(id);
         }
     }
 }

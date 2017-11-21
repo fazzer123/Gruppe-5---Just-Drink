@@ -144,6 +144,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\CustomerServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\DrinkServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,8 +179,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\CustomerServiceRef\Gui.CustomerServiceRef.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\CustomerServiceRef\ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CustomerServiceRef\service.wsdl" />
+    <None Include="Connected Services\CustomerServiceRef\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CustomerServiceRef\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\DrinkServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\DrinkServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\CustomerServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\CustomerServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\CustomerServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Connected Services\DrinkServiceRef\Gui.DrinkServiceRef.Drink.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -198,6 +222,12 @@
     <None Include="Connected Services\OrderServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\OrderServiceRef\configuration.svcinfo" />
     <Content Include="Connected Services\OrderServiceRef\Gui.OrderServiceRef.Order.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\OrderServiceRef\Gui.OrderServiceRef.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\OrderServiceRef\Gui.OrderServiceRef.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\OrderServiceRef\Reference.svcmap">
@@ -322,6 +352,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CustomerServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\DrinkServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\OrderLineServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\OrderServiceRef\" />
