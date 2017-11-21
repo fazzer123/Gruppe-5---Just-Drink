@@ -13,7 +13,7 @@ namespace WCF
         OrderController oCtr = new OrderController();
         public void CreateOrder(Order order)
         {
-            throw new NotImplementedException();
+            oCtr.CreateOrder(order);
         }
 
         public IEnumerable<Order> GetAllOrders()
@@ -24,6 +24,25 @@ namespace WCF
         public Order GetOrder(int ID)
         {
             return oCtr.GetOrder(ID);
+        }
+
+        public void CompleteOrder(Order order)
+        {
+            oCtr.CompleteOrder(order);
+        }
+
+        public Order GetOrderByStatus(string status)
+        {
+            return oCtr.GetOrderByStatus(status);
+        }
+        public User GetUser(int id)
+        {
+            return oCtr.getUser(id);
+        }
+
+        public Customer GetCustomer(int id)
+        {
+            return oCtr.getCustomer(id);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Gui.DrinkServiceRef;
 using Gui.OrderLineServiceRef;
+using Gui.OrderServiceRef;
 
 namespace Gui.Controllers
 {
@@ -12,6 +13,8 @@ namespace Gui.Controllers
     {
         private DrinkServiceClient client = new DrinkServiceClient();
         private OrderLineServiceClient lc = new OrderLineServiceClient();
+        private OrderServiceClient orderClient = new OrderServiceClient();
+        OrderController oCtr = new OrderController();
 
         // GET: Drink
         public ActionResult Index()
@@ -33,18 +36,19 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult Create(OrderLine orderline, int drinkId)
+        public ActionResult Create(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId)
         {
             try
             {
                 orderline.Drink = lc.GetDrink(drinkId);
                 orderline.TotalPrice = orderline.Drink.Price * orderline.Amount; 
-                lc.CreateOrderLine(orderline, 1);
+                lc.CreateOrderLine(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                oCtr.CreateOrder();
+                return Create(orderline, drinkId);
             }
         }
 

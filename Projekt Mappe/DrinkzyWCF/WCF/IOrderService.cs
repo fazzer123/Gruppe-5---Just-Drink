@@ -19,6 +19,18 @@ namespace WCF
 
         [OperationContract]
         IEnumerable<Order> GetAllOrders();
+
+        [OperationContract]
+        void CompleteOrder(Order order);
+
+        [OperationContract]
+        Order GetOrderByStatus(string status);
+
+        [OperationContract]
+        User GetUser(int id);
+
+        [OperationContract]
+        Customer GetCustomer(int id);
         
     }
 }

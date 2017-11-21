@@ -23,12 +23,12 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.DrinkzyOrder(id, totalprice, discount, orderDate, status, userID, customerID) values(@id, @totalprice, @discount, @orderDate, @status, @userID, @customerID)";
-                    cmd.Parameters.AddWithValue("id", Order.ID);
+                    cmd.CommandText = "Insert Into dbo.DrinkzyOrder(totalprice, discount, orderDate, orderStatus, userID, customerID) values(@totalprice, @discount, @orderDate, @orderStatus, @userID, @customerID)";
+                    //cmd.Parameters.AddWithValue("id", Order.ID);
                     cmd.Parameters.AddWithValue("totalprice", Order.TotalPrice);
                     cmd.Parameters.AddWithValue("discount", Order.Discount);
                     cmd.Parameters.AddWithValue("orderDate", Order.Date);
-                    cmd.Parameters.AddWithValue("status", Order.Status);
+                    cmd.Parameters.AddWithValue("orderStatus", Order.Status);
                     cmd.Parameters.AddWithValue("userID", Order.User.ID);
                     cmd.Parameters.AddWithValue("customerID", Order.Customer.ID);
 
@@ -67,6 +67,35 @@ namespace DBLayer
             return Order;
         }
 
+        public Order GetOrderByStatus(string status)
+        {
+            Order Order = null;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Select * From DrinkzyOrder Where orderStatus = @orderStatus";
+                    cmd.Parameters.AddWithValue("orderStatus", status);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        Order = new Order
+                        {
+                            ID = (int)Reader["id"],
+                            TotalPrice = (decimal)Reader["totalPrice"],
+                            Discount = (decimal)Reader["discount"],
+                            Date = (DateTime)Reader["orderDate"],
+                            Status = (string)Reader["orderStatus"],
+                            User = uDB.GetUser((int)Reader["userID"]),
+                            Customer = cDB.GetCustomer((int)Reader["customerID"]),
+                        };
+                    }
+                }
+            }
+            return Order;
+        }
+
         public IEnumerable<Order> GetAllOrders()
         {
             List<Order> OrderList = new List<Order>();
@@ -98,6 +127,21 @@ namespace DBLayer
 
             }
             return OrderList;
+        }
+
+        public void CompleteOrder(Order order)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Update DrinkzyOrder SET orderStatus = @orderStatus WHERE id=@id";
+                    cmd.Parameters.AddWithValue("id", order.ID);
+                    cmd.Parameters.AddWithValue("orderStatus", order.Status);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
