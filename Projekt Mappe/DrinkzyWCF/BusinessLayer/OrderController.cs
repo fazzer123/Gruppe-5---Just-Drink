@@ -54,6 +54,10 @@ namespace BusinessLayer
         {
             return oDb.GetOrderByStatus(status);
         }
+        public void DeleteOrderByID(int ID)
+        {
+           oDb.DeleteOrderByID(ID);
+        }
     }
 }
 

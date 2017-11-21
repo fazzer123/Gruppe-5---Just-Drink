@@ -31,6 +31,8 @@ namespace WCF
 
         [OperationContract]
         Customer GetCustomer(int id);
-        
+
+        [OperationContract]
+        void DeleteOrderByID(int ID);
     }
 }

@@ -44,5 +44,10 @@ namespace WCF
         {
             return oCtr.getCustomer(id);
         }
+
+        public void DeleteOrderByID(int ID)
+        {
+            oCtr.DeleteOrderByID(ID);
+        }
     }
 }

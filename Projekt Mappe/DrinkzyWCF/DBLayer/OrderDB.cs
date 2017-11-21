@@ -95,7 +95,19 @@ namespace DBLayer
             }
             return Order;
         }
-
+        public void DeleteOrderByID(int ID)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.DrinkzyOrder Where id = @id";
+                    cmd.Parameters.AddWithValue("id", ID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         public IEnumerable<Order> GetAllOrders()
         {
             List<Order> OrderList = new List<Order>();
