@@ -824,6 +824,12 @@ namespace Gui.OrderServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomer", ReplyAction="http://tempuri.org/IOrderService/GetCustomerResponse")]
         System.Threading.Tasks.Task<Gui.OrderServiceRef.Customer> GetCustomerAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/DeleteOrderByID", ReplyAction="http://tempuri.org/IOrderService/DeleteOrderByIDResponse")]
+        void DeleteOrderByID(int ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/DeleteOrderByID", ReplyAction="http://tempuri.org/IOrderService/DeleteOrderByIDResponse")]
+        System.Threading.Tasks.Task DeleteOrderByIDAsync(int ID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -907,6 +913,14 @@ namespace Gui.OrderServiceRef {
         
         public System.Threading.Tasks.Task<Gui.OrderServiceRef.Customer> GetCustomerAsync(int id) {
             return base.Channel.GetCustomerAsync(id);
+        }
+        
+        public void DeleteOrderByID(int ID) {
+            base.Channel.DeleteOrderByID(ID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteOrderByIDAsync(int ID) {
+            return base.Channel.DeleteOrderByIDAsync(ID);
         }
     }
 }

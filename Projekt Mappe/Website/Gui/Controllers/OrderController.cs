@@ -76,6 +76,28 @@ namespace Gui.Controllers
                 return View();
             }
         }
+        // GET: Order/Delete/5
+        public ActionResult DeleteOrder(int ID)
+        {
+            client.DeleteOrderByID(ID);
+            return RedirectToAction("Index");
+        }
+
+        // POST: Order/Delete/5
+        [HttpPost]
+        public ActionResult DeleteOrder(int ID, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         // GET: Order/Delete/5
         public ActionResult Delete(int OrderLineId, int id)
@@ -121,7 +143,8 @@ namespace Gui.Controllers
         {
             DateTime date = DateTime.Now;
 
-            Order order = new Order {
+            Order order = new Order
+            {
                 TotalPrice = 0,
                 Discount = 0,
                 Date = date,
