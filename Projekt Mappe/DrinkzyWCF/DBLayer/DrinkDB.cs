@@ -11,6 +11,7 @@ namespace DBLayer
 {
     public class DrinkDB
     {
+        private IngredientsDB ingDB = new IngredientsDB();
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         public void CreateDrink(Drink drink)
@@ -50,7 +51,8 @@ namespace DBLayer
                             Name = (string)Reader["driName"],
                             Description = (string)Reader["driDescription"],
                             Price = (decimal)Reader["driPrice"],
-                            Img = (string)Reader["driImg"]
+                            Img = (string)Reader["driImg"],
+                            Ingredients = getIngredientByDrinkID((int)Reader["id"])
                         };
                     }
                 }
@@ -77,7 +79,8 @@ namespace DBLayer
                             Name = (string)Reader["driName"],
                             Description = (string)Reader["driDescription"],
                             Price = (decimal)Reader["driPrice"],
-                            Img = (string)Reader["driImg"]
+                            Img = (string)Reader["driImg"],
+                            Ingredients = getIngredientByDrinkID((int)Reader["id"])
                         };
                         drinkList.Add(d);
                     }
@@ -85,6 +88,27 @@ namespace DBLayer
 
             }
             return drinkList;
+        }
+
+        public List<Ingredient> getIngredientByDrinkID(int drinkID)
+        {
+            List<Ingredient> ingredients = new List<Ingredient>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Select * From DrinkIngredient Where drinkID = @drinkID";
+                    cmd.Parameters.AddWithValue("drinkID", drinkID);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        Ingredient ing = ingDB.GetIngredient((int)Reader["ingredientID"]);
+                        ingredients.Add(ing);
+                    }
+                }
+            }
+            return ingredients;
         }
     }
 }

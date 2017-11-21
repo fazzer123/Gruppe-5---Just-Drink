@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Gui.DrinkServiceRef;
 using Gui.OrderLineServiceRef;
 using Gui.OrderServiceRef;
+using System.Dynamic;
 
 namespace Gui.Controllers
 {
@@ -25,7 +26,8 @@ namespace Gui.Controllers
         // GET: Drink/Details/5
         public ActionResult Details(int id)
         {
-            return View(id);
+
+            return View(doBCVM(id));
         }
 
         // GET: Drink/Create
@@ -94,6 +96,14 @@ namespace Gui.Controllers
             {
                 return View();
             }
+        }
+
+        public dynamic doBCVM(int id)
+        {
+            dynamic BCVM = new ExpandoObject();
+            BCVM.Drink = client.GetDrink(id);
+            BCVM.Ingredients = client.GetDrink(id).Ingredients;
+            return BCVM;
         }
     }
 }
