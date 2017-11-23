@@ -26,11 +26,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                    <li style="margin-top:12px;">
                         @using (Html.BeginForm("Search", "Search", FormMethod.Post))
                         {
                             <input type="text" name="text" value="" />
-                                <input type="submit" id="sumbitText" value="Search" />
+                                <input type="submit" id="sumbitText" value="Søg" />
                         }
                     </li>
 

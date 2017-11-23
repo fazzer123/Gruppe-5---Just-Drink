@@ -23,7 +23,6 @@ namespace Gui.Controllers
         [HttpPost]
         public ActionResult Search(string text)
         {
-            //IEnumerable<Drink> drinks = dCtr.search(text);
             return View(doBCVM(text));
         }
 

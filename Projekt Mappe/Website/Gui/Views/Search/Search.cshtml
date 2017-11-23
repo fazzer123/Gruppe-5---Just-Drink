@@ -2,25 +2,27 @@
 @using Gui.DrinkServiceRef
 @using Gui.CustomerServiceRef
 @using Gui.IngredientServiceRef
+@using System.Dynamic
 
 @{
     ViewBag.Title = "Search";
 }
 
 <h2>Search</h2>
+
 @if (@Model.Drinks != null)
 {
     <h3>Drinks</h3>
 <table class="table" style="color: white;">
     <tr>
         <th>
-            Description
-        </th>
-        <th>
             Img
         </th>
         <th>
             Name
+        </th>
+        <th>
+            Description
         </th>
         <th>
             Price
@@ -30,17 +32,17 @@
 @foreach (var item in @Model.Drinks)
 {
     <tr>
-        <td>
-            @item.Description
+        <td width="110">
+            <img src="@Url.Content(item.Img)" alt="Image" height="100px" width="100px" />
+        </td>
+        <td width="200">
+            <p>@item.Name</p>
         </td>
         <td>
-            @item.Img
+            <p>@item.Description</p>
         </td>
         <td>
-            @item.Name)
-        </td>
-        <td>
-            @item.Price)
+            <p>@item.Price kr.</p>
         </td>
     </tr>
 }
@@ -48,56 +50,66 @@
 }
 
 <h3>Ingredient</h3>
-<table class="table" style="color: white;">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Procent
-        </th>
-    </tr>
-    @foreach(var ing in @Model.Ingredients)
-    {
+    <table class="table" style="color: white;">
         <tr>
             <th>
-                @ing.Name
+                Name
             </th>
             <th>
-                ing.Procent
+                Procent
             </th>
         </tr>
-    }
-</table>
+        @foreach (var ing in @Model.Ingredients)
+        {
+            <tr>
+                <th>
+                    <P>@ing.Name</P>
+                </th>
+                <th>
+                    <p>@ing.Procent %</p>
+                </th>
+            </tr>
+        }
+    </table>
 
-@if (@Model.Customers != null) {
-    <h3>Barer</h3>
-<table class="table" style="color: white;">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Img
-        </th>
-        <th>
-            Region
-        </th>
-        <th>
-            Adresse
-        </th>
-    </tr>
-    @foreach (var cus in @Model.Customers)
+    @if (@Model.Customers != null)
     {
-        <tr>
-            <th>
-                @cus.CusName
-            </th>
-            <th>
-                @cus.Img
-            </th>
-        </tr>
-    }
+        <h3>Barer</h3>
+        <table class="table" style="color: white;">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Img
+                </th>
+                <th>
+                    Region
+                </th>
+                <th>
+                    Adresse
+                </th>
+            </tr>
+            @foreach (var cus in @Model.Customers)
+            {
+                <tr>
+                    <th>
+                        <p>@cus.CusName</p>
+                    </th>
+                    <th>
+                        <p>@cus.Img</p>
+                    </th>
+                    <th>
+                        <p>@cus.Region</p>
+                    </th>
+                    <th>
+                        <p>@cus.Address</p>
+                    </th>
+                </tr>
+            }
 
-</table>
-}else{<h3>No Bars found</h3> }
+        </table>
+    }
+    else
+    {
+                            <h3>No Bars found</h3> }
