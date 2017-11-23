@@ -1,0 +1,103 @@
+﻿@model dynamic
+@using Gui.DrinkServiceRef
+@using Gui.CustomerServiceRef
+@using Gui.IngredientServiceRef
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+@if (@Model.Drinks != null)
+{
+    <h3>Drinks</h3>
+<table class="table" style="color: white;">
+    <tr>
+        <th>
+            Description
+        </th>
+        <th>
+            Img
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in @Model.Drinks)
+{
+    <tr>
+        <td>
+            @item.Description
+        </td>
+        <td>
+            @item.Img
+        </td>
+        <td>
+            @item.Name)
+        </td>
+        <td>
+            @item.Price)
+        </td>
+    </tr>
+}
+</table>
+}
+
+<h3>Ingredient</h3>
+<table class="table" style="color: white;">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Procent
+        </th>
+    </tr>
+    @foreach(var ing in @Model.Ingredients)
+    {
+        <tr>
+            <th>
+                @ing.Name
+            </th>
+            <th>
+                ing.Procent
+            </th>
+        </tr>
+    }
+</table>
+
+@if (@Model.Customers != null) {
+    <h3>Barer</h3>
+<table class="table" style="color: white;">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Img
+        </th>
+        <th>
+            Region
+        </th>
+        <th>
+            Adresse
+        </th>
+    </tr>
+    @foreach (var cus in @Model.Customers)
+    {
+        <tr>
+            <th>
+                @cus.CusName
+            </th>
+            <th>
+                @cus.Img
+            </th>
+        </tr>
+    }
+
+</table>
+}else{<h3>No Bars found</h3> }

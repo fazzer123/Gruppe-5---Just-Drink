@@ -29,5 +29,10 @@ namespace WCF
         {
             return cusCtr.GetAllCustomers();
         }
+
+        public IEnumerable<Customer> SearchCustomer(string text)
+        {
+            return cusCtr.searchCustomer(text);
+        }
     }
 }

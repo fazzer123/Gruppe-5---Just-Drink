@@ -110,5 +110,12 @@ namespace DBLayer
             }
             return ingredients;
         }
+
+        public IEnumerable<Drink> searchDrinks(string search)
+        {
+            IEnumerable<Drink> drinks = null;
+
+            return drinks;
+        }
     }
 }

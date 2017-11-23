@@ -25,6 +25,12 @@
   <wsdl:message name="IDrinkService_getAllDrinks_OutputMessage">
     <wsdl:part name="parameters" element="tns:getAllDrinksResponse" />
   </wsdl:message>
+  <wsdl:message name="IDrinkService_SearchDrinks_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDrinks" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_SearchDrinks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDrinksResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDrinkService">
     <wsdl:operation name="CreateDrink">
       <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/CreateDrink" message="tns:IDrinkService_CreateDrink_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="getAllDrinks">
       <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/getAllDrinks" message="tns:IDrinkService_getAllDrinks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/getAllDrinksResponse" message="tns:IDrinkService_getAllDrinks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDrinks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/SearchDrinks" message="tns:IDrinkService_SearchDrinks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/SearchDrinksResponse" message="tns:IDrinkService_SearchDrinks_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDrinkService" type="tns:IDrinkService">
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="getAllDrinks">
       <soap:operation soapAction="http://tempuri.org/IDrinkService/getAllDrinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDrinks">
+      <soap:operation soapAction="http://tempuri.org/IDrinkService/SearchDrinks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

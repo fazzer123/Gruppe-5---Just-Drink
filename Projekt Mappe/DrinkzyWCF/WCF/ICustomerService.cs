@@ -17,7 +17,9 @@ namespace WCF
         Customer GetCustomer(int id);
 
         [OperationContract]
-
         IEnumerable<Customer> GetAllCustomers();
+
+        [OperationContract]
+        IEnumerable<Customer> SearchCustomer(string text);
     }
 }
