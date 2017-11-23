@@ -105,5 +105,10 @@ namespace Gui.Controllers
             BCVM.Ingredients = client.GetDrink(id).Ingredients;
             return BCVM;
         }
+
+        public IEnumerable<Gui.DrinkServiceRef.Drink> search(string text)
+        {
+            return client.SearchDrinks(text);
+        }
     }
 }

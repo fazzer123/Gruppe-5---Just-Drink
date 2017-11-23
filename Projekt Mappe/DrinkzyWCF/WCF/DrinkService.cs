@@ -31,5 +31,10 @@ namespace WCF
         {
             return DrinkCtr.getAllDrinks();
         }
+
+        public IEnumerable<Drink> SearchDrinks(string search)
+        {
+            return DrinkCtr.searchDrinks(search);
+        }
     }
 }

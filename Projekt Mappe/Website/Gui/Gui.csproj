@@ -154,6 +154,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\IngredientServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\OrderLineServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,9 +174,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,8 +215,27 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Connected Services\IngredientServiceRef\Gui.IngredientServiceRef.Ingredient.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\IngredientServiceRef\ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IngredientServiceRef\service.wsdl" />
+    <None Include="Connected Services\IngredientServiceRef\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IngredientServiceRef\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\OrderLineServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\OrderLineServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\IngredientServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\IngredientServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\IngredientServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.OrderLine.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -330,10 +357,13 @@
     <Content Include="Views\Drink\Create.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Drink\Details.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Customer\" />
+    <Folder Include="Views\Ingredient\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -354,6 +384,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CustomerServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\DrinkServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\IngredientServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\OrderLineServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\OrderServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\UserServiceRef\" />

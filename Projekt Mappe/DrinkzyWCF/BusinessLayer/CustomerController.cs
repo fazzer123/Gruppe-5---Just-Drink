@@ -30,7 +30,22 @@ namespace BusinessLayer
         {
             return cDb.GetAllCustomers();
         }
-            
+        
+        public IEnumerable<Customer> searchCustomer(string search)
+        {
+            List<Customer> customers = new List<Customer>();
+            string search2 = search.ToLower().Trim();
+
+            foreach (Customer c in cDb.GetAllCustomers())
+            {
+                if (c.CusName.ToLower().Contains(search2) || c.Region.ToLower().Contains(search2))
+                {
+                    customers.Add(c);
+                }
+            }
+
+            return customers;
+        }
     }
 }
 

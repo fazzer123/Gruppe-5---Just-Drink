@@ -1,55 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/ModelLayer" />
-  <xs:element name="CreateCustomer">
+  <xs:element name="createIngredient">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="customer" nillable="true" type="q1:Customer" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="i" nillable="true" type="q1:Ingredient" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CreateCustomerResponse">
+  <xs:element name="createIngredientResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCustomer">
+  <xs:element name="GetIngredient">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCustomerResponse">
+  <xs:element name="GetIngredientResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetCustomerResult" nillable="true" type="q2:Customer" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetIngredientResult" nillable="true" type="q2:Ingredient" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllCustomers">
+  <xs:element name="getAllIngredients">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllCustomersResponse">
+  <xs:element name="getAllIngredientsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetAllCustomersResult" nillable="true" type="q3:ArrayOfCustomer" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="getAllIngredientsResult" nillable="true" type="q3:ArrayOfIngredient" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SearchCustomer">
+  <xs:element name="SearchIngedient">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="search" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SearchCustomerResponse">
+  <xs:element name="SearchIngedientResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="SearchCustomerResult" nillable="true" type="q4:ArrayOfCustomer" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="SearchIngedientResult" nillable="true" type="q4:ArrayOfIngredient" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
