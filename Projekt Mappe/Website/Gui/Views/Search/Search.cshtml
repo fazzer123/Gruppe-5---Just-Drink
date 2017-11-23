@@ -27,7 +27,6 @@
         <th>
             Price
         </th>
-        <th></th>
     </tr>
 @foreach (var item in @Model.Drinks)
 {
@@ -36,7 +35,7 @@
             <img src="@Url.Content(item.Img)" alt="Image" height="100px" width="100px" />
         </td>
         <td width="200">
-            <p>@item.Name</p>
+            <h4>@item.Name</h4>
         </td>
         <td>
             <p>@item.Description</p>
@@ -107,9 +106,7 @@
                     </th>
                 </tr>
             }
-
         </table>
     }
     else
-    {
-                            <h3>No Bars found</h3> }
+    {<h3>No Bars found</h3> }
