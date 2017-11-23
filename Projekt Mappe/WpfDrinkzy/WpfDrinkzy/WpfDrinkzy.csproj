@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DrinkPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,10 +68,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Connected Services\ServiceIngredients\Reference.cs">
+    <Compile Include="Connected Services\DrinkServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\IngredientServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DrinkPage.xaml.cs">
+      <DependentUpon>DrinkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -92,17 +104,30 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\ServiceIngredients\Modellayer.xsd">
+    <None Include="Connected Services\DrinkServiceRef\ModelLayer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceIngredients\service.wsdl" />
-    <None Include="Connected Services\ServiceIngredients\service.xsd">
+    <None Include="Connected Services\DrinkServiceRef\service.wsdl" />
+    <None Include="Connected Services\DrinkServiceRef\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceIngredients\service1.xsd">
+    <None Include="Connected Services\DrinkServiceRef\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceIngredients\WpfDrinkzy.ServiceIngredients.Ingredients.datasource">
+    <None Include="Connected Services\DrinkServiceRef\WpfDrinkzy.DrinkServiceRef.Drink.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\IngredientServiceRef\ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IngredientServiceRef\service.wsdl" />
+    <None Include="Connected Services\IngredientServiceRef\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IngredientServiceRef\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IngredientServiceRef\WpfDrinkzy.IngredientServiceRef.Ingredient.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
@@ -117,16 +142,29 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceIngredients\" />
+    <WCFMetadataStorage Include="Connected Services\DrinkServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\IngredientServiceRef\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceIngredients\configuration91.svcinfo" />
+    <None Include="Connected Services\DrinkServiceRef\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceIngredients\configuration.svcinfo" />
+    <None Include="Connected Services\DrinkServiceRef\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceIngredients\Reference.svcmap">
+    <None Include="Connected Services\DrinkServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IngredientServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IngredientServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IngredientServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

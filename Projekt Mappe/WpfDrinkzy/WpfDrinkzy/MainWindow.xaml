@@ -5,13 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfDrinkzy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="255,138,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="136,93,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="101,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="101,119,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtProcent" HorizontalAlignment="Left" Height="23" Margin="123,191,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Frame x:Name="Main" Margin="0,35,0,0" Background="Gray" NavigationUIVisibility="Hidden"/>
+        <Button Content="Drink" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="btnDrink"/>
 
     </Grid>
 </Window>

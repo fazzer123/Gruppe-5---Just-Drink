@@ -110,5 +110,69 @@ namespace DBLayer
             }
             return ingredients;
         }
+
+        public void UpdateDrink(Drink drink)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Update Drink SET driName = @driName, driDescription = @driDescription, driPrice = @driPrice, driImg = @driImg WHERE id = @id";
+                    cmd.Parameters.AddWithValue("id", drink.ID);
+                    cmd.Parameters.AddWithValue("driName", drink.Name);
+                    cmd.Parameters.AddWithValue("driDescription", drink.Description);
+                    cmd.Parameters.AddWithValue("driPrice", drink.Price);
+                    cmd.Parameters.AddWithValue("driImg", drink.Img);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteDrinkById(int DrinkId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.Drink Where id = @id";
+                    cmd.Parameters.AddWithValue("id", DrinkId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void AddIngredientToDrink(int ingredientID, Drink drink)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Insert Into dbo.DrinkIngredient(drinkID, ingredientID) values(@drinkID, @ingredientID)";
+                    //cmd.Parameters.AddWithValue("id", entity.Id);
+                    cmd.Parameters.AddWithValue("drinkID", drink.ID);
+                    cmd.Parameters.AddWithValue("ingredientID", ingredientID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteIngredientFromDrink(int ingredientID, Drink drink)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.DrinkIngredient Where drinkID = @drinkID AND ingredientID = @ingredientID";
+                    cmd.Parameters.AddWithValue("drinkID", drink.ID);
+                    cmd.Parameters.AddWithValue("ingredientID", ingredientID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
