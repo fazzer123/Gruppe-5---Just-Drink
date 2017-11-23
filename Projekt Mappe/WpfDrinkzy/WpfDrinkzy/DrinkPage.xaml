@@ -35,7 +35,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Prrocent}"/>
+                    <GridViewColumn Header="Procent" DisplayMemberBinding="{Binding Procent}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -43,7 +43,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Prrocent}"/>
+                    <GridViewColumn Header="Procent" DisplayMemberBinding="{Binding Procent}"/>
                 </GridView>
             </ListView.View>
         </ListView>

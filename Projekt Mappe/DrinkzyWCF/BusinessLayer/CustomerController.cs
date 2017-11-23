@@ -30,6 +30,16 @@ namespace BusinessLayer
         {
             return cDb.GetAllCustomers();
         }
+
+        public void UpdateCustomer(Customer customer)
+        {
+            cDb.UpdateCustomer(customer);
+        }
+
+        public void DeleteCustomer(int customerID)
+        {
+            cDb.DeleteCustomer(customerID);
+        }
             
     }
 }

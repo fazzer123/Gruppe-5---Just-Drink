@@ -21,7 +21,7 @@ namespace DBLayer
                     connection.Open();
                     using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        cmd.CommandText = "Insert Into dbo.DrinkzyCustomer(CusName, CusImg, CusRegion, CusAddress, CusPhone, CusEmail) values(@CusName, @CusImg, @CusRegion, @CusAdress, @CusPhone, @CusEmail)";
+                        cmd.CommandText = "Insert Into dbo.DrinkzyCustomer(CusName, CusImg, CusRegion, CusAddress, CusPhone, CusEmail) values(@CusName, @CusImg, @CusRegion, @CusAddress, @CusPhone, @CusEmail)";
                         //cmd.Parameters.AddWithValue("id", entity.Id);
                         cmd.Parameters.AddWithValue("CusName", customer.CusName);
                         cmd.Parameters.AddWithValue("CusImg", customer.Img);
@@ -79,6 +79,7 @@ namespace DBLayer
                         {
                             Customer c = new Customer
                             {
+                                ID = (int)Reader["id"],
                                 CusName = (string)Reader["CusName"],
                                 Img = (string)Reader["CusImg"],
                                 Region = (string)Reader["CusRegion"],
@@ -94,6 +95,39 @@ namespace DBLayer
                 }
                 return CustomerList;
             }
+        public void UpdateCustomer(Customer customer)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Update DrinkzyCustomer SET cusName = @cusName, cusIMG = @cusIMG, cusRegion = @cusRegion, cusAddress = @cusAddress, cusPhone = @cusPhone, cusEmail = @cusEmail WHERE id = @id";
+                    cmd.Parameters.AddWithValue("id", customer.ID);
+                    cmd.Parameters.AddWithValue("cusName", customer.CusName);
+                    cmd.Parameters.AddWithValue("cusIMG", customer.Img);
+                    cmd.Parameters.AddWithValue("cusRegion", customer.Region);
+                    cmd.Parameters.AddWithValue("cusAddress", customer.Address);
+                    cmd.Parameters.AddWithValue("cusPhone", customer.Phone);
+                    cmd.Parameters.AddWithValue("cusEmail", customer.Email);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
+
+        public void DeleteCustomer(int CustomerId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.DrinkzyCustomer Where id = @id";
+                    cmd.Parameters.AddWithValue("id", CustomerId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+    }
     }
 

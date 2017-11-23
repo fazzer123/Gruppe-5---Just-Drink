@@ -17,7 +17,12 @@ namespace WCF
         Customer GetCustomer(int id);
 
         [OperationContract]
-
         IEnumerable<Customer> GetAllCustomers();
+
+        [OperationContract]
+        void UpdateCustomer(Customer customer);
+
+        [OperationContract]
+        void DeleteCustomer(int customerID);
     }
 }

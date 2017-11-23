@@ -29,5 +29,10 @@ namespace WpfDrinkzy
         {
             Main.Content = new DrinkPage();
         }
+
+        private void Customer_click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new CustomerPage();
+        }
     }
 }

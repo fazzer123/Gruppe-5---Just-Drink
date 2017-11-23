@@ -12,14 +12,14 @@ namespace WCF
     {
         MenuCardController mCtr = new MenuCardController();
 
-        public void addDrink(Customer cus, Drink drink)
+        public void addDrink(MenuCard mc, int drinkID)
         {
-            mCtr.AddDrink(cus, drink);
+            mCtr.AddDrink(mc, drinkID);
         }
 
-        public void createMenuCard(MenuCard menuCard)
+        public void createMenuCard(int CuID)
         {
-            mCtr.createMenuCard(menuCard);
+            mCtr.createMenuCard(CuID);
         }
 
         public List<Drink> getAllDrinksByMenucard(int menID)
@@ -30,6 +30,11 @@ namespace WCF
         public MenuCard GetMenuByCustomerID(int cusId)
         {
             return mCtr.GetMenu(cusId);
+        }
+
+        public void DeleteDrinkFromMenu(int menuID, int drinkid)
+        {
+            mCtr.DeleteDrinkFromMenu(menuID, drinkid);
         }
     }
 }
