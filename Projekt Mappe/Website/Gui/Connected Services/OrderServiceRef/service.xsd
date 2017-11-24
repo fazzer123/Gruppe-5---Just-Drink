@@ -105,4 +105,17 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdatePrice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="order" nillable="true" type="q8:Order" />
+        <xs:element minOccurs="0" name="price" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePriceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

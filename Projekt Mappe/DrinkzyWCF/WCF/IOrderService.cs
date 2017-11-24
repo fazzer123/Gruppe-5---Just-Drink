@@ -34,5 +34,8 @@ namespace WCF
 
         [OperationContract]
         void DeleteOrderByID(int ID);
+
+        [OperationContract]
+        void UpdatePrice(Order order, decimal price);
     }
 }

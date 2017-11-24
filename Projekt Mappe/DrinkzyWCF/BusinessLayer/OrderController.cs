@@ -58,6 +58,11 @@ namespace BusinessLayer
         {
            oDb.DeleteOrderByID(ID);
         }
+
+        public void UpdatePrice(Order order, decimal price)
+        {
+            oDb.updateTotalPrice(order, price);
+        }
     }
 }
 

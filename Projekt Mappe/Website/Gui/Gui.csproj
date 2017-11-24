@@ -179,6 +179,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\WalletServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DrinkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -297,6 +302,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\WalletServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\WalletServiceRef\configuration.svcinfo" />
+    <Content Include="Connected Services\WalletServiceRef\Gui.WalletServiceRef.Wallet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\WalletServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -347,6 +361,16 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\UserServiceRef\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WalletServiceRef\ModelLayer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WalletServiceRef\service.wsdl" />
+    <None Include="Connected Services\WalletServiceRef\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WalletServiceRef\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -416,6 +440,7 @@
     <WCFMetadataStorage Include="Connected Services\OrderLineServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\OrderServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\UserServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\WalletServiceRef\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

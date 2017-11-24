@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Gui.OrderServiceRef;
 using Gui.OrderLineServiceRef;
+using Gui.WalletServiceRef;
 using Gui.UserServiceRef;
 using Gui.CustomerServiceRef;
 using System.Dynamic;
@@ -15,6 +16,7 @@ namespace Gui.Controllers
     {
         OrderServiceClient client = new OrderServiceClient();
         OrderLineServiceClient olClient = new OrderLineServiceClient();
+        WalletServiceClient walletClient = new WalletServiceClient();
 
         // GET: Order
         public ActionResult Index()
@@ -102,6 +104,10 @@ namespace Gui.Controllers
         // GET: Order/Delete/5
         public ActionResult Delete(int OrderLineId, int id)
         {
+            decimal newprice = client.GetOrder(id).TotalPrice;
+            newprice = newprice - olClient.GetOrderLine(OrderLineId).TotalPrice;
+            client.UpdatePrice(client.GetOrder(id), newprice);
+
             olClient.DeleteOrderLineByID(OrderLineId);
             return View("Details", doBCVM(id));
         }
@@ -134,6 +140,8 @@ namespace Gui.Controllers
         {
             Order order = client.GetOrder(id);
             order.Status = "Complete";
+            decimal hej = walletClient.GetWallet(1).Balance - order.TotalPrice;
+            walletClient.UpdateBalanceByUserId(hej, 1);
             client.CompleteOrder(order);
 
             return RedirectToAction("Index");

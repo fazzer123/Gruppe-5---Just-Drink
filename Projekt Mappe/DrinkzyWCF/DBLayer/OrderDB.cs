@@ -155,5 +155,20 @@ namespace DBLayer
                 }
             }
         }
+
+        public void updateTotalPrice(Order order, decimal price)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Update DrinkzyOrder SET totalPrice = @totalPrice WHERE id=@id";
+                    cmd.Parameters.AddWithValue("id", order.ID);
+                    cmd.Parameters.AddWithValue("totalPrice", price);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

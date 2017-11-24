@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Gui.DrinkServiceRef;
 using Gui.OrderLineServiceRef;
 using Gui.OrderServiceRef;
+using Gui.WalletServiceRef;
 using System.Dynamic;
 
 namespace Gui.Controllers
@@ -15,7 +16,8 @@ namespace Gui.Controllers
         private DrinkServiceClient client = new DrinkServiceClient();
         private OrderLineServiceClient lc = new OrderLineServiceClient();
         private OrderServiceClient orderClient = new OrderServiceClient();
-        OrderController oCtr = new OrderController();
+        private OrderController oCtr = new OrderController();
+        private WalletServiceClient walletClient = new WalletServiceClient();
 
         // GET: Drink
         public ActionResult Index()
@@ -47,6 +49,11 @@ namespace Gui.Controllers
                     orderline.Drink = lc.GetDrink(drinkId);
                     orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
                     lc.CreateOrderLine(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+
+                    
+                    decimal hej = orderline.Drink.Price * orderline.Amount;
+                    hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
+                    orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
                     return RedirectToAction("Details", "Customer", new { id = cusID });
                 }
                 else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
