@@ -30,6 +30,15 @@ namespace WCF
             return cusCtr.GetAllCustomers();
         }
 
+        public void UpdateCustomer(Customer customer)
+        {
+            cusCtr.UpdateCustomer(customer);
+        }
+
+        public void DeleteCustomer(int customerID)
+        {
+            cusCtr.DeleteCustomer(customerID);
+
         public IEnumerable<Customer> SearchCustomer(string text)
         {
             return cusCtr.searchCustomer(text);

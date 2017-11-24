@@ -12,14 +12,14 @@ namespace BusinessLayer
     {
         private MenuCardDB db = new MenuCardDB();
 
-        public void createMenuCard(MenuCard m)
+        public void createMenuCard(int CuID)
         {
-            db.CreateMenuCard(m);
+            db.CreateMenuCard(CuID);
         }
 
-        public void AddDrink(Customer c, Drink d)
+        public void AddDrink(MenuCard mc, int drinkID)
         {
-            db.AddDrink(c, d);
+            db.AddDrink(mc, drinkID);
         }
 
         public MenuCard GetMenu(int cusId)
@@ -30,6 +30,11 @@ namespace BusinessLayer
         public List<Drink> getAllDrinksByMenucard(int menID)
         {
             return db.GetAllDrinksByCustomer(menID);
+        }
+
+        public void DeleteDrinkFromMenu(int menuID, int drinkid)
+        {
+            db.DeleteDrinkFromMenu(menuID, drinkid);
         }
 
     }

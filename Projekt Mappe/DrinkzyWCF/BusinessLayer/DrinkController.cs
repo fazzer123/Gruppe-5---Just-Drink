@@ -32,6 +32,27 @@ namespace BusinessLayer
             return dDb.getAllDrinks();
         }
 
+
+        public void UpdateDrink(Drink drink)
+        {
+            dDb.UpdateDrink(drink);
+        }
+
+        public void DeleteDrinkById(int DrinkId)
+        {
+            dDb.DeleteDrinkById(DrinkId);
+        }
+
+        public void AddIngredientToDrink(int ingredientID, Drink drink)
+        {
+            dDb.AddIngredientToDrink(ingredientID, drink);
+        }
+
+        public void DeleteIngredientFromDrink(int ingredientID, Drink drink)
+        {
+            dDb.DeleteIngredientFromDrink(ingredientID, drink);
+        }
+      
         public IEnumerable<Drink> searchDrinks(string search)
         {
             List<Drink> drinks = new List<Drink>();

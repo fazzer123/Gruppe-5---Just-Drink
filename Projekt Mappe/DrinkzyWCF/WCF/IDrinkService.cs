@@ -22,6 +22,19 @@ namespace WCF
         IEnumerable<Drink> getAllDrinks();
 
         [OperationContract]
-        IEnumerable<Drink> SearchDrinks(string search);
+
+        void UpdateDrink(Drink drink);
+
+        [OperationContract]
+        void DeleteDrinkById(int DrinkId);
+
+        [OperationContract]
+        void AddIngredientToDrink(int ingredientID, Drink drink);
+
+        [OperationContract]
+        void DeleteIngredientFromDrink(int ingredientID, Drink drink);
+
+        [OperationContract]
+      IEnumerable<Drink> SearchDrinks(string search);
     }
 }

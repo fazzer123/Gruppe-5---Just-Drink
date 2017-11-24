@@ -16,7 +16,7 @@ namespace DBLayer
 
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-        public void CreateMenuCard(MenuCard menu)
+        public void CreateMenuCard(int CuID)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -25,23 +25,23 @@ namespace DBLayer
                 {
                     cmd.CommandText = "Insert Into dbo.MenuCard(customerID) values(@customerID)";
                     //cmd.Parameters.AddWithValue("id", OrderLine.ID);
-                    cmd.Parameters.AddWithValue("customerID", menu.Customer.ID);
+                    cmd.Parameters.AddWithValue("customerID", CuID);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void AddDrink(Customer customer, Drink drink)
+        public void AddDrink(MenuCard menuCard, int drinkID)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.MenucardDrinks(customerID, drinkID) values(@customerID, @drinkID)";
+                    cmd.CommandText = "Insert Into dbo.MenucardDrinks(menuID, drinkid) values(@menuID, @drinkid)";
                     //cmd.Parameters.AddWithValue("id", OrderLine.ID);
-                    cmd.Parameters.AddWithValue("customerID", customer.ID);
-                    cmd.Parameters.AddWithValue("drinkID", drink.ID);
+                    cmd.Parameters.AddWithValue("menuID", menuCard.ID);
+                    cmd.Parameters.AddWithValue("drinkid", drinkID);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -92,6 +92,22 @@ namespace DBLayer
                 }
             }
             return DrinksList;
+        }
+
+        public void DeleteDrinkFromMenu(int menuID, int drinkid)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.MenucardDrinks Where menuID = @menuID AND drinkid = @drinkid";
+                    cmd.Parameters.AddWithValue("menuID", menuID);
+                    cmd.Parameters.AddWithValue("drinkid", drinkid);
+                    
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

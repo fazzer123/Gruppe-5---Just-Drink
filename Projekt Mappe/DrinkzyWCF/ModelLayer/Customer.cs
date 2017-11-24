@@ -35,6 +35,7 @@ namespace ModelLayer
             this.Phone = Phone;
             this.Email = Email;
         }
+
         public Customer()
         {
 

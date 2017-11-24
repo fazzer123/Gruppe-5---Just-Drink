@@ -12,13 +12,16 @@ namespace WCF
     interface IMenuCardService
     {
         [OperationContract]
-        void createMenuCard(MenuCard menuCard);
+        void createMenuCard(int CuID);
 
         [OperationContract]
-        void addDrink(Customer cus, Drink drink);
+        void addDrink(MenuCard mc, int drinkID);
         [OperationContract]
         MenuCard GetMenuByCustomerID(int cusId);
         [OperationContract]
         List<Drink> getAllDrinksByMenucard(int menID);
+
+        [OperationContract]
+        void DeleteDrinkFromMenu(int menuID, int drinkid);
     }
 }

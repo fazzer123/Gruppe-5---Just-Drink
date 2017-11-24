@@ -20,6 +20,12 @@ namespace WCF
         IEnumerable<Customer> GetAllCustomers();
 
         [OperationContract]
-        IEnumerable<Customer> SearchCustomer(string text);
+        void UpdateCustomer(Customer customer);
+
+        [OperationContract]
+        void DeleteCustomer(int customerID);
+
+      [OperationContract]  
+      IEnumerable<Customer> SearchCustomer(string text);
     }
 }

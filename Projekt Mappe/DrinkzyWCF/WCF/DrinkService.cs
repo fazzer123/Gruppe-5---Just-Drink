@@ -32,6 +32,26 @@ namespace WCF
             return DrinkCtr.getAllDrinks();
         }
 
+
+        public void UpdateDrink(Drink drink)
+        {
+            DrinkCtr.UpdateDrink(drink);
+        }
+
+        public void DeleteDrinkById(int DrinkId)
+        {
+            DrinkCtr.DeleteDrinkById(DrinkId);
+        }
+
+        public void AddIngredientToDrink(int ingredientID, Drink drink)
+        {
+            DrinkCtr.AddIngredientToDrink(ingredientID, drink);
+        }
+
+        public void DeleteIngredientFromDrink(int ingredientID, Drink drink)
+        {
+            DrinkCtr.DeleteIngredientFromDrink(ingredientID, drink);
+        }
         public IEnumerable<Drink> SearchDrinks(string search)
         {
             return DrinkCtr.searchDrinks(search);
