@@ -146,6 +146,7 @@ namespace WpfDrinkzy
         private void deleteDrink_click(object sender, RoutedEventArgs e)
         {
             DeleteDrinkFromMenu();
+            fillViewList();
         }
     }
 }
