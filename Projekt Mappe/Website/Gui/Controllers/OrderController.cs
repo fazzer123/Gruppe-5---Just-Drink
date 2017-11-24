@@ -58,13 +58,25 @@ namespace Gui.Controllers
             return View(olClient.GetOrderLine(id));
         }
 
+        [HttpPost]
+        public ActionResult EditAmount(int id, int orderID, string text)
+        {
+            int amount = Convert.ToInt32(text);
+            OrderLineServiceRef.OrderLine orderline = olClient.GetOrderLine(id);
+            orderline.TotalPrice = amount * orderline.Drink.Price;
+            orderline.Amount = amount;
+            olClient.EditOrderLine(orderline);
+
+            return RedirectToAction("Details", new {id = orderID});
+        }
+
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, OrderLineServiceRef.OrderLine orderline)
+        public ActionResult Edit(int id, OrderLineServiceRef.OrderLine orderline, string text)
         {
             try
             {
-                int amount = orderline.Amount;
+                int amount = orderline.Amount + Convert.ToInt32(text);
                 orderline = olClient.GetOrderLine(id);
                 orderline.TotalPrice = amount * orderline.Drink.Price;
                 orderline.Amount = amount;
