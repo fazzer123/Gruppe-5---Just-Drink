@@ -175,6 +175,12 @@ namespace Gui.CustomerServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllCustomers", ReplyAction="http://tempuri.org/ICustomerService/GetAllCustomersResponse")]
         System.Threading.Tasks.Task<Gui.CustomerServiceRef.Customer[]> GetAllCustomersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/SearchCustomer", ReplyAction="http://tempuri.org/ICustomerService/SearchCustomerResponse")]
+        Gui.CustomerServiceRef.Customer[] SearchCustomer(string text);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/SearchCustomer", ReplyAction="http://tempuri.org/ICustomerService/SearchCustomerResponse")]
+        System.Threading.Tasks.Task<Gui.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -226,6 +232,14 @@ namespace Gui.CustomerServiceRef {
         
         public System.Threading.Tasks.Task<Gui.CustomerServiceRef.Customer[]> GetAllCustomersAsync() {
             return base.Channel.GetAllCustomersAsync();
+        }
+        
+        public Gui.CustomerServiceRef.Customer[] SearchCustomer(string text) {
+            return base.Channel.SearchCustomer(text);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text) {
+            return base.Channel.SearchCustomerAsync(text);
         }
     }
 }

@@ -236,6 +236,12 @@ namespace Gui.DrinkServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/getAllDrinks", ReplyAction="http://tempuri.org/IDrinkService/getAllDrinksResponse")]
         System.Threading.Tasks.Task<Gui.DrinkServiceRef.Drink[]> getAllDrinksAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/SearchDrinks", ReplyAction="http://tempuri.org/IDrinkService/SearchDrinksResponse")]
+        Gui.DrinkServiceRef.Drink[] SearchDrinks(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/SearchDrinks", ReplyAction="http://tempuri.org/IDrinkService/SearchDrinksResponse")]
+        System.Threading.Tasks.Task<Gui.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -287,6 +293,14 @@ namespace Gui.DrinkServiceRef {
         
         public System.Threading.Tasks.Task<Gui.DrinkServiceRef.Drink[]> getAllDrinksAsync() {
             return base.Channel.getAllDrinksAsync();
+        }
+        
+        public Gui.DrinkServiceRef.Drink[] SearchDrinks(string search) {
+            return base.Channel.SearchDrinks(search);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search) {
+            return base.Channel.SearchDrinksAsync(search);
         }
     }
 }

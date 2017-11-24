@@ -38,6 +38,10 @@ namespace WCF
         public void DeleteCustomer(int customerID)
         {
             cusCtr.DeleteCustomer(customerID);
+
+        public IEnumerable<Customer> SearchCustomer(string text)
+        {
+            return cusCtr.searchCustomer(text);
         }
     }
 }

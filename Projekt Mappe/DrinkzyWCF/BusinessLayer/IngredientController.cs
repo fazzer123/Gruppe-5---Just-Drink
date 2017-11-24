@@ -26,5 +26,21 @@ namespace BusinessLayer
         {
             return db.GetAllIngredients();
         }
+
+        public IEnumerable<Ingredient> searchIngredient(string search)
+        {
+            List<Ingredient> ingredients = new List<Ingredient>();
+            string search2 = search.ToLower().Trim();
+
+            foreach (Ingredient i in db.GetAllIngredients())
+            {
+                if (i.Name.ToLower().Contains(search2))
+                {
+                    ingredients.Add(i);
+                }
+            }
+
+            return ingredients;
+        }
     }
 }

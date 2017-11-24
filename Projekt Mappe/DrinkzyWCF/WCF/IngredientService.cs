@@ -25,5 +25,10 @@ namespace WCF
         {
             return ingCtr.GetIngredient(id);
         }
+
+        public IEnumerable<Ingredient> SearchIngedient(string search)
+        {
+            return ingCtr.searchIngredient(search);
+        }
     }
 }

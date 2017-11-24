@@ -32,6 +32,7 @@ namespace BusinessLayer
             return dDb.getAllDrinks();
         }
 
+
         public void UpdateDrink(Drink drink)
         {
             dDb.UpdateDrink(drink);
@@ -50,6 +51,22 @@ namespace BusinessLayer
         public void DeleteIngredientFromDrink(int ingredientID, Drink drink)
         {
             dDb.DeleteIngredientFromDrink(ingredientID, drink);
+        }
+      
+        public IEnumerable<Drink> searchDrinks(string search)
+        {
+            List<Drink> drinks = new List<Drink>();
+            string search2 = search.ToLower().Trim();
+
+            foreach (Drink d in dDb.getAllDrinks())
+            {
+                if(d.Description.ToLower().Contains(search2) || d.Name.ToLower().Contains(search2))
+                {
+                    drinks.Add(d);
+                }
+            }
+
+            return drinks;
         }
     }
 }

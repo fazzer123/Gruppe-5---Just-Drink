@@ -22,6 +22,7 @@ namespace WCF
         IEnumerable<Drink> getAllDrinks();
 
         [OperationContract]
+
         void UpdateDrink(Drink drink);
 
         [OperationContract]
@@ -32,5 +33,8 @@ namespace WCF
 
         [OperationContract]
         void DeleteIngredientFromDrink(int ingredientID, Drink drink);
+
+        [OperationContract]
+      IEnumerable<Drink> SearchDrinks(string search);
     }
 }

@@ -24,5 +24,8 @@ namespace WCF
 
         [OperationContract]
         void DeleteCustomer(int customerID);
+
+      [OperationContract]  
+      IEnumerable<Customer> SearchCustomer(string text);
     }
 }

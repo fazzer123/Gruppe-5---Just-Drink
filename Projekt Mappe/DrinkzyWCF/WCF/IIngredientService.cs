@@ -17,5 +17,8 @@ namespace WCF
         Ingredient GetIngredient(int id);
         [OperationContract]
         IEnumerable<Ingredient> getAllIngredients();
+
+        [OperationContract]
+        IEnumerable<Ingredient> SearchIngedient(string search);
     }
 }
