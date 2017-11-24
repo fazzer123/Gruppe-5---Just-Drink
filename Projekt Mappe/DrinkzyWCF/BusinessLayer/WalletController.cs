@@ -30,5 +30,10 @@ namespace BusinessLayer
         {
             return wDb.GetAllWallets();
         }
+
+        public void UpdateBalanceByUserID(decimal Balance, int userID)
+        {
+            wDb.updateBalanceByUserID(Balance, userID);
+        }
     }
 }

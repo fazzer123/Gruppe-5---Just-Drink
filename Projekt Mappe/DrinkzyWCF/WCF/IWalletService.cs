@@ -19,5 +19,8 @@ namespace WCF
 
         [OperationContract]
         IEnumerable<Wallet> GetAllWallet();
+
+        [OperationContract]
+        void UpdateBalanceByUserId(decimal Balance, int userID);
     }
 }

@@ -49,5 +49,10 @@ namespace WCF
         {
             oCtr.DeleteOrderByID(ID);
         }
+
+        public void UpdatePrice(Order order, decimal price)
+        {
+            oCtr.UpdatePrice(order, price);
+        }
     }
 }

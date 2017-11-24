@@ -55,6 +55,12 @@
   <wsdl:message name="IOrderService_DeleteOrderByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteOrderByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_UpdatePrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePrice" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdatePrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePriceResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderService">
     <wsdl:operation name="CreateOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/CreateOrder" message="tns:IOrderService_CreateOrder_InputMessage" />
@@ -87,6 +93,10 @@
     <wsdl:operation name="DeleteOrderByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderByID" message="tns:IOrderService_DeleteOrderByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/DeleteOrderByIDResponse" message="tns:IOrderService_DeleteOrderByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdatePrice" message="tns:IOrderService_UpdatePrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdatePriceResponse" message="tns:IOrderService_UpdatePrice_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderService" type="tns:IOrderService">
@@ -156,6 +166,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteOrderByID">
       <soap:operation soapAction="http://tempuri.org/IOrderService/DeleteOrderByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrice">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/UpdatePrice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

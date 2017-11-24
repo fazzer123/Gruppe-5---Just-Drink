@@ -30,5 +30,10 @@ namespace WCF
         {
             return wCtr.GetWallet(id);
         }
+
+        public void UpdateBalanceByUserId(decimal Balance, int userID)
+        {
+            wCtr.UpdateBalanceByUserID(Balance, userID);
+        }
     }
 }
