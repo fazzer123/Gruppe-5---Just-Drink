@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Gui.CustomerServiceRef;
 
 namespace Gui.Controllers
 {
     public class HomeController : Controller
     {
+        CustomerServiceClient client = new CustomerServiceClient();
+
         public ActionResult Index()
         {
             return View();
@@ -30,7 +33,7 @@ namespace Gui.Controllers
         {
             ViewBag.Message = "Your Find Bar Page";
 
-            return View();
+            return View(client.GetAllCustomers());
         }
 
         public ActionResult shoppage()

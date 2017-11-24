@@ -139,7 +139,7 @@ namespace Gui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult CreateOrder()
+        public ActionResult CreateOrder(int cusID)
         {
             DateTime date = DateTime.Now;
 
@@ -150,7 +150,7 @@ namespace Gui.Controllers
                 Date = date,
                 Status = "Incomplete",
                 User = client.GetUser(1),
-                Customer = client.GetCustomer(1)
+                Customer = client.GetCustomer(cusID)
             };
 
             client.CreateOrder(order);

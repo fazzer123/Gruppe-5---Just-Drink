@@ -1,0 +1,32 @@
+﻿@model Gui.MenucardServiceRef.MenuCard
+    @using Gui.CustomerServiceRef
+    @using Gui.DrinkServiceRef
+
+
+<h2>@Model.Customer.CusName</h2>
+
+<div style="color:white;">
+    <h4>MenuCard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (Gui.MenucardServiceRef.Drink d in Model.Drinks)
+        {
+            <dt>
+                Name
+            </dt>
+            <dd>
+                @d.Name
+            </dd>
+            <dt>
+                Description
+            </dt>
+            <dd>
+                @d.Description
+            </dd>
+            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

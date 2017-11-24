@@ -38,21 +38,33 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult Create(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId)
+        public ActionResult Create(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID)
         {
-            try
+            if (orderClient.GetOrderByStatus("Incomplete") != null)
             {
-                orderline.Drink = lc.GetDrink(drinkId);
-                orderline.TotalPrice = orderline.Drink.Price * orderline.Amount; 
-                lc.CreateOrderLine(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
-                return RedirectToAction("Index");
+                if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                {
+                    orderline.Drink = lc.GetDrink(drinkId);
+                    orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
+                    lc.CreateOrderLine(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+                    return RedirectToAction("Details", "Customer", new { id = cusID });
+                }
+                else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                {
+                    orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
+                    oCtr.CreateOrder(cusID);
+                    return Create(orderline, drinkId, cusID);
+                }
             }
-            catch
+            else
             {
-                oCtr.CreateOrder();
-                return Create(orderline, drinkId);
+                oCtr.CreateOrder(cusID);
+                return Create(orderline, drinkId, cusID);
             }
+
+            return RedirectToAction("Details", "Customer", new { id = cusID });
         }
+
 
         // GET: Drink/Edit/5
         public ActionResult Edit(int id)

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gui.CustomerServiceRef;
+using Gui.MenucardServiceRef;
 
 namespace Gui.Controllers
 {
     public class CustomerController : Controller
     {
         private CustomerServiceClient client = new CustomerServiceClient();
+        MenuCardServiceClient menuClient = new MenuCardServiceClient();
 
         // GET: Customer
         public ActionResult Index()
@@ -20,7 +22,8 @@ namespace Gui.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            return View(menuClient.GetMenuByCustomerID(id));
         }
 
         // GET: Customer/Create
@@ -89,7 +92,7 @@ namespace Gui.Controllers
             }
         }
 
-        public IEnumerable<Customer> SearchCustomers(string search)
+        public IEnumerable<Gui.CustomerServiceRef.Customer> SearchCustomers(string search)
         {
             return client.SearchCustomer(search);
         }
