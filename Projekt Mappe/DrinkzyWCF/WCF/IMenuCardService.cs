@@ -23,5 +23,8 @@ namespace WCF
 
         [OperationContract]
         void DeleteDrinkFromMenu(int menuID, int drinkid);
+
+        [OperationContract]
+        List<Drink> getDrinksBySearchOnMenucard(string search, int cusId);
     }
 }

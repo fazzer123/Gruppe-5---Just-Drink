@@ -1,6 +1,6 @@
 ﻿@model Gui.MenucardServiceRef.MenuCard
-    @using Gui.CustomerServiceRef
-    @using Gui.DrinkServiceRef
+@using Gui.CustomerServiceRef
+@using Gui.DrinkServiceRef
 
 
 <h2>@Model.Customer.CusName</h2>
@@ -11,7 +11,7 @@
     @using (Html.BeginForm("SearchMenucard", "Customer", FormMethod.Post))
     {
         <input type="text" name="text" value="" />
-        <input type="hidden" name="id" value="@Model.Customer.ID"/>
+        <input type="hidden" name="id" value="@Model.Customer.ID" />
         <input type="submit" id="sumbitText" value="Søg" />
     }
     <dl class="dl-horizontal">

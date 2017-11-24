@@ -36,5 +36,10 @@ namespace WCF
         {
             mCtr.DeleteDrinkFromMenu(menuID, drinkid);
         }
+
+        public List<Drink> getDrinksBySearchOnMenucard(string search, int cusId)
+        {
+            return mCtr.getDrinksBySearchOnMenucard(search, cusId);
+        }
     }
 }
