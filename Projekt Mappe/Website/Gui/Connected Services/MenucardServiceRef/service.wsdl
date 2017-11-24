@@ -37,6 +37,12 @@
   <wsdl:message name="IMenuCardService_DeleteDrinkFromMenu_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteDrinkFromMenuResponse" />
   </wsdl:message>
+  <wsdl:message name="IMenuCardService_getDrinksBySearchOnMenucard_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDrinksBySearchOnMenucard" />
+  </wsdl:message>
+  <wsdl:message name="IMenuCardService_getDrinksBySearchOnMenucard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDrinksBySearchOnMenucardResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMenuCardService">
     <wsdl:operation name="createMenuCard">
       <wsdl:input wsaw:Action="http://tempuri.org/IMenuCardService/createMenuCard" message="tns:IMenuCardService_createMenuCard_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="DeleteDrinkFromMenu">
       <wsdl:input wsaw:Action="http://tempuri.org/IMenuCardService/DeleteDrinkFromMenu" message="tns:IMenuCardService_DeleteDrinkFromMenu_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMenuCardService/DeleteDrinkFromMenuResponse" message="tns:IMenuCardService_DeleteDrinkFromMenu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDrinksBySearchOnMenucard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuCardService/getDrinksBySearchOnMenucard" message="tns:IMenuCardService_getDrinksBySearchOnMenucard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuCardService/getDrinksBySearchOnMenucardResponse" message="tns:IMenuCardService_getDrinksBySearchOnMenucard_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMenuCardService" type="tns:IMenuCardService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteDrinkFromMenu">
       <soap:operation soapAction="http://tempuri.org/IMenuCardService/DeleteDrinkFromMenu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDrinksBySearchOnMenucard">
+      <soap:operation soapAction="http://tempuri.org/IMenuCardService/getDrinksBySearchOnMenucard" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

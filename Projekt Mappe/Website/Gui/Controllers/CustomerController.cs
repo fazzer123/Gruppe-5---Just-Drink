@@ -22,8 +22,13 @@ namespace Gui.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-
             return View(menuClient.GetMenuByCustomerID(id));
+        }
+
+        [HttpPost]
+        public ActionResult Details(MenuCard menu)
+        {
+            return View(menu);
         }
 
         // GET: Customer/Create
@@ -95,6 +100,13 @@ namespace Gui.Controllers
         public IEnumerable<Gui.CustomerServiceRef.Customer> SearchCustomers(string search)
         {
             return client.SearchCustomer(search);
+        }
+
+        public ActionResult SearchMenucard(string text, int id)
+        {
+            MenuCard menu = menuClient.GetMenuByCustomerID(id);
+            menu.Drinks = menuClient.getDrinksBySearchOnMenucard(text, id);
+            return View(menu);
         }
     }
 }
