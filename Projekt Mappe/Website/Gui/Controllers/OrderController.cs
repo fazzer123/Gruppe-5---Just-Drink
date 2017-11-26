@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Gui.OrderServiceRef;
 using Gui.OrderLineServiceRef;
+using Gui.WalletServiceRef;
 using Gui.UserServiceRef;
 using Gui.CustomerServiceRef;
 using System.Dynamic;
@@ -15,6 +16,7 @@ namespace Gui.Controllers
     {
         OrderServiceClient client = new OrderServiceClient();
         OrderLineServiceClient olClient = new OrderLineServiceClient();
+        WalletServiceClient walletClient = new WalletServiceClient();
 
         // GET: Order
         public ActionResult Index()
@@ -56,13 +58,31 @@ namespace Gui.Controllers
             return View(olClient.GetOrderLine(id));
         }
 
+        [HttpPost]
+        public ActionResult EditAmount(int id, int orderID, string text)
+        {
+            decimal price = client.GetOrder(orderID).TotalPrice - olClient.GetOrderLine(id).TotalPrice;
+            client.UpdatePrice(client.GetOrder(orderID), price);
+
+            int amount = Convert.ToInt32(text);
+            OrderLineServiceRef.OrderLine orderline = olClient.GetOrderLine(id);
+            orderline.TotalPrice = amount * orderline.Drink.Price;
+            orderline.Amount = amount;
+            olClient.EditOrderLine(orderline);
+
+            price = client.GetOrder(orderID).TotalPrice + olClient.GetOrderLine(id).TotalPrice;
+            client.UpdatePrice(client.GetOrder(orderID), price);
+
+            return RedirectToAction("Details", new {id = orderID});
+        }
+
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, OrderLineServiceRef.OrderLine orderline)
+        public ActionResult Edit(int id, OrderLineServiceRef.OrderLine orderline, string text)
         {
             try
             {
-                int amount = orderline.Amount;
+                int amount = orderline.Amount + Convert.ToInt32(text);
                 orderline = olClient.GetOrderLine(id);
                 orderline.TotalPrice = amount * orderline.Drink.Price;
                 orderline.Amount = amount;
@@ -102,6 +122,10 @@ namespace Gui.Controllers
         // GET: Order/Delete/5
         public ActionResult Delete(int OrderLineId, int id)
         {
+            decimal newprice = client.GetOrder(id).TotalPrice;
+            newprice = newprice - olClient.GetOrderLine(OrderLineId).TotalPrice;
+            client.UpdatePrice(client.GetOrder(id), newprice);
+
             olClient.DeleteOrderLineByID(OrderLineId);
             return View("Details", doBCVM(id));
         }
@@ -134,6 +158,8 @@ namespace Gui.Controllers
         {
             Order order = client.GetOrder(id);
             order.Status = "Complete";
+            decimal hej = walletClient.GetWallet(1).Balance - order.TotalPrice;
+            walletClient.UpdateBalanceByUserId(hej, 1);
             client.CompleteOrder(order);
 
             return RedirectToAction("Index");

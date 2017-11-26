@@ -41,8 +41,8 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Select * From Wallet Where id = @id";
-                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.CommandText = "Select * From Wallet Where userId = @userId";
+                    cmd.Parameters.AddWithValue("userId", id);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
@@ -89,6 +89,21 @@ namespace DBLayer
 
             }
             return WalletList;
+        }
+
+        public void updateBalanceByUserID(decimal balance, int userId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Update Wallet SET Balance = @Balance  WHERE userId = @userId";
+                    cmd.Parameters.AddWithValue("userId", userId);
+                    cmd.Parameters.AddWithValue("Balance", balance);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

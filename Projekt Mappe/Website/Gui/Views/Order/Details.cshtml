@@ -64,7 +64,13 @@
         {
             <tr>
                 <td>
-                    @item.Amount
+                    @using (Html.BeginForm("EditAmount", "Order", FormMethod.Post))
+                    {
+                        <input type="hidden" name="id" value="@item.ID" />
+                        <input type="hidden" name="orderID" value="@Model.Order.ID" />
+                        <input type="text" name="text" value="@item.Amount" style="width:30px;"/>
+                        <input type="submit" id="sumbitText" value="Edit" />
+                    }
                 </td>
                 <td>
                     @item.TotalPrice
