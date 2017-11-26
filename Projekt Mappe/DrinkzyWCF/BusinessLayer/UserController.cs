@@ -30,6 +30,14 @@ namespace BusinessLayer
         {
             return uDb.getAllUsers();
         }
+        public void UpdateUser(User user)
+        {
+            uDb.UpdateUser(user);
+        }
+        public void DeleteUser(int UserID)
+        {
+            uDb.DeleteUser(UserID);
+        }
     }
 }
     

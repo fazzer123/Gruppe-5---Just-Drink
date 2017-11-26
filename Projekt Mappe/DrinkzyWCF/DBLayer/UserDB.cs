@@ -99,8 +99,43 @@ namespace DBLayer
             }
             return UserList;
         }
+        public void UpdateUser(User user)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Update DrinkzyUser SET UserName = @UserName, FirstName = @FirstName, LastName = @LastName, Gender = @Gender, Birthday = @Birthday, Email = @Email, Phone = @Phone WHERE id = @id";
+                    cmd.Parameters.AddWithValue("UserName", user.UserName);
+                    cmd.Parameters.AddWithValue("FirstName", user.FirstName);
+                    cmd.Parameters.AddWithValue("LastName", user.LastName);
+                    cmd.Parameters.AddWithValue("Gender", user.Gender);
+                    cmd.Parameters.AddWithValue("Birthday", user.Birthday);
+                    cmd.Parameters.AddWithValue("Password", user.Password);
+                    cmd.Parameters.AddWithValue("Email", user.Email);
+                    cmd.Parameters.AddWithValue("Phone", user.Phone);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+                public void DeleteUser(int UserID)
+                {
+                    using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                    {
+                        connection.Open();
+                        using (SqlCommand cmd = connection.CreateCommand())
+                        {
+                            cmd.CommandText = "Delete From dbo.DrinkzyUser Where id = @id";
+                            cmd.Parameters.AddWithValue("id", UserID);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+            }
+
+        }
     }
-}
+
     
 
 

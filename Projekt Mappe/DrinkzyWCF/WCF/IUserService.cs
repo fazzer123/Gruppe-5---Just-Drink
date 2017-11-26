@@ -19,5 +19,12 @@ namespace WCF
 
         [OperationContract]
         IEnumerable<User> getAllUsers();
+
+        [OperationContract]
+        void UpdateUser(User user);
+
+        [OperationContract]
+        void DeleteUser(int UserID);
+
     }
 }

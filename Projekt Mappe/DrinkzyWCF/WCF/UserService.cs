@@ -30,5 +30,15 @@ namespace WCF
         {
             return UserCtr.getAllUsers();
         }
+
+        public void UpdateUser(User user)
+        {
+            UserCtr.UpdateUser(user);
+        }
+
+        public void DeleteUser(int UserID)
+        {
+            UserCtr.DeleteUser(UserID);
+        }
     }
 }
