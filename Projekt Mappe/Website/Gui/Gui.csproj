@@ -191,6 +191,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -411,6 +412,8 @@
     <Content Include="Views\Home\FindBar.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\SearchMenucard.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\WalletDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
