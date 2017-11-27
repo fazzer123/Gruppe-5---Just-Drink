@@ -466,6 +466,12 @@ namespace WpfDrinkzy.MenuCardServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuCardService/DeleteDrinkFromMenu", ReplyAction="http://tempuri.org/IMenuCardService/DeleteDrinkFromMenuResponse")]
         System.Threading.Tasks.Task DeleteDrinkFromMenuAsync(int menuID, int drinkid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuCardService/getDrinksBySearchOnMenucard", ReplyAction="http://tempuri.org/IMenuCardService/getDrinksBySearchOnMenucardResponse")]
+        WpfDrinkzy.MenuCardServiceRef.Drink[] getDrinksBySearchOnMenucard(string search, int cusId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuCardService/getDrinksBySearchOnMenucard", ReplyAction="http://tempuri.org/IMenuCardService/getDrinksBySearchOnMenucardResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.MenuCardServiceRef.Drink[]> getDrinksBySearchOnMenucardAsync(string search, int cusId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -533,6 +539,14 @@ namespace WpfDrinkzy.MenuCardServiceRef {
         
         public System.Threading.Tasks.Task DeleteDrinkFromMenuAsync(int menuID, int drinkid) {
             return base.Channel.DeleteDrinkFromMenuAsync(menuID, drinkid);
+        }
+        
+        public WpfDrinkzy.MenuCardServiceRef.Drink[] getDrinksBySearchOnMenucard(string search, int cusId) {
+            return base.Channel.getDrinksBySearchOnMenucard(search, cusId);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.MenuCardServiceRef.Drink[]> getDrinksBySearchOnMenucardAsync(string search, int cusId) {
+            return base.Channel.getDrinksBySearchOnMenucardAsync(search, cusId);
         }
     }
 }

@@ -260,6 +260,12 @@ namespace WpfDrinkzy.DrinkServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/DeleteIngredientFromDrink", ReplyAction="http://tempuri.org/IDrinkService/DeleteIngredientFromDrinkResponse")]
         System.Threading.Tasks.Task DeleteIngredientFromDrinkAsync(int ingredientID, WpfDrinkzy.DrinkServiceRef.Drink drink);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/SearchDrinks", ReplyAction="http://tempuri.org/IDrinkService/SearchDrinksResponse")]
+        WpfDrinkzy.DrinkServiceRef.Drink[] SearchDrinks(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/SearchDrinks", ReplyAction="http://tempuri.org/IDrinkService/SearchDrinksResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -343,6 +349,14 @@ namespace WpfDrinkzy.DrinkServiceRef {
         
         public System.Threading.Tasks.Task DeleteIngredientFromDrinkAsync(int ingredientID, WpfDrinkzy.DrinkServiceRef.Drink drink) {
             return base.Channel.DeleteIngredientFromDrinkAsync(ingredientID, drink);
+        }
+        
+        public WpfDrinkzy.DrinkServiceRef.Drink[] SearchDrinks(string search) {
+            return base.Channel.SearchDrinks(search);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search) {
+            return base.Channel.SearchDrinksAsync(search);
         }
     }
 }

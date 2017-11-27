@@ -187,6 +187,12 @@ namespace WpfDrinkzy.CustomerServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/DeleteCustomer", ReplyAction="http://tempuri.org/ICustomerService/DeleteCustomerResponse")]
         System.Threading.Tasks.Task DeleteCustomerAsync(int customerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/SearchCustomer", ReplyAction="http://tempuri.org/ICustomerService/SearchCustomerResponse")]
+        WpfDrinkzy.CustomerServiceRef.Customer[] SearchCustomer(string text);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/SearchCustomer", ReplyAction="http://tempuri.org/ICustomerService/SearchCustomerResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -254,6 +260,14 @@ namespace WpfDrinkzy.CustomerServiceRef {
         
         public System.Threading.Tasks.Task DeleteCustomerAsync(int customerID) {
             return base.Channel.DeleteCustomerAsync(customerID);
+        }
+        
+        public WpfDrinkzy.CustomerServiceRef.Customer[] SearchCustomer(string text) {
+            return base.Channel.SearchCustomer(text);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text) {
+            return base.Channel.SearchCustomerAsync(text);
         }
     }
 }

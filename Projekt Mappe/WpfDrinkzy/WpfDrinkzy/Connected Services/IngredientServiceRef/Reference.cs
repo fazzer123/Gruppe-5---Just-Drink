@@ -111,6 +111,12 @@ namespace WpfDrinkzy.IngredientServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/getAllIngredients", ReplyAction="http://tempuri.org/IIngredientService/getAllIngredientsResponse")]
         System.Threading.Tasks.Task<WpfDrinkzy.IngredientServiceRef.Ingredient[]> getAllIngredientsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/SearchIngedient", ReplyAction="http://tempuri.org/IIngredientService/SearchIngedientResponse")]
+        WpfDrinkzy.IngredientServiceRef.Ingredient[] SearchIngedient(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/SearchIngedient", ReplyAction="http://tempuri.org/IIngredientService/SearchIngedientResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.IngredientServiceRef.Ingredient[]> SearchIngedientAsync(string search);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -162,6 +168,14 @@ namespace WpfDrinkzy.IngredientServiceRef {
         
         public System.Threading.Tasks.Task<WpfDrinkzy.IngredientServiceRef.Ingredient[]> getAllIngredientsAsync() {
             return base.Channel.getAllIngredientsAsync();
+        }
+        
+        public WpfDrinkzy.IngredientServiceRef.Ingredient[] SearchIngedient(string search) {
+            return base.Channel.SearchIngedient(search);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.IngredientServiceRef.Ingredient[]> SearchIngedientAsync(string search) {
+            return base.Channel.SearchIngedientAsync(search);
         }
     }
 }

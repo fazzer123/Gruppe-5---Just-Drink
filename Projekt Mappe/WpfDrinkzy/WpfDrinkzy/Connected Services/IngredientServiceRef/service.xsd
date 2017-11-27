@@ -39,4 +39,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SearchIngedient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="search" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchIngedientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="SearchIngedientResult" nillable="true" type="q4:ArrayOfIngredient" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

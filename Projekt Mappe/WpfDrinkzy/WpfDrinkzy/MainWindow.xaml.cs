@@ -34,5 +34,10 @@ namespace WpfDrinkzy
         {
             Main.Content = new CustomerPage();
         }
+
+        private void User_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new UserPage();
+        }
     }
 }
