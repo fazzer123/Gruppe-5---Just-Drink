@@ -117,6 +117,18 @@ namespace WpfDrinkzy.IngredientServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/SearchIngedient", ReplyAction="http://tempuri.org/IIngredientService/SearchIngedientResponse")]
         System.Threading.Tasks.Task<WpfDrinkzy.IngredientServiceRef.Ingredient[]> SearchIngedientAsync(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/DeleteIngredient", ReplyAction="http://tempuri.org/IIngredientService/DeleteIngredientResponse")]
+        void DeleteIngredient(int IngID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/DeleteIngredient", ReplyAction="http://tempuri.org/IIngredientService/DeleteIngredientResponse")]
+        System.Threading.Tasks.Task DeleteIngredientAsync(int IngID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/UpdateIngredient", ReplyAction="http://tempuri.org/IIngredientService/UpdateIngredientResponse")]
+        void UpdateIngredient(WpfDrinkzy.IngredientServiceRef.Ingredient ingredient);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IIngredientService/UpdateIngredient", ReplyAction="http://tempuri.org/IIngredientService/UpdateIngredientResponse")]
+        System.Threading.Tasks.Task UpdateIngredientAsync(WpfDrinkzy.IngredientServiceRef.Ingredient ingredient);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -176,6 +188,22 @@ namespace WpfDrinkzy.IngredientServiceRef {
         
         public System.Threading.Tasks.Task<WpfDrinkzy.IngredientServiceRef.Ingredient[]> SearchIngedientAsync(string search) {
             return base.Channel.SearchIngedientAsync(search);
+        }
+        
+        public void DeleteIngredient(int IngID) {
+            base.Channel.DeleteIngredient(IngID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteIngredientAsync(int IngID) {
+            return base.Channel.DeleteIngredientAsync(IngID);
+        }
+        
+        public void UpdateIngredient(WpfDrinkzy.IngredientServiceRef.Ingredient ingredient) {
+            base.Channel.UpdateIngredient(ingredient);
+        }
+        
+        public System.Threading.Tasks.Task UpdateIngredientAsync(WpfDrinkzy.IngredientServiceRef.Ingredient ingredient) {
+            return base.Channel.UpdateIngredientAsync(ingredient);
         }
     }
 }

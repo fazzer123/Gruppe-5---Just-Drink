@@ -31,6 +31,18 @@
   <wsdl:message name="IIngredientService_SearchIngedient_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchIngedientResponse" />
   </wsdl:message>
+  <wsdl:message name="IIngredientService_DeleteIngredient_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteIngredient" />
+  </wsdl:message>
+  <wsdl:message name="IIngredientService_DeleteIngredient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteIngredientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IIngredientService_UpdateIngredient_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIngredient" />
+  </wsdl:message>
+  <wsdl:message name="IIngredientService_UpdateIngredient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIngredientResponse" />
+  </wsdl:message>
   <wsdl:portType name="IIngredientService">
     <wsdl:operation name="createIngredient">
       <wsdl:input wsaw:Action="http://tempuri.org/IIngredientService/createIngredient" message="tns:IIngredientService_createIngredient_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="SearchIngedient">
       <wsdl:input wsaw:Action="http://tempuri.org/IIngredientService/SearchIngedient" message="tns:IIngredientService_SearchIngedient_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IIngredientService/SearchIngedientResponse" message="tns:IIngredientService_SearchIngedient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteIngredient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIngredientService/DeleteIngredient" message="tns:IIngredientService_DeleteIngredient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIngredientService/DeleteIngredientResponse" message="tns:IIngredientService_DeleteIngredient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIngredient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IIngredientService/UpdateIngredient" message="tns:IIngredientService_UpdateIngredient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IIngredientService/UpdateIngredientResponse" message="tns:IIngredientService_UpdateIngredient_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IIngredientService" type="tns:IIngredientService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="SearchIngedient">
       <soap:operation soapAction="http://tempuri.org/IIngredientService/SearchIngedient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteIngredient">
+      <soap:operation soapAction="http://tempuri.org/IIngredientService/DeleteIngredient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIngredient">
+      <soap:operation soapAction="http://tempuri.org/IIngredientService/UpdateIngredient" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
