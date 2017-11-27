@@ -2,7 +2,6 @@
     @using Gui.CustomerServiceRef
     @using Gui.DrinkServiceRef
 
-
 <h2>@Model.Customer.CusName</h2>
 
 <div style="color:white;">
@@ -18,6 +17,12 @@
         @foreach (Gui.MenucardServiceRef.Drink d in Model.Drinks)
         {
             <dt>
+
+            </dt>
+            <dd>
+                <img src="@Url.Content(d.Img)" alt="" height="100px" width="100px" />
+            </dd>
+            <dt>
                 Name
             </dt>
             <dd>
@@ -29,8 +34,13 @@
             <dd>
                 @d.Description
             </dd>
+            <dt>
+
+            </dt>
+            <dd>
             <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
-        }
+            </dd>
+          }
     </dl>
 </div>
 <p>

@@ -77,10 +77,10 @@
         <table class="table" style="color: white;">
             <tr>
                 <th>
-                    Name
+                    
                 </th>
                 <th>
-                    Img
+                    Name
                 </th>
                 <th>
                     Region
@@ -92,11 +92,11 @@
             @foreach (var cus in @Model.Customers)
             {
                 <tr>
-                    <th>
-                        <p>@cus.CusName</p>
+                    <th width="120px">
+                        <img src="@Url.Content(cus.Img)" alt="Image" height="100px" width="200px" />
                     </th>
                     <th>
-                        <p>@cus.Img</p>
+                        <p>@cus.CusName</p> 
                     </th>
                     <th>
                         <p>@cus.Region</p>
