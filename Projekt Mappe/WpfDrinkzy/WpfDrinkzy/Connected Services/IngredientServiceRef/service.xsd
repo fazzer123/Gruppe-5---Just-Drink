@@ -53,4 +53,28 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="DeleteIngredient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IngID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteIngredientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIngredient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="ingredient" nillable="true" type="q5:Ingredient" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIngredientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
