@@ -20,5 +20,11 @@ namespace WCF
 
         [OperationContract]
         IEnumerable<Ingredient> SearchIngedient(string search);
+
+        [OperationContract]
+        void DeleteIngredient(int IngID);
+
+        [OperationContract]
+        void UpdateIngredient(Ingredient ingredient);
     }
 }

@@ -16,6 +16,12 @@ namespace WCF
             ingCtr.createIngredient(i);
         }
 
+        public void DeleteIngredient(int IngID)
+        {
+            ingCtr.DeleteIngredient(IngID);
+        }
+        
+
         public IEnumerable<Ingredient> getAllIngredients()
         {
             return ingCtr.getAllIngredients();
@@ -29,6 +35,11 @@ namespace WCF
         public IEnumerable<Ingredient> SearchIngedient(string search)
         {
             return ingCtr.searchIngredient(search);
+        }
+
+        public void UpdateIngredient(Ingredient ingredient)
+        {
+            ingCtr.UpdateIngredient(ingredient);
         }
     }
 }

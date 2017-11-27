@@ -16,10 +16,18 @@ namespace BusinessLayer
         {
             db.CreateIngredient(i);
         }
+        public void DeleteIngredient(int IngID)
+        {
+            db.DeleteIngredient(IngID);
+        }
 
         public Ingredient GetIngredient(int id)
         {
             return db.GetIngredient(id);
+        }
+        public void UpdateIngredient(Ingredient ingredient)
+        {
+            db.UpdateIngredient(ingredient);
         }
 
         public IEnumerable<Ingredient> getAllIngredients()
