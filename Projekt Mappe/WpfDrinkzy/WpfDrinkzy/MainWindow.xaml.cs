@@ -41,7 +41,7 @@ namespace WpfDrinkzy
         }
         private void Ingredient_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new UserPage();
+            Main.Content = new IngredientPage();
         }
     }
 }

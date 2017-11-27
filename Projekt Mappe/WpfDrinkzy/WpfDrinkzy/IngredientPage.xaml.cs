@@ -24,8 +24,8 @@ namespace WpfDrinkzy
         IngredientServiceClient ingredientServiceClient = new IngredientServiceClient();
         public IngredientPage()
         {
-            fillViewList();
             InitializeComponent();
+            fillViewList();
         }
 
         public void CreateIngredient()
@@ -39,7 +39,7 @@ namespace WpfDrinkzy
         }
         public void UpdateIngredient()
         {
-            WpfDrinkzy.IngredientServiceRef.Ingredient i = new WpfDrinkzy.IngredientServiceRef.Ingredient();
+            WpfDrinkzy.IngredientServiceRef.Ingredient i = (WpfDrinkzy.IngredientServiceRef.Ingredient)IngList.SelectedItem;
 
             i.Name = txtIngName.Text;
             i.Procent = decimal.Parse(txtProcent.Text);
@@ -49,6 +49,7 @@ namespace WpfDrinkzy
         public void DeleteIngredient()
         {
             WpfDrinkzy.IngredientServiceRef.Ingredient i = (WpfDrinkzy.IngredientServiceRef.Ingredient)IngList.SelectedItem;
+            ingredientServiceClient.DeleteIngredient(i.ID);
         }
 
         public void fillViewList()
@@ -63,7 +64,7 @@ namespace WpfDrinkzy
             {
 
                 txtIngName.Text = ingredient.Name;
-                txtProcent.Text = Convert.ToString(ingredient.Procent);
+                txtProcent.Text = ingredient.Procent.ToString();
 
             }
         }
