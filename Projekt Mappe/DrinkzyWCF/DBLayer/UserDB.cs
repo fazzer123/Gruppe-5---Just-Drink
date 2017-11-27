@@ -20,14 +20,14 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.DrinkzyUser(UserName, FirstName, LastName, Gender, Birthday, Password, Email, Phone ) values(@UserName, @FirstName, @LastName, @Gender, @Birthday, @Password, @Email, @Phone)";
+                    cmd.CommandText = "Insert Into dbo.DrinkzyUser(UserName, FirstName, LastName, Gender, Birthday, userPassword, Email, Phone ) values(@UserName, @FirstName, @LastName, @Gender, @Birthday, @userPassword, @Email, @Phone)";
                     //cmd.Parameters.AddWithValue("id", entity.Id);
                     cmd.Parameters.AddWithValue("UserName", user.UserName);
                     cmd.Parameters.AddWithValue("FirstName", user.FirstName);
                     cmd.Parameters.AddWithValue("LastName", user.LastName);
                     cmd.Parameters.AddWithValue("Gender", user.Gender);
                     cmd.Parameters.AddWithValue("Birthday", user.Birthday);
-                    cmd.Parameters.AddWithValue("Password", user.Password);
+                    cmd.Parameters.AddWithValue("userPassword", user.Password);
                     cmd.Parameters.AddWithValue("Email", user.Email);
                     cmd.Parameters.AddWithValue("Phone", user.Phone);
                     cmd.ExecuteNonQuery();
@@ -82,6 +82,7 @@ namespace DBLayer
                     {
                         User u = new User
                         {
+                            ID = (int)Reader["id"],
                             UserName = (string)Reader["UserName"],
                             FirstName = (string)Reader["FirstName"],
                             LastName = (string)Reader["LastName"],
@@ -106,15 +107,16 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Update DrinkzyUser SET UserName = @UserName, FirstName = @FirstName, LastName = @LastName, Gender = @Gender, Birthday = @Birthday, Email = @Email, Phone = @Phone WHERE id = @id";
-                    cmd.Parameters.AddWithValue("UserName", user.UserName);
-                    cmd.Parameters.AddWithValue("FirstName", user.FirstName);
-                    cmd.Parameters.AddWithValue("LastName", user.LastName);
-                    cmd.Parameters.AddWithValue("Gender", user.Gender);
-                    cmd.Parameters.AddWithValue("Birthday", user.Birthday);
-                    cmd.Parameters.AddWithValue("Password", user.Password);
-                    cmd.Parameters.AddWithValue("Email", user.Email);
-                    cmd.Parameters.AddWithValue("Phone", user.Phone);
+                    cmd.CommandText = "Update DrinkzyUser SET userName =@userName, firstName = @firstName, lastName = @lastName, gender = @gender, birthday = @birthday, userPassword = @userPassword, email = @email, phone = @phone WHERE id = @id";
+                    cmd.Parameters.AddWithValue("id", user.ID);
+                    cmd.Parameters.AddWithValue("userName", user.UserName);
+                    cmd.Parameters.AddWithValue("firstName", user.FirstName);
+                    cmd.Parameters.AddWithValue("lastName", user.LastName);
+                    cmd.Parameters.AddWithValue("gender", user.Gender);
+                    cmd.Parameters.AddWithValue("birthday", user.Birthday);
+                    cmd.Parameters.AddWithValue("userPassword", user.Password);
+                    cmd.Parameters.AddWithValue("email", user.Email);
+                    cmd.Parameters.AddWithValue("phone", user.Phone);
                     cmd.ExecuteNonQuery();
                 }
             }

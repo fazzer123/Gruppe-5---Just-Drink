@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfDrinkzy.UserServiceRef;
+
 namespace WpfDrinkzy
 {
     /// <summary>
@@ -31,34 +32,35 @@ namespace WpfDrinkzy
             WpfDrinkzy.UserServiceRef.User u = new WpfDrinkzy.UserServiceRef.User();
             DateTime btext = DateTime.Parse(birthText.Text);
 
-            {
-                u.UserName = UserText.Text;
-                u.Password = PassText.Text;
-                u.FirstName = FirstnText.Text;
-                u.LastName = LastnText.Text;
-                u.Gender = GenderText.Text;
-                u.Birthday = btext;
-                u.Email = mailText.Text;
-                u.Phone = phoneText.Text;
-            }
+            u.UserName = UserText.Text;
+            u.Password = PassText.Text;
+            u.FirstName = FirstnText.Text;
+            u.LastName = LastnText.Text;
+            u.Gender = GenderText.Text;
+            u.Birthday = btext;
+            u.Email = mailText.Text;
+            u.Phone = phoneText.Text;
+
             UserClient.CreateUser(u);
         }
+
         public void UpdateUser()
         {
-            WpfDrinkzy.UserServiceRef.User u = new WpfDrinkzy.UserServiceRef.User();
-            DateTime btext = DateTime.Parse(birthText.Text);
-            {
-                u.UserName = UserText.Text;
-                u.Password = PassText.Text;
-                u.FirstName = FirstnText.Text;
-                u.LastName = LastnText.Text;
-                u.Gender = GenderText.Text;
-                u.Birthday = btext;
-                u.Email = mailText.Text;
-                u.Phone = phoneText.Text;
-            }
+            WpfDrinkzy.UserServiceRef.User u = (WpfDrinkzy.UserServiceRef.User)UserList.SelectedItem;
+            //DateTime btext = DateTime.Parse(birthText.Text);
+
+            u.UserName = UserText.Text;
+            u.Password = PassText.Text;
+            u.FirstName = FirstnText.Text;
+            u.LastName = LastnText.Text;
+            u.Gender = GenderText.Text;
+            u.Birthday = Convert.ToDateTime(birthText.Text);
+            u.Email = mailText.Text;
+            u.Phone = phoneText.Text;
+
             UserClient.UpdateUser(u);
         }
+
         public void DeleteUser()
         {
             WpfDrinkzy.UserServiceRef.User u = (WpfDrinkzy.UserServiceRef.User)UserList.SelectedItem;
@@ -92,14 +94,18 @@ namespace WpfDrinkzy
         public void Details(User user)
         {
             if (user != null)
-
             {
-                UserList.ItemsSource = UserClient.GetUser(user.ID).UserName;
-                UserList.ItemsSource = UserClient.GetUser(user.ID).FirstName;
-                UserList.ItemsSource = UserClient.GetUser(user.ID).LastName;
+                //UserList.ItemsSource = UserClient.GetUser(user.ID).UserName;
+                //UserList.ItemsSource = UserClient.GetUser(user.ID).FirstName;
+                //UserList.ItemsSource = UserClient.GetUser(user.ID).LastName;
                 UserText.Text = user.UserName;
+                PassText.Text = user.Password;
                 FirstnText.Text = user.FirstName;
                 LastnText.Text = user.LastName;
+                GenderText.Text = user.Gender;
+                birthText.Text = user.Birthday.ToString();
+                mailText.Text = user.Email;
+                phoneText.Text = user.Phone;
             }
         }
     

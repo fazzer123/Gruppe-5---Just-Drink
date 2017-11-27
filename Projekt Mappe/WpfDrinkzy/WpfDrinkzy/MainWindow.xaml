@@ -8,9 +8,9 @@
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <Frame x:Name="Main" Margin="0,35,0,0" Background="Gray" NavigationUIVisibility="Hidden"/>
-        <Button Content="Drink" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="130" Click="btnDrink" Height="35" Margin="0,0,0,534"/>
-        <Button Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="35" Margin="135,0,0,0" Click="Customer_click"/>
-        <Button Content="User" HorizontalAlignment="Left" Margin="270,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="User_Click"/>
+        <Button Content="Drink" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="130" Click="btnDrink" Height="35" Margin="10,0,0,526"/>
+        <Button Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="35" Margin="145,0,0,0" Click="Customer_click"/>
+        <Button Content="User" HorizontalAlignment="Left" Margin="280,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="User_Click"/>
 
     </Grid>
 </Window>
