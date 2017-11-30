@@ -13,9 +13,11 @@ namespace WCF
 {
     public class MyPasswordValidator : UserNamePasswordValidator
     {
+        UserController uCtr = new UserController();
         public override void Validate(string userName, string password)
         {
-            if (userName == "SuperStudent" && password == "1234")
+            User user = uCtr.GetUserByUserName(userName, password);
+            if (user != null)
             {
 
             }

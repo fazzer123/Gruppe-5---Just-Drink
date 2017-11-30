@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using Gui.UserServiceRef;
 using Gui.WalletServiceRef;
+using Gui.AuthServiceRef;
+using Gui.ServiceSecurityRef;
+using System.Net;
 
 namespace Gui.Controllers
 {
@@ -12,10 +15,23 @@ namespace Gui.Controllers
     {
         UserServiceClient UserClient = new UserServiceClient();
         WalletServiceClient WalletClient = new WalletServiceClient();
+
         // GET: User
         public ActionResult Index()
         {
-            return View(UserClient.GetUser(1));
+            int id = 0;
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            AuthServiceClient authClient = new AuthServiceClient();
+            var isLoggedIn = authClient.Login("TheFirst", "hemeligt");
+            if (isLoggedIn)
+            {
+                SecurityServiceClient client = new SecurityServiceClient("WSHttpBinding_ISecurityService");
+                client.ClientCredentials.UserName.UserName = "TheFirst";
+                client.ClientCredentials.UserName.Password = "hemeligt";
+                var data = client.GetData(1337);
+                id = 1;
+            }
+            return View(UserClient.GetUser(id));
         }
 
         public ActionResult WalletDetails(int id)
