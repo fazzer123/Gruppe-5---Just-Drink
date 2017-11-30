@@ -38,6 +38,11 @@ namespace BusinessLayer
         {
             uDb.DeleteUser(UserID);
         }
+
+        public bool Login(string username, string password)
+        {
+            return uDb.Login(username, password);
+        }
     }
 }
     

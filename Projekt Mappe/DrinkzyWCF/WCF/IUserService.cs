@@ -26,5 +26,8 @@ namespace WCF
         [OperationContract]
         void DeleteUser(int UserID);
 
+        [OperationContract]
+        bool Login(string username, string password);
+
     }
 }
