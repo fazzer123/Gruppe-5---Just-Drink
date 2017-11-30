@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gui.CustomerServiceRef;
+using Gui.ServiceSecurityRef;
+using Gui.AuthServiceRef;
+using System.Net;
 
 namespace Gui.Controllers
 {
@@ -11,8 +14,20 @@ namespace Gui.Controllers
     {
         CustomerServiceClient client = new CustomerServiceClient();
 
+        //ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+       
         public ActionResult Index()
         {
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            AuthServiceClient authClient = new AuthServiceClient();
+            var isLoggedIn = authClient.Login("SuperStudent", "1234");
+            if (isLoggedIn)
+            {
+                SecurityServiceClient client = new SecurityServiceClient("WSHttpBinding_ISecurityService");
+                client.ClientCredentials.UserName.UserName = "SuperStudent";
+                client.ClientCredentials.UserName.Password = "1234";
+                var data = client.GetData(1337);
+            }
             return View();
         }
 

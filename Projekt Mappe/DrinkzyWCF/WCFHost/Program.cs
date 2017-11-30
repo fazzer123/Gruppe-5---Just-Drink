@@ -12,12 +12,19 @@ namespace WCFHost
     {
         static void Main(string[] args)
         {
-            using (ServiceHost host = new ServiceHost(typeof(SecurityService)))
-            {
-                host.Open();
+            ServiceHost host = new ServiceHost(typeof(SecurityService));
+            ServiceHost userHost = new ServiceHost(typeof(UserService));
+            ServiceHost authhost = new ServiceHost(typeof(AuthService));
+
+            host.Open();
+            userHost.Open();
+            authhost.Open();
                 Console.WriteLine("Hosting the service...");
                 Console.ReadLine();
-            }
+            host.Close();
+            userHost.Close();
+            authhost.Close();
+
         }
     }
 }

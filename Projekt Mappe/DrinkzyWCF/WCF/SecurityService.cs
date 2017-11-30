@@ -16,7 +16,6 @@ namespace WCF
         {
             UserController = new UserController();
         }
-
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public string GetData(int value)
         {

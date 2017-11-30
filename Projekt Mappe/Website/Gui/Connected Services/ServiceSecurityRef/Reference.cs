@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gui.SecurityServiceRef {
+namespace Gui.ServiceSecurityRef {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SecurityServiceRef.ISecurityService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceSecurityRef.ISecurityService")]
     public interface ISecurityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISecurityService/GetData", ReplyAction="http://tempuri.org/ISecurityService/GetDataResponse")]
@@ -23,12 +23,12 @@ namespace Gui.SecurityServiceRef {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ISecurityServiceChannel : Gui.SecurityServiceRef.ISecurityService, System.ServiceModel.IClientChannel {
+    public interface ISecurityServiceChannel : Gui.ServiceSecurityRef.ISecurityService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class SecurityServiceClient : System.ServiceModel.ClientBase<Gui.SecurityServiceRef.ISecurityService>, Gui.SecurityServiceRef.ISecurityService {
+    public partial class SecurityServiceClient : System.ServiceModel.ClientBase<Gui.ServiceSecurityRef.ISecurityService>, Gui.ServiceSecurityRef.ISecurityService {
         
         public SecurityServiceClient() {
         }
