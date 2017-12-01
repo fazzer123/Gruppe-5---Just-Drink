@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gui.CustomerServiceRef;
+using Gui.ServiceSecurityRef;
+using Gui.AuthServiceRef;
+using System.Net;
 
 namespace Gui.Controllers
 {
@@ -11,6 +14,8 @@ namespace Gui.Controllers
     {
         CustomerServiceClient client = new CustomerServiceClient();
 
+        //ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+       
         public ActionResult Index()
         {
             return View();

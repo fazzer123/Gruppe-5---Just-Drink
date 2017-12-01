@@ -70,6 +70,7 @@ namespace DBLayer
             }
             return user;
         }
+
         public IEnumerable<User> getAllUsers()
         {
             List<User> UserList = new List<User>();

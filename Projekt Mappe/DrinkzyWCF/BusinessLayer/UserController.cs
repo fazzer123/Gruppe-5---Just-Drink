@@ -39,6 +39,29 @@ namespace BusinessLayer
             uDb.DeleteUser(UserID);
         }
 
+        public User GetUserByUserName(string username, string password)
+        {
+            IEnumerable<User> users = new List<User>();
+            users = uDb.getAllUsers();
+            Boolean found = false;
+            User user = null;
+            int t = 0;
+
+            while (!found)
+            {
+                for(int i = 0 ; i < users.Count(); i++)
+                {
+                    if(users.ElementAt(i).UserName == username && users.ElementAt(i).Password == password)
+                    {
+                        user = users.ElementAt(i);
+                        found = true;
+                    }
+                }
+                found = true;
+            }
+            return user;
+        }
+
         public bool Login(string username, string password)
         {
             return uDb.Login(username, password);

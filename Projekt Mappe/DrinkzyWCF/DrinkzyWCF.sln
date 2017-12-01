@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLayer", "ModelLayer\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLayer", "DBLayer\DBLayer.csproj", "{D31EA59A-0481-40F0-9173-7926FCA707B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFHost", "WCFHost\WCFHost.csproj", "{FEC84204-8EEC-4871-A905-2131259802C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D31EA59A-0481-40F0-9173-7926FCA707B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D31EA59A-0481-40F0-9173-7926FCA707B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D31EA59A-0481-40F0-9173-7926FCA707B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC84204-8EEC-4871-A905-2131259802C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC84204-8EEC-4871-A905-2131259802C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC84204-8EEC-4871-A905-2131259802C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC84204-8EEC-4871-A905-2131259802C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

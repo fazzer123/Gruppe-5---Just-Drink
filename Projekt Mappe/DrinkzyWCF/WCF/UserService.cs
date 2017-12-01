@@ -26,6 +26,11 @@ namespace WCF
             return UserCtr.GetUser(id);
         }
 
+        public User GetUserByUserName(string username, string password)
+        {
+            return UserCtr.GetUserByUserName(username, password);
+        }
+
         public IEnumerable<User> getAllUsers()
         {
             return UserCtr.getAllUsers();
