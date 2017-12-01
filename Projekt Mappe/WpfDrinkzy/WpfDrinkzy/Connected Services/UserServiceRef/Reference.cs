@@ -202,6 +202,12 @@ namespace WpfDrinkzy.UserServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
         System.Threading.Tasks.Task<WpfDrinkzy.UserServiceRef.User> GetUserAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
+        WpfDrinkzy.UserServiceRef.User GetUserByUserName(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.UserServiceRef.User> GetUserByUserNameAsync(string username, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getAllUsers", ReplyAction="http://tempuri.org/IUserService/getAllUsersResponse")]
         WpfDrinkzy.UserServiceRef.User[] getAllUsers();
         
@@ -219,6 +225,18 @@ namespace WpfDrinkzy.UserServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
         System.Threading.Tasks.Task DeleteUserAsync(int UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Login", ReplyAction="http://tempuri.org/IUserService/LoginResponse")]
+        bool Login(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Login", ReplyAction="http://tempuri.org/IUserService/LoginResponse")]
+        System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/createWalletAndFavorites", ReplyAction="http://tempuri.org/IUserService/createWalletAndFavoritesResponse")]
+        void createWalletAndFavorites(int userid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/createWalletAndFavorites", ReplyAction="http://tempuri.org/IUserService/createWalletAndFavoritesResponse")]
+        System.Threading.Tasks.Task createWalletAndFavoritesAsync(int userid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -264,6 +282,14 @@ namespace WpfDrinkzy.UserServiceRef {
             return base.Channel.GetUserAsync(id);
         }
         
+        public WpfDrinkzy.UserServiceRef.User GetUserByUserName(string username, string password) {
+            return base.Channel.GetUserByUserName(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.UserServiceRef.User> GetUserByUserNameAsync(string username, string password) {
+            return base.Channel.GetUserByUserNameAsync(username, password);
+        }
+        
         public WpfDrinkzy.UserServiceRef.User[] getAllUsers() {
             return base.Channel.getAllUsers();
         }
@@ -286,6 +312,22 @@ namespace WpfDrinkzy.UserServiceRef {
         
         public System.Threading.Tasks.Task DeleteUserAsync(int UserID) {
             return base.Channel.DeleteUserAsync(UserID);
+        }
+        
+        public bool Login(string username, string password) {
+            return base.Channel.Login(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginAsync(string username, string password) {
+            return base.Channel.LoginAsync(username, password);
+        }
+        
+        public void createWalletAndFavorites(int userid) {
+            base.Channel.createWalletAndFavorites(userid);
+        }
+        
+        public System.Threading.Tasks.Task createWalletAndFavoritesAsync(int userid) {
+            return base.Channel.createWalletAndFavoritesAsync(userid);
         }
     }
 }

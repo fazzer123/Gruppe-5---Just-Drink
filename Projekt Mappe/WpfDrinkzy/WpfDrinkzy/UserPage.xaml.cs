@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfDrinkzy.UserServiceRef;
+using WpfDrinkzy.DrinkServiceRef;
+using WpfDrinkzy.FavoritesServiceRef;
 
 namespace WpfDrinkzy
 {
@@ -22,6 +24,9 @@ namespace WpfDrinkzy
     public partial class UserPage : Page
     {
         UserServiceClient UserClient = new UserServiceClient();
+        DrinkServiceClient DrinkClient = new DrinkServiceClient();
+        FavoritesServiceClient FavoriteClient = new FavoritesServiceClient();
+
         public UserPage()
         {
             InitializeComponent();
@@ -72,6 +77,8 @@ namespace WpfDrinkzy
             UserList.ItemsSource = null;
             UserList.ItemsSource = UserClient.getAllUsers();
 
+            DrinkList.ItemsSource = null;
+            DrinkList.ItemsSource = DrinkClient.getAllDrinks();
         }
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
@@ -91,7 +98,7 @@ namespace WpfDrinkzy
             DeleteUser();
             fillViewList();
         }
-        public void Details(User user)
+        public void Details(WpfDrinkzy.UserServiceRef.User user)
         {
             if (user != null)
             {
@@ -106,17 +113,22 @@ namespace WpfDrinkzy
                 birthText.Text = user.Birthday.ToString();
                 mailText.Text = user.Email;
                 phoneText.Text = user.Phone;
+
+                UserClient.createWalletAndFavorites(user.ID);
             }
         }
     
         public void Changer(object sender, SelectionChangedEventArgs e)
         {
-            User u = (User)UserList.SelectedItem;
+            WpfDrinkzy.UserServiceRef.User u = (WpfDrinkzy.UserServiceRef.User)UserList.SelectedItem;
             Details(u);
             
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FavoriteClient.addDrink((WpfDrinkzy.FavoritesServiceRef.User)UserList.SelectedItem, (WpfDrinkzy.FavoritesServiceRef.Drink)DrinkList.SelectedItem);
+        }
     }
 }
-        
-
