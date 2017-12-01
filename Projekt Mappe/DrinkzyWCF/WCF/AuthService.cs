@@ -13,14 +13,9 @@ namespace WCF
         UserController uCtr = new UserController();
         public bool Login(string username, string password)
         {
-            User user = uCtr.GetUserByUserName(username, password);
-            Boolean auth;
-            if (user != null)
-            {
-                auth = true;
-            }
-            else { auth = false; }
-            return auth;
+            Boolean found = uCtr.Login(username, password);
+
+            return found;
         }
     }
 }

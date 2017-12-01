@@ -16,8 +16,8 @@ namespace WCF
         UserController uCtr = new UserController();
         public override void Validate(string userName, string password)
         {
-            User user = uCtr.GetUserByUserName(userName, password);
-            if (user != null)
+           Boolean found = uCtr.Login(userName, password);
+            if (found == true)
             {
 
             }

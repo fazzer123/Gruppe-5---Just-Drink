@@ -22,5 +22,8 @@ namespace WCF
 
         [OperationContract]
         void UpdateBalanceByUserId(decimal Balance, int userID);
+
+        [OperationContract]
+        User GetUserById(int id);
     }
 }

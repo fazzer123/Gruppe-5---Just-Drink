@@ -346,6 +346,9 @@
     <Content Include="Connected Services\WalletServiceRef\Gui.WalletServiceRef.Wallet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\WalletServiceRef\Gui.WalletServiceRef.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\WalletServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
