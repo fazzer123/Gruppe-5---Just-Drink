@@ -202,11 +202,35 @@ namespace Gui.UserServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
         System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
+        Gui.UserServiceRef.User GetUserByUserName(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
+        System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getAllUsers", ReplyAction="http://tempuri.org/IUserService/getAllUsersResponse")]
         Gui.UserServiceRef.User[] getAllUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getAllUsers", ReplyAction="http://tempuri.org/IUserService/getAllUsersResponse")]
         System.Threading.Tasks.Task<Gui.UserServiceRef.User[]> getAllUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        void UpdateUser(Gui.UserServiceRef.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        System.Threading.Tasks.Task UpdateUserAsync(Gui.UserServiceRef.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        void DeleteUser(int UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        System.Threading.Tasks.Task DeleteUserAsync(int UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Login", ReplyAction="http://tempuri.org/IUserService/LoginResponse")]
+        bool Login(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Login", ReplyAction="http://tempuri.org/IUserService/LoginResponse")]
+        System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -252,12 +276,44 @@ namespace Gui.UserServiceRef {
             return base.Channel.GetUserAsync(id);
         }
         
+        public Gui.UserServiceRef.User GetUserByUserName(string username, string password) {
+            return base.Channel.GetUserByUserName(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username, string password) {
+            return base.Channel.GetUserByUserNameAsync(username, password);
+        }
+        
         public Gui.UserServiceRef.User[] getAllUsers() {
             return base.Channel.getAllUsers();
         }
         
         public System.Threading.Tasks.Task<Gui.UserServiceRef.User[]> getAllUsersAsync() {
             return base.Channel.getAllUsersAsync();
+        }
+        
+        public void UpdateUser(Gui.UserServiceRef.User user) {
+            base.Channel.UpdateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task UpdateUserAsync(Gui.UserServiceRef.User user) {
+            return base.Channel.UpdateUserAsync(user);
+        }
+        
+        public void DeleteUser(int UserID) {
+            base.Channel.DeleteUser(UserID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteUserAsync(int UserID) {
+            return base.Channel.DeleteUserAsync(UserID);
+        }
+        
+        public bool Login(string username, string password) {
+            return base.Channel.Login(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginAsync(string username, string password) {
+            return base.Channel.LoginAsync(username, password);
         }
     }
 }

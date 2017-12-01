@@ -47,5 +47,12 @@ namespace Gui.Controllers
 
             return View();
         }
+        
+
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Register page";
+            return View();
+        }
     }
 }
