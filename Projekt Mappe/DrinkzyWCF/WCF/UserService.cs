@@ -45,5 +45,10 @@ namespace WCF
         {
             UserCtr.DeleteUser(UserID);
         }
+
+        public bool Login(string username, string password)
+        {
+            return UserCtr.Login(username, password);
+        }
     }
 }

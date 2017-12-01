@@ -20,14 +20,18 @@ namespace DBLayer
                 connection.Open();
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "Insert Into dbo.DrinkzyUser(UserName, FirstName, LastName, Gender, Birthday, userPassword, Email, Phone ) values(@UserName, @FirstName, @LastName, @Gender, @Birthday, @userPassword, @Email, @Phone)";
+                    var salt = HashingHelper.GenerateSalt();
+                    string saltedHash = HashingHelper.HashPassword(user.Password, salt);
+
+                    cmd.CommandText = "Insert Into dbo.DrinkzyUser(UserName, FirstName, LastName, Gender, Birthday, userPassword, Salt, Email, Phone ) values(@UserName, @FirstName, @LastName, @Gender, @Birthday, @userPassword, @Salt, @Email, @Phone)";
                     //cmd.Parameters.AddWithValue("id", entity.Id);
                     cmd.Parameters.AddWithValue("UserName", user.UserName);
                     cmd.Parameters.AddWithValue("FirstName", user.FirstName);
                     cmd.Parameters.AddWithValue("LastName", user.LastName);
                     cmd.Parameters.AddWithValue("Gender", user.Gender);
                     cmd.Parameters.AddWithValue("Birthday", user.Birthday);
-                    cmd.Parameters.AddWithValue("userPassword", user.Password);
+                    cmd.Parameters.AddWithValue("userPassword", saltedHash);
+                    cmd.Parameters.AddWithValue("salt", salt);
                     cmd.Parameters.AddWithValue("Email", user.Email);
                     cmd.Parameters.AddWithValue("Phone", user.Phone);
                     cmd.ExecuteNonQuery();
@@ -122,22 +126,49 @@ namespace DBLayer
                 }
             }
         }
-                public void DeleteUser(int UserID)
+        public void DeleteUser(int UserID)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                    cmd.CommandText = "Delete From dbo.DrinkzyUser Where id = @id";
+                    cmd.Parameters.AddWithValue("id", UserID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool Login(string username, string password)
+        {
+            bool loggedIn = false;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    string sql = "SELECT * FROM DrinkzyUser WHERE userName=@userName";
+                    cmd.Parameters.AddWithValue("userName", username);
+
+                    cmd.CommandText = sql;
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
                     {
-                        connection.Open();
-                        using (SqlCommand cmd = connection.CreateCommand())
+                        string currentSalt = rdr.GetString(rdr.GetOrdinal("Salt"));
+                        string currentSaltedHash = rdr.GetString(rdr.GetOrdinal("userPassword"));
+                        if (HashingHelper.CheckPassword(password, currentSalt, currentSaltedHash))
                         {
-                            cmd.CommandText = "Delete From dbo.DrinkzyUser Where id = @id";
-                            cmd.Parameters.AddWithValue("id", UserID);
-                            cmd.ExecuteNonQuery();
+                            loggedIn = true;
                         }
                     }
+                }
             }
-
+            return loggedIn;
         }
     }
+}
 
     
 

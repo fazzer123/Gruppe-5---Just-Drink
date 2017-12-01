@@ -61,6 +61,11 @@ namespace BusinessLayer
             }
             return user;
         }
+
+        public bool Login(string username, string password)
+        {
+            return uDb.Login(username, password);
+        }
     }
 }
     
