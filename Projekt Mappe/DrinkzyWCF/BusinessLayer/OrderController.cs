@@ -35,6 +35,19 @@ namespace BusinessLayer
             return oDb.GetAllOrders();
         }
 
+        public IEnumerable<Order> GetOrdersByUserID(int userID)
+        {
+            List<Order> userOrders = new List<Order>();
+            foreach(var order in oDb.GetAllOrders())
+            {
+                if(order.User.ID == userID)
+                {
+                    userOrders.Add(order);
+                }
+            }
+            return userOrders;
+        }
+
         public void CompleteOrder(Order order)
         {
             oDb.CompleteOrder(order);

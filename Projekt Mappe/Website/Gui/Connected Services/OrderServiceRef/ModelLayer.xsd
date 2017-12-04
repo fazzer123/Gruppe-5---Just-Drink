@@ -69,6 +69,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Birthday" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoritesDrinks" nillable="true" type="tns:ArrayOfDrink" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
@@ -79,6 +80,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfDrink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Drink" nillable="true" type="tns:Drink" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDrink" nillable="true" type="tns:ArrayOfDrink" />
   <xs:complexType name="ArrayOfOrder">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />

@@ -31,7 +31,7 @@ namespace Gui.Controllers
             public ActionResult Create(User user)
             {
                 client.CreateUser(user);
-            return View();
+            return RedirectToAction("Index", "Home");
             }
         }
 

@@ -327,6 +327,9 @@ namespace Gui.OrderServiceRef {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.OrderServiceRef.Drink[] FavoritesDrinksField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -379,6 +382,19 @@ namespace Gui.OrderServiceRef {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.OrderServiceRef.Drink[] FavoritesDrinks {
+            get {
+                return this.FavoritesDrinksField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FavoritesDrinksField, value) != true)) {
+                    this.FavoritesDrinksField = value;
+                    this.RaisePropertyChanged("FavoritesDrinks");
                 }
             }
         }
@@ -801,6 +817,12 @@ namespace Gui.OrderServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetAllOrders", ReplyAction="http://tempuri.org/IOrderService/GetAllOrdersResponse")]
         System.Threading.Tasks.Task<Gui.OrderServiceRef.Order[]> GetAllOrdersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrdersByUserId", ReplyAction="http://tempuri.org/IOrderService/GetOrdersByUserIdResponse")]
+        Gui.OrderServiceRef.Order[] GetOrdersByUserId(int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrdersByUserId", ReplyAction="http://tempuri.org/IOrderService/GetOrdersByUserIdResponse")]
+        System.Threading.Tasks.Task<Gui.OrderServiceRef.Order[]> GetOrdersByUserIdAsync(int userID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/CompleteOrder", ReplyAction="http://tempuri.org/IOrderService/CompleteOrderResponse")]
         void CompleteOrder(Gui.OrderServiceRef.Order order);
         
@@ -887,6 +909,14 @@ namespace Gui.OrderServiceRef {
         
         public System.Threading.Tasks.Task<Gui.OrderServiceRef.Order[]> GetAllOrdersAsync() {
             return base.Channel.GetAllOrdersAsync();
+        }
+        
+        public Gui.OrderServiceRef.Order[] GetOrdersByUserId(int userID) {
+            return base.Channel.GetOrdersByUserId(userID);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderServiceRef.Order[]> GetOrdersByUserIdAsync(int userID) {
+            return base.Channel.GetOrdersByUserIdAsync(userID);
         }
         
         public void CompleteOrder(Gui.OrderServiceRef.Order order) {

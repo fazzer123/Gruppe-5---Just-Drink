@@ -21,6 +21,11 @@ namespace WCF
             return oCtr.getAllOrders();
         }
 
+        public IEnumerable<Order> GetOrdersByUserId(int userID)
+        {
+            return oCtr.GetOrdersByUserID(userID);
+        }
+
         public Order GetOrder(int ID)
         {
             return oCtr.GetOrder(ID);

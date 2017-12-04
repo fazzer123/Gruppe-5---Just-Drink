@@ -25,6 +25,12 @@
   <wsdl:message name="IOrderService_GetAllOrders_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllOrdersResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrdersByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersByUserId" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrdersByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersByUserIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrderService_CompleteOrder_InputMessage">
     <wsdl:part name="parameters" element="tns:CompleteOrder" />
   </wsdl:message>
@@ -74,6 +80,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetAllOrders" message="tns:IOrderService_GetAllOrders_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetAllOrdersResponse" message="tns:IOrderService_GetAllOrders_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetOrdersByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrdersByUserId" message="tns:IOrderService_GetOrdersByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrdersByUserIdResponse" message="tns:IOrderService_GetOrdersByUserId_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CompleteOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/CompleteOrder" message="tns:IOrderService_CompleteOrder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/CompleteOrderResponse" message="tns:IOrderService_CompleteOrder_OutputMessage" />
@@ -121,6 +131,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllOrders">
       <soap:operation soapAction="http://tempuri.org/IOrderService/GetAllOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersByUserId">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetOrdersByUserId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,60 +1,64 @@
-﻿@model Gui.UserServiceRef.User
+﻿@model dynamic
+    @using Gui.OrderServiceRef;
+    @using Gui.UserServiceRef;
 
-<h2>@Html.DisplayFor(model => model.UserName)</h2>
+<h1>Username: @Model.User.UserName</h1>
 
 <div style="color: white;">
-    <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Firstname
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Model.User.FirstName
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            Lastname
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Birthday)
+            @Model.User.LastName
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Birthday
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Model.User.Birthday
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Phone)
+            Email
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Phone)
+            @Model.User.Email
+        </dd>
+
+        <dt>
+            Phone
+        </dt>
+
+        <dd>
+            @Model.User.Phone
         </dd>
         
         <dt>
-            @Html.DisplayNameFor(model => model.Gender)
+            Gender
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Gender)
+            @Model.User.Gender
         </dd>
     </dl>
+    <p>
+        <input id="btnDetails" type="button" value="Digital Tegnebog" onclick="location.href='@Url.Action("WalletDetails", new { id = Model.User.ID })'" />
+    </p>
     <h2>Favoritter</h2>
-    @foreach(var drink in Model.FavoritesDrinks)
+    @foreach(var drink in Model.User.FavoritesDrinks)
     {
         <table>
             <tr>
@@ -68,6 +72,32 @@
         </table>
     }
 </div>
-<p>
-    <input id="btnDetails" type="button" value="Digital Tegnebog" onclick="location.href='@Url.Action("WalletDetails", new { id = Model.ID })'" />
-</p>
+<div style="color:white;">
+    <h2>Orders</h2>
+    <table>
+        @foreach(var order in @Model.Order)
+        {
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                     Total Price
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @order.Date
+                </td>
+               
+                <td>
+                    @order.TotalPrice
+                </td>
+                <td>
+                    <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Order", new { id = @order.ID })'" />
+                    <input id="btnDelete" type="button" value="Delete" onclick="location.href='@Url.Action("DeleteOrder", "Order", new { ID = @order.ID })'" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>

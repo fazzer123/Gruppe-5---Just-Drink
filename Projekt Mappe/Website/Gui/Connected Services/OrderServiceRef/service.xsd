@@ -39,10 +39,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetOrdersByUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrdersByUserIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetOrdersByUserIdResult" nillable="true" type="q4:ArrayOfOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CompleteOrder">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="order" nillable="true" type="q4:Order" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="order" nillable="true" type="q5:Order" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,7 +75,7 @@
   <xs:element name="GetOrderByStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetOrderByStatusResult" nillable="true" type="q5:Order" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetOrderByStatusResult" nillable="true" type="q6:Order" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -75,7 +89,7 @@
   <xs:element name="GetUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetUserResult" nillable="true" type="q6:User" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetUserResult" nillable="true" type="q7:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -89,7 +103,7 @@
   <xs:element name="GetCustomerResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetCustomerResult" nillable="true" type="q7:Customer" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetCustomerResult" nillable="true" type="q8:Customer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -108,7 +122,7 @@
   <xs:element name="UpdatePrice">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="order" nillable="true" type="q8:Order" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="order" nillable="true" type="q9:Order" />
         <xs:element minOccurs="0" name="price" type="xs:decimal" />
       </xs:sequence>
     </xs:complexType>

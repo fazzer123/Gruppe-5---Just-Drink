@@ -7,7 +7,9 @@ using Gui.UserServiceRef;
 using Gui.WalletServiceRef;
 using Gui.AuthServiceRef;
 using Gui.ServiceSecurityRef;
+using Gui.OrderServiceRef;
 using System.Net;
+using System.Dynamic;
 
 namespace Gui.Controllers
 {
@@ -15,6 +17,7 @@ namespace Gui.Controllers
     {
         UserServiceClient UserClient = new UserServiceClient();
         WalletServiceClient WalletClient = new WalletServiceClient();
+        OrderServiceClient OrderClient = new OrderServiceClient();
 
         // GET: User
         public ActionResult Index()
@@ -31,7 +34,15 @@ namespace Gui.Controllers
                 var data = client.GetData(1337);
                 id = 1;
             }
-            return View(UserClient.GetUser(id));
+            return View(doBCVM(id));
+        }
+
+        public dynamic doBCVM(int userID)
+        {
+            dynamic BCVM = new ExpandoObject();
+            BCVM.Order = OrderClient.GetOrdersByUserId(userID);
+            BCVM.User = UserClient.GetUser(userID);
+            return BCVM;
         }
 
         public ActionResult WalletDetails(int id)

@@ -21,6 +21,9 @@ namespace WCF
         IEnumerable<Order> GetAllOrders();
 
         [OperationContract]
+        IEnumerable<Order> GetOrdersByUserId(int userID);
+
+        [OperationContract]
         void CompleteOrder(Order order);
 
         [OperationContract]
