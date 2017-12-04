@@ -53,6 +53,20 @@
             @Html.DisplayFor(model => model.Gender)
         </dd>
     </dl>
+    <h2>Favoritter</h2>
+    @foreach(var drink in Model.FavoritesDrinks)
+    {
+        <table>
+            <tr>
+                <td>
+                    <img src="@Url.Content(drink.Img)" alt="Image" height="100px" width="150px" />
+                </td>
+                <td>
+                    @drink.Name
+                </td>
+            </tr>
+        </table>
+    }
 </div>
 <p>
     <input id="btnDetails" type="button" value="Digital Tegnebog" onclick="location.href='@Url.Action("WalletDetails", new { id = Model.ID })'" />

@@ -115,20 +115,17 @@ namespace WpfDrinkzy
                 phoneText.Text = user.Phone;
 
                 WpfDrinkzy.UserServiceRef.User u = (WpfDrinkzy.UserServiceRef.User)UserList.SelectedItem;
+                UserClient.createWalletAndFavorites(user.ID);
 
                 FavoriteList.ItemsSource = null;
                 FavoriteList.ItemsSource = FavoriteClient.GetAllDrinksByUser(FavoriteClient.GetFavoritesByUserID(u.ID).ID);
-
-                UserClient.createWalletAndFavorites(user.ID);
             }
         }
-    
+
         public void Changer(object sender, SelectionChangedEventArgs e)
         {
             WpfDrinkzy.UserServiceRef.User u = (WpfDrinkzy.UserServiceRef.User)UserList.SelectedItem;
             Details(u);
-            
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
