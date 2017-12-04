@@ -34,6 +34,9 @@ namespace Gui.MenucardServiceRef {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Gui.MenucardServiceRef.Alchohol[] alchoholsField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.MenucardServiceRef.HelFlask[] helflasksField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -92,6 +95,19 @@ namespace Gui.MenucardServiceRef {
                 if ((object.ReferenceEquals(this.alchoholsField, value) != true)) {
                     this.alchoholsField = value;
                     this.RaisePropertyChanged("alchohols");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.MenucardServiceRef.HelFlask[] helflasks {
+            get {
+                return this.helflasksField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.helflasksField, value) != true)) {
+                    this.helflasksField = value;
+                    this.RaisePropertyChanged("helflasks");
                 }
             }
         }
@@ -311,9 +327,33 @@ namespace Gui.MenucardServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HelFlask", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class HelFlask : Gui.MenucardServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SuperAlchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.MenucardServiceRef.Alchohol))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.MenucardServiceRef.HelFlask))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.MenucardServiceRef.Drink))]
     public partial class SuperAlchohol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         

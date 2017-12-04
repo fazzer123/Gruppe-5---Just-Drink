@@ -13,6 +13,7 @@ namespace DBLayer
     {
         private DrinkDB ddb = new DrinkDB();
         private AlchoholDB adb = new AlchoholDB();
+        private HelFlaskDB hfDB = new HelFlaskDB();
         private CustomerDB cusDB = new CustomerDB();
 
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -66,7 +67,8 @@ namespace DBLayer
                             ID = (int)Reader["id"],
                             Customer = cusDB.GetCustomer((int)Reader["customerID"]),
                             Drinks = GetAllDrinksByCustomer((int)Reader["id"]),
-                            alchohols = GetAllAlchoholsByMenu((int)Reader["id"])
+                            alchohols = GetAllAlchoholsByMenu((int)Reader["id"]),
+                            helflasks = GetAllHellflaskByMenu((int)Reader["id"])
                         };
                     }
                 }
@@ -116,6 +118,28 @@ namespace DBLayer
                 }
             }
             return AlchoholList;
+        }
+
+        public List<HelFlask> GetAllHellflaskByMenu(int menuId)
+        {
+            List<HelFlask> HelflaskList = new List<HelFlask>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM MenucardHelflask WHERE menuID = @menuID";
+                    cmd.Parameters.AddWithValue("menuID", menuId);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        HelFlask drink = hfDB.GetHelFlask((int)Reader["helflaskID"]);
+                        HelflaskList.Add(drink);
+                    }
+                }
+            }
+            return HelflaskList;
         }
 
         public void DeleteDrinkFromMenu(int menuID, int drinkid)

@@ -45,6 +45,7 @@
     <Compile Include="CustomerController.cs" />
     <Compile Include="DrinkController.cs" />
     <Compile Include="FavoritesController.cs" />
+    <Compile Include="HelflaskController.cs" />
     <Compile Include="IngredientController.cs" />
     <Compile Include="MenuCardController.cs" />
     <Compile Include="OrderController.cs" />

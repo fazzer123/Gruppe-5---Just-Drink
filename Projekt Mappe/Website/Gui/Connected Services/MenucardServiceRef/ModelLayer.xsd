@@ -6,6 +6,7 @@
       <xs:element minOccurs="0" name="Drinks" nillable="true" type="tns:ArrayOfDrink" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="alchohols" nillable="true" type="tns:ArrayOfAlchohol" />
+      <xs:element minOccurs="0" name="helflasks" nillable="true" type="tns:ArrayOfHelFlask" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MenuCard" nillable="true" type="tns:MenuCard" />
@@ -77,4 +78,20 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Alchohol" nillable="true" type="tns:Alchohol" />
+  <xs:complexType name="ArrayOfHelFlask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HelFlask" nillable="true" type="tns:HelFlask" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHelFlask" nillable="true" type="tns:ArrayOfHelFlask" />
+  <xs:complexType name="HelFlask">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SuperAlchohol">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Procent" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HelFlask" nillable="true" type="tns:HelFlask" />
 </xs:schema>

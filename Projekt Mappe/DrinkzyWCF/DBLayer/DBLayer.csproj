@@ -47,6 +47,7 @@
     <Compile Include="DrinkDB.cs" />
     <Compile Include="FavoritesDB.cs" />
     <Compile Include="HashingHelper.cs" />
+    <Compile Include="HelFlaskDB.cs" />
     <Compile Include="IngredientsDB.cs" />
     <Compile Include="MenuCardDB.cs" />
     <Compile Include="OrderDB.cs" />
