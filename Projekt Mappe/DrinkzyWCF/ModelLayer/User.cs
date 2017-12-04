@@ -28,7 +28,7 @@ namespace ModelLayer
         public string Email { get; set; }
         [DataMember]
         public string Phone { get; set; }
-
+        [DataMember]
         public List<Drink> FavoritesDrinks { get; set; }
 
         public User(int ID, string UserName, string FirstName, string LastName, string Gender, DateTime Birthday, string Password, string Email, string Phone)
@@ -42,6 +42,7 @@ namespace ModelLayer
             this.Password = Password;
             this.Email = Email;
             this.Phone = Phone;
+            FavoritesDrinks = new List<Drink>();
         }
         public User()
         {

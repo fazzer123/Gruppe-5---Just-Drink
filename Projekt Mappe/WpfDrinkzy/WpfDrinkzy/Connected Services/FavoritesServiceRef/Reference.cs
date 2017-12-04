@@ -8,10 +8,87 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gui.UserServiceRef {
+namespace WpfDrinkzy.FavoritesServiceRef {
     using System.Runtime.Serialization;
     using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Favorites", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Favorites : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDrinkzy.FavoritesServiceRef.Drink[] DrinksField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WpfDrinkzy.FavoritesServiceRef.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDrinkzy.FavoritesServiceRef.Drink[] Drinks {
+            get {
+                return this.DrinksField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DrinksField, value) != true)) {
+                    this.DrinksField = value;
+                    this.RaisePropertyChanged("Drinks");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WpfDrinkzy.FavoritesServiceRef.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -27,9 +104,6 @@ namespace Gui.UserServiceRef {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.UserServiceRef.Drink[] FavoritesDrinksField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
@@ -84,19 +158,6 @@ namespace Gui.UserServiceRef {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.UserServiceRef.Drink[] FavoritesDrinks {
-            get {
-                return this.FavoritesDrinksField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FavoritesDrinksField, value) != true)) {
-                    this.FavoritesDrinksField = value;
-                    this.RaisePropertyChanged("FavoritesDrinks");
                 }
             }
         }
@@ -221,7 +282,7 @@ namespace Gui.UserServiceRef {
         private string ImgField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.UserServiceRef.Ingredient[] IngredientsField;
+        private WpfDrinkzy.FavoritesServiceRef.Ingredient[] IngredientsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -279,7 +340,7 @@ namespace Gui.UserServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.UserServiceRef.Ingredient[] Ingredients {
+        public WpfDrinkzy.FavoritesServiceRef.Ingredient[] Ingredients {
             get {
                 return this.IngredientsField;
             }
@@ -405,147 +466,91 @@ namespace Gui.UserServiceRef {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserServiceRef.IUserService")]
-    public interface IUserService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FavoritesServiceRef.IFavoritesService")]
+    public interface IFavoritesService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CreateUser", ReplyAction="http://tempuri.org/IUserService/CreateUserResponse")]
-        void CreateUser(Gui.UserServiceRef.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/createFavorites", ReplyAction="http://tempuri.org/IFavoritesService/createFavoritesResponse")]
+        void createFavorites(WpfDrinkzy.FavoritesServiceRef.Favorites fav);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CreateUser", ReplyAction="http://tempuri.org/IUserService/CreateUserResponse")]
-        System.Threading.Tasks.Task CreateUserAsync(Gui.UserServiceRef.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/createFavorites", ReplyAction="http://tempuri.org/IFavoritesService/createFavoritesResponse")]
+        System.Threading.Tasks.Task createFavoritesAsync(WpfDrinkzy.FavoritesServiceRef.Favorites fav);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
-        Gui.UserServiceRef.User GetUser(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/GetFavoritesByUserID", ReplyAction="http://tempuri.org/IFavoritesService/GetFavoritesByUserIDResponse")]
+        WpfDrinkzy.FavoritesServiceRef.Favorites GetFavoritesByUserID(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
-        System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/GetFavoritesByUserID", ReplyAction="http://tempuri.org/IFavoritesService/GetFavoritesByUserIDResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.FavoritesServiceRef.Favorites> GetFavoritesByUserIDAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
-        Gui.UserServiceRef.User GetUserByUserName(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/GetAllDrinksByUser", ReplyAction="http://tempuri.org/IFavoritesService/GetAllDrinksByUserResponse")]
+        WpfDrinkzy.FavoritesServiceRef.Drink[] GetAllDrinksByUser(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
-        System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username, string password);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/GetAllDrinksByUser", ReplyAction="http://tempuri.org/IFavoritesService/GetAllDrinksByUserResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.FavoritesServiceRef.Drink[]> GetAllDrinksByUserAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getAllUsers", ReplyAction="http://tempuri.org/IUserService/getAllUsersResponse")]
-        Gui.UserServiceRef.User[] getAllUsers();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/addDrink", ReplyAction="http://tempuri.org/IFavoritesService/addDrinkResponse")]
+        void addDrink(int userId, int drinkId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getAllUsers", ReplyAction="http://tempuri.org/IUserService/getAllUsersResponse")]
-        System.Threading.Tasks.Task<Gui.UserServiceRef.User[]> getAllUsersAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
-        void UpdateUser(Gui.UserServiceRef.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
-        System.Threading.Tasks.Task UpdateUserAsync(Gui.UserServiceRef.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
-        void DeleteUser(int UserID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
-        System.Threading.Tasks.Task DeleteUserAsync(int UserID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Login", ReplyAction="http://tempuri.org/IUserService/LoginResponse")]
-        bool Login(string username, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Login", ReplyAction="http://tempuri.org/IUserService/LoginResponse")]
-        System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/createWalletAndFavorites", ReplyAction="http://tempuri.org/IUserService/createWalletAndFavoritesResponse")]
-        void createWalletAndFavorites(int userid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/createWalletAndFavorites", ReplyAction="http://tempuri.org/IUserService/createWalletAndFavoritesResponse")]
-        System.Threading.Tasks.Task createWalletAndFavoritesAsync(int userid);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/addDrink", ReplyAction="http://tempuri.org/IFavoritesService/addDrinkResponse")]
+        System.Threading.Tasks.Task addDrinkAsync(int userId, int drinkId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserServiceChannel : Gui.UserServiceRef.IUserService, System.ServiceModel.IClientChannel {
+    public interface IFavoritesServiceChannel : WpfDrinkzy.FavoritesServiceRef.IFavoritesService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<Gui.UserServiceRef.IUserService>, Gui.UserServiceRef.IUserService {
+    public partial class FavoritesServiceClient : System.ServiceModel.ClientBase<WpfDrinkzy.FavoritesServiceRef.IFavoritesService>, WpfDrinkzy.FavoritesServiceRef.IFavoritesService {
         
-        public UserServiceClient() {
+        public FavoritesServiceClient() {
         }
         
-        public UserServiceClient(string endpointConfigurationName) : 
+        public FavoritesServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public UserServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public FavoritesServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public UserServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public FavoritesServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public UserServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public FavoritesServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public void CreateUser(Gui.UserServiceRef.User user) {
-            base.Channel.CreateUser(user);
+        public void createFavorites(WpfDrinkzy.FavoritesServiceRef.Favorites fav) {
+            base.Channel.createFavorites(fav);
         }
         
-        public System.Threading.Tasks.Task CreateUserAsync(Gui.UserServiceRef.User user) {
-            return base.Channel.CreateUserAsync(user);
+        public System.Threading.Tasks.Task createFavoritesAsync(WpfDrinkzy.FavoritesServiceRef.Favorites fav) {
+            return base.Channel.createFavoritesAsync(fav);
         }
         
-        public Gui.UserServiceRef.User GetUser(int id) {
-            return base.Channel.GetUser(id);
+        public WpfDrinkzy.FavoritesServiceRef.Favorites GetFavoritesByUserID(int id) {
+            return base.Channel.GetFavoritesByUserID(id);
         }
         
-        public System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserAsync(int id) {
-            return base.Channel.GetUserAsync(id);
+        public System.Threading.Tasks.Task<WpfDrinkzy.FavoritesServiceRef.Favorites> GetFavoritesByUserIDAsync(int id) {
+            return base.Channel.GetFavoritesByUserIDAsync(id);
         }
         
-        public Gui.UserServiceRef.User GetUserByUserName(string username, string password) {
-            return base.Channel.GetUserByUserName(username, password);
+        public WpfDrinkzy.FavoritesServiceRef.Drink[] GetAllDrinksByUser(int id) {
+            return base.Channel.GetAllDrinksByUser(id);
         }
         
-        public System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username, string password) {
-            return base.Channel.GetUserByUserNameAsync(username, password);
+        public System.Threading.Tasks.Task<WpfDrinkzy.FavoritesServiceRef.Drink[]> GetAllDrinksByUserAsync(int id) {
+            return base.Channel.GetAllDrinksByUserAsync(id);
         }
         
-        public Gui.UserServiceRef.User[] getAllUsers() {
-            return base.Channel.getAllUsers();
+        public void addDrink(int userId, int drinkId) {
+            base.Channel.addDrink(userId, drinkId);
         }
         
-        public System.Threading.Tasks.Task<Gui.UserServiceRef.User[]> getAllUsersAsync() {
-            return base.Channel.getAllUsersAsync();
-        }
-        
-        public void UpdateUser(Gui.UserServiceRef.User user) {
-            base.Channel.UpdateUser(user);
-        }
-        
-        public System.Threading.Tasks.Task UpdateUserAsync(Gui.UserServiceRef.User user) {
-            return base.Channel.UpdateUserAsync(user);
-        }
-        
-        public void DeleteUser(int UserID) {
-            base.Channel.DeleteUser(UserID);
-        }
-        
-        public System.Threading.Tasks.Task DeleteUserAsync(int UserID) {
-            return base.Channel.DeleteUserAsync(UserID);
-        }
-        
-        public bool Login(string username, string password) {
-            return base.Channel.Login(username, password);
-        }
-        
-        public System.Threading.Tasks.Task<bool> LoginAsync(string username, string password) {
-            return base.Channel.LoginAsync(username, password);
-        }
-        
-        public void createWalletAndFavorites(int userid) {
-            base.Channel.createWalletAndFavorites(userid);
-        }
-        
-        public System.Threading.Tasks.Task createWalletAndFavoritesAsync(int userid) {
-            return base.Channel.createWalletAndFavoritesAsync(userid);
+        public System.Threading.Tasks.Task addDrinkAsync(int userId, int drinkId) {
+            return base.Channel.addDrinkAsync(userId, drinkId);
         }
     }
 }

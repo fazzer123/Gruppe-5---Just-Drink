@@ -39,6 +39,34 @@ namespace BusinessLayer
             uDb.DeleteUser(UserID);
         }
 
+        public void createFavoritesAndWallet(int userid)
+        {
+            User u = GetUser(userid);
+            FavoritesController fCtr = new FavoritesController();
+            WalletController wCtr = new WalletController();
+
+            if (fCtr.GetFavoritesByUserID(u.ID) == null)
+            {
+                Favorites f = new Favorites
+                {
+                    User = u
+                };
+                fCtr.createFavorites(f);
+            }
+            if (wCtr.GetWallet(u.ID) == null)
+            {
+                Wallet w = new Wallet
+                {
+                    Balance = 0,
+                    MinBalance = 0,
+                    MaxBalance = 0,
+                    LockTime = DateTime.Now,
+                    User = u,
+                };
+                wCtr.CreateWallet(w);
+            }
+        }
+
         public User GetUserByUserName(string username, string password)
         {
             IEnumerable<User> users = new List<User>();

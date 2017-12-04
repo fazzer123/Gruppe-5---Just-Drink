@@ -50,5 +50,10 @@ namespace WCF
         {
             return UserCtr.Login(username, password);
         }
+
+        public void createWalletAndFavorites(int userid)
+        {
+            UserCtr.createFavoritesAndWallet(userid);
+        }
     }
 }
