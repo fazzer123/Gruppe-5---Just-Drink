@@ -8,28 +8,20 @@ using System.Threading.Tasks;
 namespace ModelLayer
 {
     [DataContract]
-    public class Drink
+    public class Drink : SuperAlchohol
     {
         [DataMember]
-        public int ID { get; set; }
-        [DataMember]
-        public string Name { get; set; }
-        [DataMember]
         public string Description { get; set; }
-        [DataMember]
-        public decimal Price { get; set; }
-        [DataMember]
-        public string Img { get; set; }
         [DataMember]
         public List<Ingredient> Ingredients  { get; set; }
 
         public Drink(int ID, string Name, string Description, decimal Price, string Img)
         {
-            this.ID = ID;
-            this.Name = Name;
+            base.ID = ID;
+            base.Name = Name;
             this.Description = Description;
-            this.Price = Price;
-            this.Img = Img;
+            base.Price = Price;
+            base.Img = Img;
             Ingredients = new List<Ingredient>();
         }
 

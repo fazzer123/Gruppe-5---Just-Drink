@@ -73,7 +73,6 @@ namespace BusinessLayer
             users = uDb.getAllUsers();
             Boolean found = false;
             User user = null;
-            int t = 0;
 
             while (!found)
             {

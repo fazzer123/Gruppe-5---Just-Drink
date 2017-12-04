@@ -13,10 +13,12 @@ namespace WCF
     public class DrinkService : IDrinkService
     {
         DrinkController DrinkCtr;
+        AlchoholController aCtr;
 
         public DrinkService()
         {
             DrinkCtr = new DrinkController();
+            aCtr = new AlchoholController();
         }
         public void CreateDrink(Drink drink)
         {
@@ -55,6 +57,21 @@ namespace WCF
         public IEnumerable<Drink> SearchDrinks(string search)
         {
             return DrinkCtr.searchDrinks(search);
+        }
+
+        public void CreateAlchohol(Alchohol alchohol)
+        {
+            aCtr.CreateAlchohol(alchohol);
+        }
+
+        public Alchohol GetAlchohol(int id)
+        {
+            return aCtr.GetAlchohol(id);
+        }
+
+        public IEnumerable<Alchohol> GetAllAlchohols()
+        {
+            return aCtr.GetAllAlchohol();
         }
     }
 }

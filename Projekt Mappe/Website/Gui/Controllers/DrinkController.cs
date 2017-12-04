@@ -26,6 +26,11 @@ namespace Gui.Controllers
             return View(client.getAllDrinks());
         }
 
+        public ActionResult AlchoholIndex()
+        {
+            return View(client.GetAllAlchohols());
+        }
+
         // GET: Drink/Details/5
         public ActionResult Details(int drinkId)
         {
