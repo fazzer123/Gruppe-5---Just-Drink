@@ -488,10 +488,10 @@ namespace WpfDrinkzy.FavoritesServiceRef {
         System.Threading.Tasks.Task<WpfDrinkzy.FavoritesServiceRef.Drink[]> GetAllDrinksByUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/addDrink", ReplyAction="http://tempuri.org/IFavoritesService/addDrinkResponse")]
-        void addDrink(WpfDrinkzy.FavoritesServiceRef.User user, WpfDrinkzy.FavoritesServiceRef.Drink drink);
+        void addDrink(int userId, int drinkId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/addDrink", ReplyAction="http://tempuri.org/IFavoritesService/addDrinkResponse")]
-        System.Threading.Tasks.Task addDrinkAsync(WpfDrinkzy.FavoritesServiceRef.User user, WpfDrinkzy.FavoritesServiceRef.Drink drink);
+        System.Threading.Tasks.Task addDrinkAsync(int userId, int drinkId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -545,12 +545,12 @@ namespace WpfDrinkzy.FavoritesServiceRef {
             return base.Channel.GetAllDrinksByUserAsync(id);
         }
         
-        public void addDrink(WpfDrinkzy.FavoritesServiceRef.User user, WpfDrinkzy.FavoritesServiceRef.Drink drink) {
-            base.Channel.addDrink(user, drink);
+        public void addDrink(int userId, int drinkId) {
+            base.Channel.addDrink(userId, drinkId);
         }
         
-        public System.Threading.Tasks.Task addDrinkAsync(WpfDrinkzy.FavoritesServiceRef.User user, WpfDrinkzy.FavoritesServiceRef.Drink drink) {
-            return base.Channel.addDrinkAsync(user, drink);
+        public System.Threading.Tasks.Task addDrinkAsync(int userId, int drinkId) {
+            return base.Channel.addDrinkAsync(userId, drinkId);
         }
     }
 }

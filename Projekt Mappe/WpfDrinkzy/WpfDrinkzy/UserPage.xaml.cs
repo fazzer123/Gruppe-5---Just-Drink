@@ -114,6 +114,11 @@ namespace WpfDrinkzy
                 mailText.Text = user.Email;
                 phoneText.Text = user.Phone;
 
+                WpfDrinkzy.UserServiceRef.User u = (WpfDrinkzy.UserServiceRef.User)UserList.SelectedItem;
+
+                FavoriteList.ItemsSource = null;
+                FavoriteList.ItemsSource = FavoriteClient.GetAllDrinksByUser(FavoriteClient.GetFavoritesByUserID(u.ID).ID);
+
                 UserClient.createWalletAndFavorites(user.ID);
             }
         }
@@ -128,7 +133,10 @@ namespace WpfDrinkzy
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            FavoriteClient.addDrink((WpfDrinkzy.FavoritesServiceRef.User)UserList.SelectedItem, (WpfDrinkzy.FavoritesServiceRef.Drink)DrinkList.SelectedItem);
+            WpfDrinkzy.UserServiceRef.User u = (WpfDrinkzy.UserServiceRef.User)UserList.SelectedItem;
+            WpfDrinkzy.DrinkServiceRef.Drink d = (WpfDrinkzy.DrinkServiceRef.Drink)DrinkList.SelectedItem;
+
+            FavoriteClient.addDrink(u.ID, d.ID);
         }
     }
 }
