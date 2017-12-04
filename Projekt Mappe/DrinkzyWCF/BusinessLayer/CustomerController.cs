@@ -57,6 +57,11 @@ namespace BusinessLayer
 
             return customers;
         }
+
+        public bool Login(string cusEmail, string cusPassword)
+        {
+            return cDb.Login(cusEmail, cusPassword);
+        }
     }
 }
 

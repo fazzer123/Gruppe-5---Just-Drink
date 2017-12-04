@@ -25,7 +25,10 @@ namespace WCF
         [OperationContract]
         void DeleteCustomer(int customerID);
 
-      [OperationContract]  
-      IEnumerable<Customer> SearchCustomer(string text);
+        [OperationContract]
+        IEnumerable<Customer> SearchCustomer(string text);
+
+        [OperationContract]
+        bool Login(string cusEmail, string cusPassword);
     }
 }

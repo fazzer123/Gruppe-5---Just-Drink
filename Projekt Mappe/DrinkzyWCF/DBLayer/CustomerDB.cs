@@ -14,25 +14,30 @@ namespace DBLayer
         
             private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-            public void CreateCustomer(Customer customer)
+        public void CreateCustomer(Customer customer)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
-                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    connection.Open();
-                    using (SqlCommand cmd = connection.CreateCommand())
-                    {
-                        cmd.CommandText = "Insert Into dbo.DrinkzyCustomer(CusName, CusImg, CusRegion, CusAddress, CusPhone, CusEmail) values(@CusName, @CusImg, @CusRegion, @CusAddress, @CusPhone, @CusEmail)";
-                        //cmd.Parameters.AddWithValue("id", entity.Id);
-                        cmd.Parameters.AddWithValue("CusName", customer.CusName);
-                        cmd.Parameters.AddWithValue("CusImg", customer.Img);
-                        cmd.Parameters.AddWithValue("CusRegion", customer.Region);
-                        cmd.Parameters.AddWithValue("CusAddress", customer.Address);
+                    var salt = HashingHelper.GenerateSalt();
+                    string saltedHash = HashingHelper.HashPassword(customer.CusPassword, salt);
+
+                    cmd.CommandText = "Insert Into dbo.DrinkzyCustomer(CusName, CusImg, CusRegion, CusAddress, CusPhone, CusEmail, cusPassword, cusSalt) values(@CusName, @CusImg, @CusRegion, @CusAddress, @CusPhone, @CusEmail, @cusPassword, @cusSalt)";
+                    //cmd.Parameters.AddWithValue("id", entity.Id);
+                    cmd.Parameters.AddWithValue("CusName", customer.CusName);
+                    cmd.Parameters.AddWithValue("CusImg", customer.Img);
+                    cmd.Parameters.AddWithValue("CusRegion", customer.Region);
+                    cmd.Parameters.AddWithValue("CusAddress", customer.Address);
                     cmd.Parameters.AddWithValue("CusPhone", customer.Phone);
                     cmd.Parameters.AddWithValue("CusEmail", customer.Email);
+                    cmd.Parameters.AddWithValue("cusPassword", saltedHash);
+                    cmd.Parameters.AddWithValue("cusSalt", salt);
                     cmd.ExecuteNonQuery();
-                    }
                 }
             }
+        }
 
         public Customer GetCustomer(int id)
         {
@@ -127,6 +132,34 @@ namespace DBLayer
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public bool Login(string cusEmail, string cusPassword)
+        {
+            bool loggedIn = false;
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    string sql = "SELECT * FROM DrinkzyCustomer WHERE CusEmail=@CusEmail";
+                    cmd.Parameters.AddWithValue("CusEmail", cusEmail);
+
+                    cmd.CommandText = sql;
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        string currentSalt = rdr.GetString(rdr.GetOrdinal("cusSalt"));
+                        string currentSaltedHash = rdr.GetString(rdr.GetOrdinal("cusPassword"));
+                        if (HashingHelper.CheckPassword(cusPassword, currentSalt, currentSaltedHash))
+                        {
+                            loggedIn = true;
+                        }
+                    }
+                }
+            }
+            return loggedIn;
         }
     }
     }

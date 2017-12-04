@@ -29,6 +29,9 @@ namespace WpfDrinkzy.CustomerServiceRef {
         private string CusNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CusPasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -75,6 +78,19 @@ namespace WpfDrinkzy.CustomerServiceRef {
                 if ((object.ReferenceEquals(this.CusNameField, value) != true)) {
                     this.CusNameField = value;
                     this.RaisePropertyChanged("CusName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CusPassword {
+            get {
+                return this.CusPasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CusPasswordField, value) != true)) {
+                    this.CusPasswordField = value;
+                    this.RaisePropertyChanged("CusPassword");
                 }
             }
         }
@@ -193,6 +209,12 @@ namespace WpfDrinkzy.CustomerServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/SearchCustomer", ReplyAction="http://tempuri.org/ICustomerService/SearchCustomerResponse")]
         System.Threading.Tasks.Task<WpfDrinkzy.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/Login", ReplyAction="http://tempuri.org/ICustomerService/LoginResponse")]
+        bool Login(string cusEmail, string cusPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/Login", ReplyAction="http://tempuri.org/ICustomerService/LoginResponse")]
+        System.Threading.Tasks.Task<bool> LoginAsync(string cusEmail, string cusPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -268,6 +290,14 @@ namespace WpfDrinkzy.CustomerServiceRef {
         
         public System.Threading.Tasks.Task<WpfDrinkzy.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text) {
             return base.Channel.SearchCustomerAsync(text);
+        }
+        
+        public bool Login(string cusEmail, string cusPassword) {
+            return base.Channel.Login(cusEmail, cusPassword);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginAsync(string cusEmail, string cusPassword) {
+            return base.Channel.LoginAsync(cusEmail, cusPassword);
         }
     }
 }
