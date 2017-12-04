@@ -35,5 +35,9 @@ namespace WCF
         {
             wCtr.UpdateBalanceByUserID(Balance, userID);
         }
+        public User GetUserById(int id)
+        {
+            return wCtr.getUserById(id);
+        }
     }
 }

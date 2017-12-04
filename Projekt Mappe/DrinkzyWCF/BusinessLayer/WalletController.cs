@@ -11,10 +11,12 @@ namespace BusinessLayer
     public class WalletController
     {
         WalletDB wDb;
+        UserController uCtr;
 
         public WalletController()
         {
             wDb = new WalletDB();
+            uCtr = new UserController();
         }
 
         public void CreateWallet(Wallet wallet)
@@ -34,6 +36,10 @@ namespace BusinessLayer
         public void UpdateBalanceByUserID(decimal Balance, int userID)
         {
             wDb.updateBalanceByUserID(Balance, userID);
+        }
+        public User getUserById(int id)
+        {
+            return uCtr.GetUser(id);
         }
     }
 }

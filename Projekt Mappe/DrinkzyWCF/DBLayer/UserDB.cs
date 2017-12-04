@@ -41,6 +41,7 @@ namespace DBLayer
 
         public User GetUser(int id)
         {
+            FavoritesDB fDB = new FavoritesDB();
             User user = null;
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -62,8 +63,8 @@ namespace DBLayer
                             Birthday = (DateTime)Reader["birthday"],
                             Password = (string)Reader["userPassword"],
                             Email = (string)Reader["email"],
-                            Phone = (string)Reader["phone"]
-
+                            Phone = (string)Reader["phone"],
+                            FavoritesDrinks = fDB.GetAllDrinksByUser((int)Reader["id"]) 
                         };
                     }
                 }

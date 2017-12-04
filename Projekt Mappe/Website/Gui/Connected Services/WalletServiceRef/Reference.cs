@@ -338,6 +338,12 @@ namespace Gui.WalletServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWalletService/UpdateBalanceByUserId", ReplyAction="http://tempuri.org/IWalletService/UpdateBalanceByUserIdResponse")]
         System.Threading.Tasks.Task UpdateBalanceByUserIdAsync(decimal Balance, int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWalletService/GetUserById", ReplyAction="http://tempuri.org/IWalletService/GetUserByIdResponse")]
+        Gui.WalletServiceRef.User GetUserById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWalletService/GetUserById", ReplyAction="http://tempuri.org/IWalletService/GetUserByIdResponse")]
+        System.Threading.Tasks.Task<Gui.WalletServiceRef.User> GetUserByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -397,6 +403,14 @@ namespace Gui.WalletServiceRef {
         
         public System.Threading.Tasks.Task UpdateBalanceByUserIdAsync(decimal Balance, int userID) {
             return base.Channel.UpdateBalanceByUserIdAsync(Balance, userID);
+        }
+        
+        public Gui.WalletServiceRef.User GetUserById(int id) {
+            return base.Channel.GetUserById(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.WalletServiceRef.User> GetUserByIdAsync(int id) {
+            return base.Channel.GetUserByIdAsync(id);
         }
     }
 }

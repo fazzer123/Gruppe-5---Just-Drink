@@ -32,5 +32,8 @@ namespace WCF
         [OperationContract]
         bool Login(string username, string password);
 
+        [OperationContract]
+        void createWalletAndFavorites(int userid);
+
     }
 }

@@ -22,12 +22,12 @@ namespace Gui.Controllers
             int id = 0;
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             AuthServiceClient authClient = new AuthServiceClient();
-            var isLoggedIn = authClient.Login("TheFirst", "hemeligt");
+            var isLoggedIn = authClient.Login("tg", "goddav");
             if (isLoggedIn)
             {
                 SecurityServiceClient client = new SecurityServiceClient("WSHttpBinding_ISecurityService");
-                client.ClientCredentials.UserName.UserName = "TheFirst";
-                client.ClientCredentials.UserName.Password = "hemeligt";
+                client.ClientCredentials.UserName.UserName = "tg";
+                client.ClientCredentials.UserName.Password = "goddav";
                 var data = client.GetData(1337);
                 id = 1;
             }
@@ -36,6 +36,18 @@ namespace Gui.Controllers
 
         public ActionResult WalletDetails(int id)
         {
+            if(WalletClient.GetWallet(id) == null)
+            {
+                Wallet w = new Wallet
+                {
+                    User = WalletClient.GetUserById(id),
+                    Balance = 0,
+                    MinBalance = 0,
+                    MaxBalance = 0,
+                    LockTime = DateTime.Now
+            };
+                WalletClient.CreateWallet(w);
+            }
             return View(WalletClient.GetWallet(id));
         }
         [HttpPost]

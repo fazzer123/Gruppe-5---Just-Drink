@@ -27,9 +27,9 @@ namespace BusinessLayer
             return db.GetAllDrinksByUser(id);
         }
 
-        public void addDrink(User user, Drink drink)
+        public void addDrink(int userId, int drinkId)
         {
-            db.AddDrink(user, drink);
+            db.AddDrink(userId, drinkId);
         }
     }
 }

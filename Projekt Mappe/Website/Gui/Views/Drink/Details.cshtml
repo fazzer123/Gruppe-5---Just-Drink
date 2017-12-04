@@ -38,6 +38,9 @@
             <dd>
                 @Html.DisplayFor(model => model.Price)
             </dd>
+            <dd>
+                <input id="Button1" type="submit" value="Sæt Favorit" onclick="location.href='@Url.Action("AddFavorit", "Drink", new { drinkID = @Model.ID })'" />
+            </dd>
         </dl>
     </div>
 </div>

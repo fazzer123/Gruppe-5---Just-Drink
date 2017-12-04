@@ -21,6 +21,6 @@ namespace WCF
         List<Drink> GetAllDrinksByUser(int id);
 
         [OperationContract]
-        void addDrink(User user, Drink drink);
+        void addDrink(int userId, int drinkId);
     }
 }

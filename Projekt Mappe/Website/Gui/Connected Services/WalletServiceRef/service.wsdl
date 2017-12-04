@@ -31,6 +31,12 @@
   <wsdl:message name="IWalletService_UpdateBalanceByUserId_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateBalanceByUserIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IWalletService_GetUserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserById" />
+  </wsdl:message>
+  <wsdl:message name="IWalletService_GetUserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWalletService">
     <wsdl:operation name="CreateWallet">
       <wsdl:input wsaw:Action="http://tempuri.org/IWalletService/CreateWallet" message="tns:IWalletService_CreateWallet_InputMessage" />
@@ -47,6 +53,10 @@
     <wsdl:operation name="UpdateBalanceByUserId">
       <wsdl:input wsaw:Action="http://tempuri.org/IWalletService/UpdateBalanceByUserId" message="tns:IWalletService_UpdateBalanceByUserId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWalletService/UpdateBalanceByUserIdResponse" message="tns:IWalletService_UpdateBalanceByUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWalletService/GetUserById" message="tns:IWalletService_GetUserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWalletService/GetUserByIdResponse" message="tns:IWalletService_GetUserById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWalletService" type="tns:IWalletService">
@@ -80,6 +90,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateBalanceByUserId">
       <soap:operation soapAction="http://tempuri.org/IWalletService/UpdateBalanceByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://tempuri.org/IWalletService/GetUserById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

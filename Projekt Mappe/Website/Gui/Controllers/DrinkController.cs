@@ -7,6 +7,7 @@ using Gui.DrinkServiceRef;
 using Gui.OrderLineServiceRef;
 using Gui.OrderServiceRef;
 using Gui.WalletServiceRef;
+using Gui.FavoritServiceRef;
 using System.Dynamic;
 
 namespace Gui.Controllers
@@ -128,6 +129,13 @@ namespace Gui.Controllers
         public IEnumerable<Gui.DrinkServiceRef.Drink> search(string text)
         {
             return client.SearchDrinks(text);
+        }
+
+        public ActionResult AddFavorit(int drinkID)
+        {
+            FavoritesServiceClient fClient = new FavoritesServiceClient();
+            fClient.addDrink(1, drinkID);
+            return RedirectToAction("Details", new { drinkId = drinkID });
         }
     }
 }

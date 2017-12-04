@@ -49,6 +49,14 @@
   <wsdl:message name="IUserService_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
+
+  <wsdl:message name="IUserService_createWalletAndFavorites_InputMessage">
+    <wsdl:part name="parameters" element="tns:createWalletAndFavorites" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_createWalletAndFavorites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createWalletAndFavoritesResponse" />
+  </wsdl:message>
+  
   <wsdl:portType name="IUserService">
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/CreateUser" message="tns:IUserService_CreateUser_InputMessage" />
@@ -78,6 +86,12 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/Login" message="tns:IUserService_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/LoginResponse" message="tns:IUserService_Login_OutputMessage" />
     </wsdl:operation>
+
+    <wsdl:operation name="createWalletAndFavorites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/createWalletAndFavorites" message="tns:IUserService_createWalletAndFavorites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/createWalletAndFavoritesResponse" message="tns:IUserService_createWalletAndFavorites_OutputMessage" />
+    </wsdl:operation>
+
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -144,6 +158,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+
+    <wsdl:operation name="createWalletAndFavorites">
+      <soap:operation soapAction="http://tempuri.org/IUserService/createWalletAndFavorites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+
   </wsdl:binding>
   <wsdl:service name="UserService">
     <wsdl:port name="BasicHttpBinding_IUserService" binding="tns:BasicHttpBinding_IUserService">

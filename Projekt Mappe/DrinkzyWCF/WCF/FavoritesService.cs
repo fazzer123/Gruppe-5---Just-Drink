@@ -12,9 +12,9 @@ namespace WCF
     {
         FavoritesController fCtr = new FavoritesController();
 
-        public void addDrink(User user, Drink drink)
+        public void addDrink(int userId, int drinkId)
         {
-            fCtr.addDrink(user, drink);
+            fCtr.addDrink(userId, drinkId);
         }
 
         public void createFavorites(Favorites fav)

@@ -30,7 +30,7 @@ namespace DBLayer
                 }
             }
         }
-        public void AddDrink(User user, Drink drink)
+        public void AddDrink(int userId, int drinkId)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -39,8 +39,8 @@ namespace DBLayer
                 {
                     cmd.CommandText = "Insert Into dbo.FavoritesDrinks(favoritesID, drinkID) values(@favoritesID, @drinkID)";
                     //cmd.Parameters.AddWithValue("id", OrderLine.ID);
-                    cmd.Parameters.AddWithValue("favoritesID", user.ID);
-                    cmd.Parameters.AddWithValue("drinkID", drink.ID);
+                    cmd.Parameters.AddWithValue("favoritesID", GetFavoritesByUserID(userId).ID);
+                    cmd.Parameters.AddWithValue("drinkID", drinkId);
                     cmd.ExecuteNonQuery();
                 }
             }
