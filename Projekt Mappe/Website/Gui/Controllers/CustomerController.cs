@@ -25,6 +25,11 @@ namespace Gui.Controllers
             return View(menuClient.GetMenuByCustomerID(id));
         }
 
+        public ActionResult AlchoholDetails(int id)
+        {
+            return View(menuClient.GetMenuByCustomerID(id));
+        }
+
         [HttpPost]
         public ActionResult Details(MenuCard menu)
         {

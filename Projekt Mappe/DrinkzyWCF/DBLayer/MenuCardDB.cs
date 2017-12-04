@@ -12,6 +12,7 @@ namespace DBLayer
     public class MenuCardDB
     {
         private DrinkDB ddb = new DrinkDB();
+        private AlchoholDB adb = new AlchoholDB();
         private CustomerDB cusDB = new CustomerDB();
 
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -64,7 +65,8 @@ namespace DBLayer
                         {
                             ID = (int)Reader["id"],
                             Customer = cusDB.GetCustomer((int)Reader["customerID"]),
-                            Drinks = GetAllDrinksByCustomer((int)Reader["id"])
+                            Drinks = GetAllDrinksByCustomer((int)Reader["id"]),
+                            alchohols = GetAllAlchoholsByMenu((int)Reader["id"])
                         };
                     }
                 }
@@ -92,6 +94,28 @@ namespace DBLayer
                 }
             }
             return DrinksList;
+        }
+
+        public List<Alchohol> GetAllAlchoholsByMenu(int menuId)
+        {
+            List<Alchohol> AlchoholList = new List<Alchohol>();
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM MenucardAlchohol WHERE menuID = @menuID";
+                    cmd.Parameters.AddWithValue("menuID", menuId);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        Alchohol drink = adb.GetAlchohol((int)Reader["alchoholID"]);
+                        AlchoholList.Add(drink);
+                    }
+                }
+            }
+            return AlchoholList;
         }
 
         public void DeleteDrinkFromMenu(int menuID, int drinkid)
