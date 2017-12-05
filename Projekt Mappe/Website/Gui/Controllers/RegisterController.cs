@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gui.UserServiceRef;
+using Gui.FavoritServiceRef;
 
 
 namespace Gui.Controllers
@@ -11,6 +12,7 @@ namespace Gui.Controllers
     public class RegisterController : Controller
     {
         UserServiceClient client = new UserServiceClient();
+        FavoritesServiceClient faClient = new FavoritesServiceClient();
     
         // GET: Register
         public ActionResult Index()
@@ -28,9 +30,9 @@ namespace Gui.Controllers
         // POST: Register/Create
 
             [HttpPost]
-            public ActionResult Create(User user)
+            public ActionResult Create(Gui.UserServiceRef.User user)
             {
-                client.CreateUser(user);
+            client.CreateUser(user);
             return RedirectToAction("Index", "Home");
             }
         }

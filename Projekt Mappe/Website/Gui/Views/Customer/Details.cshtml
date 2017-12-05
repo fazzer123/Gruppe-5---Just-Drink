@@ -12,6 +12,7 @@
         <input type="submit" id="sumbitText" value="Søg" />
     }
     <dl class="dl-horizontal">
+        <h2>Drinks</h2>
         @foreach (Gui.MenucardServiceRef.Drink d in Model.Drinks)
         {
             <dt>
@@ -37,9 +38,10 @@
             </dt>
             <dd>
             <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+            <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = d.ID })'" />
             </dd>
           }
-
+        <h2>Alcohol</h2>
         @foreach (Gui.MenucardServiceRef.Alchohol d in Model.alchohols)
         {
             <dt>
@@ -67,7 +69,7 @@
                 <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
             </dd>
         }
-
+        <h2>Hel Flasker</h2>
         @foreach (Gui.MenucardServiceRef.HelFlask d in Model.helflasks)
         {
             <dt>
