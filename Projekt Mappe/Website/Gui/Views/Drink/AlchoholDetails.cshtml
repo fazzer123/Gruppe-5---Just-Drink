@@ -1,0 +1,56 @@
+﻿@model Gui.DrinkServiceRef.Alchohol
+
+@{
+    ViewBag.Title = "AlchoholDetails";
+}
+
+<h2>AlchoholDetails</h2>
+
+<div>
+    <h4>Alchohol</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Procent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Procent)
+        </dd>
+        <dt>
+
+        </dt>
+        <dd>
+            <input id="Button1" type="submit" value="Sæt Favorit" onclick="location.href='@Url.Action("AddAlchohol", "Drink", new { drinkID = @Model.ID })'" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

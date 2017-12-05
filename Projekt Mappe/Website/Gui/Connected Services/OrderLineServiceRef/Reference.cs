@@ -380,6 +380,12 @@ namespace Gui.OrderLineServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/CreateOrderLineHelflask", ReplyAction="http://tempuri.org/IOrderLineService/CreateOrderLineHelflaskResponse")]
         System.Threading.Tasks.Task CreateOrderLineHelflaskAsync(Gui.OrderLineServiceRef.OrderLine orderline, int orderID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/CreateOrderLineAlchohol", ReplyAction="http://tempuri.org/IOrderLineService/CreateOrderLineAlchoholResponse")]
+        void CreateOrderLineAlchohol(Gui.OrderLineServiceRef.OrderLine orderline, int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/CreateOrderLineAlchohol", ReplyAction="http://tempuri.org/IOrderLineService/CreateOrderLineAlchoholResponse")]
+        System.Threading.Tasks.Task CreateOrderLineAlchoholAsync(Gui.OrderLineServiceRef.OrderLine orderline, int orderID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/GetOrderLineResponse")]
         Gui.OrderLineServiceRef.OrderLine GetOrderLine(int ID);
         
@@ -433,6 +439,12 @@ namespace Gui.OrderLineServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetHelflask", ReplyAction="http://tempuri.org/IOrderLineService/GetHelflaskResponse")]
         System.Threading.Tasks.Task<Gui.OrderLineServiceRef.HelFlask> GetHelflaskAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetAlchohol", ReplyAction="http://tempuri.org/IOrderLineService/GetAlchoholResponse")]
+        Gui.OrderLineServiceRef.Alchohol GetAlchohol(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetAlchohol", ReplyAction="http://tempuri.org/IOrderLineService/GetAlchoholResponse")]
+        System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Alchohol> GetAlchoholAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -476,6 +488,14 @@ namespace Gui.OrderLineServiceRef {
         
         public System.Threading.Tasks.Task CreateOrderLineHelflaskAsync(Gui.OrderLineServiceRef.OrderLine orderline, int orderID) {
             return base.Channel.CreateOrderLineHelflaskAsync(orderline, orderID);
+        }
+        
+        public void CreateOrderLineAlchohol(Gui.OrderLineServiceRef.OrderLine orderline, int orderID) {
+            base.Channel.CreateOrderLineAlchohol(orderline, orderID);
+        }
+        
+        public System.Threading.Tasks.Task CreateOrderLineAlchoholAsync(Gui.OrderLineServiceRef.OrderLine orderline, int orderID) {
+            return base.Channel.CreateOrderLineAlchoholAsync(orderline, orderID);
         }
         
         public Gui.OrderLineServiceRef.OrderLine GetOrderLine(int ID) {
@@ -548,6 +568,14 @@ namespace Gui.OrderLineServiceRef {
         
         public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.HelFlask> GetHelflaskAsync(int id) {
             return base.Channel.GetHelflaskAsync(id);
+        }
+        
+        public Gui.OrderLineServiceRef.Alchohol GetAlchohol(int id) {
+            return base.Channel.GetAlchohol(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Alchohol> GetAlchoholAsync(int id) {
+            return base.Channel.GetAlchoholAsync(id);
         }
     }
 }

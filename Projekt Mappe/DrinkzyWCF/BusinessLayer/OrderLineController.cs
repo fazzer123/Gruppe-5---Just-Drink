@@ -28,6 +28,11 @@ namespace BusinessLayer
             olDb.CreateOrderLineHelflask(orderLine, orderID);
         }
 
+        public void CreateOrderLineAlchohol(OrderLine orderLine, int orderID)
+        {
+            olDb.CreateOrderLineAlchohol(orderLine, orderID);
+        }
+
         public OrderLine GetOrderLine(int ID)
         {
             return olDb.GetOrderLine(ID);
@@ -87,6 +92,21 @@ namespace BusinessLayer
 
                     oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
                 }
+                else if (o.ID == id && o.Drink.GetType() == typeof(Alchohol))
+                {
+                    price = oDB.GetOrder(orderID).TotalPrice - olDb.GetOrderLineAlchohol(id).TotalPrice;
+                    oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
+
+                    amount = Convert.ToInt32(text);
+                    orderline = olDb.GetOrderLine(id);
+                    orderline.TotalPrice = amount * orderline.Drink.Price;
+                    orderline.Amount = amount;
+                    olDb.EditOrderLine(orderline);
+
+                    price = oDB.GetOrder(orderID).TotalPrice + olDb.GetOrderLineAlchohol(id).TotalPrice;
+
+                    oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
+                }
             }
         }
 
@@ -109,6 +129,12 @@ namespace BusinessLayer
         {
             HelflaskController hCtr = new HelflaskController();
             return hCtr.GetHelflask(id);
+        }
+
+        public Alchohol GetALchohol(int id)
+        {
+            AlchoholController aCtr = new AlchoholController();
+            return aCtr.GetAlchohol(id);
         }
 
     }

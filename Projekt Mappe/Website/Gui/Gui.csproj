@@ -255,14 +255,17 @@
     <Content Include="Connected Services\DrinkServiceRef\Gui.DrinkServiceRef.Alchohol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\DrinkServiceRef\Gui.DrinkServiceRef.HelFlask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\DrinkServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\FavoritServiceRef\Gui.FavoritServiceRef.Drink.datasource">
+    <Content Include="Connected Services\FavoritServiceRef\Gui.FavoritServiceRef.Favorites.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\FavoritServiceRef\Gui.FavoritServiceRef.Favorites.datasource">
+    <Content Include="Connected Services\FavoritServiceRef\Gui.FavoritServiceRef.SuperAlchohol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\FavoritServiceRef\item.disco" />
@@ -332,6 +335,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.HelFlask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.Alchohol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\OrderLineServiceRef\Reference.svcmap">
@@ -494,6 +500,9 @@
     <Content Include="Views\Drink\AlchoholIndex.cshtml" />
     <Content Include="Views\Customer\AlchoholDetails.cshtml" />
     <Content Include="Views\Drink\CreateHelflask.cshtml" />
+    <Content Include="Views\Drink\CreateAlchohol.cshtml" />
+    <Content Include="Views\Drink\AlchoholDetails.cshtml" />
+    <Content Include="Views\Drink\HelflaskDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,7 +37,7 @@
   <xs:element name="GetAllDrinksByUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetAllDrinksByUserResult" nillable="true" type="q3:ArrayOfDrink" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetAllDrinksByUserResult" nillable="true" type="q3:ArrayOfSuperAlchohol" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -50,6 +50,32 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="addDrinkResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAlchohol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="drinkId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAlchoholResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddHelflask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="drinkId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddHelflaskResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

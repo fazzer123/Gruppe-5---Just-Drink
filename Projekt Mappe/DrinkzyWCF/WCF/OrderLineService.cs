@@ -27,6 +27,11 @@ namespace WCF
             olCtr.CreateOrderLineHelflask(orderline, orderID);
         }
 
+        public void CreateOrderLineAlchohol(OrderLine orderline, int orderID)
+        {
+            olCtr.CreateOrderLineAlchohol(orderline, orderID);
+        }
+
         public IEnumerable<OrderLine> GetAllOrderlines()
         {
            return olCtr.GetAllOrderLines();
@@ -70,6 +75,11 @@ namespace WCF
         public HelFlask GetHelflask(int id)
         {
             return olCtr.GetHelflask(id);
+        }
+
+        public Alchohol GetAlchohol(int id)
+        {
+            return olCtr.GetALchohol(id);
         }
     }
 }

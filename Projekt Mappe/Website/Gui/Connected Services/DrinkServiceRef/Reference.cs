@@ -18,6 +18,7 @@ namespace Gui.DrinkServiceRef {
     [System.Runtime.Serialization.DataContractAttribute(Name="SuperAlchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.DrinkServiceRef.Alchohol))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.DrinkServiceRef.HelFlask))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.DrinkServiceRef.Drink))]
     public partial class SuperAlchohol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -113,6 +114,29 @@ namespace Gui.DrinkServiceRef {
     [System.Runtime.Serialization.DataContractAttribute(Name="Alchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
     public partial class Alchohol : Gui.DrinkServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HelFlask", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class HelFlask : Gui.DrinkServiceRef.SuperAlchohol {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal ProcentField;
@@ -316,6 +340,12 @@ namespace Gui.DrinkServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAllAlchohols", ReplyAction="http://tempuri.org/IDrinkService/GetAllAlchoholsResponse")]
         System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol[]> GetAllAlchoholsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetHelflask", ReplyAction="http://tempuri.org/IDrinkService/GetHelflaskResponse")]
+        Gui.DrinkServiceRef.HelFlask GetHelflask(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetHelflask", ReplyAction="http://tempuri.org/IDrinkService/GetHelflaskResponse")]
+        System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -431,6 +461,14 @@ namespace Gui.DrinkServiceRef {
         
         public System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol[]> GetAllAlchoholsAsync() {
             return base.Channel.GetAllAlchoholsAsync();
+        }
+        
+        public Gui.DrinkServiceRef.HelFlask GetHelflask(int id) {
+            return base.Channel.GetHelflask(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id) {
+            return base.Channel.GetHelflaskAsync(id);
         }
     }
 }

@@ -31,6 +31,18 @@
   <wsdl:message name="IFavoritesService_addDrink_OutputMessage">
     <wsdl:part name="parameters" element="tns:addDrinkResponse" />
   </wsdl:message>
+  <wsdl:message name="IFavoritesService_AddAlchohol_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAlchohol" />
+  </wsdl:message>
+  <wsdl:message name="IFavoritesService_AddAlchohol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAlchoholResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFavoritesService_AddHelflask_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddHelflask" />
+  </wsdl:message>
+  <wsdl:message name="IFavoritesService_AddHelflask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddHelflaskResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFavoritesService">
     <wsdl:operation name="createFavorites">
       <wsdl:input wsaw:Action="http://tempuri.org/IFavoritesService/createFavorites" message="tns:IFavoritesService_createFavorites_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="addDrink">
       <wsdl:input wsaw:Action="http://tempuri.org/IFavoritesService/addDrink" message="tns:IFavoritesService_addDrink_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFavoritesService/addDrinkResponse" message="tns:IFavoritesService_addDrink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAlchohol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFavoritesService/AddAlchohol" message="tns:IFavoritesService_AddAlchohol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFavoritesService/AddAlchoholResponse" message="tns:IFavoritesService_AddAlchohol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddHelflask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFavoritesService/AddHelflask" message="tns:IFavoritesService_AddHelflask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFavoritesService/AddHelflaskResponse" message="tns:IFavoritesService_AddHelflask_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFavoritesService" type="tns:IFavoritesService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="addDrink">
       <soap:operation soapAction="http://tempuri.org/IFavoritesService/addDrink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAlchohol">
+      <soap:operation soapAction="http://tempuri.org/IFavoritesService/AddAlchohol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddHelflask">
+      <soap:operation soapAction="http://tempuri.org/IFavoritesService/AddHelflask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

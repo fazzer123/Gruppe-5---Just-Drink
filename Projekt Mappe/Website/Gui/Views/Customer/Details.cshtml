@@ -66,7 +66,8 @@
 
             </dt>
             <dd>
-                <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+                <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateAlchohol", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+                <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("AlchoholDetails", "Drink", new { drinkId = d.ID })'" />
             </dd>
         }
         <h2>Hel Flasker</h2>
@@ -95,6 +96,7 @@
             </dt>
             <dd>
                 <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateHelflask", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+                <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />           
             </dd>
         }
     </dl>

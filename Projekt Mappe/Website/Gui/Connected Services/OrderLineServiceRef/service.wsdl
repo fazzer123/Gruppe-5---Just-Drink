@@ -19,6 +19,12 @@
   <wsdl:message name="IOrderLineService_CreateOrderLineHelflask_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateOrderLineHelflaskResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderLineService_CreateOrderLineAlchohol_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderLineAlchohol" />
+  </wsdl:message>
+  <wsdl:message name="IOrderLineService_CreateOrderLineAlchohol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderLineAlchoholResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrderLineService_GetOrderLine_InputMessage">
     <wsdl:part name="parameters" element="tns:GetOrderLine" />
   </wsdl:message>
@@ -73,6 +79,12 @@
   <wsdl:message name="IOrderLineService_GetHelflask_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetHelflaskResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderLineService_GetAlchohol_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlchohol" />
+  </wsdl:message>
+  <wsdl:message name="IOrderLineService_GetAlchohol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlchoholResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderLineService">
     <wsdl:operation name="CreateOrderLine">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/CreateOrderLine" message="tns:IOrderLineService_CreateOrderLine_InputMessage" />
@@ -81,6 +93,10 @@
     <wsdl:operation name="CreateOrderLineHelflask">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/CreateOrderLineHelflask" message="tns:IOrderLineService_CreateOrderLineHelflask_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/CreateOrderLineHelflaskResponse" message="tns:IOrderLineService_CreateOrderLineHelflask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderLineAlchohol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/CreateOrderLineAlchohol" message="tns:IOrderLineService_CreateOrderLineAlchohol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/CreateOrderLineAlchoholResponse" message="tns:IOrderLineService_CreateOrderLineAlchohol_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetOrderLine">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/GetOrderLine" message="tns:IOrderLineService_GetOrderLine_InputMessage" />
@@ -118,6 +134,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/GetHelflask" message="tns:IOrderLineService_GetHelflask_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/GetHelflaskResponse" message="tns:IOrderLineService_GetHelflask_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAlchohol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderLineService/GetAlchohol" message="tns:IOrderLineService_GetAlchohol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderLineService/GetAlchoholResponse" message="tns:IOrderLineService_GetAlchohol_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderLineService" type="tns:IOrderLineService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -132,6 +152,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateOrderLineHelflask">
       <soap:operation soapAction="http://tempuri.org/IOrderLineService/CreateOrderLineHelflask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderLineAlchohol">
+      <soap:operation soapAction="http://tempuri.org/IOrderLineService/CreateOrderLineAlchohol" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -213,6 +242,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetHelflask">
       <soap:operation soapAction="http://tempuri.org/IOrderLineService/GetHelflask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlchohol">
+      <soap:operation soapAction="http://tempuri.org/IOrderLineService/GetAlchohol" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

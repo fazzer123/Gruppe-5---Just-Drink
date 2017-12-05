@@ -15,6 +15,8 @@ namespace WCF
         void CreateOrderLine(OrderLine orderline, int orderID);
         [OperationContract]
         void CreateOrderLineHelflask(OrderLine orderline, int orderID);
+        [OperationContract]
+        void CreateOrderLineAlchohol(OrderLine orderline, int orderID);
 
         [OperationContract]
         OrderLine GetOrderLine(int ID);
@@ -43,5 +45,9 @@ namespace WCF
 
         [OperationContract]
         HelFlask GetHelflask(int id);
+
+
+        [OperationContract]
+        Alchohol GetAlchohol(int id);
     }
 }

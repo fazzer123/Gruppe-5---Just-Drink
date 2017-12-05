@@ -38,6 +38,16 @@ namespace Gui.Controllers
             return View(client.GetDrink(drinkId));
         }
 
+        public ActionResult AlchoholDetails(int drinkId)
+        {
+            return View(client.GetAlchohol(drinkId));
+        }
+
+        public ActionResult HelflaskDetails(int drinkId)
+        {
+            return View(client.GetHelflask(drinkId));
+        }
+
         // GET: Drink/Create
         public ActionResult Create()
         {
@@ -110,7 +120,46 @@ namespace Gui.Controllers
             else
             {
                 oCtr.CreateOrder(cusID);
-                return Create(orderline, drinkId, cusID);
+                return CreateHelflask(orderline, drinkId, cusID);
+            }
+
+            return RedirectToAction("Details", "Customer", new { id = cusID });
+        }
+
+        public ActionResult CreateAlchohol()
+        {
+            return View();
+        }
+
+        // POST: Drink/Create
+        [HttpPost]
+        public ActionResult CreateAlchohol(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID)
+        {
+            if (orderClient.GetOrderByStatus("Incomplete") != null)
+            {
+                if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                {
+                    orderline.Drink = lc.GetAlchohol(drinkId);
+                    orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
+                    lc.CreateOrderLineAlchohol(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+
+
+                    decimal hej = orderline.Drink.Price * orderline.Amount;
+                    hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
+                    orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
+                    return RedirectToAction("Details", "Customer", new { id = cusID });
+                }
+                else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                {
+                    orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
+                    oCtr.CreateOrder(cusID);
+                    return CreateAlchohol(orderline, drinkId, cusID);
+                }
+            }
+            else
+            {
+                oCtr.CreateOrder(cusID);
+                return CreateAlchohol(orderline, drinkId, cusID);
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
@@ -179,6 +228,20 @@ namespace Gui.Controllers
             FavoritesServiceClient fClient = new FavoritesServiceClient();
             fClient.addDrink(1, drinkID);
             return RedirectToAction("Details", new { drinkId = drinkID });
+        }
+
+        public ActionResult AddAlchohol(int drinkID)
+        {
+            FavoritesServiceClient fClient = new FavoritesServiceClient();
+            fClient.AddAlchohol(1, drinkID);
+            return RedirectToAction("AlchoholDetails", new { drinkId = drinkID });
+        }
+
+        public ActionResult AddHelflask(int drinkID)
+        {
+            FavoritesServiceClient fClient = new FavoritesServiceClient();
+            fClient.AddHelflask(1, drinkID);
+            return RedirectToAction("HelflaskDetails", new { drinkId = drinkID });
         }
     }
 }
