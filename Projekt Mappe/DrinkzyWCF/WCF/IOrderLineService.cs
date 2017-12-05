@@ -13,20 +13,35 @@ namespace WCF
     {
         [OperationContract]
         void CreateOrderLine(OrderLine orderline, int orderID);
+        [OperationContract]
+        void CreateOrderLineHelflask(OrderLine orderline, int orderID);
 
         [OperationContract]
         OrderLine GetOrderLine(int ID);
 
         [OperationContract]
-        IEnumerable<OrderLine> GetAllOrderlines();
+        OrderLine GetOrderLineHelflask(int ID);
 
         [OperationContract]
-        Drink GetDrink(int id);
+        IEnumerable<OrderLine> GetAllOrderlines();
 
         [OperationContract]
         void DeleteOrderLineByID(int OrderLineID);
 
         [OperationContract]
         void EditOrderLine(OrderLine orderLine);
+
+        [OperationContract]
+        void EditOrderLineHelflask(OrderLine orderLine);
+
+        [OperationContract]
+        void EditOrderLinePrice(int id, int orderID, string text);
+
+
+        [OperationContract]
+        Drink GetDrink(int id);
+
+        [OperationContract]
+        HelFlask GetHelflask(int id);
     }
 }

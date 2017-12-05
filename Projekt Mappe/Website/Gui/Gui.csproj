@@ -331,6 +331,9 @@
     <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.Drink.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\OrderLineServiceRef\Gui.OrderLineServiceRef.HelFlask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\OrderLineServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -490,6 +493,7 @@
     <Content Include="Views\Register\Create.cshtml" />
     <Content Include="Views\Drink\AlchoholIndex.cshtml" />
     <Content Include="Views\Customer\AlchoholDetails.cshtml" />
+    <Content Include="Views\Drink\CreateHelflask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

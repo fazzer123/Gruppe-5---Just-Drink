@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace ModelLayer
 {
     [DataContract]
+    [KnownType(typeof(SuperAlchohol))]
     public class Drink : SuperAlchohol
     {
         [DataMember]

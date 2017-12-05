@@ -17,10 +17,10 @@ namespace ModelLayer
         [DataMember]
         public decimal TotalPrice { get; set; }
         [DataMember]
-        public Drink Drink { get; set; }
+        public SuperAlchohol Drink { get; set; }
 
 
-        public OrderLine(int ID, int Amount, decimal TotalPrice, Drink Drink)
+        public OrderLine(int ID, int Amount, decimal TotalPrice, SuperAlchohol Drink)
         {
             this.ID = ID;
             this.Amount = Amount;

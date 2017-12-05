@@ -77,6 +77,44 @@ namespace Gui.Controllers
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
         }
+        public ActionResult CreateHelflask()
+        {
+            return View();
+        }
+
+        // POST: Drink/Create
+        [HttpPost]
+        public ActionResult CreateHelflask(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID)
+        {
+            if (orderClient.GetOrderByStatus("Incomplete") != null)
+            {
+                if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                {
+                    orderline.Drink = lc.GetHelflask(drinkId);
+                    orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
+                    lc.CreateOrderLineHelflask(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+
+
+                    decimal hej = orderline.Drink.Price * orderline.Amount;
+                    hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
+                    orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
+                    return RedirectToAction("Details", "Customer", new { id = cusID });
+                }
+                else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                {
+                    orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
+                    oCtr.CreateOrder(cusID);
+                    return CreateHelflask(orderline, drinkId, cusID);
+                }
+            }
+            else
+            {
+                oCtr.CreateOrder(cusID);
+                return Create(orderline, drinkId, cusID);
+            }
+
+            return RedirectToAction("Details", "Customer", new { id = cusID });
+        }
 
 
         // GET: Drink/Edit/5

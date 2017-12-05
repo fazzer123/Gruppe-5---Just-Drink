@@ -26,7 +26,7 @@ namespace Gui.OrderLineServiceRef {
         private int AmountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.OrderLineServiceRef.Drink DrinkField;
+        private Gui.OrderLineServiceRef.SuperAlchohol DrinkField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
@@ -58,7 +58,7 @@ namespace Gui.OrderLineServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.OrderLineServiceRef.Drink Drink {
+        public Gui.OrderLineServiceRef.SuperAlchohol Drink {
             get {
                 return this.DrinkField;
             }
@@ -108,48 +108,11 @@ namespace Gui.OrderLineServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Drink", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
-    [System.SerializableAttribute()]
-    public partial class Drink : Gui.OrderLineServiceRef.SuperAlchohol {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.OrderLineServiceRef.Ingredient[] IngredientsField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.OrderLineServiceRef.Ingredient[] Ingredients {
-            get {
-                return this.IngredientsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
-                    this.IngredientsField = value;
-                    this.RaisePropertyChanged("Ingredients");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SuperAlchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.OrderLineServiceRef.Drink))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.OrderLineServiceRef.Alchohol))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.OrderLineServiceRef.HelFlask))]
     public partial class SuperAlchohol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -241,6 +204,91 @@ namespace Gui.OrderLineServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Drink", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Drink : Gui.OrderLineServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.OrderLineServiceRef.Ingredient[] IngredientsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.OrderLineServiceRef.Ingredient[] Ingredients {
+            get {
+                return this.IngredientsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
+                    this.IngredientsField = value;
+                    this.RaisePropertyChanged("Ingredients");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Alchohol : Gui.OrderLineServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HelFlask", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class HelFlask : Gui.OrderLineServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Ingredient", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
     public partial class Ingredient : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -326,23 +374,29 @@ namespace Gui.OrderLineServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/CreateOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/CreateOrderLineResponse")]
         System.Threading.Tasks.Task CreateOrderLineAsync(Gui.OrderLineServiceRef.OrderLine orderline, int orderID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/CreateOrderLineHelflask", ReplyAction="http://tempuri.org/IOrderLineService/CreateOrderLineHelflaskResponse")]
+        void CreateOrderLineHelflask(Gui.OrderLineServiceRef.OrderLine orderline, int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/CreateOrderLineHelflask", ReplyAction="http://tempuri.org/IOrderLineService/CreateOrderLineHelflaskResponse")]
+        System.Threading.Tasks.Task CreateOrderLineHelflaskAsync(Gui.OrderLineServiceRef.OrderLine orderline, int orderID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/GetOrderLineResponse")]
         Gui.OrderLineServiceRef.OrderLine GetOrderLine(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/GetOrderLineResponse")]
         System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine> GetOrderLineAsync(int ID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetOrderLineHelflask", ReplyAction="http://tempuri.org/IOrderLineService/GetOrderLineHelflaskResponse")]
+        Gui.OrderLineServiceRef.OrderLine GetOrderLineHelflask(int ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetOrderLineHelflask", ReplyAction="http://tempuri.org/IOrderLineService/GetOrderLineHelflaskResponse")]
+        System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine> GetOrderLineHelflaskAsync(int ID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetAllOrderlines", ReplyAction="http://tempuri.org/IOrderLineService/GetAllOrderlinesResponse")]
         Gui.OrderLineServiceRef.OrderLine[] GetAllOrderlines();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetAllOrderlines", ReplyAction="http://tempuri.org/IOrderLineService/GetAllOrderlinesResponse")]
         System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine[]> GetAllOrderlinesAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetDrink", ReplyAction="http://tempuri.org/IOrderLineService/GetDrinkResponse")]
-        Gui.OrderLineServiceRef.Drink GetDrink(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetDrink", ReplyAction="http://tempuri.org/IOrderLineService/GetDrinkResponse")]
-        System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByID", ReplyAction="http://tempuri.org/IOrderLineService/DeleteOrderLineByIDResponse")]
         void DeleteOrderLineByID(int OrderLineID);
@@ -355,6 +409,30 @@ namespace Gui.OrderLineServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLineResponse")]
         System.Threading.Tasks.Task EditOrderLineAsync(Gui.OrderLineServiceRef.OrderLine orderLine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLineHelflask", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLineHelflaskResponse")]
+        void EditOrderLineHelflask(Gui.OrderLineServiceRef.OrderLine orderLine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLineHelflask", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLineHelflaskResponse")]
+        System.Threading.Tasks.Task EditOrderLineHelflaskAsync(Gui.OrderLineServiceRef.OrderLine orderLine);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLinePrice", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLinePriceResponse")]
+        void EditOrderLinePrice(int id, int orderID, string text);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLinePrice", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLinePriceResponse")]
+        System.Threading.Tasks.Task EditOrderLinePriceAsync(int id, int orderID, string text);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetDrink", ReplyAction="http://tempuri.org/IOrderLineService/GetDrinkResponse")]
+        Gui.OrderLineServiceRef.Drink GetDrink(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetDrink", ReplyAction="http://tempuri.org/IOrderLineService/GetDrinkResponse")]
+        System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetHelflask", ReplyAction="http://tempuri.org/IOrderLineService/GetHelflaskResponse")]
+        Gui.OrderLineServiceRef.HelFlask GetHelflask(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/GetHelflask", ReplyAction="http://tempuri.org/IOrderLineService/GetHelflaskResponse")]
+        System.Threading.Tasks.Task<Gui.OrderLineServiceRef.HelFlask> GetHelflaskAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -392,6 +470,14 @@ namespace Gui.OrderLineServiceRef {
             return base.Channel.CreateOrderLineAsync(orderline, orderID);
         }
         
+        public void CreateOrderLineHelflask(Gui.OrderLineServiceRef.OrderLine orderline, int orderID) {
+            base.Channel.CreateOrderLineHelflask(orderline, orderID);
+        }
+        
+        public System.Threading.Tasks.Task CreateOrderLineHelflaskAsync(Gui.OrderLineServiceRef.OrderLine orderline, int orderID) {
+            return base.Channel.CreateOrderLineHelflaskAsync(orderline, orderID);
+        }
+        
         public Gui.OrderLineServiceRef.OrderLine GetOrderLine(int ID) {
             return base.Channel.GetOrderLine(ID);
         }
@@ -400,20 +486,20 @@ namespace Gui.OrderLineServiceRef {
             return base.Channel.GetOrderLineAsync(ID);
         }
         
+        public Gui.OrderLineServiceRef.OrderLine GetOrderLineHelflask(int ID) {
+            return base.Channel.GetOrderLineHelflask(ID);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine> GetOrderLineHelflaskAsync(int ID) {
+            return base.Channel.GetOrderLineHelflaskAsync(ID);
+        }
+        
         public Gui.OrderLineServiceRef.OrderLine[] GetAllOrderlines() {
             return base.Channel.GetAllOrderlines();
         }
         
         public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine[]> GetAllOrderlinesAsync() {
             return base.Channel.GetAllOrderlinesAsync();
-        }
-        
-        public Gui.OrderLineServiceRef.Drink GetDrink(int id) {
-            return base.Channel.GetDrink(id);
-        }
-        
-        public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id) {
-            return base.Channel.GetDrinkAsync(id);
         }
         
         public void DeleteOrderLineByID(int OrderLineID) {
@@ -430,6 +516,38 @@ namespace Gui.OrderLineServiceRef {
         
         public System.Threading.Tasks.Task EditOrderLineAsync(Gui.OrderLineServiceRef.OrderLine orderLine) {
             return base.Channel.EditOrderLineAsync(orderLine);
+        }
+        
+        public void EditOrderLineHelflask(Gui.OrderLineServiceRef.OrderLine orderLine) {
+            base.Channel.EditOrderLineHelflask(orderLine);
+        }
+        
+        public System.Threading.Tasks.Task EditOrderLineHelflaskAsync(Gui.OrderLineServiceRef.OrderLine orderLine) {
+            return base.Channel.EditOrderLineHelflaskAsync(orderLine);
+        }
+        
+        public void EditOrderLinePrice(int id, int orderID, string text) {
+            base.Channel.EditOrderLinePrice(id, orderID, text);
+        }
+        
+        public System.Threading.Tasks.Task EditOrderLinePriceAsync(int id, int orderID, string text) {
+            return base.Channel.EditOrderLinePriceAsync(id, orderID, text);
+        }
+        
+        public Gui.OrderLineServiceRef.Drink GetDrink(int id) {
+            return base.Channel.GetDrink(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.Drink> GetDrinkAsync(int id) {
+            return base.Channel.GetDrinkAsync(id);
+        }
+        
+        public Gui.OrderLineServiceRef.HelFlask GetHelflask(int id) {
+            return base.Channel.GetHelflask(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.OrderLineServiceRef.HelFlask> GetHelflaskAsync(int id) {
+            return base.Channel.GetHelflaskAsync(id);
         }
     }
 }
