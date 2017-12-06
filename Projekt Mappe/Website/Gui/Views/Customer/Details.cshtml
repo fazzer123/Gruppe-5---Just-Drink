@@ -1,6 +1,4 @@
 ﻿@model Gui.MenucardServiceRef.MenuCard
-    @using Gui.CustomerServiceRef
-    @using Gui.DrinkServiceRef
 
 <h2>@Model.Customer.CusName</h2>
 
@@ -14,6 +12,7 @@
         <input type="submit" id="sumbitText" value="Søg" />
     }
     <dl class="dl-horizontal">
+        <h2>Drinks</h2>
         @foreach (Gui.MenucardServiceRef.Drink d in Model.Drinks)
         {
             <dt>
@@ -39,8 +38,67 @@
             </dt>
             <dd>
             <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+            <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = d.ID })'" />
             </dd>
           }
+        <h2>Alcohol</h2>
+        @foreach (Gui.MenucardServiceRef.Alchohol d in Model.alchohols)
+        {
+            <dt>
+
+            </dt>
+            <dd>
+                <img src="@Url.Content(d.Img)" alt="" height="200px" width="auto" />
+            </dd>
+            <dt>
+                Name
+            </dt>
+            <dd>
+                @d.Name
+            </dd>
+            <dt>
+                Procent
+            </dt>
+            <dd>
+                @d.Procent
+            </dd>
+            <dt>
+
+            </dt>
+            <dd>
+                <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateAlchohol", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+                <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("AlchoholDetails", "Drink", new { drinkId = d.ID })'" />
+            </dd>
+        }
+        <h2>Hel Flasker</h2>
+        @foreach (Gui.MenucardServiceRef.HelFlask d in Model.helflasks)
+        {
+            <dt>
+
+            </dt>
+            <dd>
+                <img src="@Url.Content(d.Img)" alt="" height="200px" width="auto" />
+            </dd>
+            <dt>
+                Name
+            </dt>
+            <dd>
+                @d.Name
+            </dd>
+            <dt>
+                Procent
+            </dt>
+            <dd>
+                @d.Procent
+            </dd>
+            <dt>
+
+            </dt>
+            <dd>
+                <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateHelflask", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />
+                <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />           
+            </dd>
+        }
     </dl>
 </div>
 <p>

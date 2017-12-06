@@ -31,6 +31,12 @@ namespace Gui.MenucardServiceRef {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.MenucardServiceRef.Alchohol[] alchoholsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.MenucardServiceRef.HelFlask[] helflasksField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -76,6 +82,32 @@ namespace Gui.MenucardServiceRef {
                 if ((this.IDField.Equals(value) != true)) {
                     this.IDField = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.MenucardServiceRef.Alchohol[] alchohols {
+            get {
+                return this.alchoholsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.alchoholsField, value) != true)) {
+                    this.alchoholsField = value;
+                    this.RaisePropertyChanged("alchohols");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.MenucardServiceRef.HelFlask[] helflasks {
+            get {
+                return this.helflasksField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.helflasksField, value) != true)) {
+                    this.helflasksField = value;
+                    this.RaisePropertyChanged("helflasks");
                 }
             }
         }
@@ -235,22 +267,104 @@ namespace Gui.MenucardServiceRef {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Drink", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
-    public partial class Drink : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+    public partial class Drink : Gui.MenucardServiceRef.SuperAlchohol {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.MenucardServiceRef.Ingredient[] IngredientsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.MenucardServiceRef.Ingredient[] Ingredients {
+            get {
+                return this.IngredientsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
+                    this.IngredientsField = value;
+                    this.RaisePropertyChanged("Ingredients");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Alchohol : Gui.MenucardServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HelFlask", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class HelFlask : Gui.MenucardServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SuperAlchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.MenucardServiceRef.Alchohol))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.MenucardServiceRef.HelFlask))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.MenucardServiceRef.Drink))]
+    public partial class SuperAlchohol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImgField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.MenucardServiceRef.Ingredient[] IngredientsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -265,19 +379,6 @@ namespace Gui.MenucardServiceRef {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
             }
         }
         
@@ -303,19 +404,6 @@ namespace Gui.MenucardServiceRef {
                 if ((object.ReferenceEquals(this.ImgField, value) != true)) {
                     this.ImgField = value;
                     this.RaisePropertyChanged("Img");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.MenucardServiceRef.Ingredient[] Ingredients {
-            get {
-                return this.IngredientsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
-                    this.IngredientsField = value;
-                    this.RaisePropertyChanged("Ingredients");
                 }
             }
         }

@@ -18,9 +18,14 @@ namespace WCF
         Favorites GetFavoritesByUserID(int id);
 
         [OperationContract]
-        List<Drink> GetAllDrinksByUser(int id);
+        List<SuperAlchohol> GetAllDrinksByUser(int id);
 
         [OperationContract]
         void addDrink(int userId, int drinkId);
+        [OperationContract]
+        void AddAlchohol(int userId, int drinkId);
+
+        [OperationContract]
+        void AddHelflask(int userId, int drinkId);
     }
 }

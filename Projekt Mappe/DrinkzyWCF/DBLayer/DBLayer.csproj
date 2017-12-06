@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlchoholDB.cs" />
     <Compile Include="AnnouncementDB.cs" />
     <Compile Include="CustomerDB.cs" />
     <Compile Include="DrinkDB.cs" />
     <Compile Include="FavoritesDB.cs" />
     <Compile Include="HashingHelper.cs" />
+    <Compile Include="HelFlaskDB.cs" />
     <Compile Include="IngredientsDB.cs" />
     <Compile Include="MenuCardDB.cs" />
     <Compile Include="OrderDB.cs" />

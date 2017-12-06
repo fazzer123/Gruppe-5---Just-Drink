@@ -13,16 +13,16 @@ namespace ModelLayer
         [DataMember]
         public int ID { get; set; }
         [DataMember]
-        public List<Drink> Drinks { get; set; }
+        public List<SuperAlchohol> Drinks { get; set; }
         [DataMember]
         public User User { get; set; }
 
         public Favorites() { }
 
-        public Favorites(User User, Drink Drink)
+        public Favorites(User User)
         {
             this.User = User;
-            Drinks = new List<Drink>();
+            Drinks = new List<SuperAlchohol>();
         }
     }
 }

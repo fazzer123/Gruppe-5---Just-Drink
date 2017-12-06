@@ -12,6 +12,8 @@ namespace DBLayer
     public class FavoritesDB
     {
         private DrinkDB ddb = new DrinkDB();
+        private AlchoholDB aDB = new AlchoholDB();
+        private HelFlaskDB hfDB = new HelFlaskDB();
         private UserDB userDB = new UserDB();
 
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -46,6 +48,38 @@ namespace DBLayer
             }
         }
 
+        public void AddAlchohol(int userId, int drinkId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Insert Into dbo.FavoritesAlchohol(favoritesID, alchoholID) values(@favoritesID, @alchoholID)";
+                    //cmd.Parameters.AddWithValue("id", OrderLine.ID);
+                    cmd.Parameters.AddWithValue("favoritesID", GetFavoritesByUserID(userId).ID);
+                    cmd.Parameters.AddWithValue("alchoholID", drinkId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void AddHelflask(int userId, int drinkId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Insert Into dbo.FavoritesHelflask(favoritesID, helflaskID) values(@favoritesID, @helflaskID)";
+                    //cmd.Parameters.AddWithValue("id", OrderLine.ID);
+                    cmd.Parameters.AddWithValue("favoritesID", GetFavoritesByUserID(userId).ID);
+                    cmd.Parameters.AddWithValue("helflaskID", drinkId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public Favorites GetFavoritesByUserID(int id)
         {
             Favorites favorites = null;
@@ -71,9 +105,9 @@ namespace DBLayer
             return favorites;
         }
 
-        public List<Drink> GetAllDrinksByUser(int favoritesId)
+        public List<SuperAlchohol> GetAllDrinksByUser(int favoritesId)
         {
-            List<Drink> DrinksList = new List<Drink>();
+            List<SuperAlchohol> DrinksList = new List<SuperAlchohol>();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Open();
@@ -86,6 +120,34 @@ namespace DBLayer
                     while (Reader.Read())
                     {
                         Drink drink = ddb.GetDrink((int)Reader["drinkID"]);
+                        DrinksList.Add(drink);
+                    }
+                }
+                connection.Close();
+
+                connection.Open();
+                using (SqlCommand cmd2 = connection.CreateCommand())
+                {
+                    cmd2.CommandText = "SELECT * FROM FavoritesAlchohol WHERE favoritesID = @favoritesID";
+                    cmd2.Parameters.AddWithValue("favoritesID", favoritesId);
+                    var Reader2 = cmd2.ExecuteReader();
+                    while (Reader2.Read())
+                    {
+                        Alchohol drink = aDB.GetAlchohol((int)Reader2["alchoholID"]);
+                        DrinksList.Add(drink);
+                    }
+                }
+                connection.Close();
+
+                connection.Open();
+                using (SqlCommand cmd3 = connection.CreateCommand())
+                {
+                    cmd3.CommandText = "SELECT * FROM FavoritesHelflask WHERE favoritesID = @favoritesID";
+                    cmd3.Parameters.AddWithValue("favoritesID", favoritesId);
+                    var Reader3 = cmd3.ExecuteReader();
+                    while (Reader3.Read())
+                    {
+                        HelFlask drink = hfDB.GetHelFlask((int)Reader3["helflaskID"]);
                         DrinksList.Add(drink);
                     }
                 }

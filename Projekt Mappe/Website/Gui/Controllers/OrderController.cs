@@ -61,19 +61,44 @@ namespace Gui.Controllers
         [HttpPost]
         public ActionResult EditAmount(int id, int orderID, string text)
         {
-            decimal price = client.GetOrder(orderID).TotalPrice - olClient.GetOrderLine(id).TotalPrice;
-            client.UpdatePrice(client.GetOrder(orderID), price);
+            //decimal price = 0;
+            //int amount = 0;
+            //OrderLineServiceRef.OrderLine orderline = null;
+            //foreach (var o in client.GetOrder(orderID).OrderLines)
+            //{
+            //    if (o.ID == id && o.Drink.GetType() == typeof(Gui.OrderLineServiceRef.HelFlask))
+            //    {
+            //        price = client.GetOrder(orderID).TotalPrice - olClient.GetOrderLineHelflask(id).TotalPrice;
+            //        client.UpdatePrice(client.GetOrder(orderID), price);
 
-            int amount = Convert.ToInt32(text);
-            OrderLineServiceRef.OrderLine orderline = olClient.GetOrderLine(id);
-            orderline.TotalPrice = amount * orderline.Drink.Price;
-            orderline.Amount = amount;
-            olClient.EditOrderLine(orderline);
+            //        amount = Convert.ToInt32(text);
+            //        orderline = olClient.GetOrderLineHelflask(id);
+            //        orderline.TotalPrice = amount * orderline.Drink.Price;
+            //        orderline.Amount = amount;
+            //        olClient.EditOrderLineHelflask(orderline);
 
-            price = client.GetOrder(orderID).TotalPrice + olClient.GetOrderLine(id).TotalPrice;
-            client.UpdatePrice(client.GetOrder(orderID), price);
+            //        price = client.GetOrder(orderID).TotalPrice + olClient.GetOrderLineHelflask(id).TotalPrice;
 
-            return RedirectToAction("Details", new {id = orderID});
+            //        client.UpdatePrice(client.GetOrder(orderID), price);
+            //    }
+            //    else if (o.ID == id && o.Drink.GetType() == typeof(Gui.OrderLineServiceRef.Drink))
+            //    {
+            //        price = client.GetOrder(orderID).TotalPrice - olClient.GetOrderLine(id).TotalPrice;
+            //        client.UpdatePrice(client.GetOrder(orderID), price);
+
+            //        amount = Convert.ToInt32(text);
+            //        orderline = olClient.GetOrderLine(id);
+            //        orderline.TotalPrice = amount * orderline.Drink.Price;
+            //        orderline.Amount = amount;
+            //        olClient.EditOrderLine(orderline);
+
+            //        price = client.GetOrder(orderID).TotalPrice + olClient.GetOrderLine(id).TotalPrice;
+
+            //        client.UpdatePrice(client.GetOrder(orderID), price);
+            //    }
+            //}
+            olClient.EditOrderLinePrice(id, orderID, text);
+            return RedirectToAction("Details", new { id = orderID });
         }
 
         // POST: Order/Edit/5

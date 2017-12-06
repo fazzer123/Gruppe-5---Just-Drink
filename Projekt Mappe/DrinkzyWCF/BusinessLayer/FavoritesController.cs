@@ -22,7 +22,7 @@ namespace BusinessLayer
             return db.GetFavoritesByUserID(id);
         }
 
-        public List<Drink> GetAllDrinksByUser(int id)
+        public List<SuperAlchohol> GetAllDrinksByUser(int id)
         {
             return db.GetAllDrinksByUser(id);
         }
@@ -30,6 +30,16 @@ namespace BusinessLayer
         public void addDrink(int userId, int drinkId)
         {
             db.AddDrink(userId, drinkId);
+        }
+
+        public void AddAlchohol(int userId, int drinkId)
+        {
+            db.AddAlchohol(userId, drinkId);
+        }
+
+        public void AddHelflask(int userId, int drinkId)
+        {
+            db.AddHelflask(userId, drinkId);
         }
     }
 }

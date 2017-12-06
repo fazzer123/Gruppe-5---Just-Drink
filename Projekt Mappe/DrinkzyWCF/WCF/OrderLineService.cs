@@ -22,19 +22,29 @@ namespace WCF
             olCtr.CreateOrderLine(orderline, orderID);
         }
 
+        public void CreateOrderLineHelflask(OrderLine orderline, int orderID)
+        {
+            olCtr.CreateOrderLineHelflask(orderline, orderID);
+        }
+
+        public void CreateOrderLineAlchohol(OrderLine orderline, int orderID)
+        {
+            olCtr.CreateOrderLineAlchohol(orderline, orderID);
+        }
+
         public IEnumerable<OrderLine> GetAllOrderlines()
         {
            return olCtr.GetAllOrderLines();
         }
 
-        public Drink GetDrink(int id)
-        {
-            return olCtr.getDrink(id);
-        }
-
         public OrderLine GetOrderLine(int ID)
         {
            return olCtr.GetOrderLine(ID);
+        }
+
+        public OrderLine GetOrderLineHelflask(int ID)
+        {
+            return olCtr.GetOrderLineHelflask(ID);
         }
 
         public void DeleteOrderLineByID(int OrderLineID)
@@ -45,6 +55,31 @@ namespace WCF
         public void EditOrderLine(OrderLine orderLine)
         {
             olCtr.EditOrderLine(orderLine);
+        }
+
+        public void EditOrderLineHelflask(OrderLine orderLine)
+        {
+            olCtr.EditOrderLineHelflask(orderLine);
+        }
+
+        public void EditOrderLinePrice(int id, int orderID, string text)
+        {
+            olCtr.EditOrderLinePrice(id, orderID, text);
+        }
+
+        public Drink GetDrink(int id)
+        {
+            return olCtr.getDrink(id);
+        }
+
+        public HelFlask GetHelflask(int id)
+        {
+            return olCtr.GetHelflask(id);
+        }
+
+        public Alchohol GetAlchohol(int id)
+        {
+            return olCtr.GetALchohol(id);
         }
     }
 }

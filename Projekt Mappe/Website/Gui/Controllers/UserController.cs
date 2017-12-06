@@ -34,6 +34,7 @@ namespace Gui.Controllers
                 var data = client.GetData(1337);
                 id = 1;
             }
+            UserClient.createWalletAndFavorites(id);
             return View(doBCVM(id));
         }
 

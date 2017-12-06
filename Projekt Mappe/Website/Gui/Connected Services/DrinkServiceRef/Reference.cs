@@ -15,24 +15,21 @@ namespace Gui.DrinkServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Drink", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SuperAlchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
-    public partial class Drink : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.DrinkServiceRef.Alchohol))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.DrinkServiceRef.HelFlask))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.DrinkServiceRef.Drink))]
+    public partial class SuperAlchohol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImgField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.DrinkServiceRef.Ingredient[] IngredientsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -47,19 +44,6 @@ namespace Gui.DrinkServiceRef {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
             }
         }
         
@@ -85,19 +69,6 @@ namespace Gui.DrinkServiceRef {
                 if ((object.ReferenceEquals(this.ImgField, value) != true)) {
                     this.ImgField = value;
                     this.RaisePropertyChanged("Img");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.DrinkServiceRef.Ingredient[] Ingredients {
-            get {
-                return this.IngredientsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
-                    this.IngredientsField = value;
-                    this.RaisePropertyChanged("Ingredients");
                 }
             }
         }
@@ -134,6 +105,91 @@ namespace Gui.DrinkServiceRef {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Alchohol : Gui.DrinkServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HelFlask", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class HelFlask : Gui.DrinkServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Drink", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Drink : Gui.DrinkServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.DrinkServiceRef.Ingredient[] IngredientsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.DrinkServiceRef.Ingredient[] Ingredients {
+            get {
+                return this.IngredientsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
+                    this.IngredientsField = value;
+                    this.RaisePropertyChanged("Ingredients");
+                }
             }
         }
     }
@@ -237,11 +293,59 @@ namespace Gui.DrinkServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/getAllDrinks", ReplyAction="http://tempuri.org/IDrinkService/getAllDrinksResponse")]
         System.Threading.Tasks.Task<Gui.DrinkServiceRef.Drink[]> getAllDrinksAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/UpdateDrink", ReplyAction="http://tempuri.org/IDrinkService/UpdateDrinkResponse")]
+        void UpdateDrink(Gui.DrinkServiceRef.Drink drink);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/UpdateDrink", ReplyAction="http://tempuri.org/IDrinkService/UpdateDrinkResponse")]
+        System.Threading.Tasks.Task UpdateDrinkAsync(Gui.DrinkServiceRef.Drink drink);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/DeleteDrinkById", ReplyAction="http://tempuri.org/IDrinkService/DeleteDrinkByIdResponse")]
+        void DeleteDrinkById(int DrinkId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/DeleteDrinkById", ReplyAction="http://tempuri.org/IDrinkService/DeleteDrinkByIdResponse")]
+        System.Threading.Tasks.Task DeleteDrinkByIdAsync(int DrinkId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/AddIngredientToDrink", ReplyAction="http://tempuri.org/IDrinkService/AddIngredientToDrinkResponse")]
+        void AddIngredientToDrink(int ingredientID, Gui.DrinkServiceRef.Drink drink);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/AddIngredientToDrink", ReplyAction="http://tempuri.org/IDrinkService/AddIngredientToDrinkResponse")]
+        System.Threading.Tasks.Task AddIngredientToDrinkAsync(int ingredientID, Gui.DrinkServiceRef.Drink drink);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/DeleteIngredientFromDrink", ReplyAction="http://tempuri.org/IDrinkService/DeleteIngredientFromDrinkResponse")]
+        void DeleteIngredientFromDrink(int ingredientID, Gui.DrinkServiceRef.Drink drink);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/DeleteIngredientFromDrink", ReplyAction="http://tempuri.org/IDrinkService/DeleteIngredientFromDrinkResponse")]
+        System.Threading.Tasks.Task DeleteIngredientFromDrinkAsync(int ingredientID, Gui.DrinkServiceRef.Drink drink);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/SearchDrinks", ReplyAction="http://tempuri.org/IDrinkService/SearchDrinksResponse")]
         Gui.DrinkServiceRef.Drink[] SearchDrinks(string search);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/SearchDrinks", ReplyAction="http://tempuri.org/IDrinkService/SearchDrinksResponse")]
         System.Threading.Tasks.Task<Gui.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/CreateAlchohol", ReplyAction="http://tempuri.org/IDrinkService/CreateAlchoholResponse")]
+        void CreateAlchohol(Gui.DrinkServiceRef.Alchohol alchohol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/CreateAlchohol", ReplyAction="http://tempuri.org/IDrinkService/CreateAlchoholResponse")]
+        System.Threading.Tasks.Task CreateAlchoholAsync(Gui.DrinkServiceRef.Alchohol alchohol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAlchohol", ReplyAction="http://tempuri.org/IDrinkService/GetAlchoholResponse")]
+        Gui.DrinkServiceRef.Alchohol GetAlchohol(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAlchohol", ReplyAction="http://tempuri.org/IDrinkService/GetAlchoholResponse")]
+        System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol> GetAlchoholAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAllAlchohols", ReplyAction="http://tempuri.org/IDrinkService/GetAllAlchoholsResponse")]
+        Gui.DrinkServiceRef.Alchohol[] GetAllAlchohols();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAllAlchohols", ReplyAction="http://tempuri.org/IDrinkService/GetAllAlchoholsResponse")]
+        System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol[]> GetAllAlchoholsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetHelflask", ReplyAction="http://tempuri.org/IDrinkService/GetHelflaskResponse")]
+        Gui.DrinkServiceRef.HelFlask GetHelflask(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetHelflask", ReplyAction="http://tempuri.org/IDrinkService/GetHelflaskResponse")]
+        System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -295,12 +399,76 @@ namespace Gui.DrinkServiceRef {
             return base.Channel.getAllDrinksAsync();
         }
         
+        public void UpdateDrink(Gui.DrinkServiceRef.Drink drink) {
+            base.Channel.UpdateDrink(drink);
+        }
+        
+        public System.Threading.Tasks.Task UpdateDrinkAsync(Gui.DrinkServiceRef.Drink drink) {
+            return base.Channel.UpdateDrinkAsync(drink);
+        }
+        
+        public void DeleteDrinkById(int DrinkId) {
+            base.Channel.DeleteDrinkById(DrinkId);
+        }
+        
+        public System.Threading.Tasks.Task DeleteDrinkByIdAsync(int DrinkId) {
+            return base.Channel.DeleteDrinkByIdAsync(DrinkId);
+        }
+        
+        public void AddIngredientToDrink(int ingredientID, Gui.DrinkServiceRef.Drink drink) {
+            base.Channel.AddIngredientToDrink(ingredientID, drink);
+        }
+        
+        public System.Threading.Tasks.Task AddIngredientToDrinkAsync(int ingredientID, Gui.DrinkServiceRef.Drink drink) {
+            return base.Channel.AddIngredientToDrinkAsync(ingredientID, drink);
+        }
+        
+        public void DeleteIngredientFromDrink(int ingredientID, Gui.DrinkServiceRef.Drink drink) {
+            base.Channel.DeleteIngredientFromDrink(ingredientID, drink);
+        }
+        
+        public System.Threading.Tasks.Task DeleteIngredientFromDrinkAsync(int ingredientID, Gui.DrinkServiceRef.Drink drink) {
+            return base.Channel.DeleteIngredientFromDrinkAsync(ingredientID, drink);
+        }
+        
         public Gui.DrinkServiceRef.Drink[] SearchDrinks(string search) {
             return base.Channel.SearchDrinks(search);
         }
         
         public System.Threading.Tasks.Task<Gui.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search) {
             return base.Channel.SearchDrinksAsync(search);
+        }
+        
+        public void CreateAlchohol(Gui.DrinkServiceRef.Alchohol alchohol) {
+            base.Channel.CreateAlchohol(alchohol);
+        }
+        
+        public System.Threading.Tasks.Task CreateAlchoholAsync(Gui.DrinkServiceRef.Alchohol alchohol) {
+            return base.Channel.CreateAlchoholAsync(alchohol);
+        }
+        
+        public Gui.DrinkServiceRef.Alchohol GetAlchohol(int id) {
+            return base.Channel.GetAlchohol(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol> GetAlchoholAsync(int id) {
+            return base.Channel.GetAlchoholAsync(id);
+        }
+        
+        public Gui.DrinkServiceRef.Alchohol[] GetAllAlchohols() {
+            return base.Channel.GetAllAlchohols();
+        }
+        
+        public System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol[]> GetAllAlchoholsAsync() {
+            return base.Channel.GetAllAlchoholsAsync();
+        }
+        
+        public Gui.DrinkServiceRef.HelFlask GetHelflask(int id) {
+            return base.Channel.GetHelflask(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id) {
+            return base.Channel.GetHelflaskAsync(id);
         }
     }
 }

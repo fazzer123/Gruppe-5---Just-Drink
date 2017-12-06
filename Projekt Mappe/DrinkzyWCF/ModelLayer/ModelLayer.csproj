@@ -41,16 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alchohol.cs" />
     <Compile Include="Announcement.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Drink.cs" />
     <Compile Include="Favorites.cs" />
+    <Compile Include="HelFlask.cs" />
     <Compile Include="Ingredient.cs" />
     <Compile Include="MenuCard.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage.cs" />
+    <Compile Include="SuperAlchohol.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Wallet.cs" />
   </ItemGroup>

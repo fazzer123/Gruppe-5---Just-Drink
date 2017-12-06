@@ -23,7 +23,7 @@ namespace Gui.FavoritServiceRef {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.FavoritServiceRef.Drink[] DrinksField;
+        private Gui.FavoritServiceRef.SuperAlchohol[] DrinksField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
@@ -42,7 +42,7 @@ namespace Gui.FavoritServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.FavoritServiceRef.Drink[] Drinks {
+        public Gui.FavoritServiceRef.SuperAlchohol[] Drinks {
             get {
                 return this.DrinksField;
             }
@@ -106,7 +106,7 @@ namespace Gui.FavoritServiceRef {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.FavoritServiceRef.Drink[] FavoritesDrinksField;
+        private Gui.FavoritServiceRef.SuperAlchohol[] FavoritesDrinksField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
@@ -166,7 +166,7 @@ namespace Gui.FavoritServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.FavoritServiceRef.Drink[] FavoritesDrinks {
+        public Gui.FavoritServiceRef.SuperAlchohol[] FavoritesDrinks {
             get {
                 return this.FavoritesDrinksField;
             }
@@ -281,24 +281,21 @@ namespace Gui.FavoritServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Drink", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SuperAlchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
-    public partial class Drink : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.FavoritServiceRef.Drink))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.FavoritServiceRef.Alchohol))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gui.FavoritServiceRef.HelFlask))]
+    public partial class SuperAlchohol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImgField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.FavoritServiceRef.Ingredient[] IngredientsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -313,19 +310,6 @@ namespace Gui.FavoritServiceRef {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
             }
         }
         
@@ -351,19 +335,6 @@ namespace Gui.FavoritServiceRef {
                 if ((object.ReferenceEquals(this.ImgField, value) != true)) {
                     this.ImgField = value;
                     this.RaisePropertyChanged("Img");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.FavoritServiceRef.Ingredient[] Ingredients {
-            get {
-                return this.IngredientsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
-                    this.IngredientsField = value;
-                    this.RaisePropertyChanged("Ingredients");
                 }
             }
         }
@@ -400,6 +371,91 @@ namespace Gui.FavoritServiceRef {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Drink", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Drink : Gui.FavoritServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gui.FavoritServiceRef.Ingredient[] IngredientsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gui.FavoritServiceRef.Ingredient[] Ingredients {
+            get {
+                return this.IngredientsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IngredientsField, value) != true)) {
+                    this.IngredientsField = value;
+                    this.RaisePropertyChanged("Ingredients");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Alchohol : Gui.FavoritServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HelFlask", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class HelFlask : Gui.FavoritServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
             }
         }
     }
@@ -498,16 +554,28 @@ namespace Gui.FavoritServiceRef {
         System.Threading.Tasks.Task<Gui.FavoritServiceRef.Favorites> GetFavoritesByUserIDAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/GetAllDrinksByUser", ReplyAction="http://tempuri.org/IFavoritesService/GetAllDrinksByUserResponse")]
-        Gui.FavoritServiceRef.Drink[] GetAllDrinksByUser(int id);
+        Gui.FavoritServiceRef.SuperAlchohol[] GetAllDrinksByUser(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/GetAllDrinksByUser", ReplyAction="http://tempuri.org/IFavoritesService/GetAllDrinksByUserResponse")]
-        System.Threading.Tasks.Task<Gui.FavoritServiceRef.Drink[]> GetAllDrinksByUserAsync(int id);
+        System.Threading.Tasks.Task<Gui.FavoritServiceRef.SuperAlchohol[]> GetAllDrinksByUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/addDrink", ReplyAction="http://tempuri.org/IFavoritesService/addDrinkResponse")]
         void addDrink(int userId, int drinkId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/addDrink", ReplyAction="http://tempuri.org/IFavoritesService/addDrinkResponse")]
         System.Threading.Tasks.Task addDrinkAsync(int userId, int drinkId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/AddAlchohol", ReplyAction="http://tempuri.org/IFavoritesService/AddAlchoholResponse")]
+        void AddAlchohol(int userId, int drinkId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/AddAlchohol", ReplyAction="http://tempuri.org/IFavoritesService/AddAlchoholResponse")]
+        System.Threading.Tasks.Task AddAlchoholAsync(int userId, int drinkId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/AddHelflask", ReplyAction="http://tempuri.org/IFavoritesService/AddHelflaskResponse")]
+        void AddHelflask(int userId, int drinkId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFavoritesService/AddHelflask", ReplyAction="http://tempuri.org/IFavoritesService/AddHelflaskResponse")]
+        System.Threading.Tasks.Task AddHelflaskAsync(int userId, int drinkId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -553,11 +621,11 @@ namespace Gui.FavoritServiceRef {
             return base.Channel.GetFavoritesByUserIDAsync(id);
         }
         
-        public Gui.FavoritServiceRef.Drink[] GetAllDrinksByUser(int id) {
+        public Gui.FavoritServiceRef.SuperAlchohol[] GetAllDrinksByUser(int id) {
             return base.Channel.GetAllDrinksByUser(id);
         }
         
-        public System.Threading.Tasks.Task<Gui.FavoritServiceRef.Drink[]> GetAllDrinksByUserAsync(int id) {
+        public System.Threading.Tasks.Task<Gui.FavoritServiceRef.SuperAlchohol[]> GetAllDrinksByUserAsync(int id) {
             return base.Channel.GetAllDrinksByUserAsync(id);
         }
         
@@ -567,6 +635,22 @@ namespace Gui.FavoritServiceRef {
         
         public System.Threading.Tasks.Task addDrinkAsync(int userId, int drinkId) {
             return base.Channel.addDrinkAsync(userId, drinkId);
+        }
+        
+        public void AddAlchohol(int userId, int drinkId) {
+            base.Channel.AddAlchohol(userId, drinkId);
+        }
+        
+        public System.Threading.Tasks.Task AddAlchoholAsync(int userId, int drinkId) {
+            return base.Channel.AddAlchoholAsync(userId, drinkId);
+        }
+        
+        public void AddHelflask(int userId, int drinkId) {
+            base.Channel.AddHelflask(userId, drinkId);
+        }
+        
+        public System.Threading.Tasks.Task AddHelflaskAsync(int userId, int drinkId) {
+            return base.Channel.AddHelflaskAsync(userId, drinkId);
         }
     }
 }

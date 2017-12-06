@@ -16,6 +16,10 @@ namespace ModelLayer
         public Customer Customer { get; set; }
         [DataMember]
         public List<Drink> Drinks { get; set; }
+        [DataMember]
+        public List<Alchohol> alchohols { get; set; }
+        [DataMember]
+        public List<HelFlask> helflasks { get; set; }
 
         public MenuCard() { }
 
@@ -24,6 +28,8 @@ namespace ModelLayer
             this.ID = ID;
             this.Customer = Customer;
             Drinks = new List<Drink>();
+            alchohols = new List<Alchohol>();
+            helflasks = new List<HelFlask>();
         }
 
         public void addDrink(Drink d)
