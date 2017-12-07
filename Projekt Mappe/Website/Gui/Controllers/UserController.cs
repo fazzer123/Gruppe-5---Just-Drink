@@ -10,6 +10,7 @@ using Gui.ServiceSecurityRef;
 using Gui.OrderServiceRef;
 using System.Net;
 using System.Dynamic;
+using Gui.Helpers;
 
 namespace Gui.Controllers
 {
@@ -20,7 +21,7 @@ namespace Gui.Controllers
         OrderServiceClient OrderClient = new OrderServiceClient();
 
         // GET: User
-        public ActionResult Index(int id)
+        public ActionResult Index(string userName)
         {
             //int id = 0;
             //ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
@@ -34,6 +35,8 @@ namespace Gui.Controllers
             //    var data = client.GetData(1337);
             //    id = 1;
             //}
+            userName = AuthHelper.CurrentUser.Username;
+            int id = UserClient.GetUserByUserName(userName).ID;
             UserClient.createWalletAndFavorites(id);
             return View(doBCVM(id));
         }

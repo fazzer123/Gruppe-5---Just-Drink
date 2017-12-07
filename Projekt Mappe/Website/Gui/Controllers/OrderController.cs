@@ -9,6 +9,7 @@ using Gui.WalletServiceRef;
 using Gui.UserServiceRef;
 using Gui.CustomerServiceRef;
 using System.Dynamic;
+using Gui.Helpers;
 
 namespace Gui.Controllers
 {
@@ -200,7 +201,7 @@ namespace Gui.Controllers
                 Discount = 0,
                 Date = date,
                 Status = "Incomplete",
-                User = client.GetUser(1),
+                User = client.GetUser(AuthHelper.CurrentUser.Username),
                 Customer = client.GetCustomer(cusID)
             };
 

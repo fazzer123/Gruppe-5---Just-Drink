@@ -53,9 +53,9 @@ namespace BusinessLayer
             oDb.CompleteOrder(order);
         }
 
-        public User getUser(int id)
+        public User getUser(string username)
         {
-            return usCtr.GetUser(id);
+            return usCtr.GetUserByUserName(username);
         }
 
         public Customer getCustomer(int id)

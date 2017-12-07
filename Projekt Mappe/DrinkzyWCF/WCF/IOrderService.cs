@@ -30,7 +30,7 @@ namespace WCF
         Order GetOrderByStatus(string status);
 
         [OperationContract]
-        User GetUser(int id);
+        User GetUser(string username);
 
         [OperationContract]
         Customer GetCustomer(int id);

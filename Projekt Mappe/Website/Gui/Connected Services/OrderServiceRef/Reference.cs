@@ -186,6 +186,9 @@ namespace Gui.OrderServiceRef {
         private string CusNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CusPasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -232,6 +235,19 @@ namespace Gui.OrderServiceRef {
                 if ((object.ReferenceEquals(this.CusNameField, value) != true)) {
                     this.CusNameField = value;
                     this.RaisePropertyChanged("CusName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CusPassword {
+            get {
+                return this.CusPasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CusPasswordField, value) != true)) {
+                    this.CusPasswordField = value;
+                    this.RaisePropertyChanged("CusPassword");
                 }
             }
         }
@@ -327,7 +343,7 @@ namespace Gui.OrderServiceRef {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gui.OrderServiceRef.Drink[] FavoritesDrinksField;
+        private Gui.OrderServiceRef.SuperAlchohol[] FavoritesDrinksField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
@@ -387,7 +403,7 @@ namespace Gui.OrderServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gui.OrderServiceRef.Drink[] FavoritesDrinks {
+        public Gui.OrderServiceRef.SuperAlchohol[] FavoritesDrinks {
             get {
                 return this.FavoritesDrinksField;
             }
@@ -892,10 +908,10 @@ namespace Gui.OrderServiceRef {
         System.Threading.Tasks.Task<Gui.OrderServiceRef.Order> GetOrderByStatusAsync(string status);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetUser", ReplyAction="http://tempuri.org/IOrderService/GetUserResponse")]
-        Gui.OrderServiceRef.User GetUser(int id);
+        Gui.OrderServiceRef.User GetUser(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetUser", ReplyAction="http://tempuri.org/IOrderService/GetUserResponse")]
-        System.Threading.Tasks.Task<Gui.OrderServiceRef.User> GetUserAsync(int id);
+        System.Threading.Tasks.Task<Gui.OrderServiceRef.User> GetUserAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomer", ReplyAction="http://tempuri.org/IOrderService/GetCustomerResponse")]
         Gui.OrderServiceRef.Customer GetCustomer(int id);
@@ -991,12 +1007,12 @@ namespace Gui.OrderServiceRef {
             return base.Channel.GetOrderByStatusAsync(status);
         }
         
-        public Gui.OrderServiceRef.User GetUser(int id) {
-            return base.Channel.GetUser(id);
+        public Gui.OrderServiceRef.User GetUser(string username) {
+            return base.Channel.GetUser(username);
         }
         
-        public System.Threading.Tasks.Task<Gui.OrderServiceRef.User> GetUserAsync(int id) {
-            return base.Channel.GetUserAsync(id);
+        public System.Threading.Tasks.Task<Gui.OrderServiceRef.User> GetUserAsync(string username) {
+            return base.Channel.GetUserAsync(username);
         }
         
         public Gui.OrderServiceRef.Customer GetCustomer(int id) {
