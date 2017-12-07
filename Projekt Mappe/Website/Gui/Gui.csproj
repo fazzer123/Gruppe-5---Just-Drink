@@ -508,6 +508,7 @@
     <Content Include="Views\Drink\AlchoholDetails.cshtml" />
     <Content Include="Views\Drink\HelflaskDetails.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
