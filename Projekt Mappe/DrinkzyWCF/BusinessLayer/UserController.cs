@@ -67,7 +67,7 @@ namespace BusinessLayer
             }
         }
 
-        public User GetUserByUserName(string username, string password)
+        public User GetUserByUserName(string username)
         {
             IEnumerable<User> users = new List<User>();
             users = uDb.getAllUsers();
@@ -78,7 +78,7 @@ namespace BusinessLayer
             {
                 for(int i = 0 ; i < users.Count(); i++)
                 {
-                    if(users.ElementAt(i).UserName == username && users.ElementAt(i).Password == password)
+                    if(users.ElementAt(i).UserName == username)
                     {
                         user = users.ElementAt(i);
                         found = true;
