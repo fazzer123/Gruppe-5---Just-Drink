@@ -11,7 +11,7 @@
 
 {
     @Html.AntiForgeryToken()
-
+    
     <div style="color: white;">
         <div class="form-horizontal">
             <h4>Register Bruger</h4>
@@ -77,7 +77,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", placeholder = "Tast datoen ind her...", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -96,6 +96,24 @@
         </div>
 
         @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Styles.Render("~/Content/cssjqryUi")
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+        <script type="text/javascript">
+
+
+            $(document).ready(function () {
+                $('input[type=datetime]').datepicker({
+                    minDate: new Date(1900, 1 - 1, 1), maxDate: '-18Y',
+                    dateFormat: "yy/M/dd",
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-60:+0"
+                });
+
+            });
+        </script>
+        }
         
-            }
+            

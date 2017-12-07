@@ -8,12 +8,14 @@ using Gui.OrderLineServiceRef;
 using Gui.OrderServiceRef;
 using Gui.WalletServiceRef;
 using Gui.FavoritServiceRef;
+using Gui.UserServiceRef;
 using System.Dynamic;
 
 namespace Gui.Controllers
 {
     public class DrinkController : Controller
     {
+        private UserServiceClient uClient = new UserServiceClient();
         private DrinkServiceClient client = new DrinkServiceClient();
         private OrderLineServiceClient lc = new OrderLineServiceClient();
         private OrderServiceClient orderClient = new OrderServiceClient();
@@ -223,24 +225,24 @@ namespace Gui.Controllers
             return client.SearchDrinks(text);
         }
 
-        public ActionResult AddFavorit(int drinkID)
+        public ActionResult AddFavorit(int drinkID, string userName)
         {
             FavoritesServiceClient fClient = new FavoritesServiceClient();
-            fClient.addDrink(1, drinkID);
+            fClient.addDrink(uClient.GetUserByUserName(userName).ID, drinkID);
             return RedirectToAction("Details", new { drinkId = drinkID });
         }
 
-        public ActionResult AddAlchohol(int drinkID)
+        public ActionResult AddAlchohol(int drinkID, string userName)
         {
             FavoritesServiceClient fClient = new FavoritesServiceClient();
-            fClient.AddAlchohol(1, drinkID);
+            fClient.AddAlchohol(uClient.GetUserByUserName(userName).ID, drinkID);
             return RedirectToAction("AlchoholDetails", new { drinkId = drinkID });
         }
 
-        public ActionResult AddHelflask(int drinkID)
+        public ActionResult AddHelflask(int drinkID, string userName)
         {
             FavoritesServiceClient fClient = new FavoritesServiceClient();
-            fClient.AddHelflask(1, drinkID);
+            fClient.AddHelflask(uClient.GetUserByUserName(userName).ID, drinkID);
             return RedirectToAction("HelflaskDetails", new { drinkId = drinkID });
         }
     }

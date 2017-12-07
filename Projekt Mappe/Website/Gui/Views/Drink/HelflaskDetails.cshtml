@@ -1,13 +1,9 @@
 ﻿@model Gui.DrinkServiceRef.HelFlask
+    @using Gui.Helpers
 
-@{
-    ViewBag.Title = "HelflaskDetails";
-}
-
-<h2>Helflask Detaljer</h2>
+<h2>@Model.Name</h2>
 
 <div>
-    <h4>HelFlask</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,12 +41,11 @@
 
         </dt>
         <dd>
-            <input id="Button1" type="submit" value="Sæt Favorit" onclick="location.href='@Url.Action("AddHelflask", "Drink", new { drinkID = @Model.ID })'" />
+            @if (AuthHelper.IsLoggedIn())
+            {<input id="Button1" type="submit" value="Tilføj Favorit" onclick="location.href='@Url.Action("AddHelflask", "Drink", new { drinkId = @Model.ID, userName = AuthHelper.CurrentUser.Username })'" />}
+            else
+            {<p>Du skal være logget ind før du kan tilføje favorit</p>}
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Ændre", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Tilbage til listen", "Index")
-</p>
