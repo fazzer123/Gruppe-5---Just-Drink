@@ -10,6 +10,7 @@ using Gui.ServiceSecurityRef;
 using Gui.OrderServiceRef;
 using System.Net;
 using System.Dynamic;
+using Gui.Helpers;
 
 namespace Gui.Controllers
 {
@@ -20,20 +21,22 @@ namespace Gui.Controllers
         OrderServiceClient OrderClient = new OrderServiceClient();
 
         // GET: User
-        public ActionResult Index()
+        public ActionResult Index(string userName)
         {
-            int id = 0;
-            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-            AuthServiceClient authClient = new AuthServiceClient();
-            var isLoggedIn = authClient.Login("tg", "goddav");
-            if (isLoggedIn)
-            {
-                SecurityServiceClient client = new SecurityServiceClient("WSHttpBinding_ISecurityService");
-                client.ClientCredentials.UserName.UserName = "tg";
-                client.ClientCredentials.UserName.Password = "goddav";
-                var data = client.GetData(1337);
-                id = 1;
-            }
+            //int id = 0;
+            //ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            //AuthServiceClient authClient = new AuthServiceClient();
+            //var isLoggedIn = authClient.Login("tg", "goddav");
+            //if (isLoggedIn)
+            //{
+            //    SecurityServiceClient client = new SecurityServiceClient("WSHttpBinding_ISecurityService");
+            //    client.ClientCredentials.UserName.UserName = "tg";
+            //    client.ClientCredentials.UserName.Password = "goddav";
+            //    var data = client.GetData(1337);
+            //    id = 1;
+            //}
+            userName = AuthHelper.CurrentUser.Username;
+            int id = UserClient.GetUserByUserName(userName).ID;
             UserClient.createWalletAndFavorites(id);
             return View(doBCVM(id));
         }
@@ -141,6 +144,28 @@ namespace Gui.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        public ActionResult Login(string userName, string uPassword)
+        {
+            bool check = UserClient.Login(userName, uPassword);
+            int id = 0;
+
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            AuthServiceClient authClient = new AuthServiceClient();
+            var isLoggedIn = authClient.Login(userName, uPassword);
+            if (isLoggedIn)
+            {
+                id = UserClient.GetUserByUserName(userName).ID;
+
+                SecurityServiceClient client = new SecurityServiceClient("WSHttpBinding_ISecurityService");
+                client.ClientCredentials.UserName.UserName = userName;
+                client.ClientCredentials.UserName.Password = uPassword;
+                var data = client.GetData(1337);
+            }
+
+            return RedirectToAction("Index", new { id = id });
         }
     }
 }

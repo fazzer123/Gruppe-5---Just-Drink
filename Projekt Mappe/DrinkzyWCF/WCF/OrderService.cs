@@ -40,9 +40,9 @@ namespace WCF
         {
             return oCtr.GetOrderByStatus(status);
         }
-        public User GetUser(int id)
+        public User GetUser(string username)
         {
-            return oCtr.getUser(id);
+            return oCtr.getUser(username);
         }
 
         public Customer GetCustomer(int id)

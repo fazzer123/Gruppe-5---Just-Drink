@@ -8,12 +8,14 @@ using Gui.OrderLineServiceRef;
 using Gui.OrderServiceRef;
 using Gui.WalletServiceRef;
 using Gui.FavoritServiceRef;
+using Gui.UserServiceRef;
 using System.Dynamic;
 
 namespace Gui.Controllers
 {
     public class DrinkController : Controller
     {
+        private UserServiceClient uClient = new UserServiceClient();
         private DrinkServiceClient client = new DrinkServiceClient();
         private OrderLineServiceClient lc = new OrderLineServiceClient();
         private OrderServiceClient orderClient = new OrderServiceClient();
@@ -56,9 +58,9 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult Create(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID)
+        public ActionResult Create(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
         {
-            if (orderClient.GetOrderByStatus("Incomplete") != null)
+            if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
             {
                 if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
                 {
@@ -76,13 +78,13 @@ namespace Gui.Controllers
                 {
                     orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return Create(orderline, drinkId, cusID);
+                    return Create(orderline, drinkId, cusID, UserName);
                 }
             }
             else
             {
                 oCtr.CreateOrder(cusID);
-                return Create(orderline, drinkId, cusID);
+                return Create(orderline, drinkId, cusID, UserName);
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
@@ -94,9 +96,9 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult CreateHelflask(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID)
+        public ActionResult CreateHelflask(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
         {
-            if (orderClient.GetOrderByStatus("Incomplete") != null)
+            if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
             {
                 if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
                 {
@@ -114,13 +116,13 @@ namespace Gui.Controllers
                 {
                     orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return CreateHelflask(orderline, drinkId, cusID);
+                    return CreateHelflask(orderline, drinkId, cusID, UserName);
                 }
             }
             else
             {
                 oCtr.CreateOrder(cusID);
-                return CreateHelflask(orderline, drinkId, cusID);
+                return CreateHelflask(orderline, drinkId, cusID, UserName);
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
@@ -133,9 +135,9 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult CreateAlchohol(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID)
+        public ActionResult CreateAlchohol(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
         {
-            if (orderClient.GetOrderByStatus("Incomplete") != null)
+            if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
             {
                 if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
                 {
@@ -153,13 +155,13 @@ namespace Gui.Controllers
                 {
                     orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return CreateAlchohol(orderline, drinkId, cusID);
+                    return CreateAlchohol(orderline, drinkId, cusID, UserName);
                 }
             }
             else
             {
                 oCtr.CreateOrder(cusID);
-                return CreateAlchohol(orderline, drinkId, cusID);
+                return CreateAlchohol(orderline, drinkId, cusID, UserName);
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
@@ -223,24 +225,24 @@ namespace Gui.Controllers
             return client.SearchDrinks(text);
         }
 
-        public ActionResult AddFavorit(int drinkID)
+        public ActionResult AddFavorit(int drinkID, string userName)
         {
             FavoritesServiceClient fClient = new FavoritesServiceClient();
-            fClient.addDrink(1, drinkID);
+            fClient.addDrink(uClient.GetUserByUserName(userName).ID, drinkID);
             return RedirectToAction("Details", new { drinkId = drinkID });
         }
 
-        public ActionResult AddAlchohol(int drinkID)
+        public ActionResult AddAlchohol(int drinkID, string userName)
         {
             FavoritesServiceClient fClient = new FavoritesServiceClient();
-            fClient.AddAlchohol(1, drinkID);
+            fClient.AddAlchohol(uClient.GetUserByUserName(userName).ID, drinkID);
             return RedirectToAction("AlchoholDetails", new { drinkId = drinkID });
         }
 
-        public ActionResult AddHelflask(int drinkID)
+        public ActionResult AddHelflask(int drinkID, string userName)
         {
             FavoritesServiceClient fClient = new FavoritesServiceClient();
-            fClient.AddHelflask(1, drinkID);
+            fClient.AddHelflask(uClient.GetUserByUserName(userName).ID, drinkID);
             return RedirectToAction("HelflaskDetails", new { drinkId = drinkID });
         }
     }

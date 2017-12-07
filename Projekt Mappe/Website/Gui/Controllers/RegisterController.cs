@@ -26,6 +26,11 @@ namespace Gui.Controllers
             return View();
         }
 
+        public ActionResult AutomaticRedirect()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
 
         // GET: Register/Create
         public ActionResult Create()
@@ -72,14 +77,8 @@ namespace Gui.Controllers
                 {
 
                     client.CreateUser(user);
-                    return RedirectToAction("Create");
+                    return RedirectToAction("Index");
                 }
                 return View();
-            }
-
-
         }
-
     }
-
-    

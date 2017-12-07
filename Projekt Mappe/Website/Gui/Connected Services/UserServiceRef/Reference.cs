@@ -477,10 +477,10 @@ namespace Gui.UserServiceRef {
         System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
-        Gui.UserServiceRef.User GetUserByUserName(string username, string password);
+        Gui.UserServiceRef.User GetUserByUserName(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserByUserName", ReplyAction="http://tempuri.org/IUserService/GetUserByUserNameResponse")]
-        System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username, string password);
+        System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getAllUsers", ReplyAction="http://tempuri.org/IUserService/getAllUsersResponse")]
         Gui.UserServiceRef.User[] getAllUsers();
@@ -556,12 +556,12 @@ namespace Gui.UserServiceRef {
             return base.Channel.GetUserAsync(id);
         }
         
-        public Gui.UserServiceRef.User GetUserByUserName(string username, string password) {
-            return base.Channel.GetUserByUserName(username, password);
+        public Gui.UserServiceRef.User GetUserByUserName(string username) {
+            return base.Channel.GetUserByUserName(username);
         }
         
-        public System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username, string password) {
-            return base.Channel.GetUserByUserNameAsync(username, password);
+        public System.Threading.Tasks.Task<Gui.UserServiceRef.User> GetUserByUserNameAsync(string username) {
+            return base.Channel.GetUserByUserNameAsync(username);
         }
         
         public Gui.UserServiceRef.User[] getAllUsers() {
