@@ -8,7 +8,7 @@
 <h2>Order Detaljer</h2>
 
 <div style="color: white;">
-  <input id="Button1" type="button" value="Complete Order" onclick="location.href='@Url.Action("CompleteOrder", "Order", new { id = Model.Order.ID })'" />
+  <input id="Button1" type="button" value="Complete Order" onclick="location.href='@Url.Action("Fuldføre Order", "Order", new { id = Model.Order.ID })'" />
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -47,13 +47,13 @@
     <hr/>
 
     <table class="table" style="color: white;">
-        <h4>Items in cart</h4>
+        <h4>Ting i kurven</h4>
         <tr>
             <th>
-               Amount
+               Antal
             </th>
             <th>
-                Total Price
+                Pris ialt
             </th>
             <th>
                 Drink
@@ -80,7 +80,7 @@
                 </td>
                 <td>
                     @*<input id="btnEdit" type="button" value="Ændre" onclick="location.href='@Url.Action("Edit", "Order", new { id = item.ID })'" />*@
-                    <input id="btnDelete" type="button" value="Delete" onclick="location.href='@Url.Action("Delete", "Order", new {OrderLineId = item.ID, id = Model.Order.ID })'" />
+                    <input id="btnDelete" type="button" value="Delete" onclick="location.href='@Url.Action("Slet", "Order", new {OrderLineId = item.ID, id = Model.Order.ID })'" />
                 </td>
             </tr>
         }

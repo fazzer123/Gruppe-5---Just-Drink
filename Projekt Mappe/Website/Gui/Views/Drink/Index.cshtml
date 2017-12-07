@@ -37,8 +37,8 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = item.ID })'" />
-            <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = item.ID })'" />
+            <input id="Button1" type="submit" value="Tilføj til kurv" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = item.ID })'" />
+            <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = item.ID })'" />
         </td>
     </tr>
 }

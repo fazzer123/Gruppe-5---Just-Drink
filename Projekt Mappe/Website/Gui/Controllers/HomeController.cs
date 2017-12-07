@@ -23,27 +23,27 @@ namespace Gui.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Beskrivelse";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Kontaktsiden";
 
             return View();
         }
         public ActionResult FindBar()
         {
-            ViewBag.Message = "Your Find Bar Page";
+            ViewBag.Message = "Find en bar";
 
             return View(client.GetAllCustomers());
         }
 
         public ActionResult shoppage()
         {
-            ViewBag.Message = "Shop page";
+            ViewBag.Message = "Butikside";
 
             return View();
         }
@@ -51,7 +51,7 @@ namespace Gui.Controllers
 
         public ActionResult Register()
         {
-            ViewBag.Message = "Register page";
+            ViewBag.Message = "Registrer siden";
             return View();
         }
     }

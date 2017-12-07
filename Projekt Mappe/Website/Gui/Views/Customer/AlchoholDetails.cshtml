@@ -3,7 +3,7 @@
 <h2>@Model.Customer.CusName</h2>
 
 <div style="color:white;">
-    <h4>MenuCard</h4>
+    <h4>Menu</h4>
     <hr />
     @using (Html.BeginForm("SearchMenucard", "Customer", FormMethod.Post))
     {
@@ -36,11 +36,11 @@
 
             </dt>
             <dd>
-                <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { alcId = a.ID, cusID = Model.Customer.ID })'" />
+                <input id="Button1" type="submit" value="Tilføj til kurven" onclick="location.href='@Url.Action("Create", "Drink", new { alcId = a.ID, cusID = Model.Customer.ID })'" />
             </dd>
         }
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tilbage til listen", "Index")
 </p>
