@@ -13,11 +13,16 @@ namespace Gui.Controllers
     {
         UserServiceClient client = new UserServiceClient();
         FavoritesServiceClient faClient = new FavoritesServiceClient();
-    
+
         // GET: Register
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult AutomaticRedirect()
+        {
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -29,13 +34,11 @@ namespace Gui.Controllers
 
         // POST: Register/Create
 
-            [HttpPost]
-            public ActionResult Create(Gui.UserServiceRef.User user)
-            {
+        [HttpPost]
+        public ActionResult Create(Gui.UserServiceRef.User user)
+        {
             client.CreateUser(user);
-            return RedirectToAction("Index", "Home");
-            }
+            return RedirectToAction("Index");
         }
-
-
     }
+}
