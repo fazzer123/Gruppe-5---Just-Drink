@@ -20,11 +20,11 @@ namespace Gui.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Index(UserModel email)
-        {
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public ActionResult AutomaticRedirect()
         {
@@ -73,12 +73,13 @@ namespace Gui.Controllers
             {
                 ModelState.AddModelError("Phone", "Indtast telefon nr");
             }
-                if (ModelState.IsValid)
-                {
+            if (ModelState.IsValid)
+            {
 
-                    client.CreateUser(user);
-                    return RedirectToAction("Index");
-                }
-                return View();
+                client.CreateUser(user);
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
+}
