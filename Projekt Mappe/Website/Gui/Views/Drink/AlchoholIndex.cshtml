@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Gui.DrinkServiceRef.Alchohol>
 
-<h2>AlchoholIndex</h2>
+<h2>Alkohol Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Opret ny", "Create")
 </p>
 <table class="table">
     <tr>
@@ -37,9 +37,9 @@
             @Html.DisplayFor(modelItem => item.Procent)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Ændre", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detaljer", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Slet", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

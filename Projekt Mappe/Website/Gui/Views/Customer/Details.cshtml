@@ -4,7 +4,7 @@
 <h2>@Model.Customer.CusName</h2>
 
 <div style="color:white;">
-    <h4>MenuCard</h4>
+    <h4>MenuKort</h4>
     <hr />
     @using (Html.BeginForm("SearchMenucard", "Customer", FormMethod.Post))
     {
@@ -42,7 +42,7 @@
             <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = d.ID })'" />
             </dd>
           }
-        <h2>Alcohol</h2>
+        <h2>Alkohol</h2>
         @foreach (Gui.MenucardServiceRef.Alchohol d in Model.alchohols)
         {
             <dt>
@@ -103,5 +103,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tilbage til listen", "Index")
 </p>
