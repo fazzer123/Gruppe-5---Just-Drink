@@ -55,10 +55,13 @@ namespace WpfDrinkzy
                 Address = txtAddress.Text,
                 Phone = txtPhone.Text,
                 Email = txtEmail.Text,
-                Img = txtImage.Text
+                Img = txtImage.Text,
+                CusPassword = txtPassword.Text
             };
 
             CustomerClient.CreateCustomer(c);
+            clearTextboxes();
+
         }
 
         public void UpdateCustomer()
@@ -73,6 +76,7 @@ namespace WpfDrinkzy
             c.Img = txtImage.Text;
 
             CustomerClient.UpdateCustomer(c);
+            clearTextboxes();
         }
 
         public void DeleteCustomer()
@@ -147,6 +151,17 @@ namespace WpfDrinkzy
         {
             DeleteDrinkFromMenu();
             fillViewList();
+        }
+
+        public void clearTextboxes()
+        {
+            txtAddress.Text = "";
+            txtEmail.Text = "";
+            txtImage.Text = "";
+            txtName.Text = "";
+            txtPassword.Text = "";
+            txtPhone.Text = "";
+            txtRegion.Text = "";
         }
     }
 }

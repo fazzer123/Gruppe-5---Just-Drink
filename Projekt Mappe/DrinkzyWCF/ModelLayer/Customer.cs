@@ -24,8 +24,10 @@ namespace ModelLayer
         public string Phone { get; set; }
         [DataMember]
         public string Email { get; set; }
+        [DataMember]
+        public string CusPassword { get; set; }
 
-        public Customer(int ID, string CusName, string img, string Region, string Adress, string Phone, string Email)
+        public Customer(int ID, string CusName, string img, string Region, string Adress, string Phone, string Email, string cusPassword)
         {
             this.ID = ID;
             this.CusName = CusName;
@@ -34,6 +36,7 @@ namespace ModelLayer
             this.Address = Address;
             this.Phone = Phone;
             this.Email = Email;
+            this.CusPassword = cusPassword;
         }
 
         public Customer()

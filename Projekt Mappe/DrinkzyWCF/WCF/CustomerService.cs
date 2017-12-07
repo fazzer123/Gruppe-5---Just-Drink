@@ -44,5 +44,10 @@ namespace WCF
         {
             return cusCtr.searchCustomer(text);
         }
+
+        public bool Login(string cusEmail, string cusPassword)
+        {
+            return cusCtr.Login(cusEmail, cusPassword);
+        }
     }
 }
