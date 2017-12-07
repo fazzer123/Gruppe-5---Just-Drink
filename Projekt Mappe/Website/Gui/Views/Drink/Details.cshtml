@@ -1,7 +1,8 @@
 ﻿@model Gui.DrinkServiceRef.Drink
+    @using Gui.Helpers
 
+<h2>@Model.Name</h2>
 <div style="color: white; overflow: hidden;">
-    <h4>Drink</h4>
     <hr />
     <div style="float: left;">
         <dl class="dl-horizontal">
@@ -39,7 +40,10 @@
                 @Html.DisplayFor(model => model.Price)
             </dd>
             <dd>
-                <input id="Button1" type="submit" value="Sæt Favorit" onclick="location.href='@Url.Action("AddFavorit", "Drink", new { drinkID = @Model.ID })'" />
+                @if (AuthHelper.IsLoggedIn())
+            {<input id="Button1" type="submit" value="Tilføj Favorit" onclick="location.href='@Url.Action("AddFavorit", "Drink", new { drinkId = @Model.ID, userName = AuthHelper.CurrentUser.Username })'" />}
+            else
+            {<p>Du skal være logget ind før du kan tilføje favorit</p>}
             </dd>
         </dl>
     </div>
