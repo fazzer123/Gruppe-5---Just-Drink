@@ -16,9 +16,6 @@ namespace WCF
         {
             sCtr = new StorageController();
         }
-            
-
-
 
         public void CreateStorage(Storage storage)
         {
@@ -30,9 +27,14 @@ namespace WCF
            return sCtr.GetAllStorages();
         }
 
-        public Storage GetStorage(int ID)
+        public Storage GetDrinkStorage(int cusID, int drinkID)
         {
-            return sCtr.GetStorage(ID);
+            return sCtr.GetDrinkStorage(cusID, drinkID);
+        }
+
+        public void UpdateStorageDrink(int CusID, int orderID)
+        {
+            sCtr.UpdateDrinkAmount(CusID, orderID);
         }
     }
 }

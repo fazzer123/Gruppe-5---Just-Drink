@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer
 {
-    [DataContract]
+   [DataContract]
    public class Storage
     {
         [DataMember]
@@ -19,13 +19,13 @@ namespace ModelLayer
         [DataMember]
         public int MinAmount { get; set; }
         [DataMember]
-        public Drink Drink { get; set; }
+        public SuperAlchohol Drink { get; set; }
         [DataMember]
         public Customer Customer { get; set; }
 
         public Storage() { }
 
-        public Storage(int ID, int Amount, int MaxAmount, int MinAmount, Drink Drink, Customer Customer)
+        public Storage(int ID, int Amount, int MaxAmount, int MinAmount, SuperAlchohol Drink, Customer Customer)
         {
             this.ID = ID;
             this.Amount = Amount;

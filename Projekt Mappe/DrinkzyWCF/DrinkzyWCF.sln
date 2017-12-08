@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLayer", "DBLayer\DBLayer.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFHost", "WCFHost\WCFHost.csproj", "{FEC84204-8EEC-4871-A905-2131259802C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinkzyTest", "Test\DrinkzyTest.csproj", "{0C7A6E21-280B-4F00-9ADA-62A4244ECB4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FEC84204-8EEC-4871-A905-2131259802C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEC84204-8EEC-4871-A905-2131259802C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEC84204-8EEC-4871-A905-2131259802C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7A6E21-280B-4F00-9ADA-62A4244ECB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7A6E21-280B-4F00-9ADA-62A4244ECB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7A6E21-280B-4F00-9ADA-62A4244ECB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7A6E21-280B-4F00-9ADA-62A4244ECB4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -189,6 +189,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\StorageServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\UserServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -370,12 +375,32 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceSecurityRef\SecurityService.wsdl" />
+    <Content Include="Connected Services\StorageServiceRef\Gui.StorageServiceRef.Storage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\StorageServiceRef\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\StorageService.wsdl" />
     <None Include="Connected Services\UserServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\UserServiceRef\configuration.svcinfo" />
     <None Include="Connected Services\ServiceSecurityRef\item.disco" />
     <None Include="Connected Services\ServiceSecurityRef\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceSecurityRef\configuration.svcinfo" />
     <None Include="Connected Services\ServiceSecurityRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\item.disco" />
+    <None Include="Connected Services\StorageServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\StorageServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\StorageServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -584,6 +609,7 @@
     <WCFMetadataStorage Include="Connected Services\OrderLineServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\OrderServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\ServiceSecurityRef\" />
+    <WCFMetadataStorage Include="Connected Services\StorageServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\UserServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\WalletServiceRef\" />
   </ItemGroup>
