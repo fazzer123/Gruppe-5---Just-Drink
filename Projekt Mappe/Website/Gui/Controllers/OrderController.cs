@@ -8,6 +8,7 @@ using Gui.OrderLineServiceRef;
 using Gui.WalletServiceRef;
 using Gui.UserServiceRef;
 using Gui.CustomerServiceRef;
+using Gui.StorageServiceRef;
 using System.Dynamic;
 using Gui.Helpers;
 
@@ -18,6 +19,7 @@ namespace Gui.Controllers
         OrderServiceClient client = new OrderServiceClient();
         OrderLineServiceClient olClient = new OrderLineServiceClient();
         WalletServiceClient walletClient = new WalletServiceClient();
+        StorageServiceClient storageClient = new StorageServiceClient();
 
         // GET: Order
         public ActionResult Index()
@@ -187,6 +189,10 @@ namespace Gui.Controllers
             decimal hej = walletClient.GetWallet(1).Balance - order.TotalPrice;
             walletClient.UpdateBalanceByUserId(hej, 1);
             client.CompleteOrder(order);
+
+
+           storageClient.UpdateStorageDrink(order.Customer.ID, order.ID);
+            
 
             return RedirectToAction("Index");
         }

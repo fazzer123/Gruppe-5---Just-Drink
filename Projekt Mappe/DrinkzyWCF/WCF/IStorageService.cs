@@ -15,7 +15,10 @@ namespace WCF
 
 
         [OperationContract]
-        Storage GetStorage(int ID);
+        Storage GetDrinkStorage(int cusID, int drinkID);
+
+        [OperationContract]
+        void UpdateStorageDrink(int CusID, int orderID);
 
         [OperationContract]
         IEnumerable<Storage> GetAllStorages();
