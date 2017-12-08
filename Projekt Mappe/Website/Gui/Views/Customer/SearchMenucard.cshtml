@@ -25,11 +25,16 @@
                     </th>
                 </tr>
                 <tr>
-                    <th width="270px" rowspan="2">
+                    <th width="270px" rowspan="3">
                         <a href="@Url.Action("Details", "Drink", new { drinkId = d.ID })"><img src="@Url.Content(d.Img)" alt="" height="200px" width="auto" /></a>
                     </th>
                     <td valign="top">
                         @d.Description
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        Pris: @d.Price dkk.
                     </td>
                 </tr>
                 <tr>
@@ -56,11 +61,16 @@
                     </th>
                 </tr>
                 <tr>
-                    <th width="270px" rowspan="2">
+                    <th width="270px" rowspan="3">
                         <a href="@Url.Action("AlchoholDetails", "Drink", new { drinkId = d.ID })"><img src="@Url.Content(d.Img)" alt="" height="200px" width="auto" /></a>
                     </th>
                     <td valign="top">
                         Procent: @d.Procent
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        Pris: @d.Price dkk.
                     </td>
                 </tr>
                 <tr>
@@ -86,11 +96,16 @@
                     </th>
                 </tr>
                 <tr>
-                    <th width="270px" rowspan="2">
+                    <th width="270px" rowspan="3">
                         <a href="@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })"><img src="@Url.Content(d.Img)" alt="" height="200px" width="auto" /></a>
                     </th>
                     <td valign="top">
                         Procent: @d.Procent
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        Pris: @d.Price dkk.
                     </td>
                 </tr>
                 <tr>
