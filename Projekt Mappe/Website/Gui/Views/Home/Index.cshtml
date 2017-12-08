@@ -6,8 +6,9 @@
     ICollection<Gui.CustomerServiceRef.Customer> newList = client.GetAllCustomers();
 }
 
-<h2>Drinkzy forside</h2>
+<h2>Drinkzy</h2>
 <p>Denne webside er til fucbois der vil bestille drinks på en nem måde</p>
+<br />
 
 <div id="my-carousel" class="carousel slide" data-ride="carousel" style="width: 600px; height: 300px;">
     <!-- Indicators -->
@@ -26,7 +27,7 @@
         <div class="carousel-caption">
         </div>
         </div>
-    @foreach (var item in client.GetAllCustomers())
+    @foreach (var item in newList)
     {
         <div class="item" style="width: 600px; height: 300px;">
             <a href="@Url.Action("Details", "Customer", new { id = item.ID })">
