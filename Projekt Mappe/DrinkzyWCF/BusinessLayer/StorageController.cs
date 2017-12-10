@@ -70,5 +70,17 @@ namespace BusinessLayer
         {
             return sDb.GetAllStorages();
         }
+
+        public int getCheckAmount(int id)
+        {
+            int amount = sDb.GetStorage(id).Amount;
+
+            return amount;
+        }
+
+        public Storage getStorageByDrinkAndStorage(int drinkID, int cusID)
+        {
+            return sDb.getStorageByDrinkAndStorage(drinkID, cusID);
+        }
     }
 }

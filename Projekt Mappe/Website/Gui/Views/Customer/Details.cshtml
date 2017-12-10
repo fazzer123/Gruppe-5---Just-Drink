@@ -1,5 +1,12 @@
 ﻿@model Gui.MenucardServiceRef.MenuCard
     @using Gui.Helpers
+    @using Gui.StorageServiceRef;
+
+
+@{
+    ViewBag.Title = "Index";
+    StorageServiceClient sClient = new StorageServiceClient();
+}
 
 <h2>@Model.Customer.CusName</h2>
 
@@ -39,9 +46,22 @@
             <tr>
                 <td valign="bottom">
                     @if (AuthHelper.IsLoggedIn())
-                    {<input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />}
+                    {
+                        int i = sClient.getStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount;
+                        if (i <= 0)
+                        {
+                            <p>UDSOLGT!</p>
+                        }
+                        else
+                        {
+                            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />
+                        }
+                    }
                     else
-                    {<p>Du skal være logget ind før du kan købe</p>}
+                    {
+                        <p>Du skal være logget ind før du kan købe</p>
+                        }
+
                     @*<input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />*@
                     <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = d.ID })'" />
                 </td>

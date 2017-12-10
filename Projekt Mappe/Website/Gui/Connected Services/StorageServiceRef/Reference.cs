@@ -563,6 +563,12 @@ namespace Gui.StorageServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/CreateStorage", ReplyAction="http://tempuri.org/IStorageService/CreateStorageResponse")]
         System.Threading.Tasks.Task CreateStorageAsync(Gui.StorageServiceRef.Storage storage);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetStorage", ReplyAction="http://tempuri.org/IStorageService/GetStorageResponse")]
+        Gui.StorageServiceRef.Storage GetStorage(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetStorage", ReplyAction="http://tempuri.org/IStorageService/GetStorageResponse")]
+        System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage> GetStorageAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetDrinkStorage", ReplyAction="http://tempuri.org/IStorageService/GetDrinkStorageResponse")]
         Gui.StorageServiceRef.Storage GetDrinkStorage(int cusID, int drinkID);
         
@@ -580,6 +586,12 @@ namespace Gui.StorageServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllStorages", ReplyAction="http://tempuri.org/IStorageService/GetAllStoragesResponse")]
         System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllStoragesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/getStorageByDrinkAndStorage", ReplyAction="http://tempuri.org/IStorageService/getStorageByDrinkAndStorageResponse")]
+        Gui.StorageServiceRef.Storage getStorageByDrinkAndStorage(int drinkID, int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/getStorageByDrinkAndStorage", ReplyAction="http://tempuri.org/IStorageService/getStorageByDrinkAndStorageResponse")]
+        System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage> getStorageByDrinkAndStorageAsync(int drinkID, int cusID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -617,6 +629,14 @@ namespace Gui.StorageServiceRef {
             return base.Channel.CreateStorageAsync(storage);
         }
         
+        public Gui.StorageServiceRef.Storage GetStorage(int id) {
+            return base.Channel.GetStorage(id);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage> GetStorageAsync(int id) {
+            return base.Channel.GetStorageAsync(id);
+        }
+        
         public Gui.StorageServiceRef.Storage GetDrinkStorage(int cusID, int drinkID) {
             return base.Channel.GetDrinkStorage(cusID, drinkID);
         }
@@ -639,6 +659,14 @@ namespace Gui.StorageServiceRef {
         
         public System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllStoragesAsync() {
             return base.Channel.GetAllStoragesAsync();
+        }
+        
+        public Gui.StorageServiceRef.Storage getStorageByDrinkAndStorage(int drinkID, int cusID) {
+            return base.Channel.getStorageByDrinkAndStorage(drinkID, cusID);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage> getStorageByDrinkAndStorageAsync(int drinkID, int cusID) {
+            return base.Channel.getStorageByDrinkAndStorageAsync(drinkID, cusID);
         }
     }
 }

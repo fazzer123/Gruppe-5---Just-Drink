@@ -32,6 +32,16 @@ namespace WCF
             return sCtr.GetDrinkStorage(cusID, drinkID);
         }
 
+        public Storage GetStorage(int id)
+        {
+            return sCtr.GetStorage(id);
+        }
+
+        public Storage getStorageByDrinkAndStorage(int drinkID, int cusID)
+        {
+            return sCtr.getStorageByDrinkAndStorage(drinkID, cusID);
+        }
+
         public void UpdateStorageDrink(int CusID, int orderID)
         {
             sCtr.UpdateDrinkAmount(CusID, orderID);

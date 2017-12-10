@@ -12,7 +12,8 @@ namespace WCF
     {
         [OperationContract]
         void CreateStorage(Storage storage);
-
+        [OperationContract]
+        Storage GetStorage(int id);
 
         [OperationContract]
         Storage GetDrinkStorage(int cusID, int drinkID);
@@ -23,5 +24,7 @@ namespace WCF
         [OperationContract]
         IEnumerable<Storage> GetAllStorages();
 
+        [OperationContract]
+        Storage getStorageByDrinkAndStorage(int drinkID, int cusID);
     }
 }
