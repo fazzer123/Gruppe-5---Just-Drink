@@ -26,5 +26,11 @@ namespace WCF
 
         [OperationContract]
         Storage getStorageByDrinkAndStorage(int drinkID, int cusID);
+
+        [OperationContract]
+        Storage getAlchoholStorageByDrinkAndStorage(int alchID, int cusID);
+
+        [OperationContract]
+        Storage getHelflaskStorageByHelflaskAndStorage(int flaskID, int cusID);
     }
 }

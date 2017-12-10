@@ -95,9 +95,21 @@
             <tr>
                 <td valign="bottom">
                     @if (AuthHelper.IsLoggedIn())
-                    {<input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateAlchohol", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />}
+                    {
+                        int j = sClient.getAlchoholStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount;
+                        if (j <= 0)
+                        {
+                            <p>UDSOLGT!</p>
+                        }
+                        else
+                        {
+                            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateAlchohol", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />
+                        }
+                    }
                     else
-                    {<p>Du skal være logget ind før du kan købe</p>}
+                    {
+                        <p>Du skal være logget ind før du kan købe</p>
+                    }
                     <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("AlchoholDetails", "Drink", new { drinkId = d.ID })'" />
                 </td>
             </tr>
@@ -130,9 +142,21 @@
             <tr>
                 <td valign="bottom">
                     @if (AuthHelper.IsLoggedIn())
-                    {<input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateHelflask", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />}
+                    {
+                        int k = sClient.getHelflaskStorageByHelflaskAndStorage(d.ID, Model.Customer.ID).Amount;
+                        if (k <= 0)
+                        {
+                            <p>UDSOLGT!</p>
+                        }
+                        else
+                        {
+                            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateHelflask", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />
+                        }
+                    }
                     else
-                    {<p>Du skal være logget ind før du kan købe</p>}
+                    {
+                        <p>Du skal være logget ind før du kan købe</p>
+                    }
                     <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />
                 </td>
             </tr>

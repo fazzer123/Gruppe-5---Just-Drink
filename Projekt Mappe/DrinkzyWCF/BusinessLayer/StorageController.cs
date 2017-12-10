@@ -80,7 +80,17 @@ namespace BusinessLayer
 
         public Storage getStorageByDrinkAndStorage(int drinkID, int cusID)
         {
-            return sDb.getStorageByDrinkAndStorage(drinkID, cusID);
+            return sDb.getDrinkStorageByDrinkAndStorage(drinkID, cusID);
+        }
+
+        public Storage getAlchoholStorageByDrinkAndStorage(int alchID, int cusID)
+        {
+            return sDb.getAlchoholStorageByDrinkAndStorage(alchID, cusID);
+        }
+
+        public Storage getHelflaskStorageByHelflaskAndStorage(int flaskID, int cusID)
+        {
+            return sDb.getHelflaskStorageByHelflaskAndStorage(flaskID, cusID);
         }
     }
 }

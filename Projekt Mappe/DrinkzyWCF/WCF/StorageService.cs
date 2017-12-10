@@ -22,6 +22,11 @@ namespace WCF
             sCtr.CreateStorage(storage);
         }
 
+        public Storage getAlchoholStorageByDrinkAndStorage(int alchID, int cusID)
+        {
+            return sCtr.getAlchoholStorageByDrinkAndStorage(alchID, cusID);
+        }
+
         public IEnumerable<Storage> GetAllStorages()
         {
            return sCtr.GetAllStorages();
@@ -30,6 +35,11 @@ namespace WCF
         public Storage GetDrinkStorage(int cusID, int drinkID)
         {
             return sCtr.GetDrinkStorage(cusID, drinkID);
+        }
+
+        public Storage getHelflaskStorageByHelflaskAndStorage(int flaskID, int cusID)
+        {
+            return sCtr.getHelflaskStorageByHelflaskAndStorage(flaskID, cusID);
         }
 
         public Storage GetStorage(int id)

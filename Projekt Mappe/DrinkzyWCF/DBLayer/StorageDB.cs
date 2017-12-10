@@ -87,7 +87,7 @@ namespace DBLayer
             return i;
         }
 
-        public Storage getStorageByDrinkAndStorage(int drinkID, int cusID)
+        public Storage getDrinkStorageByDrinkAndStorage(int drinkID, int cusID)
         {
             Storage Storage = null;
             int storageID = getStorageIDByCustomerID(cusID);
@@ -110,6 +110,66 @@ namespace DBLayer
                             MaxAmount = (int)Reader["MaxAmount"],
                             MinAmount = (int)Reader["MinAmount"],
                             Drink = drinkDB.GetDrink((int)Reader["drinkID"])
+                        };
+                    }
+                }
+            }
+            return Storage;
+        }
+
+        public Storage getAlchoholStorageByDrinkAndStorage(int alchID, int cusID)
+        {
+            Storage Storage = null;
+            int storageID = getStorageIDByCustomerID(cusID);
+
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Select * From Storage, alchoholStorage Where alchoholID = @alchoholID AND storageID = @storageID";
+                    cmd.Parameters.AddWithValue("alchoholID", alchID);
+                    cmd.Parameters.AddWithValue("storageID", storageID);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        Storage = new Storage
+                        {
+                            ID = (int)Reader["id"],
+                            Amount = (int)Reader["Amount"],
+                            MaxAmount = (int)Reader["MaxAmount"],
+                            MinAmount = (int)Reader["MinAmount"],
+                            Drink = drinkDB.GetDrink((int)Reader["alchoholID"])
+                        };
+                    }
+                }
+            }
+            return Storage;
+        }
+
+        public Storage getHelflaskStorageByHelflaskAndStorage(int flaskID, int cusID)
+        {
+            Storage Storage = null;
+            int storageID = getStorageIDByCustomerID(cusID);
+
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Select * From Storage, helflaskStorage Where helflaskID = @helflaskID AND storageID = @storageID";
+                    cmd.Parameters.AddWithValue("helflaskID", flaskID);
+                    cmd.Parameters.AddWithValue("storageID", storageID);
+                    var Reader = cmd.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        Storage = new Storage
+                        {
+                            ID = (int)Reader["id"],
+                            Amount = (int)Reader["Amount"],
+                            MaxAmount = (int)Reader["MaxAmount"],
+                            MinAmount = (int)Reader["MinAmount"],
+                            Drink = drinkDB.GetDrink((int)Reader["helflaskID"])
                         };
                     }
                 }

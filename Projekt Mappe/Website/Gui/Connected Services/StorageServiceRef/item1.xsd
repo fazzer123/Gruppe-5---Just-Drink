@@ -82,4 +82,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getAlchoholStorageByDrinkAndStorage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="alchID" type="xs:int" />
+        <xs:element minOccurs="0" name="cusID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAlchoholStorageByDrinkAndStorageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="getAlchoholStorageByDrinkAndStorageResult" nillable="true" type="q6:Storage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHelflaskStorageByHelflaskAndStorage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="flaskID" type="xs:int" />
+        <xs:element minOccurs="0" name="cusID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getHelflaskStorageByHelflaskAndStorageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="getHelflaskStorageByHelflaskAndStorageResult" nillable="true" type="q7:Storage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

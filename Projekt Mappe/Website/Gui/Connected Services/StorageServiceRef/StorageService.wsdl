@@ -43,6 +43,18 @@
   <wsdl:message name="IStorageService_getStorageByDrinkAndStorage_OutputMessage">
     <wsdl:part name="parameters" element="tns:getStorageByDrinkAndStorageResponse" />
   </wsdl:message>
+  <wsdl:message name="IStorageService_getAlchoholStorageByDrinkAndStorage_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAlchoholStorageByDrinkAndStorage" />
+  </wsdl:message>
+  <wsdl:message name="IStorageService_getAlchoholStorageByDrinkAndStorage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAlchoholStorageByDrinkAndStorageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStorageService_getHelflaskStorageByHelflaskAndStorage_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHelflaskStorageByHelflaskAndStorage" />
+  </wsdl:message>
+  <wsdl:message name="IStorageService_getHelflaskStorageByHelflaskAndStorage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHelflaskStorageByHelflaskAndStorageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IStorageService">
     <wsdl:operation name="CreateStorage">
       <wsdl:input wsaw:Action="http://tempuri.org/IStorageService/CreateStorage" message="tns:IStorageService_CreateStorage_InputMessage" />
@@ -67,6 +79,14 @@
     <wsdl:operation name="getStorageByDrinkAndStorage">
       <wsdl:input wsaw:Action="http://tempuri.org/IStorageService/getStorageByDrinkAndStorage" message="tns:IStorageService_getStorageByDrinkAndStorage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStorageService/getStorageByDrinkAndStorageResponse" message="tns:IStorageService_getStorageByDrinkAndStorage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlchoholStorageByDrinkAndStorage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorageService/getAlchoholStorageByDrinkAndStorage" message="tns:IStorageService_getAlchoholStorageByDrinkAndStorage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorageService/getAlchoholStorageByDrinkAndStorageResponse" message="tns:IStorageService_getAlchoholStorageByDrinkAndStorage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getHelflaskStorageByHelflaskAndStorage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStorageService/getHelflaskStorageByHelflaskAndStorage" message="tns:IStorageService_getHelflaskStorageByHelflaskAndStorage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStorageService/getHelflaskStorageByHelflaskAndStorageResponse" message="tns:IStorageService_getHelflaskStorageByHelflaskAndStorage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStorageService" type="tns:IStorageService">
@@ -118,6 +138,24 @@
     </wsdl:operation>
     <wsdl:operation name="getStorageByDrinkAndStorage">
       <soap:operation soapAction="http://tempuri.org/IStorageService/getStorageByDrinkAndStorage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlchoholStorageByDrinkAndStorage">
+      <soap:operation soapAction="http://tempuri.org/IStorageService/getAlchoholStorageByDrinkAndStorage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHelflaskStorageByHelflaskAndStorage">
+      <soap:operation soapAction="http://tempuri.org/IStorageService/getHelflaskStorageByHelflaskAndStorage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
