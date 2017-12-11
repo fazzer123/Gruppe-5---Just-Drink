@@ -43,5 +43,8 @@ namespace WCF
 
         [OperationContract]
         int getAmountOfItemsInOrder(string username);
+
+        [OperationContract]
+        int getLastOrderIDByUser(string Username);
     }
 }

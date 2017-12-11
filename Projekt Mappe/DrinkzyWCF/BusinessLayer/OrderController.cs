@@ -94,6 +94,15 @@ namespace BusinessLayer
             }
             return j;
         }
+
+        public int getLastOrderIDByUser(string Username)
+        {
+            List<Order> orders = GetOrdersByUserID(getUser(Username).ID).ToList();
+
+            int i = orders.Count() - 1;
+
+            return orders[i].ID;;
+        }
     }
 }
 

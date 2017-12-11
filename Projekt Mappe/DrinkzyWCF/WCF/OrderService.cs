@@ -64,5 +64,10 @@ namespace WCF
         {
             return oCtr.getAmountOfItemsInOrder(username);
         }
+
+        public int getLastOrderIDByUser(string Username)
+        {
+            return oCtr.getLastOrderIDByUser(Username);
+        }
     }
 }
