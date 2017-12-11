@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlchoholDB.cs" />
-    <Compile Include="AnnouncementDB.cs" />
     <Compile Include="CustomerDB.cs" />
     <Compile Include="DrinkDB.cs" />
     <Compile Include="FavoritesDB.cs" />

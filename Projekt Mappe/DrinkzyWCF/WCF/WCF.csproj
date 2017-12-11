@@ -45,11 +45,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnnouncementService.cs" />
     <Compile Include="AuthService.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="FavoritesService.cs" />
-    <Compile Include="IAnnouncementService.cs" />
     <Compile Include="IAuthService.cs" />
     <Compile Include="ICustomerService.cs" />
     <Compile Include="IDrinkService.cs" />

@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alchohol.cs" />
-    <Compile Include="Announcement.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Drink.cs" />
     <Compile Include="Favorites.cs" />
