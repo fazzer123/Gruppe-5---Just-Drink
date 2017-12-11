@@ -47,8 +47,8 @@
                 <td valign="bottom">
                     @if (AuthHelper.IsLoggedIn())
                     {
-                        int i = sClient.getStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount;
-                        if (i <= 0)
+                        if (sClient.getStorageByDrinkAndStorage(d.ID, Model.Customer.ID) == null ||
+                            sClient.getStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount <= 0)
                         {
                             <p>UDSOLGT!</p>
                         }
@@ -96,8 +96,8 @@
                 <td valign="bottom">
                     @if (AuthHelper.IsLoggedIn())
                     {
-                        int j = sClient.getAlchoholStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount;
-                        if (j <= 0)
+                        if (sClient.getAlchoholStorageByDrinkAndStorage(d.ID, Model.Customer.ID) == null ||
+                            sClient.getAlchoholStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount <= 0)
                         {
                             <p>UDSOLGT!</p>
                         }
@@ -143,8 +143,8 @@
                 <td valign="bottom">
                     @if (AuthHelper.IsLoggedIn())
                     {
-                        int k = sClient.getHelflaskStorageByHelflaskAndStorage(d.ID, Model.Customer.ID).Amount;
-                        if (k <= 0)
+                        if (sClient.getHelflaskStorageByHelflaskAndStorage(d.ID, Model.Customer.ID) == null ||
+                            sClient.getHelflaskStorageByHelflaskAndStorage(d.ID, Model.Customer.ID).Amount <= 0)
                         {
                             <p>UDSOLGT!</p>
                         }
