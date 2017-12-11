@@ -59,5 +59,10 @@ namespace WCF
         {
             oCtr.UpdatePrice(order, price);
         }
+
+        public int getAmountOfItemsInOrder(string username)
+        {
+            return oCtr.getAmountOfItemsInOrder(username);
+        }
     }
 }

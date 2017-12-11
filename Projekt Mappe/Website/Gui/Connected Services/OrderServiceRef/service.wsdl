@@ -67,6 +67,12 @@
   <wsdl:message name="IOrderService_UpdatePrice_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePriceResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_getAmountOfItemsInOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAmountOfItemsInOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_getAmountOfItemsInOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAmountOfItemsInOrderResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderService">
     <wsdl:operation name="CreateOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/CreateOrder" message="tns:IOrderService_CreateOrder_InputMessage" />
@@ -107,6 +113,10 @@
     <wsdl:operation name="UpdatePrice">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdatePrice" message="tns:IOrderService_UpdatePrice_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdatePriceResponse" message="tns:IOrderService_UpdatePrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAmountOfItemsInOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/getAmountOfItemsInOrder" message="tns:IOrderService_getAmountOfItemsInOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/getAmountOfItemsInOrderResponse" message="tns:IOrderService_getAmountOfItemsInOrder_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderService" type="tns:IOrderService">
@@ -194,6 +204,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePrice">
       <soap:operation soapAction="http://tempuri.org/IOrderService/UpdatePrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAmountOfItemsInOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/getAmountOfItemsInOrder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
