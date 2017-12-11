@@ -1,11 +1,8 @@
 ﻿@model Gui.UserServiceRef.User
 
 @{
-    ViewBag.Title = "Register Bruger";
+    ViewBag.Title = "Registrer Bruger";
 }
-
-
-
 
 @using (Html.BeginForm())
 
@@ -18,7 +15,8 @@
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Brugernavn:</p>
+                @*@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
@@ -27,7 +25,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Kodeord:</p>
                 <div class="col-md-10">
                     @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
@@ -35,7 +33,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Fornavn:</p>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
@@ -43,7 +41,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Efternavn:</p>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
@@ -51,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Køn:</p>
                 <div class="col-md-10">
                     <select class="form-control" id="Gender" name="Gender">
                         <option></option>
@@ -63,7 +61,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Telefon:</p>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
@@ -71,7 +69,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Email:</p>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
@@ -79,7 +77,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p class="control-label col-md-2">Fødselsdag:</p>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", placeholder = "Tast datoen ind her...", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
@@ -88,7 +86,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Register User" class="btn btn-default" />
+                    <input type="submit" value="Registrer User" class="btn btn-default" />
                 </div>
             </div>
         </div>
