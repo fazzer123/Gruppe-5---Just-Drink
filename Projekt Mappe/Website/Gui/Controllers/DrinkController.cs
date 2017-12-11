@@ -58,8 +58,11 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult Create(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
+        public ActionResult Create(int amount, int drinkId, int cusID, string UserName)
         {
+            Gui.OrderLineServiceRef.OrderLine orderline = new Gui.OrderLineServiceRef.OrderLine();
+            orderline.Amount = amount;
+
             if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
             {
                 if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
@@ -78,13 +81,13 @@ namespace Gui.Controllers
                 {
                     orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return Create(orderline, drinkId, cusID, UserName);
+                    return Create(amount, drinkId, cusID, UserName);
                 }
             }
             else
             {
                 oCtr.CreateOrder(cusID);
-                return Create(orderline, drinkId, cusID, UserName);
+                return Create(amount, drinkId, cusID, UserName);
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
@@ -96,8 +99,11 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult CreateHelflask(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
+        public ActionResult CreateHelflask(int amount, int drinkId, int cusID, string UserName)
         {
+            Gui.OrderLineServiceRef.OrderLine orderline = new Gui.OrderLineServiceRef.OrderLine();
+            orderline.Amount = amount;
+
             if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
             {
                 if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
@@ -116,13 +122,13 @@ namespace Gui.Controllers
                 {
                     orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return CreateHelflask(orderline, drinkId, cusID, UserName);
+                    return CreateHelflask(amount, drinkId, cusID, UserName);
                 }
             }
             else
             {
                 oCtr.CreateOrder(cusID);
-                return CreateHelflask(orderline, drinkId, cusID, UserName);
+                return CreateHelflask(amount, drinkId, cusID, UserName);
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
@@ -135,8 +141,11 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult CreateAlchohol(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
+        public ActionResult CreateAlchohol(int amount, int drinkId, int cusID, string UserName)
         {
+            Gui.OrderLineServiceRef.OrderLine orderline = new Gui.OrderLineServiceRef.OrderLine();
+            orderline.Amount = amount;
+
             if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
             {
                 if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
@@ -155,13 +164,13 @@ namespace Gui.Controllers
                 {
                     orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return CreateAlchohol(orderline, drinkId, cusID, UserName);
+                    return CreateAlchohol(amount, drinkId, cusID, UserName);
                 }
             }
             else
             {
                 oCtr.CreateOrder(cusID);
-                return CreateAlchohol(orderline, drinkId, cusID, UserName);
+                return CreateAlchohol(amount, drinkId, cusID, UserName);
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
