@@ -43,9 +43,25 @@ namespace Gui.Controllers
         [HttpPost]
         public ActionResult Create(Gui.UserServiceRef.User user)
         {
+            if (string.IsNullOrEmpty(user.Password))
+            {
+                ModelState.AddModelError("Password", "Du har ikke indtastet et Password");
+            }
+            if (string.IsNullOrEmpty(user.LastName))
+            {
+                ModelState.AddModelError("LastName", "Du har ikke indtastet dit Lastname");
+            }
+            if (string.IsNullOrEmpty(user.FirstName))
+            {
+                ModelState.AddModelError("FirstName", "Du har ikke indtastet dit Firstname");
+            }
+            if (string.IsNullOrEmpty(user.Gender))
+            {
+                ModelState.AddModelError("Gender", "Du har ikke valgt et køn");
+            }
             if (string.IsNullOrEmpty(user.UserName))
             {
-                ModelState.AddModelError("Name", "Indtast username");
+                ModelState.AddModelError("UserName", "Du har ikke indtastet et Username");
             }
             if (!string.IsNullOrEmpty(user.Email))
             {
@@ -53,12 +69,12 @@ namespace Gui.Controllers
                 Regex re = new Regex(emailRegex);
                 if (!re.IsMatch(user.Email))
                 {
-                    ModelState.AddModelError("Email", "Indtast venligst korrekt email");
+                    ModelState.AddModelError("Email", "Indtast venligst korrekt Email");
                 }
             }
             else
             {
-                ModelState.AddModelError("Email", "Indtast venligst email");
+                ModelState.AddModelError("Email", "Du har ikke indtastet din Email");
             }
             if (!string.IsNullOrEmpty(user.Phone))
             {
@@ -66,12 +82,12 @@ namespace Gui.Controllers
                 Regex pe = new Regex(phoneRegex);
                 if (!pe.IsMatch(user.Phone))
                 {
-                    ModelState.AddModelError("Phone", "Indtast venligst korrekt telefon nr");
+                    ModelState.AddModelError("Phone", "Indtast venligst korrekt Telefon nr");
                 }
             }
             else
             {
-                ModelState.AddModelError("Phone", "Indtast telefon nr");
+                ModelState.AddModelError("Phone", "Du har ikke indtastet Telefon nr");
             }
             if (ModelState.IsValid)
             {
