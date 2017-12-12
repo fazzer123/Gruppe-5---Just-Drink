@@ -66,4 +66,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAlchohol" nillable="true" type="tns:ArrayOfAlchohol" />
+  <xs:complexType name="ArrayOfHelFlask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HelFlask" nillable="true" type="tns:HelFlask" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHelFlask" nillable="true" type="tns:ArrayOfHelFlask" />
 </xs:schema>

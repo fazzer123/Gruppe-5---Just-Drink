@@ -182,10 +182,8 @@
                     }
                     else
                     {
-                        < p > Du skal være logget ind før du kan købe</ p >
-
-
-                           < input id = "btnDetails" type = "button" value = "Detaljer" onclick = "location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />
+                        <p> Du skal være logget ind før du kan købe</p>
+                        <input id = "btnDetails" type = "button" value = "Detaljer" onclick = "location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />
                     }
                 </td>
             </tr>

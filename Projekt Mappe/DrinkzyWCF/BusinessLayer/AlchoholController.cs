@@ -31,5 +31,21 @@ namespace BusinessLayer
         {
             return aDB.GetAllAlchohols();
         }
+
+        public IEnumerable<Alchohol> searchAlchohol(string search)
+        {
+            List<Alchohol> drinks = new List<Alchohol>();
+            string search2 = search.ToLower().Trim();
+
+            foreach (Alchohol d in aDB.GetAllAlchohols())
+            {
+                if (d.Name.ToLower().Contains(search2))
+                {
+                    drinks.Add(d);
+                }
+            }
+
+            return drinks;
+        }
     }
 }

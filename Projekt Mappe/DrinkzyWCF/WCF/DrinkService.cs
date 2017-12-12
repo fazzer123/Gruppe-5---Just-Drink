@@ -79,5 +79,15 @@ namespace WCF
         {
             return aCtr.GetAllAlchohol();
         }
+
+        public IEnumerable<HelFlask> searchHelflask(string search)
+        {
+            return hCtr.searchHelflask(search);
+        }
+
+        public IEnumerable<Alchohol> searchAlchohol(string search)
+        {
+            return aCtr.searchAlchohol(search);
+        }
     }
 }

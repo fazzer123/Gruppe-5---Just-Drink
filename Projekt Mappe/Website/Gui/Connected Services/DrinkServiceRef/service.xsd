@@ -155,4 +155,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="searchHelflask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="search" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchHelflaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="searchHelflaskResult" nillable="true" type="q12:ArrayOfHelFlask" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchAlchohol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="search" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchAlchoholResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="searchAlchoholResult" nillable="true" type="q13:ArrayOfAlchohol" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

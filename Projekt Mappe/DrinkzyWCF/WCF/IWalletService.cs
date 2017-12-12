@@ -25,5 +25,8 @@ namespace WCF
 
         [OperationContract]
         User GetUserById(int id);
+
+        [OperationContract]
+        Wallet getWalletByUsername(string name);
     }
 }

@@ -346,6 +346,18 @@ namespace Gui.DrinkServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetHelflask", ReplyAction="http://tempuri.org/IDrinkService/GetHelflaskResponse")]
         System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchHelflask", ReplyAction="http://tempuri.org/IDrinkService/searchHelflaskResponse")]
+        Gui.DrinkServiceRef.HelFlask[] searchHelflask(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchHelflask", ReplyAction="http://tempuri.org/IDrinkService/searchHelflaskResponse")]
+        System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask[]> searchHelflaskAsync(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchAlchohol", ReplyAction="http://tempuri.org/IDrinkService/searchAlchoholResponse")]
+        Gui.DrinkServiceRef.Alchohol[] searchAlchohol(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchAlchohol", ReplyAction="http://tempuri.org/IDrinkService/searchAlchoholResponse")]
+        System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol[]> searchAlchoholAsync(string search);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -469,6 +481,22 @@ namespace Gui.DrinkServiceRef {
         
         public System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id) {
             return base.Channel.GetHelflaskAsync(id);
+        }
+        
+        public Gui.DrinkServiceRef.HelFlask[] searchHelflask(string search) {
+            return base.Channel.searchHelflask(search);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.DrinkServiceRef.HelFlask[]> searchHelflaskAsync(string search) {
+            return base.Channel.searchHelflaskAsync(search);
+        }
+        
+        public Gui.DrinkServiceRef.Alchohol[] searchAlchohol(string search) {
+            return base.Channel.searchAlchohol(search);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.DrinkServiceRef.Alchohol[]> searchAlchoholAsync(string search) {
+            return base.Channel.searchAlchoholAsync(search);
         }
     }
 }
