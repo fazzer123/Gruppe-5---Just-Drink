@@ -76,6 +76,33 @@ namespace BusinessLayer
         {
             oDb.updateTotalPrice(order, price);
         }
+
+        public int getAmountOfItemsInOrder(string Username)
+        {
+            List<Order> orders = GetOrdersByUserID(getUser(Username).ID).ToList();
+   
+            int i = orders.Count() - 1;
+            int j = 0;
+
+            if (orders[i].Status.Equals("Incomplete"))
+            {
+                foreach (var item in orders[i].OrderLines)
+                {
+                    j = j + item.Amount;
+
+                }
+            }
+            return j;
+        }
+
+        public int getLastOrderIDByUser(string Username)
+        {
+            List<Order> orders = GetOrdersByUserID(getUser(Username).ID).ToList();
+
+            int i = orders.Count() - 1;
+
+            return orders[i].ID;;
+        }
     }
 }
 

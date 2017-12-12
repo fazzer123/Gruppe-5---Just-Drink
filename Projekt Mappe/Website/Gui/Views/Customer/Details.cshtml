@@ -40,7 +40,8 @@
             </tr>
             <tr>
                 <td valign="top">
-                    Pris: @d.Price dkk.
+                    Pris: @d.Price dkk. <br />
+                    Antal tilbage; @sClient.getStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount;
                 </td>
             </tr>
             <tr>
@@ -54,16 +55,23 @@
                         }
                         else
                         {
-                            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />
+                            using (Html.BeginForm("Create", "Drink", FormMethod.Post))
+                            {
+                                    <input type="hidden" name="drinkId" value="@d.ID" />
+                                    <input type="hidden" name="cusID" value="@Model.Customer.ID" />
+                                    <input type="text" name="amount" value="" style="width:30px;" />
+                                    <input type="hidden" name="UserName" value="@AuthHelper.CurrentUser.Username" />
+                                    <input type="submit" id="sumbitText" value="Tilføj" /> 
+                                    <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = d.ID })'" />
+                            }
                         }
                     }
                     else
                     {
                         <p>Du skal være logget ind før du kan købe</p>
-                        }
+                        <input id = "btnDetails" type = "button" value = "Detaljer" onclick = "location.href='@Url.Action("Details", "Drink", new { drinkId = d.ID })'" />
+                    }
 
-                    @*<input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("Create", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID })'" />*@
-                    <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("Details", "Drink", new { drinkId = d.ID })'" />
                 </td>
             </tr>
             }
@@ -89,7 +97,8 @@
             </tr>
             <tr>
                 <td valign="top">
-                    Pris: @d.Price dkk.
+                    Pris: @d.Price dkk. <br />
+                    Antal tilbage; @sClient.getAlchoholStorageByDrinkAndStorage(d.ID, Model.Customer.ID).Amount;
                 </td>
             </tr>
             <tr>
@@ -103,15 +112,24 @@
                         }
                         else
                         {
-                            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateAlchohol", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />
+                            using (Html.BeginForm("CreateAlchohol", "Drink", FormMethod.Post))
+                            {
+                                // int amount, int drinkId, int cusID, string UserName;
+                                <input type="hidden" name="drinkId" value="@d.ID" />
+                                    <input type="hidden" name="cusID" value="@Model.Customer.ID" />
+                                    <input type="text" name="amount" value="" style="width:30px;" />
+                                    <input type="hidden" name="UserName" value="@AuthHelper.CurrentUser.Username" />
+                                    <input type="submit" id="sumbitText" value="Tilføj" />
+                                    <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("AlchoholDetails", "Drink", new { drinkId = d.ID })'" />
+                            }
                         }
                     }
                     else
                     {
                         <p>Du skal være logget ind før du kan købe</p>
+                        <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("AlchoholDetails", "Drink", new { drinkId = d.ID })'" />
                     }
-                    <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("AlchoholDetails", "Drink", new { drinkId = d.ID })'" />
-                </td>
+                 </td>
             </tr>
         }
         </table>
@@ -136,7 +154,8 @@
             </tr>
             <tr>
                 <td valign="top">
-                    Pris: @d.Price dkk.
+                    Pris: @d.Price dkk. <br />
+                    Antal tilbage; @sClient.getHelflaskStorageByHelflaskAndStorage(d.ID, Model.Customer.ID).Amount;
                 </td>
             </tr>
             <tr>
@@ -150,14 +169,24 @@
                         }
                         else
                         {
-                            <input id="Button1" type="submit" value="Add To Cart" onclick="location.href='@Url.Action("CreateHelflask", "Drink", new { drinkId = d.ID, cusID = Model.Customer.ID, userName = AuthHelper.CurrentUser.Username })'" />
+                            using (Html.BeginForm("CreateHelflask", "Drink", FormMethod.Post))
+                            {
+                                <input type="hidden" name="drinkId" value="@d.ID" />
+                                <input type="hidden" name="cusID" value="@Model.Customer.ID" />
+                                <input type="text" id="txtAmount" name="amount" value="" style="width:30px;" />
+                                <input type="hidden" name="UserName" value="@AuthHelper.CurrentUser.Username" />
+                                <input type="submit" id="sumbitText" value="Tilføj" />
+                                <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />
+                            }
                         }
                     }
                     else
                     {
-                        <p>Du skal være logget ind før du kan købe</p>
+                        < p > Du skal være logget ind før du kan købe</ p >
+
+
+                           < input id = "btnDetails" type = "button" value = "Detaljer" onclick = "location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />
                     }
-                    <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("HelflaskDetails", "Drink", new { drinkId = d.ID })'" />
                 </td>
             </tr>
         }

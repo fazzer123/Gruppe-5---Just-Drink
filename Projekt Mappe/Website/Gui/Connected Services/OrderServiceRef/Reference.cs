@@ -930,6 +930,18 @@ namespace Gui.OrderServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/UpdatePrice", ReplyAction="http://tempuri.org/IOrderService/UpdatePriceResponse")]
         System.Threading.Tasks.Task UpdatePriceAsync(Gui.OrderServiceRef.Order order, decimal price);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/getAmountOfItemsInOrder", ReplyAction="http://tempuri.org/IOrderService/getAmountOfItemsInOrderResponse")]
+        int getAmountOfItemsInOrder(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/getAmountOfItemsInOrder", ReplyAction="http://tempuri.org/IOrderService/getAmountOfItemsInOrderResponse")]
+        System.Threading.Tasks.Task<int> getAmountOfItemsInOrderAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/getLastOrderIDByUser", ReplyAction="http://tempuri.org/IOrderService/getLastOrderIDByUserResponse")]
+        int getLastOrderIDByUser(string Username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/getLastOrderIDByUser", ReplyAction="http://tempuri.org/IOrderService/getLastOrderIDByUserResponse")]
+        System.Threading.Tasks.Task<int> getLastOrderIDByUserAsync(string Username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1037,6 +1049,22 @@ namespace Gui.OrderServiceRef {
         
         public System.Threading.Tasks.Task UpdatePriceAsync(Gui.OrderServiceRef.Order order, decimal price) {
             return base.Channel.UpdatePriceAsync(order, price);
+        }
+        
+        public int getAmountOfItemsInOrder(string username) {
+            return base.Channel.getAmountOfItemsInOrder(username);
+        }
+        
+        public System.Threading.Tasks.Task<int> getAmountOfItemsInOrderAsync(string username) {
+            return base.Channel.getAmountOfItemsInOrderAsync(username);
+        }
+        
+        public int getLastOrderIDByUser(string Username) {
+            return base.Channel.getLastOrderIDByUser(Username);
+        }
+        
+        public System.Threading.Tasks.Task<int> getLastOrderIDByUserAsync(string Username) {
+            return base.Channel.getLastOrderIDByUserAsync(Username);
         }
     }
 }

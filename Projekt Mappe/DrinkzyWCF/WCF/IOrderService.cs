@@ -40,5 +40,11 @@ namespace WCF
 
         [OperationContract]
         void UpdatePrice(Order order, decimal price);
+
+        [OperationContract]
+        int getAmountOfItemsInOrder(string username);
+
+        [OperationContract]
+        int getLastOrderIDByUser(string Username);
     }
 }

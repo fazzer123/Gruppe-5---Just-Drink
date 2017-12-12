@@ -1,4 +1,6 @@
 ﻿@using Gui.Helpers;
+@using Gui.OrderServiceRef;
+@using Gui.CustomerServiceRef;
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,9 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/modernizr")   
+
+    @{
+        OrderServiceClient oClient = new OrderServiceClient();
+        CustomerServiceClient cClient = new CustomerServiceClient();
+    }
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -36,7 +44,12 @@
                     </li>
                     <li>@(AuthHelper.IsLoggedIn() ? @Html.ActionLink("Profile", "Index", "User") : @Html.ActionLink("Login", "Login", "Auth"))  </li>
                     <li>@if(!AuthHelper.IsLoggedIn()){@Html.ActionLink("Registrer", "Create", "Register")}</li>
-                    <li>@if(AuthHelper.IsLoggedIn()){@Html.ActionLink("Order", "Index", "Order")}</li>
+                    <li>@if (AuthHelper.IsLoggedIn())
+                    {
+                        @*@oClient.getAmountOfItemsInOrder(AuthHelper.CurrentUser.Username)*@
+                        <a href="@Url.Action("Details", "Order", new { id = oClient.getLastOrderIDByUser(AuthHelper.CurrentUser.Username)})">@oClient.getAmountOfItemsInOrder(AuthHelper.CurrentUser.Username)<img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Carrito.png" alt="" height="20px" width="auto" /></a>
+                        @*@Html.ActionLink("Order", "Index", "Order")*@
+                    }</li>
                     <li>@if (AuthHelper.IsLoggedIn()){@Html.ActionLink("Log ud", "Logout", "Auth")}</li>
                     @*<li>@Html.ActionLink("Order", "Index", "Order")</li>*@
                 </ul>

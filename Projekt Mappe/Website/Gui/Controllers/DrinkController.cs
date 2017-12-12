@@ -10,6 +10,7 @@ using Gui.WalletServiceRef;
 using Gui.FavoritServiceRef;
 using Gui.UserServiceRef;
 using System.Dynamic;
+using Gui.StorageServiceRef;
 
 namespace Gui.Controllers
 {
@@ -21,6 +22,8 @@ namespace Gui.Controllers
         private OrderServiceClient orderClient = new OrderServiceClient();
         private OrderController oCtr = new OrderController();
         private WalletServiceClient walletClient = new WalletServiceClient();
+        private StorageServiceClient sClient = new StorageServiceClient();
+        
 
         // GET: Drink
         public ActionResult Index()
@@ -58,35 +61,40 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult Create(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
+        public ActionResult Create(int amount, int drinkId, int cusID, string UserName)
         {
-            if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
-            {
-                if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
-                {
-                    orderline.Drink = lc.GetDrink(drinkId);
-                    orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
-                    lc.CreateOrderLine(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+            Gui.OrderLineServiceRef.OrderLine orderline = new Gui.OrderLineServiceRef.OrderLine();
+            orderline.Amount = amount;
 
-                    
-                    decimal hej = orderline.Drink.Price * orderline.Amount;
-                    hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
-                    orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
-                    return RedirectToAction("Details", "Customer", new { id = cusID });
-                }
-                else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+            if (sClient.getStorageByDrinkAndStorage(drinkId, cusID).Amount >= amount)
+            {
+                if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
                 {
-                    orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
+                    if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                    {
+                        orderline.Drink = lc.GetDrink(drinkId);
+                        orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
+                        lc.CreateOrderLine(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+
+
+                        decimal hej = orderline.Drink.Price * orderline.Amount;
+                        hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
+                        orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
+                        return RedirectToAction("Details", "Customer", new { id = cusID });
+                    }
+                    else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                    {
+                        orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
+                        oCtr.CreateOrder(cusID);
+                        return Create(amount, drinkId, cusID, UserName);
+                    }
+                }
+                else
+                {
                     oCtr.CreateOrder(cusID);
-                    return Create(orderline, drinkId, cusID, UserName);
+                    return Create(amount, drinkId, cusID, UserName);
                 }
             }
-            else
-            {
-                oCtr.CreateOrder(cusID);
-                return Create(orderline, drinkId, cusID, UserName);
-            }
-
             return RedirectToAction("Details", "Customer", new { id = cusID });
         }
         public ActionResult CreateHelflask()
@@ -96,33 +104,40 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult CreateHelflask(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
+        public ActionResult CreateHelflask(int amount, int drinkId, int cusID, string UserName)
         {
-            if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
+            Gui.OrderLineServiceRef.OrderLine orderline = new Gui.OrderLineServiceRef.OrderLine();
+            orderline.Amount = amount;
+
+            if (sClient.getHelflaskStorageByHelflaskAndStorage(drinkId, cusID).Amount >= amount)
             {
-                if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
                 {
-                    orderline.Drink = lc.GetHelflask(drinkId);
-                    orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
-                    lc.CreateOrderLineHelflask(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+                    if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                    {
+                        orderline.Drink = lc.GetHelflask(drinkId);
+                        orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
+                        lc.CreateOrderLineHelflask(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
 
 
-                    decimal hej = orderline.Drink.Price * orderline.Amount;
-                    hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
-                    orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
-                    return RedirectToAction("Details", "Customer", new { id = cusID });
+                        decimal hej = orderline.Drink.Price * orderline.Amount;
+                        hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
+                        orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
+                        return RedirectToAction("Details", "Customer", new { id = cusID });
+                    }
+                    else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                    {
+                        orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
+                        oCtr.CreateOrder(cusID);
+                        return CreateHelflask(amount, drinkId, cusID, UserName);
+                    }
                 }
-                else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                else
                 {
-                    orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return CreateHelflask(orderline, drinkId, cusID, UserName);
+                    return CreateHelflask(amount, drinkId, cusID, UserName);
                 }
-            }
-            else
-            {
-                oCtr.CreateOrder(cusID);
-                return CreateHelflask(orderline, drinkId, cusID, UserName);
+
             }
 
             return RedirectToAction("Details", "Customer", new { id = cusID });
@@ -135,35 +150,40 @@ namespace Gui.Controllers
 
         // POST: Drink/Create
         [HttpPost]
-        public ActionResult CreateAlchohol(Gui.OrderLineServiceRef.OrderLine orderline, int drinkId, int cusID, string UserName)
+        public ActionResult CreateAlchohol(int amount, int drinkId, int cusID, string UserName)
         {
-            if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
+            Gui.OrderLineServiceRef.OrderLine orderline = new Gui.OrderLineServiceRef.OrderLine();
+            orderline.Amount = amount;
+
+            if (sClient.getAlchoholStorageByDrinkAndStorage(drinkId, cusID).Amount >= amount)
             {
-                if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                if (orderClient.GetOrderByStatus("Incomplete") != null && orderClient.GetUser(UserName).ID == orderClient.GetOrderByStatus("Incomplete").User.ID)
                 {
-                    orderline.Drink = lc.GetAlchohol(drinkId);
-                    orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
-                    lc.CreateOrderLineAlchohol(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
+                    if (orderClient.GetOrderByStatus("Incomplete").Customer.ID == cusID)
+                    {
+                        orderline.Drink = lc.GetAlchohol(drinkId);
+                        orderline.TotalPrice = orderline.Drink.Price * orderline.Amount;
+                        lc.CreateOrderLineAlchohol(orderline, orderClient.GetOrderByStatus("Incomplete").ID);
 
 
-                    decimal hej = orderline.Drink.Price * orderline.Amount;
-                    hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
-                    orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
-                    return RedirectToAction("Details", "Customer", new { id = cusID });
+                        decimal hej = orderline.Drink.Price * orderline.Amount;
+                        hej = orderClient.GetOrderByStatus("Incomplete").TotalPrice + hej;
+                        orderClient.UpdatePrice(orderClient.GetOrderByStatus("Incomplete"), hej);
+                        return RedirectToAction("Details", "Customer", new { id = cusID });
+                    }
+                    else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                    {
+                        orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
+                        oCtr.CreateOrder(cusID);
+                        return CreateAlchohol(amount, drinkId, cusID, UserName);
+                    }
                 }
-                else if (orderClient.GetOrderByStatus("Incomplete").Customer.ID != cusID)
+                else
                 {
-                    orderClient.DeleteOrderByID(orderClient.GetOrderByStatus("Incomplete").ID);
                     oCtr.CreateOrder(cusID);
-                    return CreateAlchohol(orderline, drinkId, cusID, UserName);
+                    return CreateAlchohol(amount, drinkId, cusID, UserName);
                 }
             }
-            else
-            {
-                oCtr.CreateOrder(cusID);
-                return CreateAlchohol(orderline, drinkId, cusID, UserName);
-            }
-
             return RedirectToAction("Details", "Customer", new { id = cusID });
         }
 
