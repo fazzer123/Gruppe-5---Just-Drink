@@ -64,42 +64,6 @@ namespace Gui.Controllers
         [HttpPost]
         public ActionResult EditAmount(int id, int orderID, string text)
         {
-            //decimal price = 0;
-            //int amount = 0;
-            //OrderLineServiceRef.OrderLine orderline = null;
-            //foreach (var o in client.GetOrder(orderID).OrderLines)
-            //{
-            //    if (o.ID == id && o.Drink.GetType() == typeof(Gui.OrderLineServiceRef.HelFlask))
-            //    {
-            //        price = client.GetOrder(orderID).TotalPrice - olClient.GetOrderLineHelflask(id).TotalPrice;
-            //        client.UpdatePrice(client.GetOrder(orderID), price);
-
-            //        amount = Convert.ToInt32(text);
-            //        orderline = olClient.GetOrderLineHelflask(id);
-            //        orderline.TotalPrice = amount * orderline.Drink.Price;
-            //        orderline.Amount = amount;
-            //        olClient.EditOrderLineHelflask(orderline);
-
-            //        price = client.GetOrder(orderID).TotalPrice + olClient.GetOrderLineHelflask(id).TotalPrice;
-
-            //        client.UpdatePrice(client.GetOrder(orderID), price);
-            //    }
-            //    else if (o.ID == id && o.Drink.GetType() == typeof(Gui.OrderLineServiceRef.Drink))
-            //    {
-            //        price = client.GetOrder(orderID).TotalPrice - olClient.GetOrderLine(id).TotalPrice;
-            //        client.UpdatePrice(client.GetOrder(orderID), price);
-
-            //        amount = Convert.ToInt32(text);
-            //        orderline = olClient.GetOrderLine(id);
-            //        orderline.TotalPrice = amount * orderline.Drink.Price;
-            //        orderline.Amount = amount;
-            //        olClient.EditOrderLine(orderline);
-
-            //        price = client.GetOrder(orderID).TotalPrice + olClient.GetOrderLine(id).TotalPrice;
-
-            //        client.UpdatePrice(client.GetOrder(orderID), price);
-            //    }
-            //}
             olClient.EditOrderLinePrice(id, orderID, text);
             return RedirectToAction("Details", new { id = orderID });
         }
@@ -128,7 +92,7 @@ namespace Gui.Controllers
         public ActionResult DeleteOrder(int ID)
         {
             client.DeleteOrderByID(ID);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "User", new { userName = AuthHelper.CurrentUser.Username });
         }
 
         // POST: Order/Delete/5
@@ -137,8 +101,6 @@ namespace Gui.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -158,14 +120,11 @@ namespace Gui.Controllers
             return View("Details", doBCVM(id));
         }
 
-        // POST: Order/Delete/5
         [HttpPost]
         public ActionResult Delete(int OrderLineId, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -192,7 +151,7 @@ namespace Gui.Controllers
 
             storageClient.UpdateStorageDrink(order.ID);
             
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "User", new { userName = AuthHelper.CurrentUser.Username });
         }
 
         public ActionResult CreateOrder(int cusID)
