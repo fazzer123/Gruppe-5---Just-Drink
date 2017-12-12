@@ -291,5 +291,21 @@ namespace DBLayer
                 }
             }
         }
+
+        public void EditOrderAlchohol(OrderLine orderLine)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Update dbo.OrderLineAlchohol SET amount = @amount, TotalPrice = @TotalPrice WHERE id=@id";
+                    cmd.Parameters.AddWithValue("id", orderLine.ID);
+                    cmd.Parameters.AddWithValue("amount", orderLine.Amount);
+                    cmd.Parameters.AddWithValue("totalPrice", orderLine.TotalPrice);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

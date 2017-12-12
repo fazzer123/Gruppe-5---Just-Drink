@@ -57,23 +57,24 @@ namespace BusinessLayer
         {
             decimal price = 0;
             int amount = 0;
-            OrderLine orderline = null;
+            //OrderLine orderline = null;
             OrderDB oDB = new OrderDB();
 
             foreach (var o in oDB.GetOrder(orderID).OrderLines)
             {
                 if (o.ID == id && o.Drink.GetType() == typeof(HelFlask))
                 {
-                    price = oDB.GetOrder(orderID).TotalPrice - olDb.GetOrderLineHelflask(id).TotalPrice;
+                    //orderline = olDb.GetOrderLineHelflask(id);
+                    price = oDB.GetOrder(orderID).TotalPrice - o.TotalPrice;
                     oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
 
                     amount = Convert.ToInt32(text);
-                    orderline = olDb.GetOrderLineHelflask(id);
-                    orderline.TotalPrice = amount * orderline.Drink.Price;
-                    orderline.Amount = amount;
-                    olDb.EditOrderLineHelflask(orderline);
+                    
+                    o.TotalPrice = amount * o.Drink.Price;
+                    o.Amount = amount;
+                    olDb.EditOrderLineHelflask(o);
 
-                    price = oDB.GetOrder(orderID).TotalPrice + olDb.GetOrderLineHelflask(id).TotalPrice;
+                    price = oDB.GetOrder(orderID).TotalPrice + o.TotalPrice;
 
                     oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
                 }
@@ -83,10 +84,10 @@ namespace BusinessLayer
                     oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
 
                     amount = Convert.ToInt32(text);
-                    orderline = olDb.GetOrderLine(id);
-                    orderline.TotalPrice = amount * orderline.Drink.Price;
-                    orderline.Amount = amount;
-                    olDb.EditOrderLine(orderline);
+                    //orderline = olDb.GetOrderLine(id);
+                    o.TotalPrice = amount * o.Drink.Price;
+                    o.Amount = amount;
+                    olDb.EditOrderLine(o);
 
                     price = oDB.GetOrder(orderID).TotalPrice + olDb.GetOrderLine(id).TotalPrice;
 
@@ -98,10 +99,10 @@ namespace BusinessLayer
                     oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
 
                     amount = Convert.ToInt32(text);
-                    orderline = olDb.GetOrderLine(id);
-                    orderline.TotalPrice = amount * orderline.Drink.Price;
-                    orderline.Amount = amount;
-                    olDb.EditOrderLine(orderline);
+                    //orderline = olDb.GetOrderLine(id);
+                    o.TotalPrice = amount * o.Drink.Price;
+                    o.Amount = amount;
+                    olDb.EditOrderAlchohol(o);
 
                     price = oDB.GetOrder(orderID).TotalPrice + olDb.GetOrderLineAlchohol(id).TotalPrice;
 
