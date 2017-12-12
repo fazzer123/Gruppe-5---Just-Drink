@@ -186,8 +186,8 @@ namespace Gui.Controllers
         {
             Order order = client.GetOrder(id);
             order.Status = "Complete";
-            decimal hej = walletClient.GetWallet(1).Balance - order.TotalPrice;
-            walletClient.UpdateBalanceByUserId(hej, 1);
+            decimal hej = walletClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance - order.TotalPrice;
+            walletClient.UpdateBalanceByUserId(hej, client.GetUser(AuthHelper.CurrentUser.Username).ID);
             client.CompleteOrder(order);
 
             storageClient.UpdateStorageDrink(order.ID);
