@@ -25,11 +25,29 @@
   <wsdl:message name="ICustomerService_GetAllCustomers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
   </wsdl:message>
+  <wsdl:message name="ICustomerService_UpdateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_UpdateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_DeleteCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_DeleteCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerResponse" />
+  </wsdl:message>
   <wsdl:message name="ICustomerService_SearchCustomer_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchCustomer" />
   </wsdl:message>
   <wsdl:message name="ICustomerService_SearchCustomer_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
   <wsdl:portType name="ICustomerService">
     <wsdl:operation name="CreateCustomer">
@@ -44,9 +62,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/GetAllCustomers" message="tns:ICustomerService_GetAllCustomers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/GetAllCustomersResponse" message="tns:ICustomerService_GetAllCustomers_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/UpdateCustomer" message="tns:ICustomerService_UpdateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/UpdateCustomerResponse" message="tns:ICustomerService_UpdateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/DeleteCustomer" message="tns:ICustomerService_DeleteCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/DeleteCustomerResponse" message="tns:ICustomerService_DeleteCustomer_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SearchCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/SearchCustomer" message="tns:ICustomerService_SearchCustomer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/SearchCustomerResponse" message="tns:ICustomerService_SearchCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/Login" message="tns:ICustomerService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/LoginResponse" message="tns:ICustomerService_Login_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICustomerService" type="tns:ICustomerService">
@@ -78,8 +108,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/UpdateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/DeleteCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SearchCustomer">
       <soap:operation soapAction="http://tempuri.org/ICustomerService/SearchCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/Login" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

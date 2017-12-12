@@ -295,7 +295,7 @@ namespace DBLayer
             return StorageList;
         }
 
-        public void UpdateDrinkStorage(int cusID, int drinkID, int amount)
+        public void UpdateDrinkStorage(Storage storage)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -303,15 +303,15 @@ namespace DBLayer
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
                     cmd.CommandText = "Update drinkStorage SET Amount = @Amount  WHERE storageID = @storageID AND drinkID = @drinkID";
-                    cmd.Parameters.AddWithValue("storageID", cusID);
-                    cmd.Parameters.AddWithValue("drinkID", drinkID);
-                    cmd.Parameters.AddWithValue("Amount", amount);
+                    cmd.Parameters.AddWithValue("storageID", storage.ID);
+                    cmd.Parameters.AddWithValue("drinkID", storage.Drink.ID);
+                    cmd.Parameters.AddWithValue("Amount", storage.Amount);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void UpdateAlchoholStorage(int cusID, int drinkID, int amount)
+        public void UpdateAlchoholStorage(Storage storage)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -319,15 +319,15 @@ namespace DBLayer
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
                     cmd.CommandText = "Update alchoholStorage SET Amount = @Amount  WHERE storageID = @storageID AND alchoholID = @alchoholID";
-                    cmd.Parameters.AddWithValue("storageID", cusID);
-                    cmd.Parameters.AddWithValue("alchoholID", drinkID);
-                    cmd.Parameters.AddWithValue("Amount", amount);
+                    cmd.Parameters.AddWithValue("storageID", storage.ID);
+                    cmd.Parameters.AddWithValue("alchoholID", storage.Drink.ID);
+                    cmd.Parameters.AddWithValue("Amount", storage.Amount);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void UpdateHelflaskStorage(int cusID, int drinkID, int amount)
+        public void UpdateHelflaskStorage(Storage storage)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -335,9 +335,9 @@ namespace DBLayer
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
                     cmd.CommandText = "Update helflaskStorage SET Amount = @Amount  WHERE storageID = @storageID AND helflaskID = @helflaskID";
-                    cmd.Parameters.AddWithValue("storageID", cusID);
-                    cmd.Parameters.AddWithValue("helflaskID", drinkID);
-                    cmd.Parameters.AddWithValue("Amount", amount);
+                    cmd.Parameters.AddWithValue("storageID", storage.ID);
+                    cmd.Parameters.AddWithValue("helflaskID", storage.Drink.ID);
+                    cmd.Parameters.AddWithValue("Amount", storage.Amount);
                     cmd.ExecuteNonQuery();
                 }
             }

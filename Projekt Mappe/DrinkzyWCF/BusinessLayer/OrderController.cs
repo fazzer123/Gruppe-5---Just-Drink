@@ -79,29 +79,36 @@ namespace BusinessLayer
 
         public int getAmountOfItemsInOrder(string Username)
         {
-            List<Order> orders = GetOrdersByUserID(getUser(Username).ID).ToList();
-   
-            int i = orders.Count() - 1;
             int j = 0;
+            List<Order> orders = GetOrdersByUserID(getUser(Username).ID).ToList();
 
-            if (orders[i].Status.Equals("Incomplete"))
+            if (orders.Count() > 0)
             {
-                foreach (var item in orders[i].OrderLines)
-                {
-                    j = j + item.Amount;
+                int i = orders.Count() - 1;
+               
 
-                }
+                if (orders[i].Status.Equals("Incomplete"))
+                {
+                    foreach (var item in orders[i].OrderLines)
+                    {
+                        j = j + item.Amount;
+
+                    }
+                } 
             }
-            return j;
+           return j;
         }
 
         public int getLastOrderIDByUser(string Username)
         {
+            int id = 0;
             List<Order> orders = GetOrdersByUserID(getUser(Username).ID).ToList();
-
-            int i = orders.Count() - 1;
-
-            return orders[i].ID;;
+            if (orders.Count() > 0)
+            {
+                int i = orders.Count() - 1;
+                id = orders[i].ID;
+            }
+            return id;
         }
     }
 }

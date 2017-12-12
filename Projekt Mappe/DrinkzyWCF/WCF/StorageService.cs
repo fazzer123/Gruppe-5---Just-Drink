@@ -52,9 +52,9 @@ namespace WCF
             return sCtr.getStorageByDrinkAndStorage(drinkID, cusID);
         }
 
-        public void UpdateStorageDrink(int CusID, int orderID)
+        public void UpdateStorageDrink(int orderID)
         {
-            sCtr.UpdateDrinkAmount(CusID, orderID);
+            sCtr.UpdateDrinkAmount(orderID);
         }
     }
 }

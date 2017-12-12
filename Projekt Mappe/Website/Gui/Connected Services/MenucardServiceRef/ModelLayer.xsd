@@ -14,6 +14,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CusName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CusPassword" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="Img" nillable="true" type="xs:string" />
@@ -48,6 +49,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SuperAlchohol" nillable="true" type="tns:SuperAlchohol" />
+  <xs:complexType name="Alchohol">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SuperAlchohol">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Procent" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Alchohol" nillable="true" type="tns:Alchohol" />
+  <xs:complexType name="HelFlask">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SuperAlchohol">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Procent" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HelFlask" nillable="true" type="tns:HelFlask" />
   <xs:complexType name="ArrayOfIngredient">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Ingredient" nillable="true" type="tns:Ingredient" />
@@ -68,30 +89,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAlchohol" nillable="true" type="tns:ArrayOfAlchohol" />
-  <xs:complexType name="Alchohol">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:SuperAlchohol">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Procent" type="xs:decimal" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Alchohol" nillable="true" type="tns:Alchohol" />
   <xs:complexType name="ArrayOfHelFlask">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="HelFlask" nillable="true" type="tns:HelFlask" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfHelFlask" nillable="true" type="tns:ArrayOfHelFlask" />
-  <xs:complexType name="HelFlask">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:SuperAlchohol">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Procent" type="xs:decimal" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="HelFlask" nillable="true" type="tns:HelFlask" />
 </xs:schema>

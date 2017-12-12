@@ -576,10 +576,10 @@ namespace Gui.StorageServiceRef {
         System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage> GetDrinkStorageAsync(int cusID, int drinkID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/UpdateStorageDrink", ReplyAction="http://tempuri.org/IStorageService/UpdateStorageDrinkResponse")]
-        void UpdateStorageDrink(int CusID, int orderID);
+        void UpdateStorageDrink(int orderID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/UpdateStorageDrink", ReplyAction="http://tempuri.org/IStorageService/UpdateStorageDrinkResponse")]
-        System.Threading.Tasks.Task UpdateStorageDrinkAsync(int CusID, int orderID);
+        System.Threading.Tasks.Task UpdateStorageDrinkAsync(int orderID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllStorages", ReplyAction="http://tempuri.org/IStorageService/GetAllStoragesResponse")]
         Gui.StorageServiceRef.Storage[] GetAllStorages();
@@ -659,12 +659,12 @@ namespace Gui.StorageServiceRef {
             return base.Channel.GetDrinkStorageAsync(cusID, drinkID);
         }
         
-        public void UpdateStorageDrink(int CusID, int orderID) {
-            base.Channel.UpdateStorageDrink(CusID, orderID);
+        public void UpdateStorageDrink(int orderID) {
+            base.Channel.UpdateStorageDrink(orderID);
         }
         
-        public System.Threading.Tasks.Task UpdateStorageDrinkAsync(int CusID, int orderID) {
-            return base.Channel.UpdateStorageDrinkAsync(CusID, orderID);
+        public System.Threading.Tasks.Task UpdateStorageDrinkAsync(int orderID) {
+            return base.Channel.UpdateStorageDrinkAsync(orderID);
         }
         
         public Gui.StorageServiceRef.Storage[] GetAllStorages() {

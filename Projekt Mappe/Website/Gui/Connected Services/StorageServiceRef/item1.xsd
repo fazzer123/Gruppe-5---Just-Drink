@@ -45,7 +45,6 @@
   <xs:element name="UpdateStorageDrink">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CusID" type="xs:int" />
         <xs:element minOccurs="0" name="orderID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

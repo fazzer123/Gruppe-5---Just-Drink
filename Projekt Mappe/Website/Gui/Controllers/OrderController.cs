@@ -191,7 +191,7 @@ namespace Gui.Controllers
             client.CompleteOrder(order);
 
 
-           storageClient.UpdateStorageDrink(order.Customer.ID, order.ID);
+           storageClient.UpdateStorageDrink(order.ID);
             
 
             return RedirectToAction("Index");

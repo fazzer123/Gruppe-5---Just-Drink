@@ -29,6 +29,9 @@ namespace Gui.CustomerServiceRef {
         private string CusNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CusPasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -75,6 +78,19 @@ namespace Gui.CustomerServiceRef {
                 if ((object.ReferenceEquals(this.CusNameField, value) != true)) {
                     this.CusNameField = value;
                     this.RaisePropertyChanged("CusName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CusPassword {
+            get {
+                return this.CusPasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CusPasswordField, value) != true)) {
+                    this.CusPasswordField = value;
+                    this.RaisePropertyChanged("CusPassword");
                 }
             }
         }
@@ -176,11 +192,29 @@ namespace Gui.CustomerServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllCustomers", ReplyAction="http://tempuri.org/ICustomerService/GetAllCustomersResponse")]
         System.Threading.Tasks.Task<Gui.CustomerServiceRef.Customer[]> GetAllCustomersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/UpdateCustomer", ReplyAction="http://tempuri.org/ICustomerService/UpdateCustomerResponse")]
+        void UpdateCustomer(Gui.CustomerServiceRef.Customer customer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/UpdateCustomer", ReplyAction="http://tempuri.org/ICustomerService/UpdateCustomerResponse")]
+        System.Threading.Tasks.Task UpdateCustomerAsync(Gui.CustomerServiceRef.Customer customer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/DeleteCustomer", ReplyAction="http://tempuri.org/ICustomerService/DeleteCustomerResponse")]
+        void DeleteCustomer(int customerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/DeleteCustomer", ReplyAction="http://tempuri.org/ICustomerService/DeleteCustomerResponse")]
+        System.Threading.Tasks.Task DeleteCustomerAsync(int customerID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/SearchCustomer", ReplyAction="http://tempuri.org/ICustomerService/SearchCustomerResponse")]
         Gui.CustomerServiceRef.Customer[] SearchCustomer(string text);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/SearchCustomer", ReplyAction="http://tempuri.org/ICustomerService/SearchCustomerResponse")]
         System.Threading.Tasks.Task<Gui.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/Login", ReplyAction="http://tempuri.org/ICustomerService/LoginResponse")]
+        bool Login(string cusEmail, string cusPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/Login", ReplyAction="http://tempuri.org/ICustomerService/LoginResponse")]
+        System.Threading.Tasks.Task<bool> LoginAsync(string cusEmail, string cusPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -234,12 +268,36 @@ namespace Gui.CustomerServiceRef {
             return base.Channel.GetAllCustomersAsync();
         }
         
+        public void UpdateCustomer(Gui.CustomerServiceRef.Customer customer) {
+            base.Channel.UpdateCustomer(customer);
+        }
+        
+        public System.Threading.Tasks.Task UpdateCustomerAsync(Gui.CustomerServiceRef.Customer customer) {
+            return base.Channel.UpdateCustomerAsync(customer);
+        }
+        
+        public void DeleteCustomer(int customerID) {
+            base.Channel.DeleteCustomer(customerID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCustomerAsync(int customerID) {
+            return base.Channel.DeleteCustomerAsync(customerID);
+        }
+        
         public Gui.CustomerServiceRef.Customer[] SearchCustomer(string text) {
             return base.Channel.SearchCustomer(text);
         }
         
         public System.Threading.Tasks.Task<Gui.CustomerServiceRef.Customer[]> SearchCustomerAsync(string text) {
             return base.Channel.SearchCustomerAsync(text);
+        }
+        
+        public bool Login(string cusEmail, string cusPassword) {
+            return base.Channel.Login(cusEmail, cusPassword);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginAsync(string cusEmail, string cusPassword) {
+            return base.Channel.LoginAsync(cusEmail, cusPassword);
         }
     }
 }

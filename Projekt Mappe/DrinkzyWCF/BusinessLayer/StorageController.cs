@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DBLayer;
 using ModelLayer;
-
+using System.Reflection;
 
 namespace BusinessLayer
 {
@@ -35,33 +35,33 @@ namespace BusinessLayer
             return sDb.GetDrinkStorage(Cusid, drinkID);
         }
 
-        public void UpdateDrinkAmount(int CusID, int orderID)
+        public void UpdateDrinkAmount(int orderID)
         {
             Order order = oCtr.GetOrder(orderID);
             foreach (var ol in order.OrderLines)
             {
                 if (ol.Drink.GetType() == typeof(Drink))
                 {
-                    Storage storage = sDb.GetDrinkStorage(CusID, ol.Drink.ID);
-                    int newAmount = storage.Amount - ol.Amount;
+                    Storage storage = sDb.getDrinkStorageByDrinkAndStorage(order.Customer.ID, ol.Drink.ID);
+                    storage.Amount = storage.Amount - ol.Amount;
 
-                    sDb.UpdateDrinkStorage(storage.ID, ol.Drink.ID, newAmount);
+                    sDb.UpdateDrinkStorage(storage);
                 }
 
                 else if (ol.Drink.GetType() == typeof(Alchohol))
                 {
-                    Storage storage = sDb.GetAlchoholStorage(CusID, ol.Drink.ID);
-                    int newAmount = storage.Amount - ol.Amount;
+                    Storage storage = sDb.getAlchoholStorageByDrinkAndStorage(order.Customer.ID, ol.Drink.ID);
+                    storage.Amount = storage.Amount - ol.Amount;
 
-                    sDb.UpdateAlchoholStorage(storage.ID, ol.Drink.ID, newAmount);
+                    sDb.UpdateAlchoholStorage(storage);
                 }
 
                 else if (ol.Drink.GetType() == typeof(HelFlask))
                 {
-                    Storage storage = sDb.GetHelflaskStorage(CusID, ol.Drink.ID);
-                    int newAmount = storage.Amount - ol.Amount;
+                    Storage storage = sDb.getHelflaskStorageByHelflaskAndStorage(order.Customer.ID, ol.Drink.ID);
+                    storage.Amount = storage.Amount - ol.Amount;
 
-                    sDb.UpdateHelflaskStorage(storage.ID, ol.Drink.ID, newAmount);
+                    sDb.UpdateHelflaskStorage(storage);
                 }
             }
         }

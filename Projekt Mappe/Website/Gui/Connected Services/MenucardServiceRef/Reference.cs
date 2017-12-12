@@ -138,6 +138,9 @@ namespace Gui.MenucardServiceRef {
         private string CusNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CusPasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -184,6 +187,19 @@ namespace Gui.MenucardServiceRef {
                 if ((object.ReferenceEquals(this.CusNameField, value) != true)) {
                     this.CusNameField = value;
                     this.RaisePropertyChanged("CusName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CusPassword {
+            get {
+                return this.CusPasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CusPasswordField, value) != true)) {
+                    this.CusPasswordField = value;
+                    this.RaisePropertyChanged("CusPassword");
                 }
             }
         }
