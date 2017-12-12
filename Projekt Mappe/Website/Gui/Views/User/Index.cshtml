@@ -1,8 +1,14 @@
 ﻿@model dynamic
     @using Gui.OrderServiceRef;
     @using Gui.UserServiceRef;
+    @using Gui.WalletServiceRef;
+    @using Gui.Helpers;
 
-<h1>Username: @Model.User.UserName</h1>
+<h1 style="color:white;">Username: @Model.User.UserName</h1>
+
+@{ 
+    WalletServiceClient wClient = new WalletServiceClient();
+}
 
 <div style="color: white;">
     <hr />
@@ -52,6 +58,12 @@
 
         <dd>
             @Model.User.Gender
+        </dd>
+        <dt>
+            Digital Tegnebog
+        </dt>
+        <dd>
+            @wClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance; DKK.
         </dd>
     </dl>
     <p>

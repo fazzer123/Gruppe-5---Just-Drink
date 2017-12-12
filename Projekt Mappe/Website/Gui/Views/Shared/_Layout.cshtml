@@ -42,7 +42,7 @@
                             <input type="submit" id="sumbitText" value="Søg" />
                         }
                     </li>
-                    <li>@(AuthHelper.IsLoggedIn() ? @Html.ActionLink("Profile", "Index", "User") : @Html.ActionLink("Login", "Login", "Auth"))  </li>
+                    <li>@(AuthHelper.IsLoggedIn() ? @Html.ActionLink("Profile: " + AuthHelper.CurrentUser.Username, "Index", "User") : @Html.ActionLink("Login", "Login", "Auth"))  </li>
                     <li>@if(!AuthHelper.IsLoggedIn()){@Html.ActionLink("Registrer", "Create", "Register")}</li>
                     <li>@if (AuthHelper.IsLoggedIn())
                     {
@@ -61,7 +61,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Drinkzy incorperated, Owned by Group 5(aka the Fucbois)</p>
         </footer>
     </div>
 

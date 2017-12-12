@@ -66,4 +66,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getWalletByUsername">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getWalletByUsernameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="getWalletByUsernameResult" nillable="true" type="q5:Wallet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -16,5 +16,21 @@ namespace BusinessLayer
         {
             return hfDB.GetHelFlask(id);
         }
+
+        public IEnumerable<HelFlask> searchHelflask(string search)
+        {
+            List<HelFlask> drinks = new List<HelFlask>();
+            string search2 = search.ToLower().Trim();
+
+            foreach (HelFlask d in hfDB.GetAllHelflasks())
+            {
+                if (d.Name.ToLower().Contains(search2))
+                {
+                    drinks.Add(d);
+                }
+            }
+
+            return drinks;
+        }
     }
 }

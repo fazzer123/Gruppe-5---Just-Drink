@@ -190,10 +190,8 @@ namespace Gui.Controllers
             walletClient.UpdateBalanceByUserId(hej, 1);
             client.CompleteOrder(order);
 
-
-           storageClient.UpdateStorageDrink(order.ID);
+            storageClient.UpdateStorageDrink(order.ID);
             
-
             return RedirectToAction("Index");
         }
 

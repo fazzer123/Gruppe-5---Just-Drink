@@ -39,5 +39,10 @@ namespace WCF
         {
             return wCtr.getUserById(id);
         }
+
+        public Wallet getWalletByUsername(string name)
+        {
+            return wCtr.getWalletByUsername(name);
+        }
     }
 }

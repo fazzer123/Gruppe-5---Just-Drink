@@ -48,5 +48,11 @@ namespace WCF
 
         [OperationContract]
         HelFlask GetHelflask(int id);
+
+        [OperationContract]
+        IEnumerable<HelFlask> searchHelflask(string search);
+
+        [OperationContract]
+        IEnumerable<Alchohol> searchAlchohol(string search);
     }
 }
