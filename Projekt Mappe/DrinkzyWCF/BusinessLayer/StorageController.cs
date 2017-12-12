@@ -42,7 +42,7 @@ namespace BusinessLayer
             {
                 if (ol.Drink.GetType() == typeof(Drink))
                 {
-                    Storage storage = sDb.getDrinkStorageByDrinkAndStorage(order.Customer.ID, ol.Drink.ID);
+                    Storage storage = sDb.getDrinkStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID);
                     storage.Amount = storage.Amount - ol.Amount;
 
                     sDb.UpdateDrinkStorage(storage);
@@ -50,7 +50,7 @@ namespace BusinessLayer
 
                 else if (ol.Drink.GetType() == typeof(Alchohol))
                 {
-                    Storage storage = sDb.getAlchoholStorageByDrinkAndStorage(order.Customer.ID, ol.Drink.ID);
+                    Storage storage = sDb.getAlchoholStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID);
                     storage.Amount = storage.Amount - ol.Amount;
 
                     sDb.UpdateAlchoholStorage(storage);
@@ -58,7 +58,7 @@ namespace BusinessLayer
 
                 else if (ol.Drink.GetType() == typeof(HelFlask))
                 {
-                    Storage storage = sDb.getHelflaskStorageByHelflaskAndStorage(order.Customer.ID, ol.Drink.ID);
+                    Storage storage = sDb.getHelflaskStorageByHelflaskAndStorage(ol.Drink.ID, order.Customer.ID);
                     storage.Amount = storage.Amount - ol.Amount;
 
                     sDb.UpdateHelflaskStorage(storage);

@@ -138,7 +138,6 @@ namespace DBLayer
                     {
                         OrderLine = new OrderLine
                         {
-
                             ID = (int)Reader["id"],
                             Amount = (int)Reader["amount"],
                             TotalPrice = (decimal)Reader["totalPrice"],
