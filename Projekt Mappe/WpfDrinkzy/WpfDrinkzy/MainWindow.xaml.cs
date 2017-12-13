@@ -43,5 +43,10 @@ namespace WpfDrinkzy
         {
             Main.Content = new IngredientPage();
         }
+
+        private void Storage_click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Storage();
+        }
     }
 }

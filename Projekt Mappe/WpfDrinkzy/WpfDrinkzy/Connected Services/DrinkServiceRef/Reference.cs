@@ -17,6 +17,8 @@ namespace WpfDrinkzy.DrinkServiceRef {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SuperAlchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WpfDrinkzy.DrinkServiceRef.Alchohol))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WpfDrinkzy.DrinkServiceRef.HelFlask))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WpfDrinkzy.DrinkServiceRef.Drink))]
     public partial class SuperAlchohol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -103,6 +105,52 @@ namespace WpfDrinkzy.DrinkServiceRef {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alchohol", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class Alchohol : WpfDrinkzy.DrinkServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HelFlask", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    [System.SerializableAttribute()]
+    public partial class HelFlask : WpfDrinkzy.DrinkServiceRef.SuperAlchohol {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProcentField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Procent {
+            get {
+                return this.ProcentField;
+            }
+            set {
+                if ((this.ProcentField.Equals(value) != true)) {
+                    this.ProcentField = value;
+                    this.RaisePropertyChanged("Procent");
+                }
             }
         }
     }
@@ -274,6 +322,42 @@ namespace WpfDrinkzy.DrinkServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/SearchDrinks", ReplyAction="http://tempuri.org/IDrinkService/SearchDrinksResponse")]
         System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/CreateAlchohol", ReplyAction="http://tempuri.org/IDrinkService/CreateAlchoholResponse")]
+        void CreateAlchohol(WpfDrinkzy.DrinkServiceRef.Alchohol alchohol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/CreateAlchohol", ReplyAction="http://tempuri.org/IDrinkService/CreateAlchoholResponse")]
+        System.Threading.Tasks.Task CreateAlchoholAsync(WpfDrinkzy.DrinkServiceRef.Alchohol alchohol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAlchohol", ReplyAction="http://tempuri.org/IDrinkService/GetAlchoholResponse")]
+        WpfDrinkzy.DrinkServiceRef.Alchohol GetAlchohol(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAlchohol", ReplyAction="http://tempuri.org/IDrinkService/GetAlchoholResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Alchohol> GetAlchoholAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAllAlchohols", ReplyAction="http://tempuri.org/IDrinkService/GetAllAlchoholsResponse")]
+        WpfDrinkzy.DrinkServiceRef.Alchohol[] GetAllAlchohols();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetAllAlchohols", ReplyAction="http://tempuri.org/IDrinkService/GetAllAlchoholsResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Alchohol[]> GetAllAlchoholsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetHelflask", ReplyAction="http://tempuri.org/IDrinkService/GetHelflaskResponse")]
+        WpfDrinkzy.DrinkServiceRef.HelFlask GetHelflask(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/GetHelflask", ReplyAction="http://tempuri.org/IDrinkService/GetHelflaskResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchHelflask", ReplyAction="http://tempuri.org/IDrinkService/searchHelflaskResponse")]
+        WpfDrinkzy.DrinkServiceRef.HelFlask[] searchHelflask(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchHelflask", ReplyAction="http://tempuri.org/IDrinkService/searchHelflaskResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.HelFlask[]> searchHelflaskAsync(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchAlchohol", ReplyAction="http://tempuri.org/IDrinkService/searchAlchoholResponse")]
+        WpfDrinkzy.DrinkServiceRef.Alchohol[] searchAlchohol(string search);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDrinkService/searchAlchohol", ReplyAction="http://tempuri.org/IDrinkService/searchAlchoholResponse")]
+        System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Alchohol[]> searchAlchoholAsync(string search);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -365,6 +449,54 @@ namespace WpfDrinkzy.DrinkServiceRef {
         
         public System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Drink[]> SearchDrinksAsync(string search) {
             return base.Channel.SearchDrinksAsync(search);
+        }
+        
+        public void CreateAlchohol(WpfDrinkzy.DrinkServiceRef.Alchohol alchohol) {
+            base.Channel.CreateAlchohol(alchohol);
+        }
+        
+        public System.Threading.Tasks.Task CreateAlchoholAsync(WpfDrinkzy.DrinkServiceRef.Alchohol alchohol) {
+            return base.Channel.CreateAlchoholAsync(alchohol);
+        }
+        
+        public WpfDrinkzy.DrinkServiceRef.Alchohol GetAlchohol(int id) {
+            return base.Channel.GetAlchohol(id);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Alchohol> GetAlchoholAsync(int id) {
+            return base.Channel.GetAlchoholAsync(id);
+        }
+        
+        public WpfDrinkzy.DrinkServiceRef.Alchohol[] GetAllAlchohols() {
+            return base.Channel.GetAllAlchohols();
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Alchohol[]> GetAllAlchoholsAsync() {
+            return base.Channel.GetAllAlchoholsAsync();
+        }
+        
+        public WpfDrinkzy.DrinkServiceRef.HelFlask GetHelflask(int id) {
+            return base.Channel.GetHelflask(id);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.HelFlask> GetHelflaskAsync(int id) {
+            return base.Channel.GetHelflaskAsync(id);
+        }
+        
+        public WpfDrinkzy.DrinkServiceRef.HelFlask[] searchHelflask(string search) {
+            return base.Channel.searchHelflask(search);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.HelFlask[]> searchHelflaskAsync(string search) {
+            return base.Channel.searchHelflaskAsync(search);
+        }
+        
+        public WpfDrinkzy.DrinkServiceRef.Alchohol[] searchAlchohol(string search) {
+            return base.Channel.searchAlchohol(search);
+        }
+        
+        public System.Threading.Tasks.Task<WpfDrinkzy.DrinkServiceRef.Alchohol[]> searchAlchoholAsync(string search) {
+            return base.Channel.searchAlchoholAsync(search);
         }
     }
 }

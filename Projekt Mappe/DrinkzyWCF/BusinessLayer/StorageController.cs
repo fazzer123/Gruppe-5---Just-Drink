@@ -66,6 +66,24 @@ namespace BusinessLayer
             }
         }
 
+        public void UpdateStorages(Storage storage)
+        {
+            if (storage.Drink.GetType() == typeof(Drink))
+            {
+                sDb.UpdateDrinkStorage(storage);
+            }
+
+            else if (storage.Drink.GetType() == typeof(Alchohol))
+            {
+               sDb.UpdateAlchoholStorage(storage);
+            }
+
+            else if (storage.Drink.GetType() == typeof(HelFlask))
+            {
+                sDb.UpdateHelflaskStorage(storage);
+            }
+        }
+
         public IEnumerable<Storage> GetAllStorages()
         {
             return sDb.GetAllStorages();
@@ -91,6 +109,21 @@ namespace BusinessLayer
         public Storage getHelflaskStorageByHelflaskAndStorage(int flaskID, int cusID)
         {
             return sDb.getHelflaskStorageByHelflaskAndStorage(flaskID, cusID);
+        }
+
+        public IEnumerable<Storage> GetAllDrinkStorage(int cusID)
+        {
+            return sDb.GetAllDrinkStorages(cusID);
+        }
+
+        public IEnumerable<Storage> GetAllAlchoholStorage(int cusID)
+        {
+            return sDb.GetAllAlchoholStorages(cusID);
+        }
+
+        public IEnumerable<Storage> GetAllHelflaskStorage(int cusID)
+        {
+            return sDb.GetAllHelflaskStorages(cusID);
         }
     }
 }
