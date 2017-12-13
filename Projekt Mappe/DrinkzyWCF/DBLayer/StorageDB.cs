@@ -91,28 +91,32 @@ namespace DBLayer
         {
             Storage Storage = null;
             int storageID = getStorageIDByCustomerID(cusID);
+            Object thisLock = new Object();
 
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            lock (thisLock)
             {
-                connection.Open();
-                using (SqlCommand cmd = connection.CreateCommand())
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    cmd.CommandText = "Select * From Storage, drinkStorage Where drinkID = @drinkID AND storageID = @storageID AND customerID = @customerID";
-                    cmd.Parameters.AddWithValue("drinkID", drinkID);
-                    cmd.Parameters.AddWithValue("storageID", storageID);
-                    cmd.Parameters.AddWithValue("customerID", cusID);
-                    var Reader = cmd.ExecuteReader();
-                    while (Reader.Read())
+                    connection.Open();
+                    using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        Storage = new Storage
+                        cmd.CommandText = "Select * From Storage, drinkStorage Where drinkID = @drinkID AND storageID = @storageID AND customerID = @customerID";
+                        cmd.Parameters.AddWithValue("drinkID", drinkID);
+                        cmd.Parameters.AddWithValue("storageID", storageID);
+                        cmd.Parameters.AddWithValue("customerID", cusID);
+                        var Reader = cmd.ExecuteReader();
+                        while (Reader.Read())
                         {
-                            ID = (int)Reader["id"],
-                            Amount = (int)Reader["Amount"],
-                            MaxAmount = (int)Reader["MaxAmount"],
-                            MinAmount = (int)Reader["MinAmount"],
-                            Drink = drinkDB.GetDrink((int)Reader["drinkID"]),
-                            Customer = cusDB.GetCustomer((int)Reader["customerID"])
-                        };
+                            Storage = new Storage
+                            {
+                                ID = (int)Reader["id"],
+                                Amount = (int)Reader["Amount"],
+                                MaxAmount = (int)Reader["MaxAmount"],
+                                MinAmount = (int)Reader["MinAmount"],
+                                Drink = drinkDB.GetDrink((int)Reader["drinkID"]),
+                                Customer = cusDB.GetCustomer((int)Reader["customerID"])
+                            };
+                        }
                     }
                 }
             }
@@ -123,27 +127,31 @@ namespace DBLayer
         {
             Storage Storage = null;
             int storageID = getStorageIDByCustomerID(cusID);
+            Object thisLock = new Object();
 
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            lock (thisLock)
             {
-                connection.Open();
-                using (SqlCommand cmd = connection.CreateCommand())
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    cmd.CommandText = "Select * From Storage, alchoholStorage Where alchoholID = @alchoholID AND storageID = @storageID AND customerID = @customerID";
-                    cmd.Parameters.AddWithValue("alchoholID", alchID);
-                    cmd.Parameters.AddWithValue("storageID", storageID);
-                    cmd.Parameters.AddWithValue("customerID", cusID);
-                    var Reader = cmd.ExecuteReader();
-                    while (Reader.Read())
+                    connection.Open();
+                    using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        Storage = new Storage
+                        cmd.CommandText = "Select * From Storage, alchoholStorage Where alchoholID = @alchoholID AND storageID = @storageID AND customerID = @customerID";
+                        cmd.Parameters.AddWithValue("alchoholID", alchID);
+                        cmd.Parameters.AddWithValue("storageID", storageID);
+                        cmd.Parameters.AddWithValue("customerID", cusID);
+                        var Reader = cmd.ExecuteReader();
+                        while (Reader.Read())
                         {
-                            ID = (int)Reader["id"],
-                            Amount = (int)Reader["Amount"],
-                            MaxAmount = (int)Reader["MaxAmount"],
-                            MinAmount = (int)Reader["MinAmount"],
-                            Drink = drinkDB.GetDrink((int)Reader["alchoholID"])
-                        };
+                            Storage = new Storage
+                            {
+                                ID = (int)Reader["id"],
+                                Amount = (int)Reader["Amount"],
+                                MaxAmount = (int)Reader["MaxAmount"],
+                                MinAmount = (int)Reader["MinAmount"],
+                                Drink = drinkDB.GetDrink((int)Reader["alchoholID"])
+                            };
+                        }
                     }
                 }
             }
@@ -154,27 +162,31 @@ namespace DBLayer
         {
             Storage Storage = null;
             int storageID = getStorageIDByCustomerID(cusID);
+            Object thisLock = new Object();
 
-            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            lock (thisLock)
             {
-                connection.Open();
-                using (SqlCommand cmd = connection.CreateCommand())
+                using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
-                    cmd.CommandText = "Select * From Storage, helflaskStorage Where helflaskID = @helflaskID AND storageID = @storageID AND customerID = @customerID";
-                    cmd.Parameters.AddWithValue("helflaskID", flaskID);
-                    cmd.Parameters.AddWithValue("storageID", storageID);
-                    cmd.Parameters.AddWithValue("customerID", cusID);
-                    var Reader = cmd.ExecuteReader();
-                    while (Reader.Read())
+                    connection.Open();
+                    using (SqlCommand cmd = connection.CreateCommand())
                     {
-                        Storage = new Storage
+                        cmd.CommandText = "Select * From Storage, helflaskStorage Where helflaskID = @helflaskID AND storageID = @storageID AND customerID = @customerID";
+                        cmd.Parameters.AddWithValue("helflaskID", flaskID);
+                        cmd.Parameters.AddWithValue("storageID", storageID);
+                        cmd.Parameters.AddWithValue("customerID", cusID);
+                        var Reader = cmd.ExecuteReader();
+                        while (Reader.Read())
                         {
-                            ID = (int)Reader["id"],
-                            Amount = (int)Reader["Amount"],
-                            MaxAmount = (int)Reader["MaxAmount"],
-                            MinAmount = (int)Reader["MinAmount"],
-                            Drink = drinkDB.GetDrink((int)Reader["helflaskID"])
-                        };
+                            Storage = new Storage
+                            {
+                                ID = (int)Reader["id"],
+                                Amount = (int)Reader["Amount"],
+                                MaxAmount = (int)Reader["MaxAmount"],
+                                MinAmount = (int)Reader["MinAmount"],
+                                Drink = drinkDB.GetDrink((int)Reader["helflaskID"])
+                            };
+                        }
                     }
                 }
             }
