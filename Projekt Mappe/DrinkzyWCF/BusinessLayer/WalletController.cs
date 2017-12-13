@@ -44,19 +44,19 @@ namespace BusinessLayer
 
         public Wallet getWalletByUsername(string name)
         {
-            Wallet wallet = new Wallet();
+            Wallet wallet = GetWallet(uCtr.GetUserByUserName(name).ID);
 
-            foreach(Wallet w in GetAllWallets())
-            {
-                if (w.User.UserName.Equals(name))
-                {
-                    wallet = w;
-                }
-                else
-                {
-                    wallet = null;
-                }
-            }
+            //foreach(Wallet w in GetAllWallets())
+            //{
+            //    if (w.User.UserName.Equals(name))
+            //    {
+            //        wallet = w;
+            //    }
+            //    else
+            //    {
+            //        wallet = null;
+            //    }
+            //}
 
             return wallet;
         }
