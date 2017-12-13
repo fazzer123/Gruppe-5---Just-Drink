@@ -12,7 +12,7 @@ namespace WCF
     interface IFavoritesService
     {
         [OperationContract]
-        void createFavorites(Favorites fav);
+        void createFavorites(int userID);
 
         [OperationContract]
         Favorites GetFavoritesByUserID(int id);

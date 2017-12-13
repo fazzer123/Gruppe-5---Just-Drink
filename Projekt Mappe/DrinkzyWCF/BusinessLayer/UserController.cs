@@ -41,19 +41,15 @@ namespace BusinessLayer
 
         public void createFavoritesAndWallet(int userid)
         {
-            User u = GetUser(userid);
+            //User u = GetUser(userid);
             FavoritesController fCtr = new FavoritesController();
             WalletController wCtr = new WalletController();
 
-            if (fCtr.GetFavoritesByUserID(u.ID) == null)
+            if (fCtr.GetFavoritesByUserID(userid) == null)
             {
-                Favorites f = new Favorites
-                {
-                    User = u
-                };
-                fCtr.createFavorites(f);
+                fCtr.createFavorites(userid);
             }
-            if (wCtr.GetWallet(u.ID) == null)
+            if (wCtr.GetWallet(userid) == null)
             {
                 Wallet w = new Wallet
                 {
@@ -61,7 +57,7 @@ namespace BusinessLayer
                     MinBalance = 0,
                     MaxBalance = 0,
                     LockTime = DateTime.Now,
-                    User = u,
+                    User = uDb.GetUser(userid),
                 };
                 wCtr.CreateWallet(w);
             }

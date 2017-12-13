@@ -64,7 +64,7 @@ namespace DBLayer
                             Password = (string)Reader["userPassword"],
                             Email = (string)Reader["email"],
                             Phone = (string)Reader["phone"],
-                            FavoritesDrinks = fDB.GetAllDrinksByUser((int)Reader["id"]) 
+                            FavoritesDrinks = fDB.GetAllDrinksByUser(fDB.GetFavoritesByUserID((int)Reader["id"]).ID)
                         };
                     }
                 }

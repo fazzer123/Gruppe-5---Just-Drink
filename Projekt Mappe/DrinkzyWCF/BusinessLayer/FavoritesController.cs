@@ -12,9 +12,9 @@ namespace BusinessLayer
     {
         private FavoritesDB db = new FavoritesDB();
 
-        public void createFavorites(Favorites fav)
+        public void createFavorites(int userID)
         {
-            db.CreateFavorites(fav);
+            db.CreateFavorites(userID);
         }
 
         public Favorites GetFavoritesByUserID(int id)

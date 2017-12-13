@@ -18,7 +18,7 @@ namespace DBLayer
 
         private readonly string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-        public void CreateFavorites(Favorites favorites)
+        public void CreateFavorites(int userID)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -27,7 +27,7 @@ namespace DBLayer
                 {
                     cmd.CommandText = "Insert Into dbo.Favorites(userID) values(@userID)";
                     //cmd.Parameters.AddWithValue("id", OrderLine.ID);
-                    cmd.Parameters.AddWithValue("userID", favorites.User.ID);
+                    cmd.Parameters.AddWithValue("userID", userID);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -95,9 +95,9 @@ namespace DBLayer
                     {
                         favorites = new Favorites
                         {
-                            ID = (int)Reader["id"],
-                            User = userDB.GetUser((int)Reader["userID"]),
-                            Drinks = GetAllDrinksByUser((int)Reader["id"])
+                            ID = (int)Reader["id"]
+                            //User = userDB.GetUser((int)Reader["userID"]),
+                            //Drinks = GetAllDrinksByUser((int)Reader["id"])
                         };
                     }
                 }
@@ -105,7 +105,7 @@ namespace DBLayer
             return favorites;
         }
 
-        public List<SuperAlchohol> GetAllDrinksByUser(int favoritesId)
+        public List<SuperAlchohol> GetAllDrinksByUser(int favoritesID)
         {
             List<SuperAlchohol> DrinksList = new List<SuperAlchohol>();
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
@@ -115,7 +115,7 @@ namespace DBLayer
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
                     cmd.CommandText = "SELECT * FROM FavoritesDrinks WHERE favoritesID = @favoritesID";
-                    cmd.Parameters.AddWithValue("favoritesID", favoritesId);
+                    cmd.Parameters.AddWithValue("favoritesID", favoritesID);
                     var Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
@@ -129,7 +129,7 @@ namespace DBLayer
                 using (SqlCommand cmd2 = connection.CreateCommand())
                 {
                     cmd2.CommandText = "SELECT * FROM FavoritesAlchohol WHERE favoritesID = @favoritesID";
-                    cmd2.Parameters.AddWithValue("favoritesID", favoritesId);
+                    cmd2.Parameters.AddWithValue("favoritesID", favoritesID);
                     var Reader2 = cmd2.ExecuteReader();
                     while (Reader2.Read())
                     {
@@ -143,7 +143,7 @@ namespace DBLayer
                 using (SqlCommand cmd3 = connection.CreateCommand())
                 {
                     cmd3.CommandText = "SELECT * FROM FavoritesHelflask WHERE favoritesID = @favoritesID";
-                    cmd3.Parameters.AddWithValue("favoritesID", favoritesId);
+                    cmd3.Parameters.AddWithValue("favoritesID", favoritesID);
                     var Reader3 = cmd3.ExecuteReader();
                     while (Reader3.Read())
                     {

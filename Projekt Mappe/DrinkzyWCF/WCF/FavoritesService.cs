@@ -28,9 +28,9 @@ namespace WCF
         }
 
 
-        public void createFavorites(Favorites fav)
+        public void createFavorites(int userid)
         {
-            fCtr.createFavorites(fav);
+            fCtr.createFavorites(userid);
         }
 
         public List<SuperAlchohol> GetAllDrinksByUser(int id)
