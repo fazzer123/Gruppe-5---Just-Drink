@@ -11,6 +11,7 @@ using Gui.CustomerServiceRef;
 using Gui.StorageServiceRef;
 using System.Dynamic;
 using Gui.Helpers;
+using System.Transactions;
 
 namespace Gui.Controllers
 {
@@ -147,48 +148,59 @@ namespace Gui.Controllers
             int i = 0;
             int j = order.OrderLines.Count();
 
-            foreach (var ol in order.OrderLines)
+            TransactionOptions option = new TransactionOptions();
+            option.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
+            option.Timeout = new TimeSpan(0, 1, 30);
+
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.RequiresNew, option))
             {
-                if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Drink))
+
+                foreach (var ol in order.OrderLines)
                 {
-                    if (ol.Amount <= storageClient.getStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                    if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Drink))
                     {
-                        i++;
+                        if (ol.Amount <= storageClient.getStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                        {
+                            i++;
+                        }
+                    }
+                    else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Alchohol))
+                    {
+                        if (ol.Amount <= storageClient.getAlchoholStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                        {
+                            i++;
+                        }
+                    }
+                    else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.HelFlask))
+                    {
+                        if (ol.Amount <= storageClient.getHelflaskStorageByHelflaskAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                        {
+                            i++;
+                        }
                     }
                 }
-                else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Alchohol))
+
+                if (i == j)
                 {
-                    if (ol.Amount <= storageClient.getAlchoholStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                    try
                     {
-                        i++;
+                        order.Status = "Complete";
+                        decimal hej = walletClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance - order.TotalPrice;
+                        walletClient.UpdateBalanceByUserId(hej, client.GetUser(AuthHelper.CurrentUser.Username).ID);
+                        client.CompleteOrder(order);
+
+                        storageClient.UpdateStorageDrink(order.ID);
+
+                        return View("OrderSucces");
                     }
+                    catch { return View("OrderFailed"); }
                 }
-                else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.HelFlask))
+                else
                 {
-                    if (ol.Amount <= storageClient.getHelflaskStorageByHelflaskAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
-                    {
-                        i++;
-                    }
+                    client.DeleteOrderByID(order.ID);
+                    return View("OrderFailed");
                 }
             }
-
-            if (i == j)
-            {
-                order.Status = "Complete";
-                decimal hej = walletClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance - order.TotalPrice;
-                walletClient.UpdateBalanceByUserId(hej, client.GetUser(AuthHelper.CurrentUser.Username).ID);
-                client.CompleteOrder(order);
-
-                storageClient.UpdateStorageDrink(order.ID);
-
-                return View("OrderSucces");
-            }
-            else
-            {
-                client.DeleteOrderByID(order.ID);
-                return View("OrderFailed");
-            }
-
             
         }
 
