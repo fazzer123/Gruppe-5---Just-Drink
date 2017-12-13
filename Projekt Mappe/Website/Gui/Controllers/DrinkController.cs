@@ -248,7 +248,8 @@ namespace Gui.Controllers
         public ActionResult AddFavorit(int drinkID, string userName)
         {
             FavoritesServiceClient fClient = new FavoritesServiceClient();
-            fClient.addDrink(uClient.GetUserByUserName(userName).ID, drinkID);
+            int newID = uClient.GetUserByUserName(userName).ID;
+            fClient.addDrink(newID, drinkID);
             return RedirectToAction("Details", new { drinkId = drinkID });
         }
 

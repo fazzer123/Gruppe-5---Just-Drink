@@ -48,7 +48,7 @@ namespace Gui.Controllers
                     MinBalance = 0,
                     MaxBalance = 0,
                     LockTime = DateTime.Now
-            };
+                };
                 WalletClient.CreateWallet(w);
             }
             return View(WalletClient.GetWallet(id));

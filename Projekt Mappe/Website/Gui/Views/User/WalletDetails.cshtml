@@ -8,7 +8,7 @@
             Saldo
             @using (Html.BeginForm("EditBalance", "User", FormMethod.Post))
             {
-                <input type="hidden" name="id" value="@Model.ID" />
+                <input type="hidden" name="id" value="@Model.User.ID" />
                         <p>Indsæt flere penge</p>
                         <input type="text" name="text" style="width:100px;" /><input type="submit" id="sumbitText" value="Indsæt" />
             }
