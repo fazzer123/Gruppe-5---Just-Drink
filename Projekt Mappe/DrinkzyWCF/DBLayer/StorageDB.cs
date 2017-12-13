@@ -5,7 +5,9 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace DBLayer
 {
@@ -91,10 +93,13 @@ namespace DBLayer
         {
             Storage Storage = null;
             int storageID = getStorageIDByCustomerID(cusID);
-            Object thisLock = new Object();
 
-            lock (thisLock)
-            {
+            //TransactionOptions option = new TransactionOptions();
+            //option.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+            //option.Timeout = new TimeSpan(0, 0, 30);
+
+            //using (TransactionScope scope = new TransactionScope(TransactionScopeOption.RequiresNew, option))
+            //{
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
                     connection.Open();
@@ -117,9 +122,11 @@ namespace DBLayer
                                 Customer = cusDB.GetCustomer((int)Reader["customerID"])
                             };
                         }
+                        //Thread.Sleep(4000);
                     }
                 }
-            }
+                //scope.Complete();
+            //}
             return Storage;
         }
 
@@ -127,9 +134,11 @@ namespace DBLayer
         {
             Storage Storage = null;
             int storageID = getStorageIDByCustomerID(cusID);
-            Object thisLock = new Object();
 
-            lock (thisLock)
+            TransactionOptions option = new TransactionOptions();
+            option.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+            option.Timeout = new TimeSpan(0, 0, 30);
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.RequiresNew, option))
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
@@ -152,8 +161,10 @@ namespace DBLayer
                                 Drink = drinkDB.GetDrink((int)Reader["alchoholID"])
                             };
                         }
+                        Thread.Sleep(4000);
                     }
                 }
+                scope.Complete();
             }
             return Storage;
         }
@@ -162,9 +173,10 @@ namespace DBLayer
         {
             Storage Storage = null;
             int storageID = getStorageIDByCustomerID(cusID);
-            Object thisLock = new Object();
-
-            lock (thisLock)
+            TransactionOptions option = new TransactionOptions();
+            option.IsolationLevel = System.Transactions.IsolationLevel.ReadUncommitted;
+            option.Timeout = new TimeSpan(0, 0, 30);
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.RequiresNew, option))
             {
                 using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
                 {
@@ -187,8 +199,10 @@ namespace DBLayer
                                 Drink = drinkDB.GetDrink((int)Reader["helflaskID"])
                             };
                         }
+                        Thread.Sleep(4000);
                     }
                 }
+                scope.Complete();
             }
             return Storage;
         }
