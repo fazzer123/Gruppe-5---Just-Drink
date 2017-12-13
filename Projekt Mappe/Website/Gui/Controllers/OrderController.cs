@@ -144,14 +144,52 @@ namespace Gui.Controllers
         public ActionResult CompleteOrder(int id)
         {
             Order order = client.GetOrder(id);
-            order.Status = "Complete";
-            decimal hej = walletClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance - order.TotalPrice;
-            walletClient.UpdateBalanceByUserId(hej, client.GetUser(AuthHelper.CurrentUser.Username).ID);
-            client.CompleteOrder(order);
+            int i = 0;
+            int j = order.OrderLines.Count();
 
-            storageClient.UpdateStorageDrink(order.ID);
+            foreach (var ol in order.OrderLines)
+            {
+                if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Drink))
+                {
+                    if (ol.Amount <= storageClient.getStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                    {
+                        i++;
+                    }
+                }
+                else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Alchohol))
+                {
+                    if (ol.Amount <= storageClient.getAlchoholStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                    {
+                        i++;
+                    }
+                }
+                else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.HelFlask))
+                {
+                    if (ol.Amount <= storageClient.getHelflaskStorageByHelflaskAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
+                    {
+                        i++;
+                    }
+                }
+            }
+
+            if (i == j)
+            {
+                order.Status = "Complete";
+                decimal hej = walletClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance - order.TotalPrice;
+                walletClient.UpdateBalanceByUserId(hej, client.GetUser(AuthHelper.CurrentUser.Username).ID);
+                client.CompleteOrder(order);
+
+                storageClient.UpdateStorageDrink(order.ID);
+
+                return View("OrderSucces");
+            }
+            else
+            {
+                client.DeleteOrderByID(order.ID);
+                return View("OrderFailed");
+            }
+
             
-            return RedirectToAction("Index", "User", new { userName = AuthHelper.CurrentUser.Username });
         }
 
         public ActionResult CreateOrder(int cusID)
