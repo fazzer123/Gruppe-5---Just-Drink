@@ -17,9 +17,6 @@ using WpfDrinkzy.StorageServiceRef;
 
 namespace WpfDrinkzy
 {
-    /// <summary>
-    /// Interaction logic for Storage.xaml
-    /// </summary>
     public partial class Storage : Page
     {
         CustomerServiceClient CusClient = new CustomerServiceClient();
@@ -39,11 +36,7 @@ namespace WpfDrinkzy
         public void Changer(object sender, SelectionChangedEventArgs e)
         {
             WpfDrinkzy.CustomerServiceRef.Customer c = (WpfDrinkzy.CustomerServiceRef.Customer)CustomerList.SelectedItem;
-            //Details(c);
             StorageList.ItemsSource = null;
-            //StorageList.ItemsSource = sClient.GetAllDrinkStorage(c.ID);
-            //StorageList.ItemsSource = sClient.GetAllAlchoholStorage(c.ID);
-            //StorageList.ItemsSource = sClient.GetAllHelflaskStorage(c.ID);
 
             List<WpfDrinkzy.StorageServiceRef.Storage> allProducts = new List<WpfDrinkzy.StorageServiceRef.Storage>();
             allProducts.AddRange(sClient.GetAllDrinkStorage(c.ID).ToList());

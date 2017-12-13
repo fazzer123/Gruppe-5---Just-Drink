@@ -35,11 +35,14 @@ namespace BusinessLayer
             return sDb.GetDrinkStorage(Cusid, drinkID);
         }
 
+        /*Denne metode bruges til at ændre amount på storage, den tager order id ind som parameter*/
         public void UpdateDrinkAmount(int orderID)
         {
+            /*Her hentes den givne order, som har det id metoden fik med parameteren*/
             Order order = oCtr.GetOrder(orderID);
             foreach (var ol in order.OrderLines)
             {
+                /*Her tjekkes hvilken type drink der er på orderlinen, så den trækker det fra i den rigtig database*/
                 if (ol.Drink.GetType() == typeof(Drink))
                 {
                     Storage storage = sDb.getDrinkStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID);

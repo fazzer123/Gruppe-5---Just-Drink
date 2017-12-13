@@ -37,6 +37,7 @@ namespace BusinessLayer
             db.DeleteDrinkFromMenu(menuID, drinkid);
         }
 
+        /*Denne metode bruges til vores search funktion, den tager en string ind som parameter*/
         public List<Drink> getDrinksBySearchOnMenucard(string search, int cusId)
         {
             List<Drink> searchDrinks = new List<Drink>();
