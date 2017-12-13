@@ -42,17 +42,13 @@
                             <input type="submit" id="sumbitText" value="Søg" />
                         }
                     </li>
-                    <li>@(AuthHelper.IsLoggedIn() ? @Html.ActionLink("Profile: " + AuthHelper.CurrentUser.Username, "Index", "User") : @Html.ActionLink("Login", "Login", "Auth"))  </li>
-                    <li>@if(!AuthHelper.IsLoggedIn()){@Html.ActionLink("Registrer", "Create", "Register")}</li>
+                    <li>@(AuthHelper.IsLoggedIn() ? @Html.ActionLink("Profile: " + AuthHelper.CurrentUser.Username, "Index", "User") : @Html.ActionLink("Log ind", "Login", "Auth"))  </li>
+                    <li>@if(!AuthHelper.IsLoggedIn()){@Html.ActionLink("Opret Bruger", "Create", "Register")}</li>
                     <li>@if (AuthHelper.IsLoggedIn())
                     {
-                        @*@oClient.getAmountOfItemsInOrder(AuthHelper.CurrentUser.Username)*@
                         <a href="@Url.Action("Details", "Order", new { id = oClient.getLastOrderIDByUser(AuthHelper.CurrentUser.Username)})">@oClient.getAmountOfItemsInOrder(AuthHelper.CurrentUser.Username)<img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Carrito.png" alt="" height="20px" width="auto" /></a>
-                        @*<a href="@Url.Action("Details", "Order", new { id = oClient.getLastOrderIDByUser(AuthHelper.CurrentUser.Username)})">@oClient.getAmountOfItemsInOrder(AuthHelper.CurrentUser.Username)<img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Carrito.png" alt="" height="20px" width="auto" /></a>*@
-                        @*@Html.ActionLink("Order", "Index", "Order")*@
                     }</li>
                     <li>@if (AuthHelper.IsLoggedIn()){@Html.ActionLink("Log ud", "Logout", "Auth")}</li>
-                    @*<li>@Html.ActionLink("Order", "Index", "Order")</li>*@
                 </ul>
             </div>
         </div>

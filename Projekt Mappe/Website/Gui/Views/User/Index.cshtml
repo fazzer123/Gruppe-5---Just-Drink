@@ -4,7 +4,7 @@
     @using Gui.WalletServiceRef;
     @using Gui.Helpers;
 
-<h1 style="color:white;">Username: @Model.User.UserName</h1>
+<h1 style="color:white;">Brugernavn: @Model.User.UserName</h1>
 
 @{ 
     WalletServiceClient wClient = new WalletServiceClient();
@@ -63,7 +63,8 @@
             Digital Tegnebog
         </dt>
         <dd>
-            @wClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance; DKK.
+            @if (wClient.getWalletByUsername(AuthHelper.CurrentUser.Username) == null) {<p>0</p>}
+            else {<p>@wClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance DKK.</p>}
         </dd>
     </dl>
     <p>
@@ -86,12 +87,18 @@
 </div>
 <div style="color:white;">
     <h2>Orders</h2>
-    <table>
+    <table class="table">
         @foreach(var order in @Model.Order)
         {
             <tr>
                 <th>
                     Dato
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Bar navn
                 </th>
                 <th>
                      Total Pris
@@ -101,13 +108,18 @@
                 <td>
                     @order.Date
                 </td>
-               
+               <td>
+                   @order.Status
+               </td>
+                <td>
+                    @order.Customer.CusName
+                </td>
                 <td>
                     @order.TotalPrice
                 </td>
                 <td>
-                    <input id="btnDetails" type="button" value="Details" onclick="location.href='@Url.Action("Details", "Order", new { id = @order.ID })'" />
-                    <input id="btnDelete" type="button" value="Delete" onclick="location.href='@Url.Action("DeleteOrder", "Order", new { ID = @order.ID })'" />
+                    <input id="btnDetails" type="button" value="Detaljer" onclick="location.href='@Url.Action("Details", "Order", new { id = @order.ID })'" />
+                    <input id="btnDelete" type="button" value="Slet Ordre" onclick="location.href='@Url.Action("DeleteOrder", "Order", new { ID = @order.ID })'" />
                 </td>
             </tr>
         }

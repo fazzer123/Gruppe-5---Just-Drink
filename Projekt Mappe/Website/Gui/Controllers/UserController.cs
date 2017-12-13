@@ -23,18 +23,6 @@ namespace Gui.Controllers
         // GET: User
         public ActionResult Index(string userName)
         {
-            //int id = 0;
-            //ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-            //AuthServiceClient authClient = new AuthServiceClient();
-            //var isLoggedIn = authClient.Login("tg", "goddav");
-            //if (isLoggedIn)
-            //{
-            //    SecurityServiceClient client = new SecurityServiceClient("WSHttpBinding_ISecurityService");
-            //    client.ClientCredentials.UserName.UserName = "tg";
-            //    client.ClientCredentials.UserName.Password = "goddav";
-            //    var data = client.GetData(1337);
-            //    id = 1;
-            //}
             userName = AuthHelper.CurrentUser.Username;
             int id = UserClient.GetUserByUserName(userName).ID;
             UserClient.createWalletAndFavorites(id);
