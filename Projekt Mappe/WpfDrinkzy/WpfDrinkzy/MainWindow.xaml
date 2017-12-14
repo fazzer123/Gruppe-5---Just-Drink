@@ -12,6 +12,6 @@
         <Button Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="35" Margin="145,0,0,0" Click="Customer_click"/>
         <Button Content="User" HorizontalAlignment="Left" Margin="280,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="User_Click"/>
         <Button Content="Ingredient" HorizontalAlignment="Left" Margin="415,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="Ingredient_Click"/>
-
+        <Button Content="Storage" HorizontalAlignment="Left" Margin="550,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="Storage_click"/>
     </Grid>
 </Window>

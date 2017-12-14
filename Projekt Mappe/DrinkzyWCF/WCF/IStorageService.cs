@@ -32,5 +32,17 @@ namespace WCF
 
         [OperationContract]
         Storage getHelflaskStorageByHelflaskAndStorage(int flaskID, int cusID);
+
+        [OperationContract]
+        IEnumerable<Storage> GetAllDrinkStorage(int cusID);
+
+        [OperationContract]
+        IEnumerable<Storage> GetAllAlchoholStorage(int cusID);
+
+        [OperationContract]
+        IEnumerable<Storage> GetAllHelflaskStorage(int cusID);
+
+        [OperationContract]
+        void UpdateStorages(Storage storage);
     }
 }

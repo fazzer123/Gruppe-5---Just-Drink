@@ -61,6 +61,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\StorageServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\UserServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,6 +73,9 @@
     </Compile>
     <Compile Include="IngredientPage.xaml.cs">
       <DependentUpon>IngredientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Storage.xaml.cs">
+      <DependentUpon>Storage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
@@ -122,6 +130,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Storage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -168,7 +180,13 @@
     <None Include="Connected Services\DrinkServiceRef\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\DrinkServiceRef\WpfDrinkzy.DrinkServiceRef.Alchohol.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\DrinkServiceRef\WpfDrinkzy.DrinkServiceRef.Drink.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DrinkServiceRef\WpfDrinkzy.DrinkServiceRef.HelFlask.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\FavoritesServiceRef\ModelLayer.xsd">
@@ -181,10 +199,10 @@
     <None Include="Connected Services\FavoritesServiceRef\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\FavoritesServiceRef\WpfDrinkzy.FavoritesServiceRef.Drink.datasource">
+    <None Include="Connected Services\FavoritesServiceRef\WpfDrinkzy.FavoritesServiceRef.Favorites.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\FavoritesServiceRef\WpfDrinkzy.FavoritesServiceRef.Favorites.datasource">
+    <None Include="Connected Services\FavoritesServiceRef\WpfDrinkzy.FavoritesServiceRef.SuperAlchohol.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\IngredientServiceRef\ModelLayer.xsd">
@@ -214,6 +232,19 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\MenuCardServiceRef\WpfDrinkzy.MenuCardServiceRef.MenuCard.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StorageServiceRef\StorageService.wsdl" />
+    <None Include="Connected Services\StorageServiceRef\WpfDrinkzy.StorageServiceRef.Storage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserServiceRef\ModelLayer.xsd">
@@ -246,6 +277,7 @@
     <WCFMetadataStorage Include="Connected Services\FavoritesServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\IngredientServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\MenuCardServiceRef\" />
+    <WCFMetadataStorage Include="Connected Services\StorageServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\UserServiceRef\" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +348,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\FavoritesServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageServiceRef\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

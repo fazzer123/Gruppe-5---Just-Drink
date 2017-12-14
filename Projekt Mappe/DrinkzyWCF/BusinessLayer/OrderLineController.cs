@@ -53,6 +53,7 @@ namespace BusinessLayer
             olDb.DeleteOrderLineByID(OrderLineID);
         }
 
+        /*Denne metode ændre total prise på order og en specifik orderline*/
         public void EditOrderLinePrice(int id, int orderID, string text)
         {
             decimal price = 0;
@@ -60,20 +61,26 @@ namespace BusinessLayer
             //OrderLine orderline = null;
             OrderDB oDB = new OrderDB();
 
+
             foreach (var o in oDB.GetOrder(orderID).OrderLines)
             {
+                /*Her tjekkes der om hvilken type drink der er på orderlinen, da den skal kalde forskellige metoder
+                 som kalder en forskellige del i databasen*/
                 if (o.ID == id && o.Drink.GetType() == typeof(HelFlask))
                 {
-                    //orderline = olDb.GetOrderLineHelflask(id);
+                    /*Først tager vi den orderline total pris fra order total pris*/
                     price = oDB.GetOrder(orderID).TotalPrice - o.TotalPrice;
                     oDB.updateTotalPrice(oDB.GetOrder(orderID), price);
 
                     amount = Convert.ToInt32(text);
                     
+                    /*Herefter ændres total prisen og amount på orderlinen til det nye, som kan være både højere
+                      eller mindre end hvad den var før*/
                     o.TotalPrice = amount * o.Drink.Price;
                     o.Amount = amount;
                     olDb.EditOrderLineHelflask(o);
 
+                    /*Nu ændres price til den nye prid der skal tilføres på order's total pris*/
                     price = oDB.GetOrder(orderID).TotalPrice + o.TotalPrice;
 
                     oDB.updateTotalPrice(oDB.GetOrder(orderID), price);

@@ -103,4 +103,84 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateAlchohol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="alchohol" nillable="true" type="q8:Alchohol" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateAlchoholResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAlchohol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAlchoholResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetAlchoholResult" nillable="true" type="q9:Alchohol" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAlchohols">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAlchoholsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetAllAlchoholsResult" nillable="true" type="q10:ArrayOfAlchohol" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHelflask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHelflaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="GetHelflaskResult" nillable="true" type="q11:HelFlask" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchHelflask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="search" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchHelflaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="searchHelflaskResult" nillable="true" type="q12:ArrayOfHelFlask" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchAlchohol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="search" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="searchAlchoholResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ModelLayer" minOccurs="0" name="searchAlchoholResult" nillable="true" type="q13:ArrayOfAlchohol" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

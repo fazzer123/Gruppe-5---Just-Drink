@@ -55,6 +55,42 @@
   <wsdl:message name="IDrinkService_SearchDrinks_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchDrinksResponse" />
   </wsdl:message>
+  <wsdl:message name="IDrinkService_CreateAlchohol_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAlchohol" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_CreateAlchohol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAlchoholResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_GetAlchohol_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlchohol" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_GetAlchohol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlchoholResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_GetAllAlchohols_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAlchohols" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_GetAllAlchohols_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAlchoholsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_GetHelflask_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHelflask" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_GetHelflask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHelflaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_searchHelflask_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchHelflask" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_searchHelflask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchHelflaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_searchAlchohol_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchAlchohol" />
+  </wsdl:message>
+  <wsdl:message name="IDrinkService_searchAlchohol_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchAlchoholResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDrinkService">
     <wsdl:operation name="CreateDrink">
       <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/CreateDrink" message="tns:IDrinkService_CreateDrink_InputMessage" />
@@ -87,6 +123,30 @@
     <wsdl:operation name="SearchDrinks">
       <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/SearchDrinks" message="tns:IDrinkService_SearchDrinks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/SearchDrinksResponse" message="tns:IDrinkService_SearchDrinks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlchohol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/CreateAlchohol" message="tns:IDrinkService_CreateAlchohol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/CreateAlchoholResponse" message="tns:IDrinkService_CreateAlchohol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlchohol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/GetAlchohol" message="tns:IDrinkService_GetAlchohol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/GetAlchoholResponse" message="tns:IDrinkService_GetAlchohol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAlchohols">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/GetAllAlchohols" message="tns:IDrinkService_GetAllAlchohols_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/GetAllAlchoholsResponse" message="tns:IDrinkService_GetAllAlchohols_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHelflask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/GetHelflask" message="tns:IDrinkService_GetHelflask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/GetHelflaskResponse" message="tns:IDrinkService_GetHelflask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchHelflask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/searchHelflask" message="tns:IDrinkService_searchHelflask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/searchHelflaskResponse" message="tns:IDrinkService_searchHelflask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchAlchohol">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDrinkService/searchAlchohol" message="tns:IDrinkService_searchAlchohol_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDrinkService/searchAlchoholResponse" message="tns:IDrinkService_searchAlchohol_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDrinkService" type="tns:IDrinkService">
@@ -156,6 +216,60 @@
     </wsdl:operation>
     <wsdl:operation name="SearchDrinks">
       <soap:operation soapAction="http://tempuri.org/IDrinkService/SearchDrinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlchohol">
+      <soap:operation soapAction="http://tempuri.org/IDrinkService/CreateAlchohol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlchohol">
+      <soap:operation soapAction="http://tempuri.org/IDrinkService/GetAlchohol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAlchohols">
+      <soap:operation soapAction="http://tempuri.org/IDrinkService/GetAllAlchohols" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHelflask">
+      <soap:operation soapAction="http://tempuri.org/IDrinkService/GetHelflask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchHelflask">
+      <soap:operation soapAction="http://tempuri.org/IDrinkService/searchHelflask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchAlchohol">
+      <soap:operation soapAction="http://tempuri.org/IDrinkService/searchAlchohol" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -35,11 +35,14 @@ namespace BusinessLayer
             return sDb.GetDrinkStorage(Cusid, drinkID);
         }
 
+        /*Denne metode bruges til at ændre amount på storage, den tager order id ind som parameter*/
         public void UpdateDrinkAmount(int orderID)
         {
+            /*Her hentes den givne order, som har det id metoden fik med parameteren*/
             Order order = oCtr.GetOrder(orderID);
             foreach (var ol in order.OrderLines)
             {
+                /*Her tjekkes hvilken type drink der er på orderlinen, så den trækker det fra i den rigtig database*/
                 if (ol.Drink.GetType() == typeof(Drink))
                 {
                     Storage storage = sDb.getDrinkStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID);
@@ -63,6 +66,24 @@ namespace BusinessLayer
 
                     sDb.UpdateHelflaskStorage(storage);
                 }
+            }
+        }
+
+        public void UpdateStorages(Storage storage)
+        {
+            if (storage.Drink.GetType() == typeof(Drink))
+            {
+                sDb.UpdateDrinkStorage(storage);
+            }
+
+            else if (storage.Drink.GetType() == typeof(Alchohol))
+            {
+               sDb.UpdateAlchoholStorage(storage);
+            }
+
+            else if (storage.Drink.GetType() == typeof(HelFlask))
+            {
+                sDb.UpdateHelflaskStorage(storage);
             }
         }
 
@@ -91,6 +112,21 @@ namespace BusinessLayer
         public Storage getHelflaskStorageByHelflaskAndStorage(int flaskID, int cusID)
         {
             return sDb.getHelflaskStorageByHelflaskAndStorage(flaskID, cusID);
+        }
+
+        public IEnumerable<Storage> GetAllDrinkStorage(int cusID)
+        {
+            return sDb.GetAllDrinkStorages(cusID);
+        }
+
+        public IEnumerable<Storage> GetAllAlchoholStorage(int cusID)
+        {
+            return sDb.GetAllAlchoholStorages(cusID);
+        }
+
+        public IEnumerable<Storage> GetAllHelflaskStorage(int cusID)
+        {
+            return sDb.GetAllHelflaskStorages(cusID);
         }
     }
 }

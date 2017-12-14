@@ -56,5 +56,25 @@ namespace WCF
         {
             sCtr.UpdateDrinkAmount(orderID);
         }
+
+        public IEnumerable<Storage> GetAllDrinkStorage(int cusID)
+        {
+            return sCtr.GetAllDrinkStorage(cusID);
+        }
+
+        public IEnumerable<Storage> GetAllAlchoholStorage(int cusID)
+        {
+            return sCtr.GetAllAlchoholStorage(cusID);
+        }
+
+        public IEnumerable<Storage> GetAllHelflaskStorage(int cusID)
+        {
+            return sCtr.GetAllHelflaskStorage(cusID);
+        }
+
+        public void UpdateStorages(Storage storage)
+        {
+            sCtr.UpdateStorages(storage);
+        }
     }
 }
