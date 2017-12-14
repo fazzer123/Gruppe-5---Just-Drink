@@ -3,48 +3,53 @@
 
 <h2>@Model.Name</h2>
 
-<div>
+<div style="color: white; overflow: hidden;">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-        </dt>
+    <div style="float: left;">
+        <dl class="dl-horizontal">
+            <dt>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Img)
-        </dd>
+            <dd>
+                <img src="@Url.Content(Model.Img)" alt="Image" height="200px" width="200px" />
+            </dd>
+        </dl>
+    </div>
+    <div style="float: left;">
+        <dl class="dl-horizontal">
+            <dt>
+                Navn
+            </dt>
 
-        <dt>
-            Navn
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                Pris
+            </dt>
 
-        <dt>
-            Pris
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dt>
+                Procent
+            </dt>
 
-        <dt>
-            Procent
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Procent)
+            </dd>
+            <dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Procent)
-        </dd>
-        <dt>
-
-        </dt>
-        <dd>
-            @if (AuthHelper.IsLoggedIn())
+            </dt>
+            <dd>
+                @if (AuthHelper.IsLoggedIn())
             {<input id="Button1" type="submit" value="Tilføj Favorit" onclick="location.href='@Url.Action("AddHelflask", "Drink", new { drinkId = @Model.ID, userName = AuthHelper.CurrentUser.Username })'" />}
             else
             {<p>Du skal være logget ind før du kan tilføje favorit</p>}
-        </dd>
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
 </div>
