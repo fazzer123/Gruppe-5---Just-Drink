@@ -405,10 +405,10 @@ namespace Gui.OrderLineServiceRef {
         System.Threading.Tasks.Task<Gui.OrderLineServiceRef.OrderLine[]> GetAllOrderlinesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByID", ReplyAction="http://tempuri.org/IOrderLineService/DeleteOrderLineByIDResponse")]
-        void DeleteOrderLineByID(int OrderLineID);
+        void DeleteOrderLineByID(string type, int orderlineID, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/DeleteOrderLineByID", ReplyAction="http://tempuri.org/IOrderLineService/DeleteOrderLineByIDResponse")]
-        System.Threading.Tasks.Task DeleteOrderLineByIDAsync(int OrderLineID);
+        System.Threading.Tasks.Task DeleteOrderLineByIDAsync(string type, int orderlineID, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderLineService/EditOrderLine", ReplyAction="http://tempuri.org/IOrderLineService/EditOrderLineResponse")]
         void EditOrderLine(Gui.OrderLineServiceRef.OrderLine orderLine);
@@ -522,12 +522,12 @@ namespace Gui.OrderLineServiceRef {
             return base.Channel.GetAllOrderlinesAsync();
         }
         
-        public void DeleteOrderLineByID(int OrderLineID) {
-            base.Channel.DeleteOrderLineByID(OrderLineID);
+        public void DeleteOrderLineByID(string type, int orderlineID, int id) {
+            base.Channel.DeleteOrderLineByID(type, orderlineID, id);
         }
         
-        public System.Threading.Tasks.Task DeleteOrderLineByIDAsync(int OrderLineID) {
-            return base.Channel.DeleteOrderLineByIDAsync(OrderLineID);
+        public System.Threading.Tasks.Task DeleteOrderLineByIDAsync(string type, int orderlineID, int id) {
+            return base.Channel.DeleteOrderLineByIDAsync(type, orderlineID, id);
         }
         
         public void EditOrderLine(Gui.OrderLineServiceRef.OrderLine orderLine) {

@@ -28,7 +28,7 @@ namespace WCF
         IEnumerable<OrderLine> GetAllOrderlines();
 
         [OperationContract]
-        void DeleteOrderLineByID(int OrderLineID);
+        void DeleteOrderLineByID(string type, int orderlineID, int id);
 
         [OperationContract]
         void EditOrderLine(OrderLine orderLine);

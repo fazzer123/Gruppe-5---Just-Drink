@@ -110,13 +110,9 @@ namespace Gui.Controllers
         }
 
         // GET: Order/Delete/5
-        public ActionResult Delete(int OrderLineId, int id)
+        public ActionResult Delete(string type, int orderlineID, int id)
         {
-            decimal newprice = client.GetOrder(id).TotalPrice;
-            newprice = newprice - olClient.GetOrderLine(OrderLineId).TotalPrice;
-            client.UpdatePrice(client.GetOrder(id), newprice);
-
-            olClient.DeleteOrderLineByID(OrderLineId);
+            olClient.DeleteOrderLineByID(type, orderlineID, id);
             return View("Details", doBCVM(id));
         }
 

@@ -47,9 +47,9 @@ namespace WCF
             return olCtr.GetOrderLineHelflask(ID);
         }
 
-        public void DeleteOrderLineByID(int OrderLineID)
+        public void DeleteOrderLineByID(string type, int orderlineID, int id)
         {
-            olCtr.DeleteOrderLineByID(OrderLineID);
+            olCtr.DeleteOrderLineByID(type, orderlineID, id);
         }
 
         public void EditOrderLine(OrderLine orderLine)

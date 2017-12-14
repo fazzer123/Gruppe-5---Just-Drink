@@ -12,6 +12,7 @@ namespace BusinessLayer
     {
         OrderLineDB olDb;
         DrinkController dCtr = new DrinkController();
+        OrderController oCtr = new OrderController();
 
         public OrderLineController()
         {
@@ -48,9 +49,30 @@ namespace BusinessLayer
             return olDb.GetAllOrderLines();
         }
 
-        public void DeleteOrderLineByID(int OrderLineID)
+        public void DeleteOrderLineByID(string type, int orderlineID, int id)
         {
-            olDb.DeleteOrderLineByID(OrderLineID);
+            Order order = oCtr.GetOrder(id);
+            decimal newprice = order.TotalPrice;
+            if(type.Equals("Gui.OrderServiceRef.Drink"))
+            {
+                newprice = newprice - olDb.GetOrderLine(orderlineID).TotalPrice;
+                oCtr.UpdatePrice(order, newprice);
+                olDb.DeleteOrderLineByID(orderlineID);
+            }
+
+            else if (type.Equals("Gui.OrderServiceRef.Alchohol"))
+            {
+                newprice = newprice - olDb.GetOrderLineAlchohol(orderlineID).TotalPrice;
+                oCtr.UpdatePrice(order, newprice);
+                olDb.DeleteAlchoholOrderLineByID(orderlineID);
+            }
+
+            else if (type.Equals("Gui.OrderServiceRef.HelFlask"))
+            {
+                newprice = newprice - olDb.GetOrderLineHelflask(orderlineID).TotalPrice;
+                oCtr.UpdatePrice(order, newprice);
+                olDb.DeleteHelflaskOrderLineByID(orderlineID);
+            }
         }
 
         /*Denne metode ændre total prise på order og en specifik orderline*/

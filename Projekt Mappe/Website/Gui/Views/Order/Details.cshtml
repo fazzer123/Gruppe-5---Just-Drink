@@ -83,7 +83,7 @@
                     @item.Drink.Name
                 </td>
                 <td>
-                    @if(Model.Order.Status.Equals("Incomplete")){<input id="btnDelete" type="button" value="Slet" onclick="location.href='@Url.Action("Slet", "Order", new {OrderLineId = item.ID, id = Model.Order.ID })'" /> }                    
+                    @if(Model.Order.Status.Equals("Incomplete")){<input id="btnDelete" type="button" value="Slet" onclick="location.href='@Url.Action("Delete", "Order", new {type = @item.Drink.GetType().ToString(), orderlineID = item.ID, id = Model.Order.ID })'" /> }                    
                 </td>
             </tr>
         }

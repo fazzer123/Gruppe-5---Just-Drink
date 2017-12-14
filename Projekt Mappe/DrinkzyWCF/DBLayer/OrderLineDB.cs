@@ -260,6 +260,34 @@ namespace DBLayer
             }
         }
 
+        public void DeleteAlchoholOrderLineByID(int OrderLineId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.OrderLineAlchohol Where id = @id";
+                    cmd.Parameters.AddWithValue("id", OrderLineId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public void DeleteHelflaskOrderLineByID(int OrderLineId)
+        {
+            using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "Delete From dbo.OrderLineHelflask Where id = @id";
+                    cmd.Parameters.AddWithValue("id", OrderLineId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
         public void EditOrderLine(OrderLine orderLine)
         {
             using (SqlConnection connection = new SqlConnection(CONNECTION_STRING))
