@@ -177,6 +177,76 @@ namespace DBLayer
             }
         }
 
+        public bool CheckerHelflaskOrder(int drinkID, int cusID, int amount)
+        {
+            string ordercmd = "DECLARE @amount int; " +
+                "SELECT @amount = Storage.Amount FROM dbo.helflaskStorage as Storage " +
+                "WHERE Storage.helflaskID = @helflaskID AND storageID = @storageID; " +
+                "IF(@amount >= @requestedamount) " +
+                "BEGIN Tran " +
+                "UPDATE helflaskStorage SET Amount = @amount - @requestedamount  WHERE storageID = @storageID AND helflaskID = @helflaskID; " +
+                "ROLLBACK Tran";
+            using (SqlConnection sqlcon = new SqlConnection(CONNECTION_STRING))
+            {
+                sqlcon.Open();
+                SqlCommand cmd = new SqlCommand(ordercmd, sqlcon);
+                cmd.Parameters.AddWithValue("requestedamount", amount);
+                cmd.Parameters.AddWithValue("helflaskID", drinkID);
+                cmd.Parameters.AddWithValue("storageID", getStorageIDByCustomerID(cusID));
+                int success = 0;
+                try { success = cmd.ExecuteNonQuery(); }
+                catch { }
+                return success == 1;
+            }
+        }
+
+        public bool CheckerDrinkOrder(int drinkID, int cusID, int amount)
+        {
+            string ordercmd = "DECLARE @amount int; " +
+                "SELECT @amount = Storage.Amount FROM dbo.drinkStorage as Storage " +
+                "WHERE Storage.drinkID = @drinkID AND storageID = @storageID; " +
+                "IF(@amount >= @requestedamount) " +
+                "BEGIN Tran " +
+                "UPDATE drinkStorage SET Amount = @amount - @requestedamount  WHERE storageID = @storageID AND drinkID = @drinkID; " +
+                "ROLLBACK Tran";
+            using (SqlConnection sqlcon = new SqlConnection(CONNECTION_STRING))
+            {
+                sqlcon.Open();
+                SqlCommand cmd = new SqlCommand(ordercmd, sqlcon);
+                cmd.Parameters.AddWithValue("requestedamount", amount);
+                cmd.Parameters.AddWithValue("drinkID", drinkID);
+                cmd.Parameters.AddWithValue("storageID", getStorageIDByCustomerID(cusID));
+                int success = 0;
+                try { success = cmd.ExecuteNonQuery(); }
+                catch { }
+                return success == 1;
+            }
+        }
+
+        public bool CheckerAlchoholOrder(int drinkID, int cusID, int amount)
+        {
+            string ordercmd = "DECLARE @amount int; " +
+                "SELECT @amount = Storage.Amount FROM dbo.alchoholStorage as Storage " +
+                "WHERE Storage.alchoholID = @alchoholID AND storageID = @storageID; " +
+                "IF(@amount >= @requestedamount) " +
+                "BEGIN Tran " +
+                "UPDATE alchoholStorage SET Amount = @amount - @requestedamount  WHERE storageID = @storageID AND alchoholID = @alchoholID; " +
+                "ROLLBACK Tran";
+            using (SqlConnection sqlcon = new SqlConnection(CONNECTION_STRING))
+            {
+                sqlcon.Open();
+                SqlCommand cmd = new SqlCommand(ordercmd, sqlcon);
+                cmd.Parameters.AddWithValue("requestedamount", amount);
+                cmd.Parameters.AddWithValue("alchoholID", drinkID);
+                cmd.Parameters.AddWithValue("storageID", getStorageIDByCustomerID(cusID));
+                int success = 0;
+                try { success = cmd.ExecuteNonQuery(); }
+                catch { }
+                return success == 1;
+            }
+        }
+
+
         public Storage getAlchoholStorageByDrinkAndStorage(int alchID, int cusID)
         {
             Storage Storage = null;

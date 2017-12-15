@@ -46,21 +46,21 @@ namespace BusinessLayer
                 //bool check = false;
                 if (ol.Drink.GetType() == typeof(Drink))
                 {
-                    if(sDb.CompleteDrinkOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
+                    if(sDb.CheckerDrinkOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
                     {
                         i++;
                     }
                 }
                 else if (ol.Drink.GetType() == typeof(Alchohol))
                 {
-                    if(sDb.CompleteAlchoholOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
+                    if(sDb.CheckerAlchoholOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
                     {
                         i++;
                     }
                 }
                 else if (ol.Drink.GetType() == typeof(HelFlask))
                 {
-                    if(sDb.CompleteHelflaskOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
+                    if(sDb.CheckerHelflaskOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
                     {
                         i++;
                     }

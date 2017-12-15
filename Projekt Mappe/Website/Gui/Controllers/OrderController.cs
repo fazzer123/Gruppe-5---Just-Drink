@@ -140,37 +140,10 @@ namespace Gui.Controllers
         public ActionResult CompleteOrder(int id)
         {
             Order order = client.GetOrder(id);
-            int i = 0;
-            int j = order.OrderLines.Count();
 
-            foreach (var ol in order.OrderLines)
+            if (storageClient.CompleteOrder(order.ID) == true)
             {
-                if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Drink))
-                {
-                    if (ol.Amount <= storageClient.getStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
-                    {
-                        i++;
-                    }
-                }
-                else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.Alchohol))
-                {
-                    if (ol.Amount <= storageClient.getAlchoholStorageByDrinkAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
-                    {
-                        i++;
-                    }
-                }
-                else if (ol.Drink.GetType() == typeof(Gui.OrderServiceRef.HelFlask))
-                {
-                    if (ol.Amount <= storageClient.getHelflaskStorageByHelflaskAndStorage(ol.Drink.ID, order.Customer.ID).Amount)
-                    {
-                        i++;
-                    }
-                }
-            }
-
-            if (i == j)
-            {
-                storageClient.UpdateStorageDrink(order.ID);
+                //storageClient.CompleteOrder(order.ID);
                 order.Status = "Complete";
                 decimal hej = walletClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance - order.TotalPrice;
                 walletClient.UpdateBalanceByUserId(hej, client.GetUser(AuthHelper.CurrentUser.Username).ID);
