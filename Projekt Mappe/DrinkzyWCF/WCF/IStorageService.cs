@@ -44,5 +44,8 @@ namespace WCF
 
         [OperationContract]
         void UpdateStorages(Storage storage);
+
+        [OperationContract]
+        bool CompleteOrder(int orderID);
     }
 }

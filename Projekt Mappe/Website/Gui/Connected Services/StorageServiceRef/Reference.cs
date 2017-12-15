@@ -606,6 +606,36 @@ namespace Gui.StorageServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/getHelflaskStorageByHelflaskAndStorage", ReplyAction="http://tempuri.org/IStorageService/getHelflaskStorageByHelflaskAndStorageResponse" +
             "")]
         System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage> getHelflaskStorageByHelflaskAndStorageAsync(int flaskID, int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllDrinkStorage", ReplyAction="http://tempuri.org/IStorageService/GetAllDrinkStorageResponse")]
+        Gui.StorageServiceRef.Storage[] GetAllDrinkStorage(int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllDrinkStorage", ReplyAction="http://tempuri.org/IStorageService/GetAllDrinkStorageResponse")]
+        System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllDrinkStorageAsync(int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllAlchoholStorage", ReplyAction="http://tempuri.org/IStorageService/GetAllAlchoholStorageResponse")]
+        Gui.StorageServiceRef.Storage[] GetAllAlchoholStorage(int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllAlchoholStorage", ReplyAction="http://tempuri.org/IStorageService/GetAllAlchoholStorageResponse")]
+        System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllAlchoholStorageAsync(int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllHelflaskStorage", ReplyAction="http://tempuri.org/IStorageService/GetAllHelflaskStorageResponse")]
+        Gui.StorageServiceRef.Storage[] GetAllHelflaskStorage(int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/GetAllHelflaskStorage", ReplyAction="http://tempuri.org/IStorageService/GetAllHelflaskStorageResponse")]
+        System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllHelflaskStorageAsync(int cusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/UpdateStorages", ReplyAction="http://tempuri.org/IStorageService/UpdateStoragesResponse")]
+        void UpdateStorages(Gui.StorageServiceRef.Storage storage);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/UpdateStorages", ReplyAction="http://tempuri.org/IStorageService/UpdateStoragesResponse")]
+        System.Threading.Tasks.Task UpdateStoragesAsync(Gui.StorageServiceRef.Storage storage);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/CompleteOrder", ReplyAction="http://tempuri.org/IStorageService/CompleteOrderResponse")]
+        bool CompleteOrder(int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStorageService/CompleteOrder", ReplyAction="http://tempuri.org/IStorageService/CompleteOrderResponse")]
+        System.Threading.Tasks.Task<bool> CompleteOrderAsync(int orderID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -697,6 +727,46 @@ namespace Gui.StorageServiceRef {
         
         public System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage> getHelflaskStorageByHelflaskAndStorageAsync(int flaskID, int cusID) {
             return base.Channel.getHelflaskStorageByHelflaskAndStorageAsync(flaskID, cusID);
+        }
+        
+        public Gui.StorageServiceRef.Storage[] GetAllDrinkStorage(int cusID) {
+            return base.Channel.GetAllDrinkStorage(cusID);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllDrinkStorageAsync(int cusID) {
+            return base.Channel.GetAllDrinkStorageAsync(cusID);
+        }
+        
+        public Gui.StorageServiceRef.Storage[] GetAllAlchoholStorage(int cusID) {
+            return base.Channel.GetAllAlchoholStorage(cusID);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllAlchoholStorageAsync(int cusID) {
+            return base.Channel.GetAllAlchoholStorageAsync(cusID);
+        }
+        
+        public Gui.StorageServiceRef.Storage[] GetAllHelflaskStorage(int cusID) {
+            return base.Channel.GetAllHelflaskStorage(cusID);
+        }
+        
+        public System.Threading.Tasks.Task<Gui.StorageServiceRef.Storage[]> GetAllHelflaskStorageAsync(int cusID) {
+            return base.Channel.GetAllHelflaskStorageAsync(cusID);
+        }
+        
+        public void UpdateStorages(Gui.StorageServiceRef.Storage storage) {
+            base.Channel.UpdateStorages(storage);
+        }
+        
+        public System.Threading.Tasks.Task UpdateStoragesAsync(Gui.StorageServiceRef.Storage storage) {
+            return base.Channel.UpdateStoragesAsync(storage);
+        }
+        
+        public bool CompleteOrder(int orderID) {
+            return base.Channel.CompleteOrder(orderID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CompleteOrderAsync(int orderID) {
+            return base.Channel.CompleteOrderAsync(orderID);
         }
     }
 }

@@ -76,5 +76,10 @@ namespace WCF
         {
             sCtr.UpdateStorages(storage);
         }
+
+        public bool CompleteOrder(int orderID)
+        {
+            return sCtr.CompleteOrder(orderID);
+        }
     }
 }

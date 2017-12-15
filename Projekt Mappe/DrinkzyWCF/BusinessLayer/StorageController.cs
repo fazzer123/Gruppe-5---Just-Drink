@@ -35,6 +35,60 @@ namespace BusinessLayer
             return sDb.GetDrinkStorage(Cusid, drinkID);
         }
 
+        public bool CompleteOrder(int orderID)
+        {
+            Order order = oCtr.GetOrder(orderID);
+            int i = 0;
+            int j = order.OrderLines.Count();
+            bool success = false;
+            foreach (var ol in order.OrderLines)
+            {
+                //bool check = false;
+                if (ol.Drink.GetType() == typeof(Drink))
+                {
+                    if(sDb.CompleteDrinkOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
+                    {
+                        i++;
+                    }
+                }
+                else if (ol.Drink.GetType() == typeof(Alchohol))
+                {
+                    if(sDb.CompleteAlchoholOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
+                    {
+                        i++;
+                    }
+                }
+                else if (ol.Drink.GetType() == typeof(HelFlask))
+                {
+                    if(sDb.CompleteHelflaskOrder(ol.Drink.ID, order.Customer.ID, ol.Amount) == true)
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == j)
+            {
+                foreach (var ol in order.OrderLines)
+                {
+                    //bool check = false;
+                    if (ol.Drink.GetType() == typeof(Drink))
+                    {
+                        sDb.CompleteDrinkOrder(ol.Drink.ID, order.Customer.ID, ol.Amount);
+                    }
+                    else if (ol.Drink.GetType() == typeof(Alchohol))
+                    {
+                        sDb.CompleteAlchoholOrder(ol.Drink.ID, order.Customer.ID, ol.Amount);
+                    }
+                    else if (ol.Drink.GetType() == typeof(HelFlask))
+                    {
+                        sDb.CompleteHelflaskOrder(ol.Drink.ID, order.Customer.ID, ol.Amount);
+                    }
+                }
+                success = true;
+            }
+            return success;
+        }
+
         /*Denne metode bruges til at ændre amount på storage, den tager order id ind som parameter*/
         public void UpdateDrinkAmount(int orderID)
         {

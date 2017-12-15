@@ -170,12 +170,11 @@ namespace Gui.Controllers
 
             if (i == j)
             {
+                storageClient.UpdateStorageDrink(order.ID);
                 order.Status = "Complete";
                 decimal hej = walletClient.getWalletByUsername(AuthHelper.CurrentUser.Username).Balance - order.TotalPrice;
                 walletClient.UpdateBalanceByUserId(hej, client.GetUser(AuthHelper.CurrentUser.Username).ID);
                 client.CompleteOrder(order);
-
-                storageClient.UpdateStorageDrink(order.ID);
 
                 return View("OrderSucces");
             }
